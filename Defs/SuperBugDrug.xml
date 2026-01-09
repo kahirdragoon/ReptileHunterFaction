@@ -1,0 +1,215 @@
+<Defs>
+    <ThingDef ParentName="DrugPillBase">
+        <!-- Name pending -->
+        <defName>RHF_SBD</defName>
+        <label>super bug drug</label>
+        <description>A drug made out of humanoid insectoids that enhances the user</description>
+        <descriptionHyperlinks>
+            <HediffDef>RHF_SBDHigh</HediffDef>
+            <HediffDef>RHF_SBDAddiction</HediffDef>
+        </descriptionHyperlinks>
+        <graphicData>
+            <texPath>Drugs/RHF_SBD</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <rotatable>false</rotatable>
+        <statBases>
+            <MarketValue>100</MarketValue>
+            <Mass>0.01</Mass>
+        </statBases>
+        <techLevel>Ultra</techLevel>
+        <minRewardCount>2</minRewardCount>
+        <ingestible>
+            <drugCategory>Medical</drugCategory>
+            <outcomeDoers>
+                <li Class="IngestionOutcomeDoer_GiveHediff">
+                    <hediffDef>RHF_SBDHigh</hediffDef>
+                    <severity>1.00</severity>
+                    <doToGeneratedPawnIfAddicted>false</doToGeneratedPawnIfAddicted>
+                </li>
+            </outcomeDoers>
+        </ingestible>
+        <comps>
+            <li Class="CompProperties_Drug">
+                <chemical>RHF_SBD</chemical>
+                <addictiveness>1.00</addictiveness>
+                <needLevelOffset>0.5</needLevelOffset>
+                <listOrder>1010</listOrder>
+            </li>
+            <li Class="CompProperties_CompAnalyzableUnlockResearch">
+                <analysisID>29149979 </analysisID>
+
+                <!-- Analyzable -->
+                <analysisDurationHours>1</analysisDurationHours>
+                <destroyedOnAnalyzed>true</destroyedOnAnalyzed>
+                <completedLetterLabel>Super bug drug studied: {RESEARCH} unlocked</completedLetterLabel>
+                <completedLetter>By studying the super bug drug, {PAWN_labelShort} has acquired the insight needed for the research project(s) {RESEARCH}.\n\nYour researchers can now use research benches to begin researching how to actually use the technology.</completedLetter>
+                <completedLetterDef>PositiveEvent</completedLetterDef>
+
+                <!-- Interactable -->
+                <activateTexPath>UI/Icons/Study</activateTexPath>
+                <activateLabelString>Analyze...</activateLabelString>
+                <activateDescString>Analyze the super bug drug.</activateDescString>
+                <jobString>Analyze super bug drug</jobString>
+                <guiLabelString>Choose who should analyze this</guiLabelString>
+                <inspectString>Can be analyzed by a colonist.</inspectString>
+
+                <targetingParameters>
+                    <canTargetBuildings>false</canTargetBuildings>
+                    <canTargetAnimals>false</canTargetAnimals>
+                    <canTargetMechs>false</canTargetMechs>
+                    <onlyTargetControlledPawns>true</onlyTargetControlledPawns>
+                </targetingParameters>
+            </li>
+        </comps>
+        <tradeTags>
+        </tradeTags>
+        <!-- <thingSetMakerTags>
+            <li>RewardStandardCore</li>
+        </thingSetMakerTags> -->
+        <allowedArchonexusCount>20</allowedArchonexusCount>
+        <costList>
+            <Luciferium>1</Luciferium>
+            <Neutroamine>5</Neutroamine>
+            <RHF_ConcentratedInsectoidBlood>1</RHF_ConcentratedInsectoidBlood>
+        </costList>
+        <recipeMaker>
+            <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+            <workSkill>Intellectual</workSkill>
+            <recipeUsers>
+                <li>DrugLab</li>
+            </recipeUsers>
+            <!-- <researchPrerequisite>MedicineProduction</researchPrerequisite> -->
+            <skillRequirements>
+                <Crafting>15</Crafting>
+                <Intellectual>15</Intellectual>
+            </skillRequirements>
+            <bulkRecipeCount>4</bulkRecipeCount>
+            <displayPriority>2000</displayPriority>
+        </recipeMaker>
+    </ThingDef>
+
+    <HediffDef>
+        <defName>RHF_SBDHigh</defName>
+        <hediffClass>Hediff_High</hediffClass>
+        <label>super bug drug</label>
+        <description>Super bug drug. Super powerfull. Super addictive. Super gross. Made of humanoid bugs.</description>
+        <defaultLabelColor>(0.5,1,0.5)</defaultLabelColor>
+        <scenarioCanAdd>true</scenarioCanAdd>
+        <maxSeverity>1.0</maxSeverity>
+        <isBad>false</isBad>
+        <tendable>false</tendable>
+        <allowMothballIfLowPriorityWorldPawn>true</allowMothballIfLowPriorityWorldPawn>
+        <stages>
+            <li>
+                <painFactor>0.5</painFactor>
+                <capMods>
+                    <li>
+                        <capacity>Consciousness</capacity>
+                        <offset>0.50</offset>
+                    </li>
+                    <li>
+                        <capacity>Moving</capacity>
+                        <offset>0.50</offset>
+                    </li>
+                    <li>
+                        <capacity>Sight</capacity>
+                        <offset>0.50</offset>
+                    </li>
+                    <li>
+                        <capacity>BloodFiltration</capacity>
+                        <offset>1.20</offset>
+                    </li>
+                    <li>
+                        <capacity>BloodPumping</capacity>
+                        <offset>0.50</offset>
+                    </li>
+                    <li>
+                        <capacity>Metabolism</capacity>
+                        <offset>0.50</offset>
+                    </li>
+                    <li>
+                        <capacity>Breathing</capacity>
+                        <offset>0.50</offset>
+                    </li>
+                    <li>
+                        <capacity>Hearing</capacity>
+                        <offset>0.50</offset>
+                    </li>
+                </capMods>
+                <statFactors>
+                    <MeleeDamageFactor>1.20</MeleeDamageFactor>
+                    <MeleeHitChance>1.2</MeleeHitChance>
+                    <MeleeDodgeChance>1.2</MeleeDodgeChance>
+                    <ShootingAccuracyPawn>1.2</ShootingAccuracyPawn>
+                    <AimingDelayFactor>0.909</AimingDelayFactor> <!-- 1/1.1 -->
+                    <MoveSpeed>1.3</MoveSpeed>
+                    <IncomingDamageFactor>0.8</IncomingDamageFactor>
+                    <InjuryHealingFactor>2</InjuryHealingFactor>
+                    <StaggerDurationFactor>0.5</StaggerDurationFactor>
+                    <MeleeCooldownFactor>1.1</MeleeCooldownFactor>
+                    <ImmunityGainSpeed>1.5</ImmunityGainSpeed>
+                    <ShootingAccuracyFactor_Long>1.2</ShootingAccuracyFactor_Long>
+                    <ShootingAccuracyFactor_Medium>1.2</ShootingAccuracyFactor_Medium>
+                    <ShootingAccuracyFactor_Short>1.2</ShootingAccuracyFactor_Short>
+                    <LifespanFactor>0.5</LifespanFactor>
+                </statFactors>
+                <statOffsets>
+                    <ComfyTemperatureMin>-30</ComfyTemperatureMin>
+                    <ComfyTemperatureMax>30</ComfyTemperatureMax>
+                </statOffsets>
+            </li>
+        </stages>
+    </HediffDef>
+
+    <ChemicalDef>
+        <defName>RHF_SBD</defName>
+        <label>super bug drug</label>
+        <addictionHediff>RHF_SBDAddiction</addictionHediff>
+        <canBinge>false</canBinge>
+        <generateAddictionGenes>false</generateAddictionGenes>
+    </ChemicalDef>
+
+    <NeedDef ParentName="DrugAddictionNeedBase">
+        <defName>RHF_Chemical_SBD</defName>
+        <needClass>Need_Chemical</needClass>
+        <label>super bug drug</label>
+        <description>This person's body is mutated by the super bug drug.\n\nWithout regular doses of the super bug drug, the user becomes continuously, violently insane and eventually dies.\n\nThis addiction never goes away.</description>
+        <listPriority>45</listPriority>
+        <fallPerDay>0.18</fallPerDay>
+        <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    </NeedDef>
+
+    <HediffDef ParentName="AddictionBase">
+        <defName>RHF_SBDAddiction</defName>
+        <label>super bug drug need</label>
+        <description>Mutations caused by the super bug drug.
+            \nWithout new super bug drug, the victim to go insane and die.</description>
+        <hediffClass>Hediff_Addiction</hediffClass>
+        <chemicalNeed>RHF_Chemical_SBD</chemicalNeed>
+        <everCurableByItem>false</everCurableByItem>
+        <stages>
+            <li>
+            </li>
+            <li>
+                <label>unmet</label>
+                <painOffset>0.4</painOffset>
+                <lifeThreatening>true</lifeThreatening>
+                <deathMtbDays>10</deathMtbDays>
+                <mtbDeathDestroysBrain>true</mtbDeathDestroysBrain>
+                <capMods>
+                    <li>
+                        <capacity>Consciousness</capacity>
+                        <setMax>0.8</setMax>
+                    </li>
+                </capMods>
+                <mentalStateGivers>
+                    <li>
+                        <mentalState>Berserk</mentalState>
+                        <mtbDays>0.4</mtbDays>
+                    </li>
+                </mentalStateGivers>
+            </li>
+        </stages>
+    </HediffDef>
+</Defs>

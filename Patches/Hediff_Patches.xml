@@ -1,0 +1,16 @@
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[not(techHediffsTags) and (defName="Joywire" or defName="DrillArm" or defName="CircadianHalfCycler" or defName="FieldHand")]</xpath>
+        <value>
+            <techHediffsTags></techHediffsTags>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Joywire" or defName="DrillArm" or defName="CircadianHalfCycler" or defName="FieldHand"]/techHediffsTags</xpath>
+        <value>
+            <li>CombatDetrimental</li>
+        </value>
+    </Operation>
+
+</Patch>

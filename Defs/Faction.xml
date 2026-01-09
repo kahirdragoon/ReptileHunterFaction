@@ -1,0 +1,247 @@
+<Defs>
+    <FactionDef ParentName="PirateBandBase">
+        <defName>RHF_ReptileHunters</defName>
+        <label>Reptile Hunters</label>
+        <description>Ruthless carnivorious reptiles who raid to kidnap and feed using superior technology.</description>
+        <pawnSingular>hunter</pawnSingular>
+        <pawnsPlural>hunters</pawnsPlural>
+        <permanentEnemy>true</permanentEnemy>
+        <hidden>true</hidden>
+        <canStageAttacks>true</canStageAttacks>
+        <techLevel>Ultra</techLevel>
+        <leaderTitle>greatest hunter</leaderTitle>
+        <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+        <maxCountAtGameStart>1</maxCountAtGameStart>
+        <hostileToFactionlessHumanlikes>true</hostileToFactionlessHumanlikes>
+        <canStageAttacks>false</canStageAttacks>
+        <arrivalLayerWhitelist>
+            <li>Surface</li>
+            <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
+        </arrivalLayerWhitelist>
+        <requiredMemes>
+            <li MayRequire="sarg.alphamemes">AM_Sadist</li>
+            <li>Cannibal</li>
+        </requiredMemes>
+        <allowedMemes Inherit="False">
+            <li MayRequire="Ludeon.RimWorld.Ideology">PainIsVirtue</li>
+            <li MayRequire="Ludeon.RimWorld.Anomaly">Inhuman</li>
+        </allowedMemes>
+        <raidCommonalityFromPointsCurve>
+            <points>
+                <li>(300, 0)</li>
+                <li>(1000, 1)</li>
+                <li>(2000, 2)</li>
+                <li>(6000, 3)</li>
+            </points>
+        </raidCommonalityFromPointsCurve>
+        <maxPawnCostPerTotalPointsCurve Inherit="False">
+            <points>
+                <li>(2000,300)</li>
+                <li>(1000000,10000)</li>
+            </points>
+        </maxPawnCostPerTotalPointsCurve>
+        <raidLootValueFromPointsCurve>
+            <points>
+                <li>(350,     150)</li>
+                <li>(1000,   1200)</li>
+                <li>(80000,  5000)</li>
+                <li>(15000,  8000)</li>
+                <li>(20000, 10000)</li>
+            </points>
+        </raidLootValueFromPointsCurve>
+        <xenotypeSet Inherit="False">
+            <xenotypeChances>
+                <LoS_Lamia>1</LoS_Lamia>
+                <LoS_Siren>1</LoS_Siren>
+                <LoS_Gorgon>0.3</LoS_Gorgon>
+                <Naga>1</Naga>
+                <Nagaraj>1</Nagaraj>
+                <LoS_Adderman>1</LoS_Adderman>
+                <LoS_Anacondaman>1</LoS_Anacondaman>
+                <LoS_Snakeman>1</LoS_Snakeman>
+                <LoS_Silver>0.7</LoS_Silver>
+            </xenotypeChances>
+        </xenotypeSet>
+        <pawnGroupMakers Inherit="False">
+            <li>
+                <kindDef>Combat</kindDef>
+                <commonality>1</commonality>
+                <options>
+                    <RHF_ReptileHuntersFighter_Melee>1</RHF_ReptileHuntersFighter_Melee>
+                    <RHF_ReptileHuntersFighter_Ranged>1</RHF_ReptileHuntersFighter_Ranged>
+                </options>
+            </li>
+        </pawnGroupMakers>
+        <apparelStuffFilter>
+            <thingDefs>
+                <li>Hyperweave</li>
+                <li>Plasteel</li>
+            </thingDefs>
+        </apparelStuffFilter>
+        <disallowedRaidAgeRestrictions>
+            <li MayRequire="Ludeon.RimWorld.Biotech">Children</li>
+        </disallowedRaidAgeRestrictions>
+        <modExtensions>
+            <li Class="ReptileHunterFaction.SpawnGenesExtension">
+                <randomOrder>false</randomOrder>
+                <respectMetabolicEfficiency>false</respectMetabolicEfficiency>
+                <maxNumberOfGenesAdded>5</maxNumberOfGenesAdded>
+                <genes>
+                    <li>
+                        <defName>AnimalWarcall</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>FireSpew</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>FoamSpray</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>Superclotting</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>MoveSpeed_VeryQuick</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>MinTemp_LargeDecrease</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>MaxTemp_LargeIncrease</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>ToxResist_Total</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>FireResistant</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>MeleeDamage_Strong</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>Robust</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>DarkVision</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>ElongatedFingers</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>PollutionRush</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>WoundHealing_SuperFast</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>Unstoppable</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>AptitudeRemarkable_Shooting</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>AptitudeRemarkable_Melee</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>Mood_Depressive</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>KillThirst</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>Sterile</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>Instability_Major</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>AptitudeTerrible_Construction</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>AptitudeTerrible_Mining</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>AptitudeTerrible_Cooking</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>AptitudeTerrible_Plants</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>AptitudeTerrible_Animals</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>AptitudeTerrible_Social</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>AptitudeTerrible_Artistic</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>AptitudeTerrible_Crafting</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>AptitudeTerrible_Medicine</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>AptitudeTerrible_Intellectual</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>ChemicalDependency_Psychite</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>ChemicalDependency_WakeUp</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>ChemicalDependency_GoJuice</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>Aggression_HyperAggressive</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>Pain_Extra</defName>
+                        <chance>0.5</chance>
+                    </li>
+                    <li>
+                        <defName>Beauty_VeryUgly</defName>
+                        <chance>0.5</chance>
+                    </li>
+
+                </genes>
+            </li>
+        </modExtensions>
+    </FactionDef>
+</Defs>

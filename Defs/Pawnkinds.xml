@@ -1,0 +1,113 @@
+<Defs>
+    <PawnKindDef Name="ReptileHuntersFighterBase" Abstract="True">
+        <race>Human</race>
+        <defaultFactionDef>RHF_ReptileHunters</defaultFactionDef>
+        <combatEnhancingDrugsChance>1</combatEnhancingDrugsChance>
+        <combatEnhancingDrugsCount>3</combatEnhancingDrugsCount>
+        <chemicalAddictionChance>0.1</chemicalAddictionChance>
+        <combatEnhancingDrugsChance>0.7</combatEnhancingDrugsChance>
+        <combatEnhancingDrugsCount>1~3</combatEnhancingDrugsCount>
+        <invNutrition>2.55</invNutrition>
+        <itemQuality>Good</itemQuality>
+        <combatPower>350</combatPower>
+        <weaponMoney>2000~10000</weaponMoney>
+        <apparelAllowHeadgearChance>1</apparelAllowHeadgearChance>
+        <apparelMoney>30500~45000</apparelMoney>
+        <apparelTags>
+            <li>IndustrialAdvanced</li>
+            <li>IndustrialMilitaryBasic</li>
+            <li>IndustrialMilitaryAdvanced</li>
+            <li>SpacerMilitary</li>
+            <li>BeltDefensePop</li>
+            <li>SpacerOrUltraTechApparelOrArmor</li>
+        </apparelTags>
+        <!-- <apparelDisallowTags>
+            <li>Western</li>
+            <li>Tribal</li>
+            <li>Medieval</li>
+            <li>Slave</li>
+            <li>Worker</li>
+        </apparelDisallowTags> -->
+        <techHediffsChance>0.8</techHediffsChance>
+        <techHediffsMoney>200000~350000</techHediffsMoney>
+        <techHediffsMaxAmount>99</techHediffsMaxAmount>
+        <techHediffsTags>
+            <li>Advanced</li>
+            <li>AdvancedWeapon</li>
+            <li>ImplantEmpireCommon</li>
+            <li>ImplantEmpireRoyal</li>
+        </techHediffsTags>
+        <techHediffsRequired>
+            <li>DeathAcidifier</li>
+            <li>Painstopper</li>
+        </techHediffsRequired>
+        <techHediffsDisallowTags>
+            <li>PainCauser</li>
+            <li>CombatDetrimental</li>
+        </techHediffsDisallowTags>
+        <startingHediffs>
+            <li>
+                <def>RHF_SBDHigh</def>
+            </li>
+            <li>
+                <def>RHF_SBDAddiction</def>
+            </li>
+        </startingHediffs>
+        <biocodeWeaponChance>1</biocodeWeaponChance>
+        <disallowedTraits>
+            <li>BodyPurist</li>
+            <li>Wimp</li>
+        </disallowedTraits>
+        <initialWillRange>4~6</initialWillRange>
+        <initialResistanceRange>17~26</initialResistanceRange>
+    </PawnKindDef>
+
+    <PawnKindDef ParentName="ReptileHuntersFighterBase">
+        <defName>RHF_ReptileHuntersFighter_Melee</defName>
+        <label>Melee Hunter</label>
+        <weaponTags>
+            <li>MedievalMeleeAdvanced</li>
+            <li>UltratechMelee</li>
+        </weaponTags>
+        <apparelRequired>
+            <li>Apparel_ShieldBelt</li>
+        </apparelRequired>
+        <skills>
+            <li>
+                <skill>Melee</skill>
+                <range>14~18</range>
+            </li>
+        </skills>
+    </PawnKindDef>
+
+    <PawnKindDef ParentName="ReptileHuntersFighterBase">
+        <defName>RHF_ReptileHuntersFighter_Ranged</defName>
+        <label>Ranged Hunter</label>
+        <weaponTags>
+            <li>GunHeavy</li>
+            <li>SpacerGun</li>
+        </weaponTags>
+        <apparelRequired>
+        </apparelRequired>
+        <skills>
+            <li>
+                <skill>Shooting</skill>
+                <range>14~18</range>
+            </li>
+        </skills>
+        <disallowedTraits>
+            <li>Brawler</li>
+        </disallowedTraits>
+        <specificApparelRequirements Inherit="False">
+            <li>
+                <bodyPartGroup>UpperHead</bodyPartGroup>
+                <alternateTagChoices>
+                    <li>
+                        <tag>Gunlink</tag>
+                        <chance>0.3</chance>
+                    </li>
+                </alternateTagChoices>
+            </li>
+        </specificApparelRequirements>
+    </PawnKindDef>
+</Defs>

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReptileHunterFaction", "ReptileHunterFaction\ReptileHunterFaction.csproj", "{6920D9D3-5BB4-48FD-B0B5-1A45E93FEB5D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		1.6|Any CPU = 1.6|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6920D9D3-5BB4-48FD-B0B5-1A45E93FEB5D}.1.6|Any CPU.ActiveCfg = 1.6|Any CPU
+		{6920D9D3-5BB4-48FD-B0B5-1A45E93FEB5D}.1.6|Any CPU.Build.0 = 1.6|Any CPU
+		{6920D9D3-5BB4-48FD-B0B5-1A45E93FEB5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6920D9D3-5BB4-48FD-B0B5-1A45E93FEB5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6920D9D3-5BB4-48FD-B0B5-1A45E93FEB5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6920D9D3-5BB4-48FD-B0B5-1A45E93FEB5D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {185B3394-68FC-4BEE-86BE-DE11D2BEAA78}
+	EndGlobalSection
+EndGlobal

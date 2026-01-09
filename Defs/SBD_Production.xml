@@ -1,0 +1,114 @@
+<Defs>
+   <ResearchProjectDef>
+        <defName>RHF_ESB_Synthezising</defName>
+        <label>Super Bug Drug Synthezising</label>
+        <description>The technology needed synthezise the Super Bug Drug.</description>
+        <baseCost>5000</baseCost>
+        <researchViewX>20.00</researchViewX>
+        <researchViewY>3.60</researchViewY>
+        <prerequisites>
+            <li>AdvancedFabrication</li>
+        </prerequisites>
+        <requiredAnalyzed>
+            <li>RHF_SBD</li>
+        </requiredAnalyzed>
+        <heldByFactionCategoryTags Inherit="False" />
+        <techLevel>Ultra</techLevel>
+    </ResearchProjectDef>
+
+    <ThingDef ParentName="BuildingBase">
+        <defName>RHF_SBD_Extractor</defName>
+        <label>sbd extractor</label>
+        <description>Extract the core component of the super bug drug from humanoid insectoids</description>
+        <thingClass>ReptileHunterFaction.Building_Extractor</thingClass>
+        <containedPawnsSelectable>true</containedPawnsSelectable>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <fillPercent>0.3</fillPercent>
+        <graphicData>
+            <texPath>Buildings/SBD_Extractor</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(3,2)</drawSize>
+            <shadowData>
+                <volume>(3, 2, 1.9)</volume>
+            </shadowData>
+        </graphicData>
+        <researchPrerequisites>
+            <li>RHF_ESB_Synthezising</li>
+        </researchPrerequisites>
+        <building>
+            <ai_chillDestination>false</ai_chillDestination>
+            <buildingTags>
+                <li>Production</li>
+            </buildingTags>
+            <workTableRoomRole>Laboratory</workTableRoomRole>
+            <subcoreScannerOutputDef>RHF_ConcentratedInsectoidBlood</subcoreScannerOutputDef>
+            <subcoreScannerStartEffect>SubcoreRipscanner_Start</subcoreScannerStartEffect>
+            <subcoreScannerWorking>SubcoreRipscanner_Working</subcoreScannerWorking>
+            <subcoreScannerComplete>SubcoreRipscanner_Complete</subcoreScannerComplete>
+            <subcoreScannerTicks>60000</subcoreScannerTicks>
+        </building>
+        <designationCategory>Production</designationCategory>
+        <uiOrder>2430</uiOrder>
+        <canOverlapZones>false</canOverlapZones>
+        <size>(3,2)</size>
+        <hasInteractionCell>true</hasInteractionCell>
+        <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+        <statBases>
+            <Mass>25</Mass>
+            <Flammability>0.5</Flammability>
+        </statBases>
+        <comps>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>500</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Flickable" />
+        </comps>
+        <tickerType>Normal</tickerType>
+        <drawerType>MapMeshAndRealTime</drawerType>
+        <statBases>
+            <WorkToBuild>2000</WorkToBuild>
+            <MaxHitPoints>500</MaxHitPoints>
+        </statBases>
+        <costList>
+            <Steel>300</Steel>
+            <Plasteel>300</Plasteel>
+            <Gold>300</Gold>
+            <ComponentSpacer>5</ComponentSpacer>
+        </costList>
+        <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
+    </ThingDef>
+
+    <ThingDef ParentName="ResourceBase">
+        <defName>RHF_ConcentratedInsectoidBlood</defName>
+        <label>concentrated insectoid blood</label>
+        <description>Concentrated blood of humanoid insectoids</description>
+        <possessionCount>5</possessionCount>
+        <graphicData>
+            <texPath>Items/ConcentratedInsectoidBlood</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+            <drawSize>0.85</drawSize>
+        </graphicData>
+        <stackLimit>20</stackLimit>
+        <healthAffectsPrice>false</healthAffectsPrice>
+        <statBases>
+            <MaxHitPoints>10</MaxHitPoints>
+            <MarketValue>20</MarketValue>
+            <Mass>0.02</Mass>
+            <Flammability>0.7</Flammability>
+            <DeteriorationRate>1.0</DeteriorationRate>
+        </statBases>
+        <thingCategories>
+            <li>Manufactured</li>
+        </thingCategories>
+        <tickerType>Rare</tickerType>
+        <comps>
+            <li Class="CompProperties_Rottable">
+                <daysToRotStart>0.4</daysToRotStart>
+                <rotDestroys>true</rotDestroys>
+                <!-- <rotDamagePerDay>100</rotDamagePerDay> -->
+            </li>
+        </comps>
+    </ThingDef>
+</Defs>
