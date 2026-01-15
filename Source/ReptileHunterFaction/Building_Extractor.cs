@@ -309,23 +309,6 @@ internal class Building_Extractor : Building_Enterable, IThingHolderWithDrawnPaw
             effectStart?.Cleanup();
             effectStart = null;
         }
-        
-        //if (State == ExtractorState.Occupied)
-        //{
-        //    if (def.building.subcoreScannerStartEffect == null)
-        //        return;
-        //    if (effectStart == null)
-        //    {
-        //        effectStart = def.building.subcoreScannerStartEffect.Spawn();
-        //        effectStart.Trigger(this, new TargetInfo(InteractionCell, Map));
-        //    }
-        //    effectStart.EffectTick(this, new TargetInfo(InteractionCell, Map));
-        //}
-        //else
-        //{
-        //    effectStart?.Cleanup();
-        //    effectStart = null;
-        //}
     }
 
     public override IEnumerable<Gizmo> GetGizmos()

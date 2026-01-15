@@ -6,7 +6,7 @@
         <pawnSingular>hunter</pawnSingular>
         <pawnsPlural>hunters</pawnsPlural>
         <permanentEnemy>true</permanentEnemy>
-        <hidden>true</hidden>
+        <hidden>false</hidden>
         <canStageAttacks>true</canStageAttacks>
         <techLevel>Ultra</techLevel>
         <leaderTitle>greatest hunter</leaderTitle>
@@ -18,6 +18,7 @@
             <li>Surface</li>
             <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
         </arrivalLayerWhitelist>
+        <allowedArrivalTemperatureRange>-80~45</allowedArrivalTemperatureRange>
         <requiredMemes>
             <li MayRequire="sarg.alphamemes">AM_Sadist</li>
             <li>Cannibal</li>
@@ -51,7 +52,7 @@
         </raidLootValueFromPointsCurve>
         <xenotypeSet Inherit="False">
             <xenotypeChances>
-                <LoS_Lamia>1</LoS_Lamia>
+                <!-- <LoS_Lamia>1</LoS_Lamia>
                 <LoS_Siren>1</LoS_Siren>
                 <LoS_Gorgon>0.3</LoS_Gorgon>
                 <Naga>1</Naga>
@@ -59,10 +60,26 @@
                 <LoS_Adderman>1</LoS_Adderman>
                 <LoS_Anacondaman>1</LoS_Anacondaman>
                 <LoS_Snakeman>1</LoS_Snakeman>
-                <LoS_Silver>0.7</LoS_Silver>
+                <LoS_Silver>0.7</LoS_Silver> -->                
+                <LoS_Lamia>0.125</LoS_Lamia>
+                <LoS_Siren>0.125</LoS_Siren>
+                <LoS_Gorgon>0.0375</LoS_Gorgon>
+                <Naga>0.125</Naga>
+                <Nagaraj>0.125</Nagaraj>
+                <LoS_Adderman>0.125</LoS_Adderman>
+                <LoS_Anacondaman>0.125</LoS_Anacondaman>
+                <LoS_Snakeman>0.125</LoS_Snakeman>
+                <LoS_Silver>0.0875</LoS_Silver>
             </xenotypeChances>
         </xenotypeSet>
         <pawnGroupMakers Inherit="False">
+            <li>
+                <kindDef>Combat</kindDef>
+                <commonality>0</commonality>
+                <options>
+                    <RHF_ReptileHuntersFighter_Boss>1</RHF_ReptileHuntersFighter_Boss>
+                </options>
+            </li>
             <li>
                 <kindDef>Combat</kindDef>
                 <commonality>1</commonality>
@@ -71,11 +88,23 @@
                     <RHF_ReptileHuntersFighter_Ranged>1</RHF_ReptileHuntersFighter_Ranged>
                 </options>
             </li>
+            <li>
+                <kindDef>Settlement</kindDef>
+                <commonality>1</commonality>
+                <options>
+                    <RHF_ReptileHuntersFighter_Melee>1</RHF_ReptileHuntersFighter_Melee>
+                    <RHF_ReptileHuntersFighter_Ranged>1</RHF_ReptileHuntersFighter_Ranged>
+                </options>
+            </li>
         </pawnGroupMakers>
+         <fixedLeaderKinds>
+            <li>RHF_ReptileHuntersFighter_Boss</li>
+        </fixedLeaderKinds>
         <apparelStuffFilter>
             <thingDefs>
                 <li>Hyperweave</li>
                 <li>Plasteel</li>
+                <li>DevilstrandCloth</li>
             </thingDefs>
         </apparelStuffFilter>
         <disallowedRaidAgeRestrictions>
@@ -84,7 +113,7 @@
         <modExtensions>
             <li Class="ReptileHunterFaction.SpawnGenesExtension">
                 <randomOrder>false</randomOrder>
-                <respectMetabolicEfficiency>false</respectMetabolicEfficiency>
+                <respectMetabolicEfficiency>true</respectMetabolicEfficiency>
                 <maxNumberOfGenesAdded>5</maxNumberOfGenesAdded>
                 <genes>
                     <li>

@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <ThingDef ParentName="DrugPillBase">
+        <defName>RHF_DrugMedicine</defName>
+        <label>drug medicine</label>
+        <description>A pack of herbal concoctions extracted from the drug plant. Boosts the pawn healing capabilities but causes pain, vomitting, makes sleepy and mentally unstable. /n/nThis no effect on Pawns who are already addichted to the super bud drug.</description>
+        <descriptionHyperlinks>
+            <HediffDef>RHF_DrugMedicineHediff</HediffDef>
+        </descriptionHyperlinks>
+        <graphicData>
+            <texPath>Drugs/RHF_DrugMedicine</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <rotatable>false</rotatable>
+        <statBases>
+            <MarketValue>30</MarketValue>
+            <Mass>0.35</Mass>
+            <Flammability>1.3</Flammability>
+        </statBases>
+        <techLevel>Neolithic</techLevel>
+        <tickerType>Rare</tickerType>
+        <ingestible>
+            <drugCategory>Medical</drugCategory>
+            <outcomeDoers>
+                <li Class="IngestionOutcomeDoer_GiveHediff">
+                    <hediffDef>RHF_DrugMedicineHediff</hediffDef>
+                    <severity>0.33</severity>
+                    <doToGeneratedPawnIfAddicted>false</doToGeneratedPawnIfAddicted>
+                </li>
+                <li Class="IngestionOutcomeDoer_OffsetNeed">
+                    <need>Rest</need>
+                    <offset>-0.2</offset>
+                    <toleranceChemical>RHF_DrugMedicine</toleranceChemical>
+                </li>
+                <li Class="IngestionOutcomeDoer_GiveHediff">
+                    <hediffDef>RHF_DrugMedicineTolerance</hediffDef>
+                    <toleranceChemical>RHF_DrugMedicine</toleranceChemical>
+                    <severity>0.1</severity>
+                    <divideByBodySize>true</divideByBodySize>
+                    <multiplyByGeneToleranceFactors>true</multiplyByGeneToleranceFactors>
+                </li>
+            </outcomeDoers>
+        </ingestible>
+        <comps>
+            <li Class="CompProperties_Drug">
+                <chemical>RHF_DrugMedicine</chemical>
+                <addictiveness>0.2</addictiveness>
+                <existingAddictionSeverityOffset>0.30</existingAddictionSeverityOffset>
+                <needLevelOffset>0.9</needLevelOffset>
+                <listOrder>1030</listOrder>
+            </li>
+            <li Class="CompProperties_Rottable">
+                <daysToRotStart>10</daysToRotStart>
+                <rotDestroys>true</rotDestroys>
+            </li>
+            <li Class="CompProperties_CompAnalyzableUnlockResearch">
+                <analysisID>49541972 </analysisID>
+
+                <analysisDurationHours>1</analysisDurationHours>
+                <destroyedOnAnalyzed>true</destroyedOnAnalyzed>
+                <completedLetterLabel>Drug medicine studied: {RESEARCH} unlocked</completedLetterLabel>
+                <completedLetter>By studying the Drug medicine, {PAWN_labelShort} has acquired the insight needed for the research project(s) {RESEARCH}.\n\nYour researchers can now use research benches to begin researching how to actually cultivate this plant.</completedLetter>
+                <completedLetterDef>PositiveEvent</completedLetterDef>
+
+                <activateTexPath>UI/Icons/Study</activateTexPath>
+                <activateLabelString>Analyze...</activateLabelString>
+                <activateDescString>Analyze the drug medicine.</activateDescString>
+                <jobString>Analyze drug medicine</jobString>
+                <guiLabelString>Choose who should analyze this</guiLabelString>
+                <inspectString>Can be analyzed by a colonist.</inspectString>
+
+                <targetingParameters>
+                    <canTargetBuildings>false</canTargetBuildings>
+                    <canTargetAnimals>false</canTargetAnimals>
+                    <canTargetMechs>false</canTargetMechs>
+                    <onlyTargetControlledPawns>true</onlyTargetControlledPawns>
+                </targetingParameters>
+            </li>
+        </comps>
+        <allowedArchonexusCount>20</allowedArchonexusCount>
+    </ThingDef>
+
+    <ThingDef ParentName="PlantBase">
+        <defName>RHF_Plant_DrugMedicine</defName>
+        <label>drug plant</label>
+        <description>Produces a very strong healing herb. Also addictive. Hard to grow</description>
+        <statBases>
+            <MaxHitPoints>85</MaxHitPoints>
+            <Nutrition>0.2</Nutrition>
+        </statBases>
+        <graphicData>
+            <texPath>Plants/RHF_DrugMedicinePlant</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <selectable>true</selectable>
+        <pathCost>14</pathCost>
+        <ingestible />
+        <plant>
+            <immatureGraphicPath>Plants/RHF_DrugMedicinePlant_Immature</immatureGraphicPath>
+            <growDays>13</growDays>
+            <sowWork>600</sowWork>
+            <dieIfLeafless>false</dieIfLeafless>
+            <harvestTag>Standard</harvestTag>
+            <harvestedThingDef>DevilstrandCloth</harvestedThingDef>
+            <harvestYield>2</harvestYield>
+            <neverBlightable>false</neverBlightable>
+            <sowTags>
+                <li>Ground</li>
+                <li>Hydroponic</li>
+            </sowTags>
+            <sowMinSkill>12</sowMinSkill>
+            <sowResearchPrerequisites>
+                <li>RHF_DrugMedicinePlantSowing</li>
+            </sowResearchPrerequisites>
+            <topWindExposure>0.1</topWindExposure>
+            <visualSizeRange>0.5~1.0</visualSizeRange>
+            <wildOrder>2</wildOrder>
+            <wildClusterRadius>5</wildClusterRadius>
+            <wildClusterWeight>250</wildClusterWeight>
+            <pollution>Any</pollution>
+            <fertilityMin>0.70</fertilityMin>
+            <purpose>Health</purpose>
+        </plant>
+    </ThingDef>
+
+    <ResearchProjectDef>
+        <defName>RHF_DrugMedicinePlantSowing</defName>
+        <label>Drug medicine</label>
+        <description>The knowledge how to cultivate the drug medicine plant.</description>
+        <baseCost>1000</baseCost>
+        <researchViewX>1.00</researchViewX>
+        <researchViewY>5.60</researchViewY>
+        <prerequisites>
+        </prerequisites>
+        <requiredAnalyzed>
+            <li>RHF_DrugMedicine</li>
+        </requiredAnalyzed>
+        <heldByFactionCategoryTags Inherit="False" />
+        <techLevel>Neolithic</techLevel>
+    </ResearchProjectDef>
+
+    <HediffDef>
+        <defName>RHF_DrugMedicineHediff</defName>
+        <hediffClass>Hediff_High</hediffClass>
+        <label>drug medicine</label>
+        <description>Drug medicine. Strong regenerative properties but makes the pawn mentally unstable.</description>
+        <defaultLabelColor>(0.5,1,0.5)</defaultLabelColor>
+        <scenarioCanAdd>true</scenarioCanAdd>
+        <maxSeverity>1.0</maxSeverity>
+        <isBad>false</isBad>
+        <tendable>false</tendable>
+        <allowMothballIfLowPriorityWorldPawn>true</allowMothballIfLowPriorityWorldPawn>
+        <comps>
+            <li Class="HediffCompProperties_SeverityPerDay">
+                <severityPerDay>-33.0</severityPerDay>
+                <showHoursToRecover>true</showHoursToRecover>
+            </li>
+        </comps>
+        <stages>
+            <li>
+                <minSeverity>0</minSeverity>
+                <painFactor>1.20</painFactor>
+                <hungerRateFactor>1.1</hungerRateFactor>
+                <statFactors>
+                    <InjuryHealingFactor>2</InjuryHealingFactor>
+                    <ImmunityGainSpeed>1.1</ImmunityGainSpeed>
+                    <RestFallRateFactor>1.1</RestFallRateFactor>
+                </statFactors>
+                <vomitMtbDays>0.6</vomitMtbDays>
+                <mentalStateGivers>
+                    <li>
+                        <mentalState>Wander_Psychotic</mentalState>
+                        <mtbDays>1</mtbDays>
+                    </li>
+                </mentalStateGivers>
+                <vomitMtbDays>0.8</vomitMtbDays>
+            </li>
+            <li>
+                <minSeverity>0.34</minSeverity>
+                <painFactor>1.4</painFactor>
+                <hungerRateFactor>1.2</hungerRateFactor>
+                <statFactors>
+                    <InjuryHealingFactor>4</InjuryHealingFactor>
+                    <ImmunityGainSpeed>1.2</ImmunityGainSpeed>
+                    <RestFallRateFactor>1.2</RestFallRateFactor>
+                    <MentalBreakThreshold>0.9</MentalBreakThreshold>
+                </statFactors>
+                <vomitMtbDays>0.5</vomitMtbDays>
+                <mentalStateGivers>
+                    <li>
+                        <mentalState>Wander_Psychotic</mentalState>
+                        <mtbDays>0.8</mtbDays>
+                    </li>
+                </mentalStateGivers>
+                <vomitMtbDays>0.6</vomitMtbDays>
+            </li>
+            <li>
+                <minSeverity>0.67</minSeverity>
+                <painFactor>1.6</painFactor>
+                <hungerRateFactor>1.3</hungerRateFactor>
+                <statFactors>
+                    <InjuryHealingFactor>6</InjuryHealingFactor>
+                    <ImmunityGainSpeed>1.3</ImmunityGainSpeed>
+                    <RestFallRateFactor>1.3</RestFallRateFactor>
+                    <MentalBreakThreshold>0.8</MentalBreakThreshold>
+                </statFactors>
+                <mentalStateGivers>
+                    <li>
+                        <mentalState>Berserk</mentalState>
+                        <mtbDays>1</mtbDays>
+                    </li>
+                    <li>
+                        <mentalState>Wander_Psychotic</mentalState>
+                        <mtbDays>0.5</mtbDays>
+                    </li>
+                </mentalStateGivers>
+                <vomitMtbDays>0.3</vomitMtbDays>
+            </li>
+        </stages>
+    </HediffDef>
+
+    <ChemicalDef>
+        <defName>RHF_DrugMedicine</defName>
+        <label>drug medicine</label>
+        <addictionHediff>RHF_DrugMedicineAddiction</addictionHediff>
+        <toleranceHediff>RHF_DrugMedicineTolerance</toleranceHediff>
+        <canBinge>true</canBinge>
+        <generateAddictionGenes>false</generateAddictionGenes>
+    </ChemicalDef>
+
+    <NeedDef ParentName="DrugAddictionNeedBase">
+        <defName>RHF_Chemical_DrugMedicine</defName>
+        <needClass>Need_Chemical</needClass>
+        <label>drug medicine</label>
+        <description>This person is addited to the drug medicine. The addiction is painfull but not deadly.</description>
+        <listPriority>45</listPriority>
+        <fallPerDay>0.05</fallPerDay>
+        <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    </NeedDef>
+
+    <HediffDef ParentName="AddictionBase">
+        <defName>RHF_DrugMedicineAddiction</defName>
+        <label>drug medicine need</label>
+        <description>Healing but painfull addiction.</description>
+        <hediffClass>Hediff_Addiction</hediffClass>
+        <chemicalNeed>RHF_Chemical_DrugMedicine</chemicalNeed>
+        <everCurableByItem>true</everCurableByItem>
+        <stages>
+            <li>
+            </li>
+            <li>
+                <label>unmet</label>
+                <painOffset>0.2</painOffset>
+                <lifeThreatening>false</lifeThreatening>
+                <mentalStateGivers>
+                    <li>
+                        <mentalState>Wander_Psychotic</mentalState>
+                        <mtbDays>1.0</mtbDays>
+                    </li>
+                </mentalStateGivers>
+                <statFactors>
+                    <InjuryHealingFactor>0.9</InjuryHealingFactor>
+                    <ImmunityGainSpeed>0.9</ImmunityGainSpeed>
+                </statFactors>
+            </li>
+            <li>
+                <label>unmet</label>
+                <painOffset>0.4</painOffset>
+                <lifeThreatening>false</lifeThreatening>
+                <mentalStateGivers>
+                    <li>
+                        <mentalState>Berserk</mentalState>
+                        <mtbDays>1.0</mtbDays>
+                    </li>
+                </mentalStateGivers>
+                <statFactors>
+                    <InjuryHealingFactor>0.8</InjuryHealingFactor>
+                    <ImmunityGainSpeed>0.8</ImmunityGainSpeed>
+                </statFactors>
+            </li>
+        </stages>
+    </HediffDef>
+
+    <HediffDef ParentName="DrugToleranceBase">
+        <defName>RHF_DrugMedicineTolerance</defName>
+        <label>drug medicine tolerance</label>
+        <description>A built-up tolerance to the drug medicine. The more severe this tolerance is, the more drug medicine it takes to get the same effect.</description>
+        <comps>
+            <li Class="HediffCompProperties_SeverityPerDay">
+                <severityPerDay>-0.01</severityPerDay>
+            </li>
+            <li Class="HediffCompProperties_DrugEffectFactor">
+                <chemical>RHF_DrugMedicine</chemical>
+            </li>
+        </comps>
+        <!-- <hediffGivers>
+        </hediffGivers> -->
+    </HediffDef>
+</Defs>

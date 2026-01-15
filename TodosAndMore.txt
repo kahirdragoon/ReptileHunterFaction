@@ -2,7 +2,7 @@
 - create bases in space if odyssey
 - get sample from bases
 - add genes with insect flesh, blood to bases showing they turn people into insects to turn them into the drug
-- change extraction to damage pawn body parts and create blood loss over time
+- add prisoner, dead bodies and pawn sitting in extractors
 - create raid ai or event where they attack via edge/drop pod/shuttle
     - have raiders retreat when safe and high value item or capturable prisoner in reach
     - have raiders sometimes eat corpses or remove heads as trophies
@@ -11,3 +11,12 @@
 - end game like event to capture activate an anti air defense grid to protect against the raids (ends events)
 - compat with HarbingerKin Mod for Flesheater gene
 - turn the gene adding into its own mod
+- make the genes necessary for creating the drug 
+- turn it into a general hunter mod
+- trade prisoners with them to gain the drug
+    - or reduce raid size?
+- create stronger pawnkind leader
+- building for scanning for luciferium?
+    - can be found at settlements or prison outpost
+    - will break down over time
+- add gene support for big gen mods

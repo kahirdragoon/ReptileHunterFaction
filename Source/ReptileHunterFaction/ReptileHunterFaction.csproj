@@ -28,7 +28,7 @@
 	<ItemGroup>
 		<PackageReference Include="Lib.Harmony" Version="2.4.2">
 			<PrivateAssets>all</PrivateAssets>
-			<Private>false</Private>
+			<ExcludeAssets>runtime</ExcludeAssets>
 		</PackageReference>
 	</ItemGroup>
 </Project>

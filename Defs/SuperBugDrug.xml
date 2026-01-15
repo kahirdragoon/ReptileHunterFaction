@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <Defs>
     <ThingDef ParentName="DrugPillBase">
         <!-- Name pending -->
@@ -70,8 +71,9 @@
         <allowedArchonexusCount>20</allowedArchonexusCount>
         <costList>
             <Luciferium>1</Luciferium>
-            <Neutroamine>5</Neutroamine>
+            <Neutroamine>10</Neutroamine>
             <RHF_ConcentratedInsectoidBlood>1</RHF_ConcentratedInsectoidBlood>
+            <RHF_DrugMedicine>10</RHF_DrugMedicine>
         </costList>
         <recipeMaker>
             <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
@@ -158,6 +160,10 @@
                     <ComfyTemperatureMin>-30</ComfyTemperatureMin>
                     <ComfyTemperatureMax>30</ComfyTemperatureMax>
                 </statOffsets>
+                <makeImmuneTo>
+                    <li>RHF_DrugMedicineHediff</li>
+                    <li>RHF_DrugMedicineTolerance</li>
+                </makeImmuneTo>
             </li>
         </stages>
     </HediffDef>

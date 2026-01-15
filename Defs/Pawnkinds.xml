@@ -21,13 +21,6 @@
             <li>BeltDefensePop</li>
             <li>SpacerOrUltraTechApparelOrArmor</li>
         </apparelTags>
-        <!-- <apparelDisallowTags>
-            <li>Western</li>
-            <li>Tribal</li>
-            <li>Medieval</li>
-            <li>Slave</li>
-            <li>Worker</li>
-        </apparelDisallowTags> -->
         <techHediffsChance>0.8</techHediffsChance>
         <techHediffsMoney>200000~350000</techHediffsMoney>
         <techHediffsMaxAmount>99</techHediffsMaxAmount>
@@ -109,5 +102,33 @@
                 </alternateTagChoices>
             </li>
         </specificApparelRequirements>
+    </PawnKindDef>
+
+    <PawnKindDef ParentName="ReptileHuntersFighterBase">
+        <defName>RHF_ReptileHuntersFighter_Boss</defName>
+        <label>greatest hunter</label>
+        <factionLeader>true</factionLeader>
+        <weaponTags>
+            <li>GunHeavy</li>
+            <li>SpacerGun</li>
+            <li>UltratechMelee</li>
+        </weaponTags>
+        <apparelRequired>
+        </apparelRequired>
+        <skills>
+            <li>
+                <skill>Shooting</skill>
+                <range>20~20</range>
+            </li>
+            <li>
+                <skill>Melee</skill>
+                <range>20~20</range>
+            </li>
+        </skills>
+        <disallowedTraits>
+            <li>Brawler</li>
+        </disallowedTraits>
+        <canBeSapper>true</canBeSapper>
+        <initialResistanceRange>17~27</initialResistanceRange>
     </PawnKindDef>
 </Defs>

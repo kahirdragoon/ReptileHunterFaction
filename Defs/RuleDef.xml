@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <RuleDef>
+        <defName>RHF_AutocannonDefense</defName>
+        <symbol>rhf_autocannonDefense</symbol>
+        <resolvers>
+            <li Class="ReptileHunterFaction.SymbolResolver_AutocannonDefense"/>
+        </resolvers>
+    </RuleDef>
+
+    <RuleDef>
+        <defName>RHF_MineDefense</defName>
+        <symbol>rhf_mineDefense</symbol>
+        <resolvers>
+            <li Class="ReptileHunterFaction.SymbolResolver_MineDefense"/>
+        </resolvers>
+    </RuleDef>
+
+    <RuleDef>
+        <defName>RHF_Prison</defName>
+        <symbol>rhf_prison</symbol>
+        <resolvers>
+            <li Class="ReptileHunterFaction.SymbolResolver_Prison"/>
+        </resolvers>
+    </RuleDef>
+
+    <RuleDef>
+        <defName>RHF_ExtractionRoom</defName>
+        <symbol>rhf_extrationroom</symbol>
+        <resolvers>
+            <li Class="ReptileHunterFaction.SymbolResolver_ExtractionRoom"/>
+        </resolvers>
+    </RuleDef>
+
+    <RuleDef>
+        <defName>RHF_Mortage</defName>
+        <symbol>rhf_mortage</symbol>
+        <resolvers>
+            <li Class="ReptileHunterFaction.SymbolResolver_Mortage"/>
+        </resolvers>
+    </RuleDef>
+</Defs>
