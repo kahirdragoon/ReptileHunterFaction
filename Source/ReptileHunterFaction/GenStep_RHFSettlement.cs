@@ -10,7 +10,7 @@ using Verse;
 namespace ReptileHunterFaction;
 internal class GenStep_RHFSettlement : GenStep_Settlement
 {
-    private static readonly IntRange SettlementSizeRange = new IntRange(50, 50);
+    private static readonly IntRange SettlementSizeRange = new IntRange(40, 50);
     private bool WillPostProcess => this.postProcessSettlementParams != null;
 
     public override int SeedPart => 0904742260;
@@ -34,30 +34,30 @@ internal class GenStep_RHFSettlement : GenStep_Settlement
             cultivatedPlantDef = ReptileHunterFactionDefOf.RHF_Plant_DrugMedicine,
             edgeDefenseWidth = 4,
             settlementPawnGroupPoints = 7000,
-            wallStuff = ThingDefOf.Plasteel,
         };
         if (this.postProcessSettlementParams != null)
             this.postProcessSettlementParams.faction = faction;
-        MapGenerator.SetVar<CellRect>("SettlementRect", var);
+        MapGenerator.SetVar("SettlementRect", var);
         BaseGen.globalSettings.map = map;
         BaseGen.globalSettings.minBuildings = 1;
         BaseGen.globalSettings.minBarracks = 1;
+        BaseGen_RHFGlobalSettings.maxPrisons = Rand.Range(1, 3);
         BaseGen.symbolStack.Push("settlement", resolveParams);
         resolveParams.SetCustom(SymbolResolver_MineDefense.MineLayerOffset, 5);
-        BaseGen.symbolStack.Push("mineDefense", resolveParams);
-        resolveParams.SetCustom(SymbolResolver_MineDefense.MineLayerOffset, 9);
-        BaseGen.symbolStack.Push("mineDefense", resolveParams);
+        BaseGen.symbolStack.Push("rhf_mineDefense", resolveParams);
+        resolveParams.SetCustom(SymbolResolver_MineDefense.MineLayerOffset, 10);
+        BaseGen.symbolStack.Push("rhf_mineDefense", resolveParams);
         resolveParams.RemoveCustom(SymbolResolver_MineDefense.MineLayerOffset);
-        BaseGen.symbolStack.Push("autocannonDefense", resolveParams);
+        BaseGen.symbolStack.Push("rhf_autocannonDefense", resolveParams);
         List<Building> previous = null;
         if (this.WillPostProcess)
-            previous = new List<Building>(map.listerThings.GetThingsOfType<Building>());
+            previous = [.. map.listerThings.GetThingsOfType<Building>()];
         BaseGen.Generate();
         if (BaseGen.globalSettings.landingPadsGenerated == 0)
-            GenStep_Settlement.GenerateLandingPadNearby(resolveParams.rect, map, faction, out CellRect _);
+            GenerateLandingPadNearby(resolveParams.rect, map, faction, out CellRect _);
         if (!this.WillPostProcess)
             return;
-        var list = map.listerThings.GetThingsOfType<Building>().Where<Building>(b => !previous.Contains(b)).ToList<Building>();
+        var list = map.listerThings.GetThingsOfType<Building>().Where(b => !previous.Contains(b)).ToList();
         previous.Clear();
         MapGenUtility.PostProcessSettlement(map, list, this.postProcessSettlementParams);
     }

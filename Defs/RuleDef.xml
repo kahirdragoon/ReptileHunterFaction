@@ -4,7 +4,7 @@
         <defName>RHF_AutocannonDefense</defName>
         <symbol>rhf_autocannonDefense</symbol>
         <resolvers>
-            <li Class="ReptileHunterFaction.SymbolResolver_AutocannonDefense"/>
+            <li Class="ReptileHunterFaction.SymbolResolver_AutocannonDefense" />
         </resolvers>
     </RuleDef>
 
@@ -12,7 +12,7 @@
         <defName>RHF_MineDefense</defName>
         <symbol>rhf_mineDefense</symbol>
         <resolvers>
-            <li Class="ReptileHunterFaction.SymbolResolver_MineDefense"/>
+            <li Class="ReptileHunterFaction.SymbolResolver_MineDefense" />
         </resolvers>
     </RuleDef>
 
@@ -20,15 +20,26 @@
         <defName>RHF_Prison</defName>
         <symbol>rhf_prison</symbol>
         <resolvers>
-            <li Class="ReptileHunterFaction.SymbolResolver_Prison"/>
+            <li Class="SymbolResolver_GenericRoom">
+                <minRectSize>(4, 4)</minRectSize>
+                <interior>rhf_interior_prison</interior>
+            </li>
+        </resolvers>
+    </RuleDef>
+
+    <RuleDef>
+        <defName>RHF_Interior_Prison</defName>
+        <symbol>rhf_interior_prison</symbol>
+        <resolvers>
+            <li Class="ReptileHunterFaction.SymbolResolver_Interior_Prison" />
         </resolvers>
     </RuleDef>
 
     <RuleDef>
         <defName>RHF_ExtractionRoom</defName>
-        <symbol>rhf_extrationroom</symbol>
+        <symbol>rhf_extractionroom</symbol>
         <resolvers>
-            <li Class="ReptileHunterFaction.SymbolResolver_ExtractionRoom"/>
+            <li Class="ReptileHunterFaction.SymbolResolver_ExtractionRoom" />
         </resolvers>
     </RuleDef>
 
@@ -36,7 +47,7 @@
         <defName>RHF_Mortage</defName>
         <symbol>rhf_mortage</symbol>
         <resolvers>
-            <li Class="ReptileHunterFaction.SymbolResolver_Mortage"/>
+            <li Class="ReptileHunterFaction.SymbolResolver_Mortage" />
         </resolvers>
     </RuleDef>
 </Defs>

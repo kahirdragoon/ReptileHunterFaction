@@ -20,3 +20,5 @@
     - can be found at settlements or prison outpost
     - will break down over time
 - add gene support for big gen mods
+- use cannibal style if available
+- check compatibility with large faction bases and vanilla expanded settlement mod (forgot the name)

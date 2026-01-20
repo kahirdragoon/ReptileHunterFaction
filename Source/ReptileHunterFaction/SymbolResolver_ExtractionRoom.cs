@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Verse;
 
 namespace ReptileHunterFaction;
-public class SymbolResolver_ExtractorRoom : SymbolResolver
+public class SymbolResolver_ExtractionRoom : SymbolResolver
 {
     public override bool CanResolve(ResolveParams rp)
     {

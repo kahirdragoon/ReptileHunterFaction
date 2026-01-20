@@ -14,7 +14,6 @@ namespace ReptileHunterFaction;
 [HarmonyPatch(typeof(Settlement), "get_MapGeneratorDef")]
 public static class Patch_Settlement_MapGeneratorDef
 {
-    [HarmonyPrefix]
     public static bool Prefix(Settlement __instance, ref MapGeneratorDef __result)
     {
         __result = ReptileHunterFactionDefOf.RHF_Faction;

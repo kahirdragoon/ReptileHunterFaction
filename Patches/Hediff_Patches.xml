@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <Patch>
     <Operation Class="PatchOperationAdd">
         <xpath>Defs/ThingDef[not(techHediffsTags) and (defName="Joywire" or defName="DrillArm" or defName="CircadianHalfCycler" or defName="FieldHand")]</xpath>

@@ -16,6 +16,7 @@ namespace ReptileHunterFaction
         // vanilla defs
         public static ThingDef Turret_Autocannon;
         public static ThingDef TrapIED_HighExplosive;
+        public static ThingDef Meat_Megaspider;
 
         static ReptileHunterFactionDefOf() => DefOfHelper.EnsureInitializedInCtor(typeof(ReptileHunterFactionDefOf));
     }
