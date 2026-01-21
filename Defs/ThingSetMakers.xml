@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+  <ThingSetMakerDef>
+    <defName>RHF_MapGen_FactionSettlement</defName>
+    <debugParams>
+      <countRange>8~8</countRange>
+      <totalMarketValueRange>6000~6000</totalMarketValueRange>
+    </debugParams>
+    <root Class="ThingSetMaker_Sum">
+      <options>
+        <li>
+          <thingSetMaker Class="ThingSetMaker_RandomOption">
+            <options>
+              <li>
+                <weight>1</weight>
+                <thingSetMaker Class="ThingSetMaker_MarketValue">
+                  <fixedParams>
+                    <maxThingMarketValue>2000</maxThingMarketValue>
+                    <filter>
+                      <categories>
+                        <li>Weapons</li>
+                      </categories>
+                      <tradeTagsToAllow>
+                        <li>UltratechMelee</li>
+                        <li>GunHeavy</li>
+                        <li>SpacerGun</li>
+                      </tradeTagsToAllow>
+                    </filter>
+                  </fixedParams>
+                </thingSetMaker>
+              </li>
+              <li>
+                <weight>1</weight>
+                <thingSetMaker Class="ThingSetMaker_MarketValue">
+                  <fixedParams>
+                    <maxThingMarketValue>2000</maxThingMarketValue>
+                    <filter>
+                      <tradeTagsToAllow>
+                        <li>SpacerOrUltraTechApparelOrArmor</li>
+                      </tradeTagsToAllow>
+                    </filter>
+                  </fixedParams>
+                </thingSetMaker>
+              </li>
+              <li>
+                <weight>1</weight>
+                <thingSetMaker Class="ThingSetMaker_MarketValue">
+                  <fixedParams>
+                    <maxThingMarketValue>1000</maxThingMarketValue>
+                    <filter>
+                      <categories>
+                        <li>ResourcesRaw</li>
+                      </categories>
+                      <thingSetMakerTagsToDisallow>
+                        <li>RewardStandardHighFreq</li>
+                        <li>RewardStandardCore</li>
+                      </thingSetMakerTagsToDisallow>
+                      <disallowedThingDefs>
+                        <li MayRequire="Ludeon.RimWorld.Odyssey">GravlitePanel</li>
+                        <li MayRequire="Ludeon.RimWorld.Odyssey">BlocksVacstone</li>
+                      </disallowedThingDefs>
+                    </filter>
+                  </fixedParams>
+                </thingSetMaker>
+              </li>
+              <li>
+                <weight>1</weight>
+                <thingSetMaker Class="ThingSetMaker_RandomGeneralGoods" />
+              </li>
+            </options>
+          </thingSetMaker>
+        </li>
+        <li>
+          <chance>0.5</chance>
+          <thingSetMaker Class="ThingSetMaker_StackCount">
+            <fixedParams>
+              <filter>
+                <thingDefs>
+                  <li>Luciferium</li>
+                </thingDefs>
+              </filter>
+              <countRange>5~20</countRange>
+            </fixedParams>
+          </thingSetMaker>
+        </li>
+        <li>
+          <thingSetMaker Class="ThingSetMaker_StackCount">
+            <fixedParams>
+              <filter>
+                <thingDefs>
+                  <li>RHF_SBD</li>
+                </thingDefs>
+              </filter>
+              <countRange>2~5</countRange>
+            </fixedParams>
+          </thingSetMaker>
+        </li>
+      </options>
+    </root>
+  </ThingSetMakerDef>
+</Defs>

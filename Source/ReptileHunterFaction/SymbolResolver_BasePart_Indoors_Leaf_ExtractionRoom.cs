@@ -9,19 +9,18 @@ using Verse;
 
 namespace ReptileHunterFaction;
 
-public class SymbolResolver_BasePart_Indoors_Leaf_Prison : SymbolResolver
+public class SymbolResolver_BasePart_Indoors_Leaf_ExtractionRoom : SymbolResolver
 {
     public override bool CanResolve(ResolveParams rp)
     {
         return rp.faction.def == ReptileHunterFactionDefOf.RHF_ReptileHunters
-            && BaseGen_RHFGlobalSettings.prisonsResolved < BaseGen_RHFGlobalSettings.maxPrisons
+            && BaseGen_RHFGlobalSettings.extractionRoomResolved < BaseGen_RHFGlobalSettings.maxExtractionRooms
             && base.CanResolve(rp);
     }
 
     public override void Resolve(ResolveParams rp)
     {
-        rp.floorDef = TerrainDefOf.Concrete;
-        BaseGen.symbolStack.Push("rhf_prison", rp);
-        ++BaseGen_RHFGlobalSettings.prisonsResolved;
+        BaseGen.symbolStack.Push("rhf_extractionroom", rp);
+        ++BaseGen_RHFGlobalSettings.extractionRoomResolved;
     }
 }

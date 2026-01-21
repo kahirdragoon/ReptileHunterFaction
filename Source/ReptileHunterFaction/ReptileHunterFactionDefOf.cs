@@ -12,11 +12,7 @@ namespace ReptileHunterFaction
         public static ThingDef RHF_SBD_Extractor;
         public static ThingDef RHF_DrugMedicine;
         public static ThingDef RHF_Plant_DrugMedicine;
-
-        // vanilla defs
-        public static ThingDef Turret_Autocannon;
-        public static ThingDef TrapIED_HighExplosive;
-        public static ThingDef Meat_Megaspider;
+        public static ThingDef RHF_ConcentratedInsectoidBlood;
 
         static ReptileHunterFactionDefOf() => DefOfHelper.EnsureInitializedInCtor(typeof(ReptileHunterFactionDefOf));
     }

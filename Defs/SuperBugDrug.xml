@@ -65,9 +65,6 @@
         </comps>
         <tradeTags>
         </tradeTags>
-        <!-- <thingSetMakerTags>
-            <li>RewardStandardCore</li>
-        </thingSetMakerTags> -->
         <allowedArchonexusCount>20</allowedArchonexusCount>
         <costList>
             <Luciferium>1</Luciferium>
@@ -81,7 +78,6 @@
             <recipeUsers>
                 <li>DrugLab</li>
             </recipeUsers>
-            <!-- <researchPrerequisite>MedicineProduction</researchPrerequisite> -->
             <skillRequirements>
                 <Crafting>15</Crafting>
                 <Intellectual>15</Intellectual>

@@ -8,4 +8,22 @@
             </li>
         </value>
     </Operation>
+    
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/RuleDef[defName="BasePart_Indoors_Leaf"]/resolvers</xpath>
+        <value>
+            <li Class="ReptileHunterFaction.SymbolResolver_BasePart_Indoors_Leaf_ExtractionRoom">
+                <selectionWeight>99999</selectionWeight>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/RuleDef[defName="BasePart_Indoors_Leaf"]/resolvers</xpath>
+        <value>
+            <li Class="ReptileHunterFaction.SymbolResolver_BasePart_Indoors_Leaf_Druglab">
+                <selectionWeight>99999</selectionWeight>
+            </li>
+        </value>
+    </Operation>
 </Patch>

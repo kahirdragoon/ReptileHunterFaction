@@ -20,7 +20,7 @@ public class SymbolResolver_Interior_Prison : SymbolResolver
             var rpFood = rp with
             {
                 rect = CellRect.SingleCell(cell),
-                singleThingDef = Rand.Chance(0.5f) ? ThingDefOf.Meat_Human : ReptileHunterFactionDefOf.Meat_Megaspider,
+                singleThingDef = Rand.Chance(0.5f) ? ThingDefOf.Meat_Human : VanillaThingDefOf.Meat_Megaspider,
                 singleThingStackCount = Rand.Range(3, 10)
             };
             Log.Message("Category of thing: " + rpFood.singleThingDef.category);

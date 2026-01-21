@@ -25,7 +25,7 @@ public class SymbolResolver_MineDefense : SymbolResolver
         };
 
         // List to hold positions
-        List<IntVec3> positions = new List<IntVec3>();
+        List<IntVec3> positions = [];
 
         // Step size for spacing
         int step = 2;
@@ -60,7 +60,7 @@ public class SymbolResolver_MineDefense : SymbolResolver
             IntVec3 pos = positions[i];
             if (pos.InBounds(map) && pos.Standable(map))
             {
-                Thing autocannon = ThingMaker.MakeThing(ReptileHunterFactionDefOf.TrapIED_HighExplosive);
+                Thing autocannon = ThingMaker.MakeThing(VanillaThingDefOf.TrapIED_HighExplosive);
                 autocannon.SetFaction(rp.faction);
                 GenSpawn.Spawn(autocannon, pos, map);
             }

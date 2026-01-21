@@ -39,15 +39,38 @@
         <defName>RHF_ExtractionRoom</defName>
         <symbol>rhf_extractionroom</symbol>
         <resolvers>
-            <li Class="ReptileHunterFaction.SymbolResolver_ExtractionRoom" />
+            <li Class="SymbolResolver_GenericRoom">
+                <minRectSize>(4, 3)</minRectSize>
+                <interior>rhf_interior_extractionroom</interior>
+            </li>
         </resolvers>
     </RuleDef>
 
     <RuleDef>
-        <defName>RHF_Mortage</defName>
-        <symbol>rhf_mortage</symbol>
+        <defName>RHF_Interior_ExtractionRoom</defName>
+        <symbol>rhf_interior_extractionroom</symbol>
         <resolvers>
-            <li Class="ReptileHunterFaction.SymbolResolver_Mortage" />
+            <li Class="ReptileHunterFaction.SymbolResolver_Interior_ExtractionRoom" />
         </resolvers>
     </RuleDef>
+
+    <RuleDef>
+        <defName>RHF_Druglab</defName>
+        <symbol>rhf_druglab</symbol>
+        <resolvers>
+            <li Class="SymbolResolver_GenericRoom">
+                <minRectSize>(8, 4)</minRectSize>
+                <interior>rhf_interior_druglab</interior>
+            </li>
+        </resolvers>
+    </RuleDef>
+
+    <RuleDef>
+        <defName>RHF_Interior_Druglab</defName>
+        <symbol>rhf_interior_druglab</symbol>
+        <resolvers>
+            <li Class="ReptileHunterFaction.SymbolResolver_Interior_Druglab"/>
+        </resolvers>
+    </RuleDef>
+
 </Defs>

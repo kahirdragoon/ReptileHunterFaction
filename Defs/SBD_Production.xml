@@ -24,6 +24,10 @@
         <containedPawnsSelectable>true</containedPawnsSelectable>
         <altitudeLayer>Building</altitudeLayer>
         <passability>PassThroughOnly</passability>
+        <minifiedDef>MinifiedThing</minifiedDef>
+        <thingCategories>
+            <li>BuildingsProduction</li>
+        </thingCategories>
         <fillPercent>0.3</fillPercent>
         <graphicData>
             <texPath>Buildings/SBD_Extractor</texPath>

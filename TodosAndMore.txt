@@ -22,3 +22,4 @@
 - add gene support for big gen mods
 - use cannibal style if available
 - check compatibility with large faction bases and vanilla expanded settlement mod (forgot the name)
+- compat with Raid Protection Fee to give them pawns so they leave you alone

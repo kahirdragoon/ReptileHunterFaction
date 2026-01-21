@@ -3,9 +3,9 @@
   <MapGeneratorDef ParentName="MapCommonBase">
     <defName>RHF_Faction</defName>
     <genSteps>
-        <li>RocksFromGrid</li>
-        <li>RHF_Settlement</li>
-        <li>SettlementPower</li>
+      <li>RocksFromGrid</li>
+      <li>RHF_Settlement</li>
+      <li>SettlementPower</li>
     </genSteps>
   </MapGeneratorDef>
 
@@ -15,6 +15,7 @@
     <genStep Class="ReptileHunterFaction.GenStep_RHFSettlement">
       <count>1</count>
       <nearMapCenter>true</nearMapCenter>
+      <lootThingSetMaker>RHF_MapGen_FactionSettlement</lootThingSetMaker>
     </genStep>
   </GenStepDef>
 </Defs>
