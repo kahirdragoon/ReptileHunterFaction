@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+    <Operation Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[apparel and (techLevel="Spacer" or techLevel="Ultra")]/apparel[not(layers/li[text()="Belt"] or layers/li[text()="Utility"]) and not(tags)]</xpath>
+        <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[apparel and (techLevel="Spacer" or techLevel="Ultra")]/apparel[not(layers/li[text()="Belt"] or layers/li[text()="Utility"]) and not(tags)]</xpath>
+            <value>
+                <tags></tags>
+            </value>
+        </nomatch>
+    </Operation>
+
+    <Operation Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[apparel and (techLevel="Spacer" or techLevel="Ultra")]/apparel[not(layers/li[text()="Belt"] or layers/li[text()="Utility"])]/tags/li[text()="SpacerOrUltraTechApparelOrArmor"]</xpath>
+        <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[apparel and (techLevel="Spacer" or techLevel="Ultra")]/apparel[not(layers/li[text()="Belt"] or layers/li[text()="Utility"])]/tags</xpath>
+            <value>
+               <li>SpacerOrUltraTechApparelOrArmor</li>
+            </value>
+        </nomatch>
+    </Operation>
+
+    <Operation Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[addedPartProps and (techLevel="Archotech")]/techHediffsTags/ImplantArchotech</xpath>
+        <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[addedPartProps and (techLevel="Archotech")]/techHediffsTags</xpath>
+            <value>
+               <li>ImplantArchotech</li>
+            </value>
+        </nomatch>
+    </Operation>
+    
+</Patch>

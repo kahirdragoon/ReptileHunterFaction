@@ -125,10 +125,30 @@
                 <range>20~20</range>
             </li>
         </skills>
+        <techHediffsTags>
+            <li>ImplantArchotech</li>
+        </techHediffsTags>
         <disallowedTraits>
             <li>Brawler</li>
         </disallowedTraits>
         <canBeSapper>true</canBeSapper>
         <initialResistanceRange>17~27</initialResistanceRange>
+        <xenotypeSet Inherit="False">
+            <xenotypeChances>
+                <LoS_Gorgon>1</LoS_Gorgon>
+            </xenotypeChances>
+        </xenotypeSet>
+        <modExtensions>
+            <li Class="ReptileHunterFaction.SpawnGenesExtension">
+                <randomOrder>false</randomOrder>
+                <respectMetabolicEfficiency>true</respectMetabolicEfficiency>
+                <maxNumberOfGenesAdded>5</maxNumberOfGenesAdded>
+                <genes>
+                    <li>
+                        <defName>ArchiteMetabolism</defName>
+                    </li>
+                </genes>
+            </li>
+        </modExtensions>
     </PawnKindDef>
 </Defs>

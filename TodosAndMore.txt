@@ -1,15 +1,18 @@
-- custom bases (heaviliy defended)
 - create bases in space if odyssey
-- get sample from bases
 - add genes with insect flesh, blood to bases showing they turn people into insects to turn them into the drug
 - add prisoner, dead bodies and pawn sitting in extractors
+- check compatibility with large faction bases and vanilla expanded settlement mod (forgot the name)
+
 - create raid ai or event where they attack via edge/drop pod/shuttle
     - have raiders retreat when safe and high value item or capturable prisoner in reach
     - have raiders sometimes eat corpses or remove heads as trophies
     - example: mushroom madness mycomorph behaviour
 - have small bases in the world as events where captured pawn or trophie head stand
+
 - end game like event to capture activate an anti air defense grid to protect against the raids (ends events)
+
 - compat with HarbingerKin Mod for Flesheater gene
+
 - turn the gene adding into its own mod
 - make the genes necessary for creating the drug 
 - turn it into a general hunter mod
@@ -21,5 +24,4 @@
     - will break down over time
 - add gene support for big gen mods
 - use cannibal style if available
-- check compatibility with large faction bases and vanilla expanded settlement mod (forgot the name)
 - compat with Raid Protection Fee to give them pawns so they leave you alone
