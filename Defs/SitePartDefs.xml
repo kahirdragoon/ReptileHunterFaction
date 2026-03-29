@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <SitePartDef>
+        <defName>RHF_KidnappedPawnPrison</defName>
+        <label>kidnapped pawn in extractor</label>
+        <description>A kidnapped pawn from your faction is being held in an extraction chamber. Rescue them or they will die.</description>
+        <workerClass>ReptileHunterFaction.SitePartWorker_RHFPrison</workerClass>
+        <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+        <expandingIconTexture>World/WorldObjects/Expanding/Sites/Prisoner</expandingIconTexture>
+        <forceExitAndRemoveMapCountdownDurationDays>6</forceExitAndRemoveMapCountdownDurationDays>
+        <requiresFaction>true</requiresFaction>
+        <handlesWorldObjectTimeoutInspectString>true</handlesWorldObjectTimeoutInspectString>
+        <gravShipsCanLandOn>true</gravShipsCanLandOn>
+        <tags>
+            <li>RHF_KidnappedPawnPrison</li>
+        </tags>
+    </SitePartDef>
+
+    <GenStepDef>
+        <defName>RHF_KidnappedPawnPrison</defName>
+        <linkWithSite>RHF_KidnappedPawnPrison</linkWithSite>
+        <order>1600</order>
+        <genStep Class="ReptileHunterFaction.GenStep_RHFPrison">
+            <count>1</count>
+            <nearMapCenter>true</nearMapCenter>
+        </genStep>
+    </GenStepDef>
+
+</Defs>

@@ -25,3 +25,4 @@
 - add gene support for big gen mods
 - use cannibal style if available
 - compat with Raid Protection Fee to give them pawns so they leave you alone
+- compromise bionics of pawns with the SBD need to give every pawn installing them SBD ned without the upsides

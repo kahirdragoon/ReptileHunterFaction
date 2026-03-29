@@ -21,13 +21,24 @@
     </Operation>
 
     <Operation Class="PatchOperationConditional">
-        <xpath>Defs/ThingDef[addedPartProps and (techLevel="Archotech")]/techHediffsTags/ImplantArchotech</xpath>
+        <xpath>Defs/ThingDef[@Name="BodyPartArchotechBase"]/techHediffsTags</xpath>
         <nomatch Class="PatchOperationAdd">
-            <xpath>Defs/ThingDef[addedPartProps and (techLevel="Archotech")]/techHediffsTags</xpath>
+            <xpath>Defs/ThingDef[@Name="BodyPartArchotechBase"]</xpath>
             <value>
-               <li>ImplantArchotech</li>
+                <techHediffsTags>
+                    <li>Archotech</li>
+                </techHediffsTags>
             </value>
         </nomatch>
+        <match Class="PatchOperationConditional">
+            <xpath>Defs/ThingDef[@Name="BodyPartArchotechBase"]/techHediffsTags/li[text()="Archotech"]</xpath>
+            <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[@Name="BodyPartArchotechBase"]/techHediffsTags</xpath>
+                <value>
+                    <li>Archotech</li>
+                </value>
+            </nomatch>
+        </match>
     </Operation>
     
 </Patch>

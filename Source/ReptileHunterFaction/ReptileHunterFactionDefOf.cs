@@ -13,6 +13,8 @@ namespace ReptileHunterFaction
         public static ThingDef RHF_DrugMedicine;
         public static ThingDef RHF_Plant_DrugMedicine;
         public static ThingDef RHF_ConcentratedInsectoidBlood;
+        public static PawnKindDef RHF_ReptileHuntersFighter_Ranged;
+        public static PawnKindDef RHF_ReptileHuntersFighter_Melee;
 
         static ReptileHunterFactionDefOf() => DefOfHelper.EnsureInitializedInCtor(typeof(ReptileHunterFactionDefOf));
     }

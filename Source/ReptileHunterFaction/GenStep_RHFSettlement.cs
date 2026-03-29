@@ -20,8 +20,7 @@ internal class GenStep_RHFSettlement : GenStep_Settlement
         int randomInRange1 = SettlementSizeRange.RandomInRange;
         int randomInRange2 = SettlementSizeRange.RandomInRange;
         var var = new CellRect(c.x - randomInRange1 / 2, c.z - randomInRange2 / 2, randomInRange1, randomInRange2);
-        //Faction faction = overrideFaction == null ? (map.ParentFaction == null || map.ParentFaction == Faction.OfPlayer ? Find.FactionManager.RandomEnemyFaction() : map.ParentFaction) : overrideFaction;
-        Faction faction = Find.FactionManager.FirstFactionOfDef(ReptileHunterFactionDefOf.RHF_ReptileHunters);
+        Faction faction = overrideFaction ?? (map.ParentFaction == null || map.ParentFaction == Faction.OfPlayer ? Find.FactionManager.RandomEnemyFaction() : map.ParentFaction);
         var.ClipInsideMap(map);
         var resolveParams = new ResolveParams()
         {
