@@ -2,7 +2,7 @@
 <Defs>
     <QuestScriptDef>
         <defName>RHF_OpportunitySite_KidnappedPawnPrison</defName>
-        <rootSelectionWeight>400</rootSelectionWeight>
+        <rootSelectionWeight>100</rootSelectionWeight>
         <rootMinPoints>0</rootMinPoints>
         <rootIncreasesPopulation>false</rootIncreasesPopulation> <!-- set to false so it fires regardless of current population count -->
         <autoAccept>true</autoAccept>

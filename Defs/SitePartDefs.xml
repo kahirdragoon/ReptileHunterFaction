@@ -2,7 +2,7 @@
 <Defs>
     <SitePartDef>
         <defName>RHF_KidnappedPawnPrison</defName>
-        <label>kidnapped pawn in extractor</label>
+        <label>pawn kidnapped by the hunters</label>
         <description>A kidnapped pawn from your faction is being held in an extraction chamber. Rescue them or they will die.</description>
         <workerClass>ReptileHunterFaction.SitePartWorker_RHFPrison</workerClass>
         <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
