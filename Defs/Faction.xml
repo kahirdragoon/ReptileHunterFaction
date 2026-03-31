@@ -27,14 +27,7 @@
             <li MayRequire="Ludeon.RimWorld.Ideology">PainIsVirtue</li>
             <li MayRequire="Ludeon.RimWorld.Anomaly">Inhuman</li>
         </allowedMemes>
-        <raidCommonalityFromPointsCurve>
-            <points>
-                <li>(300, 0)</li>
-                <li>(1000, 1)</li>
-                <li>(2000, 2)</li>
-                <li>(6000, 3)</li>
-            </points>
-        </raidCommonalityFromPointsCurve>
+        <raidsForbidden>true</raidsForbidden>
         <maxPawnCostPerTotalPointsCurve Inherit="False">
             <points>
                 <li>(2000,300)</li>
@@ -116,6 +109,10 @@
                 <respectMetabolicEfficiency>true</respectMetabolicEfficiency>
                 <maxNumberOfGenesAdded>5</maxNumberOfGenesAdded>
                 <genes>
+                    <li MayRequire="mytigio.harbingerkin">
+                        <defName>myt_flesheater</defName>
+                        <excludeFromCount>true</excludeFromCount>
+                    </li>
                     <li>
                         <defName>AnimalWarcall</defName>
                         <chance>0.5</chance>

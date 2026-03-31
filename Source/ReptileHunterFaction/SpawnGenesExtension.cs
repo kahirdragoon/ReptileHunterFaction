@@ -20,4 +20,5 @@ internal class GeneSpawnInfo
     public GeneDef? geneDef;
     public float chance = 1;
     public bool xenogene = true;
+    public bool excludeFromCount;
 }

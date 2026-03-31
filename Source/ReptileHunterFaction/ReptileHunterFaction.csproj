@@ -6,27 +6,22 @@
 		<Nullable>enable</Nullable>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 		<AnalysisLevel>none</AnalysisLevel>
-		<Configurations>1.6</Configurations>
+		<Configurations>Debug</Configurations>
 		<LangVersion>latest</LangVersion>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 		<AppendConfigurationToOutputPath>false</AppendConfigurationToOutputPath>
 		<DebugType>none</DebugType>
 		<EnableNETAnalyzers>False</EnableNETAnalyzers>
+		<NoWarn>CS8603,CS0649,CS8618</NoWarn>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)'=='1.6'">
+	<PropertyGroup>
 		<OutputPath>..\..\1.6\Assemblies\</OutputPath>
 	</PropertyGroup>
 
-	<ItemGroup Condition="'$(Configuration)'=='1.6'">
-		<PackageReference Include="Krafs.Rimworld.Ref" Version="[1.6.0, 1.7.0)">
-			<PrivateAssets>all</PrivateAssets>
-			<Private>false</Private>
-		</PackageReference>
-	</ItemGroup>
-
 	<ItemGroup>
+		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4633" />
 		<PackageReference Include="Lib.Harmony" Version="2.4.2">
 			<PrivateAssets>all</PrivateAssets>
 			<ExcludeAssets>runtime</ExcludeAssets>

@@ -14,7 +14,8 @@ using Verse;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 namespace ReptileHunterFaction;
-[HarmonyPatch(typeof(PawnGenerator), nameof(PawnGenerator.GeneratePawn), new Type[] {typeof(PawnGenerationRequest)})]
+
+[HarmonyPatch(typeof(PawnGenerator), nameof(PawnGenerator.GeneratePawn), [typeof(PawnGenerationRequest)])]
 public static class Patch_PawnGenerator_GeneratePawn_Genes
 {
     //private static Stopwatch stopwatch = new Stopwatch();

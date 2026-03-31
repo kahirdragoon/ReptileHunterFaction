@@ -1,0 +1,73 @@
+<Defs>
+
+    <!-- ===== Job ===== -->
+    <JobDef>
+        <defName>RHF_KidnapAndFlee</defName>
+        <driverClass>ReptileHunterFaction.JobDriver_RHF_KidnapAndFlee</driverClass>
+        <label>kidnap and flee</label>
+        <reportString>kidnapping TargetA and escaping.</reportString>
+        <allowOpportunisticPrefix>false</allowOpportunisticPrefix>
+        <collideWithPawns>true</collideWithPawns>
+    </JobDef>
+
+    <!-- ===== Duty for the designated kidnapper ===== -->
+    <!--
+        The duty think tree has a single job giver.  It fires only for the pawn
+        that LordJob_RHF_KidnappingRaid has tagged as the kidnapper, so every
+        other raider keeps their normal AssaultColony duty unaffected.
+    -->
+    <DutyDef>
+        <defName>RHF_KidnaperDuty</defName>
+        <label>kidnapper</label>
+        <thinkNode Class="ThinkNode_Priority">
+            <subNodes>
+                <li Class="ReptileHunterFaction.JobGiver_RHF_KidnapDowned" />
+            </subNodes>
+        </thinkNode>
+    </DutyDef>
+
+    <!-- ===== Raid strategy ===== -->
+    <!--
+        Walks in from the map edge just like a standard immediate-attack raid.
+        The custom worker swaps the LordJob for LordJob_RHF_KidnappingRaid.
+    -->
+    <RaidStrategyDef>
+        <defName>RHF_KidnappingRaidStrategy</defName>
+        <workerClass>ReptileHunterFaction.RaidStrategyWorker_RHF_KidnappingRaid</workerClass>
+        <label>kidnapping assault</label>
+        <letterLabelEnemy>Kidnapping raid</letterLabelEnemy>
+        <arrivalTextEnemy>The hunters are here to kidnap your pawns. They will fight and try to drag downed colonists back to their base.</arrivalTextEnemy>
+        <pawnsCanBringFood>false</pawnsCanBringFood>
+        <arriveModes>
+            <li>EdgeWalkIn</li>
+            <li>EdgeWalkInGroups</li>
+            <li>EdgeDrop</li>
+            <li>EdgeDropGroups</li>
+            <li>CenterDrop</li>
+            <li>RandomDrop</li>
+        </arriveModes>
+    </RaidStrategyDef>
+
+    <!-- ===== Incident ===== -->
+    <!--
+        Sits alongside the standard raid incidents in the ThreatBig pool.
+        IncidentWorker_RHF_KidnappingRaid enforces:
+          - Faction is always RHF_ReptileHunters.
+          - Player must have >= 5 free colonists (see MinColonistCount constant).
+    -->
+    <IncidentDef>
+        <defName>RHF_KidnappingRaid</defName>
+        <workerClass>ReptileHunterFaction.IncidentWorker_RHF_KidnappingRaid</workerClass>
+        <label>reptile hunter kidnapping raid</label>
+        <category>ThreatBig</category>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <baseChance>0.9</baseChance>
+        <minThreatPoints>200</minThreatPoints>
+        <letterLabel>Reptile hunter kidnapping raid</letterLabel>
+        <letterText>A pack of reptile hunters approaches! They will fight until they can snatch one of your people and drag them back to their lairs — or until half their number is cut down.</letterText>
+        <letterDef>ThreatBig</letterDef>
+    </IncidentDef>
+
+</Defs>

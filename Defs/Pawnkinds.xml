@@ -23,7 +23,7 @@
         </apparelTags>
         <techHediffsChance>0.8</techHediffsChance>
         <techHediffsMoney>200000~350000</techHediffsMoney>
-        <techHediffsMaxAmount>99</techHediffsMaxAmount>
+        <techHediffsMaxAmount>20</techHediffsMaxAmount>
         <techHediffsTags>
             <li>Advanced</li>
             <li>AdvancedWeapon</li>

@@ -4,18 +4,19 @@
 - check compatibility with large faction bases and vanilla expanded settlement mod (forgot the name)
 
 - create raid ai or event where they attack via edge/drop pod/shuttle
-    - have raiders retreat when safe and high value item or capturable prisoner in reach
-    - have raiders sometimes eat corpses or remove heads as trophies
-    - example: mushroom madness mycomorph behaviour
+    - have raiders sometimes eat corpses or remove heads as trophies if currently not under fire
+    - 
+
 - have small bases in the world as events where captured pawn or trophie head stand
 
 - end game like event to capture activate an anti air defense grid to protect against the raids (ends events)
 
-- compat with HarbingerKin Mod for Flesheater gene
-
 - turn the gene adding into its own mod
 - make the genes necessary for creating the drug 
 - turn it into a general hunter mod
+    - they hunt pawns with specific genes/xenotypes
+    - configurable in the settings
+- only raid if hunted pawns in colony
 - trade prisoners with them to gain the drug
     - or reduce raid size?
 - create stronger pawnkind leader

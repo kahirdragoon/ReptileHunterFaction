@@ -8,7 +8,7 @@ namespace ReptileHunterFaction;
 public class GenStep_RHFPrison : GenStep
 {
     private const string PrisonSitePartDefName = "RHF_KidnappedPawnPrison";
-    private Faction kidnapperFaction;
+    private Faction? kidnapperFaction;
     public int count = 1;
     public bool nearMapCenter = true;
     private const int RoomWidth = 9;
@@ -71,7 +71,7 @@ public class GenStep_RHFPrison : GenStep
         return TryTakePawnFromMatchingPart(site.parts, null);
     }
 
-    private Pawn TryTakePawnFromMatchingPart(List<SitePart> siteParts, string requiredDefName)
+    private Pawn TryTakePawnFromMatchingPart(List<SitePart> siteParts, string? requiredDefName)
     {
         if (siteParts == null)
             return null;
@@ -405,7 +405,7 @@ public class GenStep_RHFPrison : GenStep
 
     private Thing MakeThingWithDefaultStuff(ThingDef thingDef)
     {
-        ThingDef stuff = thingDef.MadeFromStuff ? GenStuff.DefaultStuffFor(thingDef) : null;
+        ThingDef? stuff = thingDef.MadeFromStuff ? GenStuff.DefaultStuffFor(thingDef) : null;
         Thing thing = ThingMaker.MakeThing(thingDef, stuff);
         if (kidnapperFaction != null && thingDef.CanHaveFaction)
         {
