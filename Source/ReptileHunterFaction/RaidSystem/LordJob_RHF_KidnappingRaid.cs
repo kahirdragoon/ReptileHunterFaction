@@ -119,6 +119,17 @@ public class LordJob_RHF_KidnappingRaid : LordJob
     /// <summary>Skull extraction done — raider retreats.</summary>
     public void FinishSkullExtraction(Pawn raider)
     {
+        // Remove any ExtractSkull designations we added for this raider's pending targets.
+        if (pendingSkullTargets.TryGetValue(raider, out var list))
+        {
+            foreach (Pawn victim in list)
+            {
+                Corpse? corpse = victim.Corpse;
+                if (corpse?.Spawned == true)
+                    corpse.Map.designationManager.TryRemoveDesignationOn(corpse, DesignationDefOf.ExtractSkull);
+            }
+        }
+
         activeSkullExtractors.Remove(raider);
         pendingSkullTargets.Remove(raider);
         raider.mindState.duty = new PawnDuty(DutyDefOf.ExitMapBest);

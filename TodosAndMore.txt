@@ -3,11 +3,14 @@
 - add prisoner, dead bodies and pawn sitting in extractors
 - check compatibility with large faction bases and vanilla expanded settlement mod (forgot the name)
 
-- create raid ai or event where they attack via edge/drop pod/shuttle
-    - have raiders sometimes eat corpses or remove heads as trophies if currently not under fire
-    - 
-
 - have small bases in the world as events where captured pawn or trophie head stand
+
+- raid
+    - after half player pawns are downed or killed stop attacking if no longer being attacked
+    - kidnapp and retreat with corpses
+    - split into 2 raid types? 
+        - group raid with above behaviour
+        - very few pawns raid that immediatly escape once found prey
 
 - end game like event to capture activate an anti air defense grid to protect against the raids (ends events)
 
