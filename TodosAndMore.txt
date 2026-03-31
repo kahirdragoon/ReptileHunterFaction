@@ -27,8 +27,6 @@
     - option for random genes in list
 - make the genes necessary for creating the drug -> no idea what i meant with this
 - turn it into a general hunter mod
-    - they hunt pawns with specific genes/xenotypes
-    - configurable in the settings
     - use the snake xenotypes only if using B&S. Otherwise use baseliners
 - only raid if hunted pawns in colony
 - trade prisoners with them to gain the drug -> make it configurable

@@ -134,9 +134,7 @@
         <canBeSapper>true</canBeSapper>
         <initialResistanceRange>17~27</initialResistanceRange>
         <xenotypeSet Inherit="False">
-            <xenotypeChances>
-                <LoS_Gorgon>1</LoS_Gorgon>
-            </xenotypeChances>
+            <xenotypeChances />
         </xenotypeSet>
         <modExtensions>
             <li Class="ReptileHunterFaction.SpawnGenesExtension">

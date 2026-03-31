@@ -7,13 +7,9 @@
     </supportedVersions>
     <description>Spacer tech reptile pirates who kidnap and flee with loot.</description>
     <modDependencies>
-        <li>
-            <packageId>redmattis.lamiasandothersnakes</packageId>
-            <displayName>Big and Small - Lamias and other Snake-People</displayName>
-            <steamWorkshopUrl>steam://url/CommunityFilePage/2908225858</steamWorkshopUrl>
-        </li>
+        
     </modDependencies>
     <loadAfter>
-        <li>redmattis.lamiasandothersnakes</li>
+        
     </loadAfter>
 </ModMetaData>

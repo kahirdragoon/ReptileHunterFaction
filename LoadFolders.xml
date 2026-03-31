@@ -4,5 +4,6 @@
     <li>/</li>
     <li>1.6</li>
     <li IfModActive="ludeon.rimworld.odyssey">Mods/Odyssey</li>
+    <li IfModActive="redmattis.lamiasandothersnakes">Mods/Lamia</li>
   </v1.6>
 </loadFolders>

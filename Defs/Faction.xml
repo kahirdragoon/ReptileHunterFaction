@@ -39,26 +39,7 @@
             </points>
         </raidLootValueFromPointsCurve>
         <xenotypeSet Inherit="False">
-            <xenotypeChances>
-                <!-- <LoS_Lamia>1</LoS_Lamia>
-                <LoS_Siren>1</LoS_Siren>
-                <LoS_Gorgon>0.3</LoS_Gorgon>
-                <Naga>1</Naga>
-                <Nagaraj>1</Nagaraj>
-                <LoS_Adderman>1</LoS_Adderman>
-                <LoS_Anacondaman>1</LoS_Anacondaman>
-                <LoS_Snakeman>1</LoS_Snakeman>
-                <LoS_Silver>0.7</LoS_Silver> -->                
-                <LoS_Lamia>0.125</LoS_Lamia>
-                <LoS_Siren>0.125</LoS_Siren>
-                <LoS_Gorgon>0.0375</LoS_Gorgon>
-                <Naga>0.125</Naga>
-                <Nagaraj>0.125</Nagaraj>
-                <LoS_Adderman>0.125</LoS_Adderman>
-                <LoS_Anacondaman>0.125</LoS_Anacondaman>
-                <LoS_Snakeman>0.125</LoS_Snakeman>
-                <LoS_Silver>0.0875</LoS_Silver>
-            </xenotypeChances>
+            <xenotypeChances />
         </xenotypeSet>
         <pawnGroupMakers Inherit="False">
             <li>

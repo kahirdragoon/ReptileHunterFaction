@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/FactionDef[defName="RHF_ReptileHunters"]/xenotypeSet/xenotypeChances</xpath>
+        <value>
+            <LoS_Lamia>0.125</LoS_Lamia>
+            <LoS_Siren>0.125</LoS_Siren>
+            <LoS_Gorgon>0.0375</LoS_Gorgon>
+            <Naga>0.125</Naga>
+            <Nagaraj>0.125</Nagaraj>
+            <LoS_Adderman>0.125</LoS_Adderman>
+            <LoS_Anacondaman>0.125</LoS_Anacondaman>
+            <LoS_Snakeman>0.125</LoS_Snakeman>
+            <LoS_Silver>0.0875</LoS_Silver>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/PawnKindDef[defName="RHF_ReptileHuntersFighter_Boss"]/xenotypeSet/xenotypeChances</xpath>
+        <value>
+            <LoS_Gorgon>1</LoS_Gorgon>
+        </value>
+    </Operation>
+</Patch>
