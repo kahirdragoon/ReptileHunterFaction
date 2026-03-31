@@ -22,6 +22,9 @@ namespace ReptileHunterFaction
         public static DutyDef RHF_KidnaperDuty;
         public static JobDef RHF_KidnapAndFlee;
 
+        // Skull extraction
+        public static DutyDef RHF_SkullExtractorDuty;
+
         static ReptileHunterFactionDefOf() => DefOfHelper.EnsureInitializedInCtor(typeof(ReptileHunterFactionDefOf));
     }
 }

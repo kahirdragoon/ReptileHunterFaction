@@ -26,6 +26,17 @@
         </thinkNode>
     </DutyDef>
 
+    <!-- ===== Skull extractor duty ===== -->
+    <DutyDef>
+        <defName>RHF_SkullExtractorDuty</defName>
+        <label>skull extractor</label>
+        <thinkNode Class="ThinkNode_Priority">
+            <subNodes>
+                <li Class="ReptileHunterFaction.JobGiver_RHF_ExtractSkull" />
+            </subNodes>
+        </thinkNode>
+    </DutyDef>
+
     <!-- ===== Raid strategy ===== -->
     <!--
         Walks in from the map edge just like a standard immediate-attack raid.

@@ -30,9 +30,9 @@ public class LordToil_RHF_Assault : LordToil
 
         foreach (Pawn p in lord.ownedPawns)
         {
-            // Active kidnappers keep their duty; everyone else assaults.
-            if (lordJob.IsKidnapper(p) && lordJob.GetTargetFor(p) != null)
-                continue;
+            // Active kidnappers and skull extractors keep their duty.
+            if (lordJob.IsKidnapper(p) && lordJob.GetTargetFor(p) != null) continue;
+            if (lordJob.IsSkullExtractor(p)) continue;
 
             p.mindState.duty = new PawnDuty(DutyDefOf.AssaultColony);
         }
@@ -51,7 +51,10 @@ public class LordToil_RHF_Assault : LordToil
         // --- 2. Assign new kidnappers ---
         TryFindAndAssignKidnappers(lordJob, map);
 
-        // --- 3. Individual retreat for low-HP pawns ---
+        // --- 3. Skull extraction management ---
+        ManageSkullExtractors(lordJob);
+
+        // --- 4. Individual retreat for low-HP pawns ---
         foreach (Pawn p in lord.ownedPawns)
         {
             if (p.Dead || p.Downed) continue;
@@ -127,6 +130,49 @@ public class LordToil_RHF_Assault : LordToil
                 if (nearest != null && lordJob.TryAssignKidnapper(nearest, raider))
                     availableTargets.Remove(nearest);
             }
+        }
+    }
+
+    private void ManageSkullExtractors(LordJob_RHF_KidnappingRaid lordJob)
+    {
+        // Detect skulls extracted since last tick (vanilla driver removes the head body part).
+        foreach (var kvp in lordJob.pendingSkullTargets)
+        {
+            var done = new List<Pawn>();
+            foreach (Pawn victim in kvp.Value)
+            {
+                if (!victim.health.hediffSet.HasHead)
+                {
+                    WorldComp_RHFSkulls.Get()?.AddSkull(victim.LabelShort);
+                    done.Add(victim);
+                }
+            }
+            foreach (Pawn v in done)
+                lordJob.OnSkullExtracted(kvp.Key, v);
+        }
+
+        // Finish extractors who have no more valid corpses to loot.
+        var toFinish = new List<Pawn>();
+        foreach (Pawn p in lord.ownedPawns)
+        {
+            if (!lordJob.IsSkullExtractor(p) || p.Dead || p.Downed) continue;
+            if (lordJob.NextSkullTarget(p) == null)
+                toFinish.Add(p);
+        }
+        foreach (Pawn p in toFinish)
+            lordJob.FinishSkullExtraction(p);
+
+        // Assign extraction to safe raiders who have pending kills.
+        foreach (Pawn raider in lord.ownedPawns)
+        {
+            if (raider.Dead || raider.Downed) continue;
+            if (raider.mindState.duty?.def == DutyDefOf.ExitMapBest) continue;
+            if (lordJob.IsSkullExtractor(raider)) continue;
+            if (!lordJob.HasPendingSkulls(raider)) continue;
+
+            bool isSafe = Find.TickManager.TicksGame - raider.mindState.lastHarmTick > SafeAfterHarmTicks;
+            if (isSafe)
+                lordJob.StartSkullExtraction(raider);
         }
     }
 
