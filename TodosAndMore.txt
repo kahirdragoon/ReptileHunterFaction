@@ -2,9 +2,13 @@
 - add genes with insect flesh, blood to bases showing they turn people into insects to turn them into the drug
 - add prisoner, dead bodies and pawn sitting in extractors
 - check compatibility with large faction bases and vanilla expanded settlement mod (forgot the name)
-- have small bases in the world as events where captured pawn or trophie head stand
+- expand prisoner places and turn them into small hunting places
 - one settlement as main base where leader resides
 - add props from gerrymons cannibal style to bases if installed
+
+- have small bases in the world as events where captured pawn or trophie head stand
+
+- raiders should visit ancient dangers in search of luciferium when player are near them
 
 - remove eltex from pawnkinds
 

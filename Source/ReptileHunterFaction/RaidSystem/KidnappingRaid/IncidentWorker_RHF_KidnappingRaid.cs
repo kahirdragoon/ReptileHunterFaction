@@ -21,7 +21,12 @@ public class IncidentWorker_RHF_KidnappingRaid : IncidentWorker_RaidEnemy
         if (parms.target is not Map map) return false;
         if (Find.FactionManager.FirstFactionOfDef(ReptileHunterFactionDefOf.RHF_ReptileHunters) == null) return false;
         int count = map.mapPawns.FreeAdultColonistsSpawnedCount + map.mapPawns.SlavesOfColonySpawned.Count(s => s.DevelopmentalStage.Adult());
-        return count >= MinColonistCount && count <= MaxColonistCount;
+        if (count < MinColonistCount || count > MaxColonistCount) return false;
+
+        int qualifying = map.mapPawns.FreeColonistsAndPrisonersSpawned
+            .Concat(map.mapPawns.SlavesOfColonySpawned)
+            .Count(p => p.DevelopmentalStage.Adult() && RHFPawnTargetingUtility.IsTargetPawn(p));
+        return qualifying >= ReptileHunterFactionMod.Settings.minQualifyingPawns;
     }
 
     protected override bool TryResolveRaidFaction(IncidentParms parms)

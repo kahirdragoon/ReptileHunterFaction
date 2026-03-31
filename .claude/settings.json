@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find 'e:/SteamLibrary/steamapps/common/RimWorld/Mods/Hunter Faction/Defs' -type f -name *.xml)",
+      "Bash(grep -i \"modsettings\\\\|mod_.*settings\\\\|settingscontrol\" \"e:/SteamLibrary/steamapps/common/RimWorld/Mods/Hunter Faction/Source/ReptileHunterFaction\"/*.cs)",
+      "Bash(grep -r \"AssaultThing\\\\|AttackMelee\\\\|class DutyDef\\\\b\" 'd:/Rimworld Modding/Rimworld Source' --include=*.cs -l)"
+    ]
+  }
+}

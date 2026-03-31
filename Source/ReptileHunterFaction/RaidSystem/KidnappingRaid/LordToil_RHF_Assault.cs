@@ -51,6 +51,9 @@ public class LordToil_RHF_Assault : LordToil
         // --- 2. Assign new kidnappers ---
         TryFindAndAssignKidnappers(lordJob, map);
 
+        // --- 2b. Prioritize attacking eligible standing prisoners when closer ---
+        TryPrioritizePrisonerAttacks(lordJob, map);
+
         // --- 3. Skull extraction management ---
         ManageSkullExtractors(lordJob);
 
@@ -95,12 +98,13 @@ public class LordToil_RHF_Assault : LordToil
 
     private void TryFindAndAssignKidnappers(LordJob_RHF_KidnappingRaid lordJob, Map map)
     {
-        // Collect untargeted downed player pawns.
+        // Collect untargeted downed eligible pawns (colonists, slaves, and prisoners).
         var availableTargets = new List<Pawn>();
         foreach (Pawn p in map.mapPawns.AllPawnsSpawned)
         {
             if (!p.Dead && p.Downed && p.RaceProps.Humanlike
-                && p.Faction == Faction.OfPlayer && !lordJob.IsTargeted(p))
+                && (p.Faction == Faction.OfPlayer || p.IsPrisonerOfColony) && !lordJob.IsTargeted(p)
+                && RHFPawnTargetingUtility.IsTargetPawn(p))
                 availableTargets.Add(p);
         }
         if (availableTargets.Count == 0) return;
@@ -130,6 +134,45 @@ public class LordToil_RHF_Assault : LordToil
                 if (nearest != null && lordJob.TryAssignKidnapper(nearest, raider))
                     availableTargets.Remove(nearest);
             }
+        }
+    }
+
+    private void TryPrioritizePrisonerAttacks(LordJob_RHF_KidnappingRaid lordJob, Map map)
+    {
+        // Collect standing (alive, not downed) eligible prisoners.
+        var standingPrisoners = new List<Pawn>();
+        foreach (Pawn p in map.mapPawns.AllPawnsSpawned)
+        {
+            if (!p.Dead && !p.Downed && p.IsPrisonerOfColony
+                && p.RaceProps.Humanlike && RHFPawnTargetingUtility.IsTargetPawn(p))
+                standingPrisoners.Add(p);
+        }
+        if (standingPrisoners.Count == 0) return;
+
+        foreach (Pawn raider in lord.ownedPawns)
+        {
+            if (raider.Dead || raider.Downed) continue;
+            if (!raider.health.capacities.CapableOf(PawnCapacityDefOf.Moving)) continue;
+            if (raider.mindState.duty?.def == DutyDefOf.ExitMapBest) continue;
+            if (lordJob.IsKidnapper(raider)) continue;
+            if (lordJob.IsSkullExtractor(raider)) continue;
+
+            Pawn? nearestPrisoner = Nearest(raider, standingPrisoners);
+            if (nearestPrisoner == null) continue;
+
+            float prisonerDist = nearestPrisoner.Position.DistanceTo(raider.Position);
+
+            // Only redirect if the prisoner is closer than the nearest standing colonist.
+            float nearestColonistDist = float.MaxValue;
+            foreach (Pawn p in map.mapPawns.FreeColonistsSpawned)
+            {
+                if (p.Dead || p.Downed) continue;
+                float d = p.Position.DistanceTo(raider.Position);
+                if (d < nearestColonistDist) nearestColonistDist = d;
+            }
+
+            if (prisonerDist < nearestColonistDist)
+                raider.mindState.enemyTarget = nearestPrisoner;
         }
     }
 

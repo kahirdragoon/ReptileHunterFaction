@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+    <!-- ── Building_Extractor rejection reasons ── -->
+    <!-- Shown when the selected pawn does not match the configured xenotype/gene criteria -->
+    <ExtractorNoInsectBlood>Pawn does not match the configured target criteria.</ExtractorNoInsectBlood>
+    <!-- Shown when the selected pawn is missing required organs for extraction -->
+    <ExtractorNoRequiredOrgans>Pawn does not have the required organs for extraction.</ExtractorNoRequiredOrgans>
+
+    <!-- ── Mod settings window ── -->
+    <RHF_Settings_MinQualifyingPawns>Min. qualifying pawns</RHF_Settings_MinQualifyingPawns>
+    <RHF_Settings_GeneMatchMode>Gene match mode</RHF_Settings_GeneMatchMode>
+    <RHF_Settings_AnyGene>Any gene</RHF_Settings_AnyGene>
+    <RHF_Settings_AllGenes>All genes</RHF_Settings_AllGenes>
+    <RHF_Settings_TargetXenotypes>Target xenotypes</RHF_Settings_TargetXenotypes>
+    <RHF_Settings_TargetGenes>Target genes</RHF_Settings_TargetGenes>
+
+</LanguageData>

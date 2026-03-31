@@ -14,7 +14,6 @@ namespace ReptileHunterFaction;
 [StaticConstructorOnStartup]
 internal class Building_Extractor : Building_Enterable, IThingHolderWithDrawnPawn, IThingHolder
 {
-    private static GeneDef insectBloodGeneDef = DefDatabase<GeneDef>.GetNamed("AG_InsectBlood", false) ?? DefDatabase<GeneDef>.GetNamed("VRE_BugBlood", false);
     private static BodyPartDef stomachDef = DefDatabase<BodyPartDef>.GetNamed("Stomach", false);
     private int fabricationTicksLeft;
     private Effecter? effectStart;
@@ -119,7 +118,7 @@ internal class Building_Extractor : Building_Enterable, IThingHolderWithDrawnPaw
             return false;
         if (!PowerOn)
             return "CannotUseNoPower".Translate();
-        if (pawn.genes is null || (insectBloodGeneDef != null && !pawn.genes.HasActiveGene(insectBloodGeneDef)))
+        if (!RHFPawnTargetingUtility.IsTargetPawn(pawn))
             return "ExtractorNoInsectBlood".Translate();
         if(!HasNaturalVitalOrgans(pawn))
             return "ExtractorNoRequiredOrgans".Translate();
