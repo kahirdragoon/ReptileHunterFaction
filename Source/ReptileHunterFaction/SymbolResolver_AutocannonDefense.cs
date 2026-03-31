@@ -30,7 +30,7 @@ public class SymbolResolver_AutocannonDefense : SymbolResolver
         {
             if (pos.InBounds(map) && pos.Standable(map))
             {
-                Thing autocannon = ThingMaker.MakeThing(VanillaThingDefOf.Turret_Autocannon);
+                Thing autocannon = ThingMaker.MakeThing(VanillaDefOf.Turret_Autocannon);
                 autocannon.SetFaction(rp.faction);
                 GenSpawn.Spawn(autocannon, pos, map);
             }

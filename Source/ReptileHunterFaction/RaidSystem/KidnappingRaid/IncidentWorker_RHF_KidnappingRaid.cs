@@ -7,21 +7,21 @@ namespace ReptileHunterFaction;
 /// Incident worker for the Reptile Hunter kidnapping raid.
 /// Fires only when:
 ///   - The Hunter faction exists in the world.
-///   - The player colony has at least MinColonistCount free colonists.
+///   - The player colony has between MinColonistCount and MaxColonistCount free colonists.
 /// Always uses the Hunter faction and the custom kidnapping raid strategy.
 /// </summary>
 public class IncidentWorker_RHF_KidnappingRaid : IncidentWorker_RaidEnemy
 {
-    // Minimum number of free colonists required for this raid to fire.
-    // Keeps the mechanic from triggering when the player has almost no one to kidnap.
-    private const int MinColonistCount = 5;
+    private const int MinColonistCount = 3;
+    private const int MaxColonistCount = 7;
 
     protected override bool CanFireNowSub(IncidentParms parms)
     {
         if (!base.CanFireNowSub(parms)) return false;
         if (parms.target is not Map map) return false;
         if (Find.FactionManager.FirstFactionOfDef(ReptileHunterFactionDefOf.RHF_ReptileHunters) == null) return false;
-        return map.mapPawns.FreeColonistsCount >= MinColonistCount;
+        int count = map.mapPawns.FreeAdultColonistsSpawnedCount + map.mapPawns.SlavesOfColonySpawned.Count(s => s.DevelopmentalStage.Adult());
+        return count >= MinColonistCount && count <= MaxColonistCount;
     }
 
     protected override bool TryResolveRaidFaction(IncidentParms parms)
@@ -34,4 +34,6 @@ public class IncidentWorker_RHF_KidnappingRaid : IncidentWorker_RaidEnemy
     {
         parms.raidStrategy = ReptileHunterFactionDefOf.RHF_KidnappingRaidStrategy;
     }
+
+
 }

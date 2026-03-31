@@ -60,7 +60,7 @@ public class SymbolResolver_MineDefense : SymbolResolver
             IntVec3 pos = positions[i];
             if (pos.InBounds(map) && pos.Standable(map))
             {
-                Thing autocannon = ThingMaker.MakeThing(VanillaThingDefOf.TrapIED_HighExplosive);
+                Thing autocannon = ThingMaker.MakeThing(VanillaDefOf.TrapIED_HighExplosive);
                 autocannon.SetFaction(rp.faction);
                 GenSpawn.Spawn(autocannon, pos, map);
             }

@@ -12,7 +12,7 @@ public class SymbolResolver_Interior_Druglab : SymbolResolver
 {
     public override void Resolve(ResolveParams rp)
     {
-        ThingDef drugLabDef = VanillaThingDefOf.DrugLab;
+        ThingDef drugLabDef = VanillaDefOf.DrugLab;
         CellRect room = rp.rect;
         IntVec2 sizeNorthSouth = new(drugLabDef.size.x + 1, drugLabDef.size.z);
         IntVec2 sizeEastWest = new(sizeNorthSouth.z, sizeNorthSouth.x);
@@ -71,7 +71,7 @@ public class SymbolResolver_Interior_Druglab : SymbolResolver
             ThingDefOf.Luciferium,
             ReptileHunterFactionDefOf.RHF_Plant_DrugMedicine,
             ReptileHunterFactionDefOf.RHF_ConcentratedInsectoidBlood,
-            VanillaThingDefOf.Neutroamine
+            VanillaDefOf.Neutroamine
         };
         foreach (var ingredientDef in ingredientDefs)
         {

@@ -116,7 +116,7 @@
                     </li>
                     <li>
                         <capacity>BloodFiltration</capacity>
-                        <offset>1.20</offset>
+                        <offset>1.00</offset>
                     </li>
                     <li>
                         <capacity>BloodPumping</capacity>
@@ -141,7 +141,7 @@
                     <MeleeDodgeChance>1.2</MeleeDodgeChance>
                     <ShootingAccuracyPawn>1.2</ShootingAccuracyPawn>
                     <AimingDelayFactor>0.909</AimingDelayFactor> <!-- 1/1.1 -->
-                    <MoveSpeed>1.4</MoveSpeed>
+                    <MoveSpeed>1.2</MoveSpeed>
                     <IncomingDamageFactor>0.8</IncomingDamageFactor>
                     <InjuryHealingFactor>2</InjuryHealingFactor>
                     <StaggerDurationFactor>0.4</StaggerDurationFactor>

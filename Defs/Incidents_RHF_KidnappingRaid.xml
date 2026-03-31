@@ -64,7 +64,8 @@
         Sits alongside the standard raid incidents in the ThreatBig pool.
         IncidentWorker_RHF_KidnappingRaid enforces:
           - Faction is always RHF_ReptileHunters.
-          - Player must have >= 5 free colonists (see MinColonistCount constant).
+          - Player must have between 3 and 6 free colonists.
+          - Raider count is always (free colonists - 1); storyteller points are ignored.
     -->
     <IncidentDef>
         <defName>RHF_KidnappingRaid</defName>
@@ -75,7 +76,7 @@
             <li>Map_PlayerHome</li>
         </targetTags>
         <baseChance>0.9</baseChance>
-        <minThreatPoints>200</minThreatPoints>
+        <minThreatPoints>50</minThreatPoints>
         <letterLabel>Reptile hunter kidnapping raid</letterLabel>
         <letterText>A pack of reptile hunters approaches! They will fight until they can snatch one of your people and drag them back to their lairs — or until half their number is cut down.</letterText>
         <letterDef>ThreatBig</letterDef>
