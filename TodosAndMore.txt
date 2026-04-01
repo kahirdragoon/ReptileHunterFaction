@@ -8,13 +8,13 @@
 - have small bases in the world as events where captured pawn or trophie head stand 
 - expand prisoner places and turn them into small hunting places
 
-- raiders should visit ancient dangers in search of luciferium when player are near them
-
 - finetune raider apparel
     - remove eltex from pawnkinds
     - no generic best spacer/ultra armor apporach?
 
-- extractor damage pawn over time during the process removing organs and leading to blood loss
+- if pawn ties inside extractor they should be ejected
+- if occupant is drafted while going into the extractor the extractor should be unclaimed
+
 
 - end game like event to capture activate an anti air defense grid to protect against the raids (ends events)
 

@@ -1,4 +1,4 @@
-﻿using RimWorld;
+using RimWorld;
 using RimWorld.Planet;
 using System;
 using System.Collections.Generic;
@@ -14,16 +14,26 @@ namespace ReptileHunterFaction;
 [StaticConstructorOnStartup]
 internal class Building_Extractor : Building_Enterable, IThingHolderWithDrawnPawn, IThingHolder
 {
-    private static BodyPartDef stomachDef = DefDatabase<BodyPartDef>.GetNamed("Stomach", false);
+    private static readonly BodyPartDef stomachDef = DefDatabase<BodyPartDef>.GetNamed("Stomach", false);
+    private static readonly BodyPartDef torsoDef = DefDatabase<BodyPartDef>.GetNamed("Torso", false);
+
     private int fabricationTicksLeft;
     private Effecter? effectStart;
     private Effecter? effectHusk;
     private Mote? workingMote;
     private Sustainer? sustainerWorking;
     private Effecter? progressBarEffecter;
+
+    private bool milestone00Applied;
+    private bool milestone30Applied;
+    private bool milestone60Applied;
+
+    // Cap blood loss just below the 0.8 death threshold
+    private const float MaxBloodLossSeverity = 0.74f;
+
     public static readonly Texture2D CancelLoadingIcon = ContentFinder<Texture2D>.Get("UI/Designators/Cancel");
-    public static readonly CachedTexture InsertPersonIcon = new CachedTexture("UI/Icons/InsertPersonSubcoreScanner");
-    private static Dictionary<Rot4, ThingDef> MotePerRotationRip = new Dictionary<Rot4, ThingDef>()
+    public static readonly CachedTexture InsertPersonIcon = new("UI/Icons/InsertPersonSubcoreScanner");
+    private static Dictionary<Rot4, ThingDef> MotePerRotationRip = new()
         {
           {
             Rot4.South,
@@ -91,7 +101,7 @@ internal class Building_Extractor : Building_Enterable, IThingHolderWithDrawnPaw
     {
         get
         {
-            return !PowerOn ? ExtractorState.Inactive : 
+            return !PowerOn ? ExtractorState.Inactive :
                 Occupant == null ? ExtractorState.WaitingForOccupant :
                 ExtractorState.Occupied;
         }
@@ -120,7 +130,7 @@ internal class Building_Extractor : Building_Enterable, IThingHolderWithDrawnPaw
             return "CannotUseNoPower".Translate();
         if (!RHFPawnTargetingUtility.IsTargetPawn(pawn))
             return "ExtractorNoInsectBlood".Translate();
-        if(!HasNaturalVitalOrgans(pawn))
+        if (!HasNaturalVitalOrgans(pawn))
             return "ExtractorNoRequiredOrgans".Translate();
 
         if (State != ExtractorState.WaitingForOccupant)
@@ -171,6 +181,9 @@ internal class Building_Extractor : Building_Enterable, IThingHolderWithDrawnPaw
         if (num != 0)
             Find.Selector.Select(pawn, false, false);
         fabricationTicksLeft = def.building.subcoreScannerTicks;
+        milestone00Applied = false;
+        milestone30Applied = false;
+        milestone60Applied = false;
     }
 
     public void EjectContents()
@@ -182,7 +195,6 @@ internal class Building_Extractor : Building_Enterable, IThingHolderWithDrawnPaw
         }
         else
         {
-            KillOccupant();
             for (int index = innerContainer.Count - 1; index >= 0; --index)
             {
                 if (innerContainer[index] is Pawn || innerContainer[index] is Corpse)
@@ -190,42 +202,91 @@ internal class Building_Extractor : Building_Enterable, IThingHolderWithDrawnPaw
             }
             innerContainer.ClearAndDestroyContents();
         }
+        milestone00Applied = false;
+        milestone30Applied = false;
+        milestone60Applied = false;
         selectedPawn = null;
     }
 
+    // Used only when the building is despawned while occupied.
     private void KillOccupant()
     {
         Pawn? occupant = Occupant;
-        if(occupant is null)
+        if (occupant is null || occupant.Dead)
             return;
+        ApplyFinalExtraction(occupant);
+    }
 
-        occupant.forceNoDeathNotification = true;
+    // Removes heart and all remaining lungs — kills the pawn naturally via missing heart.
+    private static void ApplyFinalExtraction(Pawn pawn)
+    {
+        pawn.forceNoDeathNotification = true;
 
-        DamageInfo dinfo = new DamageInfo(DamageDefOf.ExecutionCut, 9999f, 999f, hitPart: occupant.health.hediffSet.GetBrain());
-        dinfo.SetIgnoreInstantKillProtection(true);
-        dinfo.SetAllowDamagePropagation(false);
-        occupant.TakeDamage(dinfo);
+        ApplyExtractionCut(pawn);
+        ApplyExtractionCut(pawn);
 
-        var heart = occupant.RaceProps.body.GetPartsWithDef(BodyPartDefOf.Heart).FirstOrDefault();
-        var stomach = occupant.RaceProps.body.GetPartsWithDef(DefDatabase<BodyPartDef>.GetNamed("Stomach")).FirstOrDefault();
-        var lungs = occupant.RaceProps.body.GetPartsWithDef(BodyPartDefOf.Lung).ToList();
+        var heart = pawn.RaceProps.body.GetPartsWithDef(BodyPartDefOf.Heart)
+            .FirstOrDefault(h => !pawn.health.hediffSet.PartIsMissing(h));
+        if (heart != null)
+            pawn.health.AddHediff(HediffMaker.MakeHediff(HediffDefOf.MissingBodyPart, pawn, heart));
 
-        void RemovePart(BodyPartRecord part)
+        foreach (var lung in pawn.RaceProps.body.GetPartsWithDef(BodyPartDefOf.Lung)
+            .Where(l => !pawn.health.hediffSet.PartIsMissing(l)).ToList())
         {
-            if (part != null && !occupant.health.hediffSet.PartIsMissing(part))
-            {
-                Hediff missingPart = HediffMaker.MakeHediff(HediffDefOf.MissingBodyPart, occupant, part);
-                occupant.health.AddHediff(missingPart);
-            }
+            pawn.health.AddHediff(HediffMaker.MakeHediff(HediffDefOf.MissingBodyPart, pawn, lung));
         }
 
-        RemovePart(heart);
-        RemovePart(stomach);
-        lungs.ForEach(RemovePart);
+        pawn.forceNoDeathNotification = false;
 
-        occupant.forceNoDeathNotification = false;
-        ThoughtUtility.GiveThoughtsForPawnExecuted(occupant, null, PawnExecutionKind.OrganHarvesting);
-        Messages.Message("MessagePawnKilledRipscanner".Translate(occupant.Named("PAWN")), occupant, MessageTypeDefOf.NegativeHealthEvent);
+        // Fallback in case the organ removals didn't trigger death (e.g. unusual race).
+        if (!pawn.Dead)
+        {
+            DamageInfo dinfo = new(DamageDefOf.ExecutionCut, 9999f, 999f, hitPart: pawn.health.hediffSet.GetBrain());
+            dinfo.SetIgnoreInstantKillProtection(true);
+            dinfo.SetAllowDamagePropagation(false);
+            pawn.TakeDamage(dinfo);
+        }
+
+        ThoughtUtility.GiveThoughtsForPawnExecuted(pawn, null, PawnExecutionKind.OrganHarvesting);
+        Messages.Message("MessagePawnKilledRipscanner".Translate(pawn.Named("PAWN")), pawn, MessageTypeDefOf.NegativeHealthEvent);
+    }
+
+    // 30% milestone: remove one lung.
+    private static void RemoveOneLung(Pawn pawn)
+    {
+        var lung = pawn.RaceProps.body.GetPartsWithDef(BodyPartDefOf.Lung)
+            .FirstOrDefault(l => !pawn.health.hediffSet.PartIsMissing(l));
+        if (lung == null) return;
+        pawn.health.AddHediff(HediffMaker.MakeHediff(HediffDefOf.MissingBodyPart, pawn, lung));
+    }
+
+    // 60% milestone: remove stomach.
+    private static void RemoveStomach(Pawn pawn)
+    {
+        var stomach = pawn.RaceProps.body.GetPartsWithDef(stomachDef)
+            .FirstOrDefault(s => !pawn.health.hediffSet.PartIsMissing(s));
+        if (stomach == null) return;
+        pawn.health.AddHediff(HediffMaker.MakeHediff(HediffDefOf.MissingBodyPart, pawn, stomach));
+    }
+
+    // Periodic shallow cut to the torso to drive blood loss accumulation.
+    // Adds the injury hediff directly to bypass TakeDamage and its wound sounds/effects.
+    private static void ApplyExtractionCut(Pawn pawn)
+    {
+        if (torsoDef == null) return;
+        var torso = pawn.RaceProps.body.GetPartsWithDef(torsoDef).FirstOrDefault();
+        if (torso == null || pawn.health.hediffSet.PartIsMissing(torso)) return;
+        var injury = (Hediff_Injury)HediffMaker.MakeHediff(HediffDefOf.Cut, pawn, torso);
+        injury.Severity = Rand.Range(1f, 3f);
+        pawn.health.AddHediff(injury);
+    }
+
+    // Keep blood loss in the "Extreme" range (0.6–0.74) — debilitating but not lethal.
+    private static void CapBloodLoss(Pawn pawn)
+    {
+        var bloodLoss = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.BloodLoss);
+        if (bloodLoss != null && bloodLoss.Severity > MaxBloodLossSeverity)
+            bloodLoss.Severity = MaxBloodLossSeverity;
     }
 
     public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Pawn selPawn)
@@ -261,25 +322,55 @@ internal class Building_Extractor : Building_Enterable, IThingHolderWithDrawnPaw
         base.Tick();
         if (State == ExtractorState.Occupied)
         {
+            Pawn? occupant = Occupant;
+            if (occupant != null && !occupant.Dead)
+            {
+                float progress = 1f - (float)fabricationTicksLeft / def.building.subcoreScannerTicks;
+
+                if (!milestone00Applied && progress >= 0.05f)
+                {
+                    milestone00Applied = true;
+                    ApplyExtractionCut(occupant);
+                    ApplyExtractionCut(occupant);
+                }
+
+                if (!milestone30Applied && progress >= 0.3f)
+                {
+                    ApplyExtractionCut(occupant);
+                    ApplyExtractionCut(occupant);
+                    milestone30Applied = true;
+                    RemoveOneLung(occupant);
+                }
+
+                if (!milestone60Applied && progress >= 0.6f)
+                {
+                    ApplyExtractionCut(occupant);
+                    ApplyExtractionCut(occupant);
+                    milestone60Applied = true;
+                    RemoveStomach(occupant);
+                }
+
+                CapBloodLoss(occupant);
+            }
+
             --fabricationTicksLeft;
             if (fabricationTicksLeft <= 0)
             {
+                if(occupant != null && !occupant.Dead)
+                    ApplyFinalExtraction(occupant);
                 EjectContents();
                 GenPlace.TryPlaceThing(ThingMaker.MakeThing(def.building.subcoreScannerOutputDef), InteractionCell, Map, ThingPlaceMode.Near);
-                if (def.building.subcoreScannerComplete != null)
-                    def.building.subcoreScannerComplete.PlayOneShot(this);
+                def.building.subcoreScannerComplete?.PlayOneShot(this);
             }
             if (workingMote == null || workingMote.Destroyed)
-                workingMote = MoteMaker.MakeAttachedOverlay(this, Building_Extractor.MotePerRotationRip[Rotation], Vector3.zero);
+                workingMote = MoteMaker.MakeAttachedOverlay(this, MotePerRotationRip[Rotation], Vector3.zero);
             workingMote?.Maintain();
-            if (effectHusk == null)
-                effectHusk = EffecterDefOf.RipScannerHeadGlow.Spawn(this, MapHeld, Building_Extractor.HuskEffectOffsets[Rotation]);
-            effectHusk.EffectTick((TargetInfo)(Thing)this, (TargetInfo)(Thing)this);
-            if (progressBarEffecter == null)
-                progressBarEffecter = EffecterDefOf.ProgressBar.Spawn();
+            effectHusk ??= EffecterDefOf.RipScannerHeadGlow.Spawn(this, MapHeld, HuskEffectOffsets[Rotation]);
+            effectHusk.EffectTick((TargetInfo)this, (TargetInfo)this);
+            progressBarEffecter ??= EffecterDefOf.ProgressBar.Spawn();
             progressBarEffecter.EffectTick(this, TargetInfo.Invalid);
             MoteProgressBar mote = ((SubEffecter_ProgressBar)progressBarEffecter.children[0]).mote;
-            mote.progress = (float)(1.0 - (double)fabricationTicksLeft / (double)def.building.subcoreScannerTicks);
+            mote.progress = (float)(1.0 - fabricationTicksLeft / def.building.subcoreScannerTicks);
             mote.offsetZ = -0.8f;
             if (def.building.subcoreScannerWorking != null)
             {
@@ -317,25 +408,28 @@ internal class Building_Extractor : Building_Enterable, IThingHolderWithDrawnPaw
 
         if (SelectedPawn == null)
         {
-            Command_Action commandAction = new Command_Action();
-            commandAction.defaultLabel = ("InsertPerson".Translate() + "...");
-            commandAction.defaultDesc = "InsertPersonSubcoreScannerDesc".Translate((NamedArgument)def.label);
-            commandAction.icon = (Texture)Building_SubcoreScanner.InsertPersonIcon.Texture;
-            // ISSUE: reference to a compiler-generated method
-            commandAction.action = new Action(ShowInsertPawnMenu);
+            Command_Action commandAction = new()
+            {
+                defaultLabel = ("InsertPerson".Translate() + "..."),
+                defaultDesc = "InsertPersonSubcoreScannerDesc".Translate((NamedArgument)def.label),
+                icon = Building_SubcoreScanner.InsertPersonIcon.Texture,
+                action = new Action(ShowInsertPawnMenu)
+            };
             if (!PowerOn)
                 commandAction.Disable("NoPower".Translate().CapitalizeFirst());
-            yield return (Gizmo)commandAction;
+            yield return commandAction;
         }
         if (DebugSettings.ShowDevGizmos)
         {
             if (State == ExtractorState.Occupied)
             {
-                Command_Action commandAction = new Command_Action();
-                commandAction.defaultLabel = "DEV: Complete";
-                // ISSUE: reference to a compiler-generated method
-                commandAction.action = new Action(() => { fabricationTicksLeft = 0; });
-                yield return (Gizmo)commandAction;
+                Command_Action commandAction = new()
+
+                {
+                    defaultLabel = "DEV: Complete",
+                    action = new Action(() => { fabricationTicksLeft = 0; })
+                };
+                yield return commandAction;
             }
         }
     }
@@ -343,7 +437,7 @@ internal class Building_Extractor : Building_Enterable, IThingHolderWithDrawnPaw
 
     private void ShowInsertPawnMenu()
     {
-        List<FloatMenuOption> options = new List<FloatMenuOption>();
+        List<FloatMenuOption> options = [];
 
         foreach (Pawn pawn in Map.mapPawns.AllHumanlikeSpawned)
         {
@@ -368,20 +462,18 @@ internal class Building_Extractor : Building_Enterable, IThingHolderWithDrawnPaw
             }
         }
 
-        // If no valid pawns, show fallback option
         if (!options.Any())
         {
             options.Add(new FloatMenuOption("NoExtractablePawns".Translate(), null));
         }
 
-        // Show the menu
         Find.WindowStack.Add(new FloatMenu(options));
     }
 
 
     public override string GetInspectString()
     {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new();
         sb.Append(base.GetInspectString());
         switch (State)
         {
@@ -397,10 +489,13 @@ internal class Building_Extractor : Building_Enterable, IThingHolderWithDrawnPaw
         return sb.ToString();
     }
 
-   public override void ExposeData()
+    public override void ExposeData()
     {
         base.ExposeData();
         Scribe_Values.Look<int>(ref fabricationTicksLeft, "fabricationTicksLeft");
+        Scribe_Values.Look(ref milestone00Applied, "milestone00Applied");
+        Scribe_Values.Look(ref milestone30Applied, "milestone30Applied");
+        Scribe_Values.Look(ref milestone60Applied, "milestone60Applied");
     }
 }
 
