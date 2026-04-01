@@ -1,16 +1,18 @@
 - create bases in space if odyssey
-- add genes with insect flesh, blood to bases showing they turn people into insects to turn them into the drug
+- add configured gene/xenotype packs to bases showing they turn people into ingrdients to turn them into the drug
 - add prisoner, dead bodies and pawn sitting in extractors
 - check compatibility with large faction bases and vanilla expanded settlement mod (forgot the name)
 - one settlement as main base where leader resides
 - add props from gerrymons cannibal style to bases if installed
 
-- have small bases in the world as events where captured pawn or trophie head stand -> 
+- have small bases in the world as events where captured pawn or trophie head stand 
 - expand prisoner places and turn them into small hunting places
 
 - raiders should visit ancient dangers in search of luciferium when player are near them
 
-- remove eltex from pawnkinds
+- finetune raider apparel
+    - remove eltex from pawnkinds
+    - no generic best spacer/ultra armor apporach?
 
 - extractor damage pawn over time during the process removing organs and leading to blood loss
 

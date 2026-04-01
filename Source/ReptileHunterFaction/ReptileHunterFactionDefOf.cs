@@ -31,6 +31,10 @@ namespace ReptileHunterFaction
         public static DutyDef         RHF_CarryCorpseDuty;
         public static JobDef          RHF_CarryCorpseOffMap;
 
+        // Complex looting raid
+        public static DutyDef RHF_ComplexLooterDuty;
+        public static JobDef  RHF_ExploreRoom;
+
         static ReptileHunterFactionDefOf() => DefOfHelper.EnsureInitializedInCtor(typeof(ReptileHunterFactionDefOf));
     }
 }

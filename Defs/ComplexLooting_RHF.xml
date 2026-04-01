@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <DutyDef>
+    <defName>RHF_ComplexLooterDuty</defName>
+    <label>complex looter</label>
+    <thinkNode Class="ThinkNode_Priority">
+      <subNodes>
+        <li Class="ReptileHunterFaction.JobGiver_RHF_ExploreRoom" />
+      </subNodes>
+    </thinkNode>
+  </DutyDef>
+
+  <JobDef>
+    <defName>RHF_ExploreRoom</defName>
+    <driverClass>ReptileHunterFaction.JobDriver_RHF_ExploreRoom</driverClass>
+    <reportString>searching TargetA.</reportString>
+  </JobDef>
+
+</Defs>

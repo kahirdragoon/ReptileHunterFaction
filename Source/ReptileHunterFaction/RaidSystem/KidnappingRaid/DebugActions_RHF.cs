@@ -1,6 +1,7 @@
 using LudeonTK;
 using RimWorld;
 using System.Collections.Generic;
+using System.Linq;
 using Verse;
 
 namespace ReptileHunterFaction;
@@ -25,6 +26,18 @@ public static class DebugActions_RHF
             });
         }
         return nodes;
+    }
+
+    [DebugAction("RHF", "Spawn complex looters", actionType = DebugActionType.Action, allowedGameStates = AllowedGameStates.PlayingOnMap)]
+    private static void SpawnComplexLooters()
+    {
+        var comp = Find.CurrentMap.components.OfType<MapComponent_RHF_ComplexWatch>().FirstOrDefault();
+        if (comp == null)
+        {
+            comp = new MapComponent_RHF_ComplexWatch(Find.CurrentMap);
+            Find.CurrentMap.components.Add(comp);
+        }
+        comp.TrySpawnRaid();
     }
 
     [DebugAction("RHF", "Kidnapping raid (big)...", allowedGameStates = AllowedGameStates.PlayingOnMap)]

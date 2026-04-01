@@ -7,6 +7,10 @@
     <!-- Shown when the selected pawn is missing required organs for extraction -->
     <ExtractorNoRequiredOrgans>Pawn does not have the required organs for extraction.</ExtractorNoRequiredOrgans>
 
+    <!-- ── Complex looting raid letters ── -->
+    <RHF_ComplexLooters_LetterLabel>Hunter scouts spotted</RHF_ComplexLooters_LetterLabel>
+    <RHF_ComplexLooters_LetterText>Hunter scouts have been spotted near the ancient complex. They appear to be after supplies, not your people — for now.</RHF_ComplexLooters_LetterText>
+
     <!-- ── Mod settings window ── -->
     <RHF_Settings_MinQualifyingPawns>Min. qualifying pawns</RHF_Settings_MinQualifyingPawns>
     <RHF_Settings_GeneMatchMode>Gene match mode</RHF_Settings_GeneMatchMode>

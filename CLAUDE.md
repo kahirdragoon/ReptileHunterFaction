@@ -14,6 +14,10 @@ To build: open the solution in Visual Studio (or run `dotnet build`). The compil
 
 There are no automated tests — verification is done by loading the mod in-game. Debug actions are registered in `Source/ReptileHunterFaction/RaidSystem/KidnappingRaid/DebugActions_RHF.cs` and appear under the in-game dev mode debug action menu.
 
+Always check if something can be done with vanilla machanics and behaviour. If it can use it. Dont reinvent the wheel.
+
+Performance is important. Cache when it makes sense. Be very careful with everything that executes per tick.
+
 ## Architecture
 
 ### Two-Tier Raid System
@@ -94,3 +98,6 @@ Beyond `SettlementGeneration_Patches.xml`, two vanilla-compatibility patches run
 ## XML Def Naming Convention
 
 All mod-specific defs use the `RHF_` prefix (e.g., `RHF_ReptileHunters`, `RHF_KidnappingRaid`, `RHF_SBD`). C# class names also follow `*_RHF_*` or `RHF*` patterns.
+
+## C# Conventions
+- use C# 14 features
