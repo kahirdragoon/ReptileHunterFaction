@@ -25,6 +25,12 @@ namespace ReptileHunterFaction
         // Skull extraction
         public static DutyDef RHF_SkullExtractorDuty;
 
+        // Big kidnapping raid
+        public static RaidStrategyDef RHF_KidnappingRaidStrategy_Big;
+        public static DutyDef         RHF_KidnaperDuty_Big;
+        public static DutyDef         RHF_CarryCorpseDuty;
+        public static JobDef          RHF_CarryCorpseOffMap;
+
         static ReptileHunterFactionDefOf() => DefOfHelper.EnsureInitializedInCtor(typeof(ReptileHunterFactionDefOf));
     }
 }

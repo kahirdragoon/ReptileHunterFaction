@@ -186,7 +186,7 @@ public class LordToil_RHF_Assault : LordToil
             {
                 if (!victim.health.hediffSet.HasHead)
                 {
-                    WorldComp_RHFSkulls.Get()?.AddSkull(victim.LabelShort);
+                    WorldComp_SpoilsOfBattle.Get()?.AddSkull(victim.LabelShort);
                     done.Add(victim);
                 }
             }

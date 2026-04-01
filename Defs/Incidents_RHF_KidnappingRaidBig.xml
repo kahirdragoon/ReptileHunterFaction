@@ -1,0 +1,79 @@
+<Defs>
+
+    <!-- ===== Job: carry a player corpse off the map ===== -->
+    <JobDef>
+        <defName>RHF_CarryCorpseOffMap</defName>
+        <driverClass>ReptileHunterFaction.JobDriver_RHF_CarryCorpseOffMap</driverClass>
+        <label>carry corpse and flee</label>
+        <reportString>carrying TargetA off the map.</reportString>
+        <allowOpportunisticPrefix>false</allowOpportunisticPrefix>
+        <collideWithPawns>true</collideWithPawns>
+        <casualInterruptible>false</casualInterruptible>
+    </JobDef>
+
+    <!-- ===== Duty: designated kidnapper (big raid) ===== -->
+    <DutyDef>
+        <defName>RHF_KidnaperDuty_Big</defName>
+        <label>kidnapper (big raid)</label>
+        <thinkNode Class="ThinkNode_Priority">
+            <subNodes>
+                <li Class="ReptileHunterFaction.JobGiver_RHF_KidnapDowned_Big" />
+            </subNodes>
+        </thinkNode>
+    </DutyDef>
+
+    <!-- ===== Duty: designated corpse carrier ===== -->
+    <DutyDef>
+        <defName>RHF_CarryCorpseDuty</defName>
+        <label>corpse carrier</label>
+        <thinkNode Class="ThinkNode_Priority">
+            <subNodes>
+                <li Class="ReptileHunterFaction.JobGiver_RHF_CarryCorpse" />
+            </subNodes>
+        </thinkNode>
+    </DutyDef>
+
+    <!-- ===== Raid strategy: point-based ===== -->
+    <!--
+        SpawnThreats is NOT overridden — the vanilla fallback handles point-based
+        pawn generation using storyteller-assigned parms.points.
+    -->
+    <RaidStrategyDef>
+        <defName>RHF_KidnappingRaidStrategy_Big</defName>
+        <workerClass>ReptileHunterFaction.RaidStrategyWorker_RHF_KidnappingRaidBig</workerClass>
+        <label>mass kidnapping assault</label>
+        <letterLabelEnemy>Mass kidnapping raid</letterLabelEnemy>
+        <arrivalTextEnemy>A large force of reptile hunters is here to storm your colony and kidnap any downed pawns they can reach.</arrivalTextEnemy>
+        <pawnsCanBringFood>false</pawnsCanBringFood>
+        <arriveModes>
+            <li>EdgeWalkIn</li>
+            <li>EdgeWalkInGroups</li>
+            <li>EdgeDrop</li>
+            <li>EdgeDropGroups</li>
+            <li>CenterDrop</li>
+            <li>RandomDrop</li>
+        </arriveModes>
+    </RaidStrategyDef>
+
+    <!-- ===== Incident ===== -->
+    <!--
+        No colonist-count gate. Fires whenever the RHF faction exists and at least
+        one qualifying pawn (colonist, slave, or prisoner) is present.
+        Point budget is assigned by the storyteller as normal.
+    -->
+    <IncidentDef>
+        <defName>RHF_KidnappingRaid_Big</defName>
+        <workerClass>ReptileHunterFaction.IncidentWorker_RHF_KidnappingRaidBig</workerClass>
+        <label>reptile hunter mass kidnapping raid</label>
+        <category>ThreatBig</category>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <baseChance>0.7</baseChance>
+        <minThreatPoints>2000</minThreatPoints>
+        <letterLabel>Reptile hunter mass kidnapping raid</letterLabel>
+        <letterText>A large force of reptile hunters approaches! They will storm your prisons first, then cut down your people — and haul off anyone who falls.</letterText>
+        <letterDef>ThreatBig</letterDef>
+    </IncidentDef>
+
+</Defs>

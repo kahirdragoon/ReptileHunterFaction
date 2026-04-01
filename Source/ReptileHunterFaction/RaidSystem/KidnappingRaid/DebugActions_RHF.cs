@@ -1,20 +1,49 @@
 using LudeonTK;
 using RimWorld;
+using System.Collections.Generic;
 using Verse;
 
 namespace ReptileHunterFaction;
 
 public static class DebugActions_RHF
 {
-    [DebugAction("RHF", "Kidnapping raid", allowedGameStates = AllowedGameStates.PlayingOnMap)]
-    private static void TriggerKidnappingRaid()
+    [DebugAction("RHF", "Kidnapping raid...", allowedGameStates = AllowedGameStates.PlayingOnMap)]
+    private static List<DebugActionNode> TriggerKidnappingRaid()
     {
-        var map = Find.CurrentMap;
-        DefDatabase<IncidentDef>.GetNamed("RHF_KidnappingRaid").Worker.TryExecute(new IncidentParms
+        var nodes = new List<DebugActionNode>();
+        foreach (float pts in DebugActionsUtility.PointsOptions(extended: true))
         {
-            target = map,
-            forced = true,
-            points = StorytellerUtility.DefaultThreatPointsNow(map)
-        });
+            float localPts = pts;
+            nodes.Add(new DebugActionNode(localPts + " points")
+            {
+                action = () => DefDatabase<IncidentDef>.GetNamed("RHF_KidnappingRaid").Worker.TryExecute(new IncidentParms
+                {
+                    target = Find.CurrentMap,
+                    forced = true,
+                    points = localPts
+                })
+            });
+        }
+        return nodes;
+    }
+
+    [DebugAction("RHF", "Kidnapping raid (big)...", allowedGameStates = AllowedGameStates.PlayingOnMap)]
+    private static List<DebugActionNode> TriggerKidnappingRaidBig()
+    {
+        var nodes = new List<DebugActionNode>();
+        foreach (float pts in DebugActionsUtility.PointsOptions(extended: true))
+        {
+            float localPts = pts;
+            nodes.Add(new DebugActionNode(localPts + " points")
+            {
+                action = () => DefDatabase<IncidentDef>.GetNamed("RHF_KidnappingRaid_Big").Worker.TryExecute(new IncidentParms
+                {
+                    target = Find.CurrentMap,
+                    forced = true,
+                    points = localPts
+                })
+            });
+        }
+        return nodes;
     }
 }

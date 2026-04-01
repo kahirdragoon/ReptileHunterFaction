@@ -6,7 +6,7 @@ using Verse.AI.Group;
 
 namespace ReptileHunterFaction;
 
-public class LordJob_RHF_KidnappingRaid : LordJob
+public class LordJob_RHF_KidnappingRaid : LordJob, IKidnappingLordJob
 {
     // ── Kidnapping ───────────────────────────────────────────────────────────
 

@@ -3,7 +3,17 @@
     "allow": [
       "Bash(find 'e:/SteamLibrary/steamapps/common/RimWorld/Mods/Hunter Faction/Defs' -type f -name *.xml)",
       "Bash(grep -i \"modsettings\\\\|mod_.*settings\\\\|settingscontrol\" \"e:/SteamLibrary/steamapps/common/RimWorld/Mods/Hunter Faction/Source/ReptileHunterFaction\"/*.cs)",
-      "Bash(grep -r \"AssaultThing\\\\|AttackMelee\\\\|class DutyDef\\\\b\" 'd:/Rimworld Modding/Rimworld Source' --include=*.cs -l)"
+      "Bash(grep -r \"AssaultThing\\\\|AttackMelee\\\\|class DutyDef\\\\b\" 'd:/Rimworld Modding/Rimworld Source' --include=*.cs -l)",
+      "Bash(find 'd:\\\\Rimworld Modding\\\\Rimworld Source' -type f \\\\\\(-name *Kidnap* -o -name *Carry* -o -name *Exit* -o -name *Retreat* \\\\\\))",
+      "Bash(grep -l \"Retreat\\\\|Flee\\\\|ExitMap\" d:Rimworld ModdingRimworld Source/RimWorld/LordJob*.cs)",
+      "Bash(xargs grep:*)",
+      "Bash(ls \"d:\\\\Rimworld Modding\\\\Rimworld Source\"/RimWorld/*.cs)",
+      "Bash(find 'd:/Rimworld Modding/Rimworld Source' -name Trigger_FractionPawnsLost* -o -name LordToil_ExitMap* -o -name RaidStrategyWorker* -o -name PawnGroupMakerUtility*)",
+      "Bash(find 'd:/Rimworld Modding/Rimworld Source' -name IncidentWorker_RaidEnemy*)",
+      "Bash(find 'd:/Rimworld Modding/Rimworld Source' -name DutyDefOf*)",
+      "Bash(find 'd:/Rimworld Modding/Rimworld Source' -name Toils_Haul* -o -name Lord.cs)",
+      "Bash(find 'd:/Rimworld Modding/Rimworld Source' -name IncidentParmsUtility*)",
+      "Bash(find 'd:/Rimworld Modding/Rimworld Source' -name Pawn_CarryTracker*)"
     ]
   }
 }

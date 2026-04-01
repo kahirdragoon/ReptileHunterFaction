@@ -30,7 +30,7 @@ public class JobDriver_RHF_KidnapAndFlee : JobDriver
 
         this.AddFinishAction(_ =>
         {
-            (pawn.GetLord()?.LordJob as LordJob_RHF_KidnappingRaid)?.OnKidnapComplete(pawn);
+            (pawn.GetLord()?.LordJob as IKidnappingLordJob)?.OnKidnapComplete(pawn);
         });
 
         // --- 1. Walk to downed victim ---

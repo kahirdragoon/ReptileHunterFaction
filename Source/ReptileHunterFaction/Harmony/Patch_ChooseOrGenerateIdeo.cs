@@ -17,15 +17,16 @@ public static class Patch_ChooseOrGenerateIdeo
         if (parms.forFaction?.defName != ReptileHunterFactionDefOf.RHF_ReptileHunters.defName)
             return;
 
-        AddStyleIfNotPresent(__result, "PSECannibal");
-        AddStyleIfNotPresent(__result, "GM_CannibalStyle");
+        AddStyleIfNotPresentButLoaded(__result, "Barbarian");
+        AddStyleIfNotPresentButLoaded(__result, "PSECannibal");
+        AddStyleIfNotPresentButLoaded(__result, "GM_CannibalStyle");
 
         Log.Message($"Added styles to generated ideo for {parms.forFaction.defName}: {string.Join(", ", __result.thingStyleCategories.Select(c => c.category.defName + ":" + c.priority))}");
 
         __result.SortStyleCategories();
     }
 
-    private static void AddStyleIfNotPresent(Ideo ideo, string styleName)
+    private static void AddStyleIfNotPresentButLoaded(Ideo ideo, string styleName)
     {
         var style = DefDatabase<StyleCategoryDef>.GetNamed(styleName, false);
 

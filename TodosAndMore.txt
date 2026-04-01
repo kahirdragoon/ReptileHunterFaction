@@ -2,33 +2,25 @@
 - add genes with insect flesh, blood to bases showing they turn people into insects to turn them into the drug
 - add prisoner, dead bodies and pawn sitting in extractors
 - check compatibility with large faction bases and vanilla expanded settlement mod (forgot the name)
-- expand prisoner places and turn them into small hunting places
 - one settlement as main base where leader resides
 - add props from gerrymons cannibal style to bases if installed
 
-- have small bases in the world as events where captured pawn or trophie head stand
+- have small bases in the world as events where captured pawn or trophie head stand -> 
+- expand prisoner places and turn them into small hunting places
 
 - raiders should visit ancient dangers in search of luciferium when player are near them
 
 - remove eltex from pawnkinds
 
-- extractor damage pawn over time during the process removing organs and leading to blood loss
+- add barbarian style
 
-- raid
-    - after half player pawns are downed or killed stop attacking if no longer being attacked
-    - kidnapp and retreat with corpses
-    - split into 2 raid types? 
-        - group raid with above behaviour
-        - very few pawns raid that immediatly escape once found prey
+- extractor damage pawn over time during the process removing organs and leading to blood loss
 
 - end game like event to capture activate an anti air defense grid to protect against the raids (ends events)
 
 - turn the gene adding into its own mod
     - option for random genes in list
 - make the genes necessary for creating the drug -> no idea what i meant with this
-- turn it into a general hunter mod
-    - use the snake xenotypes only if using B&S. Otherwise use baseliners
-- only raid if hunted pawns in colony
 - trade prisoners with them to gain the drug -> make it configurable
     - or reduce raid size?
 - create stronger pawnkind leader
