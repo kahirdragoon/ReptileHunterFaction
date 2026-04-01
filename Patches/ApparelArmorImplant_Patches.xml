@@ -19,26 +19,5 @@
             </value>
         </nomatch>
     </Operation>
-
-    <Operation Class="PatchOperationConditional">
-        <xpath>Defs/ThingDef[@Name="BodyPartArchotechBase"]/techHediffsTags</xpath>
-        <nomatch Class="PatchOperationAdd">
-            <xpath>Defs/ThingDef[@Name="BodyPartArchotechBase"]</xpath>
-            <value>
-                <techHediffsTags>
-                    <li>Archotech</li>
-                </techHediffsTags>
-            </value>
-        </nomatch>
-        <match Class="PatchOperationConditional">
-            <xpath>Defs/ThingDef[@Name="BodyPartArchotechBase"]/techHediffsTags/li[text()="Archotech"]</xpath>
-            <nomatch Class="PatchOperationAdd">
-                <xpath>Defs/ThingDef[@Name="BodyPartArchotechBase"]/techHediffsTags</xpath>
-                <value>
-                    <li>Archotech</li>
-                </value>
-            </nomatch>
-        </match>
-    </Operation>
     
 </Patch>

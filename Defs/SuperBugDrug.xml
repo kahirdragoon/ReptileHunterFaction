@@ -155,6 +155,9 @@
                 <statOffsets>
                     <ComfyTemperatureMin>-30</ComfyTemperatureMin>
                     <ComfyTemperatureMax>30</ComfyTemperatureMax>
+                    <ArmorRating_Sharp>0.80</ArmorRating_Sharp>
+                    <ArmorRating_Blunt>0.80</ArmorRating_Blunt>
+                    <ArmorRating_Heat>0.80</ArmorRating_Heat>
                 </statOffsets>
                 <makeImmuneTo>
                     <li>RHF_DrugMedicineHediff</li>

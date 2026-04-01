@@ -2,8 +2,6 @@
     <PawnKindDef Name="ReptileHuntersFighterBase" Abstract="True">
         <race>Human</race>
         <defaultFactionDef>RHF_ReptileHunters</defaultFactionDef>
-        <combatEnhancingDrugsChance>1</combatEnhancingDrugsChance>
-        <combatEnhancingDrugsCount>3</combatEnhancingDrugsCount>
         <chemicalAddictionChance>0.1</chemicalAddictionChance>
         <combatEnhancingDrugsChance>0.7</combatEnhancingDrugsChance>
         <combatEnhancingDrugsCount>1~3</combatEnhancingDrugsCount>

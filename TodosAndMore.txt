@@ -12,8 +12,6 @@
 
 - remove eltex from pawnkinds
 
-- add barbarian style
-
 - extractor damage pawn over time during the process removing organs and leading to blood loss
 
 - end game like event to capture activate an anti air defense grid to protect against the raids (ends events)
