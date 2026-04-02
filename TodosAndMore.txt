@@ -12,10 +12,6 @@
     - remove eltex from pawnkinds
     - no generic best spacer/ultra armor apporach?
 
-- if pawn ties inside extractor they should be ejected
-- if occupant is drafted while going into the extractor the extractor should be unclaimed
-
-
 - end game like event to capture activate an anti air defense grid to protect against the raids (ends events)
 
 - turn the gene adding into its own mod

@@ -11,6 +11,11 @@
     <RHF_ComplexLooters_LetterLabel>Hunter scouts spotted</RHF_ComplexLooters_LetterLabel>
     <RHF_ComplexLooters_LetterText>Hunter scouts have been spotted near the ancient complex. They appear to be after supplies, not your people — for now.</RHF_ComplexLooters_LetterText>
 
+    <!-- ── Gift reward payment letters ── -->
+    <RHF_GiftPayment_LetterLabel>RHF payment received</RHF_GiftPayment_LetterLabel>
+    <RHF_GiftPayment_LetterText_WithSBD>The Reptile Hunters have accepted your delivery of {TOTAL} prisoner(s). {QUALIFYING} met their specimen criteria. A payment of {SBD} dose(s) of SBD and {TOTAL} dose(s) of drug medicine has arrived by drop pod.</RHF_GiftPayment_LetterText_WithSBD>
+    <RHF_GiftPayment_LetterText_NoSBD>The Reptile Hunters have accepted your delivery of {TOTAL} prisoner(s). None met their specimen criteria. A payment of {TOTAL} dose(s) of drug medicine has arrived by drop pod.</RHF_GiftPayment_LetterText_NoSBD>
+
     <!-- ── Mod settings window ── -->
     <RHF_Settings_MinQualifyingPawns>Min. qualifying pawns</RHF_Settings_MinQualifyingPawns>
     <RHF_Settings_GeneMatchMode>Gene match mode</RHF_Settings_GeneMatchMode>
