@@ -3,7 +3,7 @@
     <ThingDef ParentName="DrugPillBase">
         <defName>RHF_DrugMedicine</defName>
         <label>drug medicine</label>
-        <description>A pack of herbal concoctions extracted from the drug plant. Boosts the pawn healing capabilities but causes pain, vomitting, makes sleepy and mentally unstable. /n/nThis no effect on Pawns who are already addichted to the super bud drug.</description>
+        <description>A pack of herbal concoctions extracted from the drug plant. Boosts the pawn healing capabilities but can cause pain, vomitting, makes sleepy and mentally unstable. Can be taken multiple times to increase its effectivnes. /n/nThis no effect on Pawns who are already addichted to the super bud drug.</description>
         <descriptionHyperlinks>
             <HediffDef>RHF_DrugMedicineHediff</HediffDef>
         </descriptionHyperlinks>
@@ -143,7 +143,7 @@
         <defName>RHF_DrugMedicineHediff</defName>
         <hediffClass>Hediff_High</hediffClass>
         <label>drug medicine</label>
-        <description>Drug medicine. Strong regenerative properties but makes the pawn mentally unstable.</description>
+        <description>Drug medicine. Strong regenerative properties but can makes the pawn mentally unstable.</description>
         <defaultLabelColor>(0.5,1,0.5)</defaultLabelColor>
         <scenarioCanAdd>true</scenarioCanAdd>
         <maxSeverity>1.0</maxSeverity>

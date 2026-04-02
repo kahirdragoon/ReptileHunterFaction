@@ -20,7 +20,8 @@ public class RaidStrategyWorker_RHF_KidnappingRaid : RaidStrategyWorker
     public override List<Pawn> SpawnThreats(IncidentParms parms)
     {
         Map map = (Map)parms.target;
-        int count = map.mapPawns.FreeColonistsCount - 2;
+        int discount = WorldComp_SpoilsOfBattle.Get()?.ConsumeRaidDiscount() ?? 0;
+        int count = map.mapPawns.FreeColonistsCount - 2 - discount;
         if (count <= 0) return null;
 
         // Build standard group-maker parms; use a high points value so CanGenerateFrom passes.

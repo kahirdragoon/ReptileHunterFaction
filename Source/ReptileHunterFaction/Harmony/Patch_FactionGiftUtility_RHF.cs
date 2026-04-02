@@ -82,6 +82,9 @@ internal static class RHFGiftRewardUtility
             rewards.Add(sbd);
         }
 
+        // Register qualifying prisoners so the next kidnapping raid is reduced.
+        WorldComp_SpoilsOfBattle.Get()?.AddGiftedPrisoners(qualifyingCount);
+
         IntVec3 dropCell = DropCellFinder.RandomDropSpot(homeMap);
         DropPodUtility.DropThingsNear(dropCell, homeMap, rewards, canRoofPunch: false, forbid: false);
 

@@ -25,3 +25,5 @@
     - will break down over time
 - add gene support for big gen mods
 - compromise bionics of pawns with the SBD need to give every pawn installing them SBD ned without the upsides
+
+- finish up descriptions
