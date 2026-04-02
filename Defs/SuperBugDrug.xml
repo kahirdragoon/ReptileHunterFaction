@@ -75,6 +75,7 @@
         <recipeMaker>
             <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
             <workSkill>Intellectual</workSkill>
+            <productCount>2</productCount>
             <recipeUsers>
                 <li>DrugLab</li>
             </recipeUsers>
