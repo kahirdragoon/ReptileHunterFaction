@@ -12,6 +12,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 To build: open the solution in Visual Studio (or run `dotnet build`). The compiled DLL should land in `Assemblies/ReptileHunterFaction.dll`. RimWorld must be installed at its default Steam path for the project references to resolve.
 
+BUILD the dll at the end of every task to verify if there are any errors.
+
 There are no automated tests — verification is done by loading the mod in-game. Debug actions are registered in `Source/ReptileHunterFaction/RaidSystem/KidnappingRaid/DebugActions_RHF.cs` and appear under the in-game dev mode debug action menu.
 
 Always check if something can be done with vanilla machanics and behaviour. If it can use it. Dont reinvent the wheel.

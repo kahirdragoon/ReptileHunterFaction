@@ -323,6 +323,14 @@ internal class Building_Extractor : Building_Enterable, IThingHolderWithDrawnPaw
         if (State == ExtractorState.Occupied)
         {
             Pawn? occupant = Occupant;
+
+            // Eject immediately if the occupant died during extraction
+            if (occupant != null && occupant.Dead)
+            {
+                EjectContents();
+                return;
+            }
+
             if (occupant != null && !occupant.Dead)
             {
                 float progress = 1f - (float)fabricationTicksLeft / def.building.subcoreScannerTicks;
@@ -370,7 +378,7 @@ internal class Building_Extractor : Building_Enterable, IThingHolderWithDrawnPaw
             progressBarEffecter ??= EffecterDefOf.ProgressBar.Spawn();
             progressBarEffecter.EffectTick(this, TargetInfo.Invalid);
             MoteProgressBar mote = ((SubEffecter_ProgressBar)progressBarEffecter.children[0]).mote;
-            mote.progress = (float)(1.0 - fabricationTicksLeft / def.building.subcoreScannerTicks);
+            mote.progress = (float)fabricationTicksLeft / def.building.subcoreScannerTicks;
             mote.offsetZ = -0.8f;
             if (def.building.subcoreScannerWorking != null)
             {
@@ -391,6 +399,18 @@ internal class Building_Extractor : Building_Enterable, IThingHolderWithDrawnPaw
         }
         else
         {
+            // Free the extractor if the selected pawn is no longer actively pathing here
+            // (covers drafted, downed, dead, carried, or any other job interruption)
+            if (selectedPawn != null)
+            {
+                bool stillComing = !selectedPawn.Dead &&
+                                   !selectedPawn.Downed &&
+                                   selectedPawn.CurJob?.def == JobDefOf.EnterBuilding &&
+                                   selectedPawn.CurJob?.targetA.Thing == this;
+                if (!stillComing)
+                    selectedPawn = null;
+            }
+
             effectHusk?.Cleanup();
             effectHusk = null;
             progressBarEffecter?.Cleanup();
