@@ -16,6 +16,7 @@ namespace ReptileHunterFaction
         public static ThingDef RHF_ConcentratedInsectoidBlood;
         public static PawnKindDef RHF_ReptileHuntersFighter_Ranged;
         public static PawnKindDef RHF_ReptileHuntersFighter_Melee;
+        public static PawnKindDef RHF_ReptileHuntersFighter_Boss;
 
         // Kidnapping raid
         public static RaidStrategyDef RHF_KidnappingRaidStrategy;
@@ -27,6 +28,7 @@ namespace ReptileHunterFaction
 
         // Big kidnapping raid
         public static RaidStrategyDef RHF_KidnappingRaidStrategy_Big;
+        public static RaidStrategyDef RHF_KidnappingRaidStrategy_Boss;
         public static DutyDef         RHF_KidnaperDuty_Big;
         public static DutyDef         RHF_CarryCorpseDuty;
         public static JobDef          RHF_CarryCorpseOffMap;

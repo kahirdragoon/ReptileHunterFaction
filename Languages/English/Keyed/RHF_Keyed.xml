@@ -18,6 +18,7 @@
 
     <!-- ── Mod settings window ── -->
     <RHF_Settings_MinQualifyingPawns>Min. qualifying pawns</RHF_Settings_MinQualifyingPawns>
+    <RHF_Settings_MinPawnsForBossRaid>Min. colonists for greatest hunter raid</RHF_Settings_MinPawnsForBossRaid>
     <RHF_Settings_GeneMatchMode>Gene match mode</RHF_Settings_GeneMatchMode>
     <RHF_Settings_AnyGene>Any gene</RHF_Settings_AnyGene>
     <RHF_Settings_AllGenes>All genes</RHF_Settings_AllGenes>

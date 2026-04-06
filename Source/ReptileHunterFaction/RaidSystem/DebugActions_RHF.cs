@@ -8,24 +8,16 @@ namespace ReptileHunterFaction;
 
 public static class DebugActions_RHF
 {
-    [DebugAction("RHF", "Kidnapping raid...", allowedGameStates = AllowedGameStates.PlayingOnMap)]
-    private static List<DebugActionNode> TriggerKidnappingRaid()
+    [DebugAction("RHF", "Kidnapping raid", actionType = DebugActionType.Action, allowedGameStates = AllowedGameStates.PlayingOnMap)]
+    private static void TriggerKidnappingRaid()
     {
-        var nodes = new List<DebugActionNode>();
-        foreach (float pts in DebugActionsUtility.PointsOptions(extended: true))
+        // Points are ignored by the small raid but must be non-zero to pass vanilla validation.
+        DefDatabase<IncidentDef>.GetNamed("RHF_KidnappingRaid").Worker.TryExecute(new IncidentParms
         {
-            float localPts = pts;
-            nodes.Add(new DebugActionNode(localPts + " points")
-            {
-                action = () => DefDatabase<IncidentDef>.GetNamed("RHF_KidnappingRaid").Worker.TryExecute(new IncidentParms
-                {
-                    target = Find.CurrentMap,
-                    forced = true,
-                    points = localPts
-                })
-            });
-        }
-        return nodes;
+            target = Find.CurrentMap,
+            forced = true,
+            points = StorytellerUtility.DefaultThreatPointsNow(Find.CurrentMap)
+        });
     }
 
     [DebugAction("RHF", "Spawn complex looters", actionType = DebugActionType.Action, allowedGameStates = AllowedGameStates.PlayingOnMap)]
@@ -50,6 +42,26 @@ public static class DebugActions_RHF
             nodes.Add(new DebugActionNode(localPts + " points")
             {
                 action = () => DefDatabase<IncidentDef>.GetNamed("RHF_KidnappingRaid_Big").Worker.TryExecute(new IncidentParms
+                {
+                    target = Find.CurrentMap,
+                    forced = true,
+                    points = localPts
+                })
+            });
+        }
+        return nodes;
+    }
+
+    [DebugAction("RHF", "Kidnapping raid (boss)...", allowedGameStates = AllowedGameStates.PlayingOnMap)]
+    private static List<DebugActionNode> TriggerKidnappingRaidBoss()
+    {
+        var nodes = new List<DebugActionNode>();
+        foreach (float pts in DebugActionsUtility.PointsOptions(extended: true))
+        {
+            float localPts = pts;
+            nodes.Add(new DebugActionNode(localPts + " points")
+            {
+                action = () => DefDatabase<IncidentDef>.GetNamed("RHF_KidnappingRaid_Boss").Worker.TryExecute(new IncidentParms
                 {
                     target = Find.CurrentMap,
                     forced = true,

@@ -30,7 +30,7 @@ internal class ReptileHunterFactionMod : Mod
         const float LabelHeight  = 28f;
         const float RowHeight    = 24f;
         const float Padding      = 6f;
-        const float TopAreaHeight = LabelHeight * 2 + Padding * 3;
+        const float TopAreaHeight = LabelHeight * 3 + Padding * 4;
 
         // ── Top controls ───────────────────────────────────────────────
         var listing = new Listing_Standard();
@@ -42,6 +42,12 @@ internal class ReptileHunterFactionMod : Mod
         Widgets.Label(minRow.LeftHalf(), minLabel);
         string minStr = Settings.minQualifyingPawns.ToString();
         Widgets.TextFieldNumeric(minRow.RightHalf(), ref Settings.minQualifyingPawns, ref minStr, 0, 99);
+
+        // Min colonists for boss raid
+        Rect bossRow = listing.GetRect(LabelHeight);
+        Widgets.Label(bossRow.LeftHalf(), "RHF_Settings_MinPawnsForBossRaid".Translate());
+        string bossStr = Settings.minPawnsForBossRaid.ToString();
+        Widgets.TextFieldNumeric(bossRow.RightHalf(), ref Settings.minPawnsForBossRaid, ref bossStr, 1, 99);
 
         // Gene match mode
         Rect modeRow = listing.GetRect(LabelHeight);

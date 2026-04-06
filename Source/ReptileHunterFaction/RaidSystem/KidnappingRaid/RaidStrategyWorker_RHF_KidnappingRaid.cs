@@ -13,7 +13,7 @@ public class RaidStrategyWorker_RHF_KidnappingRaid : RaidStrategyWorker
     }
 
     /// <summary>
-    /// Spawns exactly (free colonists - 1) raiders using the faction's configured
+    /// Spawns exactly (free colonists - 2) raiders using the faction's configured
     /// pawnGroupMakers, picking options by their selectionWeight just like vanilla does —
     /// but for a fixed count instead of a points budget.
     /// </summary>

@@ -76,4 +76,43 @@
         <letterDef>ThreatBig</letterDef>
     </IncidentDef>
 
+
+    <!-- ===== Boss raid strategy ===== -->
+    <RaidStrategyDef>
+        <defName>RHF_KidnappingRaidStrategy_Boss</defName>
+        <workerClass>ReptileHunterFaction.RaidStrategyWorker_RHF_KidnappingRaidBoss</workerClass>
+        <label>greatest hunter assault</label>
+        <letterLabelEnemy>Greatest hunter raid</letterLabelEnemy>
+        <arrivalTextEnemy>The greatest of the reptile hunters leads this assault personally. He will storm your colony alongside his warriors and haul off anyone who falls.</arrivalTextEnemy>
+        <pawnsCanBringFood>false</pawnsCanBringFood>
+        <arriveModes>
+            <li>EdgeWalkIn</li>
+            <li>EdgeWalkInGroups</li>
+            <li>EdgeDrop</li>
+            <li>EdgeDropGroups</li>
+            <li>CenterDrop</li>
+            <li>RandomDrop</li>
+        </arriveModes>
+    </RaidStrategyDef>
+
+    <!-- ===== Boss raid incident ===== -->
+    <!--
+        Same fire conditions: faction exists, at least one qualifying pawn present.
+        Always includes one guaranteed RHF_ReptileHuntersFighter_Boss.
+    -->
+    <IncidentDef>
+        <defName>RHF_KidnappingRaid_Boss</defName>
+        <workerClass>ReptileHunterFaction.IncidentWorker_RHF_KidnappingRaidBoss</workerClass>
+        <label>reptile hunter greatest hunter raid</label>
+        <category>ThreatBig</category>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <baseChance>0.14</baseChance>
+        <minThreatPoints>4000</minThreatPoints>
+        <letterLabel>The greatest hunter comes</letterLabel>
+        <letterText>A large force of reptile hunters approaches! They will storm your prisons first, then cut down your people — and haul off anyone who falls. Theparty is led by greatest of the hunters.</letterText>
+        <letterDef>ThreatBig</letterDef>
+    </IncidentDef>
+
 </Defs>
