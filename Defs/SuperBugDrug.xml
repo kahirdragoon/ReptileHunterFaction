@@ -102,6 +102,7 @@
         <stages>
             <li>
                 <painFactor>0.5</painFactor>
+                <socialFightChanceFactor>1.1</socialFightChanceFactor>
                 <capMods>
                     <li>
                         <capacity>Consciousness</capacity>
@@ -159,6 +160,7 @@
                     <ArmorRating_Sharp>0.80</ArmorRating_Sharp>
                     <ArmorRating_Blunt>0.80</ArmorRating_Blunt>
                     <ArmorRating_Heat>0.80</ArmorRating_Heat>
+                    <MentalBreakThreshold>0.1</MentalBreakThreshold>
                 </statOffsets>
                 <makeImmuneTo>
                     <li>RHF_DrugMedicineHediff</li>

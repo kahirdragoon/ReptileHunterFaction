@@ -6,5 +6,6 @@
     <li IfModActive="ludeon.rimworld.odyssey">Mods/Odyssey</li>
     <li IfModActive="redmattis.lamiasandothersnakes">Mods/Lamia</li>
     <li IfModActive="sarg.alphagenes">Mods/AlphaGenes</li>
+    <li IfModActive="oskarpotocki.vanillafactionsexpanded.core">Mods/VanillaExpandedFramework</li>
   </v1.6>
 </loadFolders>

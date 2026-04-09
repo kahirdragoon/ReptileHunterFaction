@@ -1,8 +1,8 @@
 - add configured gene/xenotype packs to bases showing they turn people into ingrdients to turn them into the drug
 - add prisoner, dead bodies and pawn sitting in extractors
-- check compatibility with large faction bases and vanilla expanded settlement mod (forgot the name)
-- one settlement as main base where leader resides
+- one add leader to settlements
 - add props from gerrymons cannibal style to bases if installed
+- medical drug fields
 
 - have small bases in the world as events where captured pawn or trophie head stand 
 - expand prisoner places and turn them into small hunting places
@@ -10,6 +10,8 @@
 - alternativ groups
     - add small greatest hunter
 - cache genedefs
+
+- sbd drug gives cannibal
 
 - make the genes necessary for creating the drug -> no idea what i meant with this
 - building for scanning for luciferium?
