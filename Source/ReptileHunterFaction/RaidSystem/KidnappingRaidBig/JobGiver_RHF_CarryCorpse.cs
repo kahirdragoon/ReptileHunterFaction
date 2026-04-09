@@ -19,6 +19,15 @@ public class JobGiver_RHF_CarryCorpse : ThinkNode_JobGiver
         Corpse? corpse = lordJob.GetCorpseFor(pawn);
         if (corpse == null || !corpse.Spawned || corpse.Map != pawn.Map) return null;
 
+        // If another pawn already reserved this corpse, clean up the stale assignment rather than
+        // creating a job that will immediately log a reservation conflict and then idle the pawn.
+        if (!pawn.CanReserve(corpse, 1, -1, null, false))
+        {
+            lordJob.OnCorpseCarryComplete(pawn);
+            pawn.mindState.duty = new PawnDuty(DutyDefOf.AssaultColony);
+            return null;
+        }
+
         Job job = JobMaker.MakeJob(ReptileHunterFactionDefOf.RHF_CarryCorpseOffMap, corpse);
         job.count = 1;
         return job;

@@ -1,4 +1,3 @@
-- create bases in space if odyssey
 - add configured gene/xenotype packs to bases showing they turn people into ingrdients to turn them into the drug
 - add prisoner, dead bodies and pawn sitting in extractors
 - check compatibility with large faction bases and vanilla expanded settlement mod (forgot the name)
@@ -11,14 +10,6 @@
 - alternativ groups
     - add small greatest hunter
 - cache genedefs
-
-- boss patch add alpha genes larger body if bs is not present
-
-- finetune raider apparel
-    - remove eltex from pawnkinds
-    - no generic best spacer/ultra armor apporach?
-
-- end game like event to capture activate an anti air defense grid to protect against the raids (ends events)
 
 - make the genes necessary for creating the drug -> no idea what i meant with this
 - building for scanning for luciferium?

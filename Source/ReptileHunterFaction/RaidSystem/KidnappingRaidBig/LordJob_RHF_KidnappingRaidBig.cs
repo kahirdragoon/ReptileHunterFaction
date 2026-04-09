@@ -137,7 +137,11 @@ public class LordJob_RHF_KidnappingRaidBig : LordJob, IKidnappingLordJob
         }
 
         foreach (Pawn c in toRemove)
+        {
             OnCorpseCarryComplete(c);
+            if (!c.Dead && !c.Downed)
+                c.mindState.duty = new PawnDuty(DutyDefOf.AssaultColony);
+        }
     }
 
     // ── Lord callbacks ───────────────────────────────────────────────────────
