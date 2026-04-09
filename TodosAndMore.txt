@@ -10,6 +10,7 @@
 
 - alternativ groups
     - add small greatest hunter
+- cache genedefs
 
 - boss patch add alpha genes larger body if bs is not present
 

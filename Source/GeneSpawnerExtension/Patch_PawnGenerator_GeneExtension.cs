@@ -180,10 +180,9 @@ public static class Patch_PawnGenerator_GeneExtension
         if (config?.genes == null || config.genes.Count == 0)
             return;
 
-        var maxMet = GeneTuning.BiostatRange.TrueMax;
-        var currentMet = pawnGenes.GenesListForReading.Where(g => g.Active).Sum(g => g.def.biostatMet);
+        var minMet = GeneTuning.BiostatRange.TrueMin;
 
-        if (currentMet <= maxMet)
+        if (pawnGenes.GenesListForReading.Where(g => g.Active).Sum(g => g.def.biostatMet) >= minMet)
             return;
 
         ResolveGeneDefs(config.genes, pawnGenes.pawn);
@@ -194,20 +193,20 @@ public static class Patch_PawnGenerator_GeneExtension
 
         foreach (var info in offsetGenes)
         {
-            if (currentMet <= maxMet)
+            // Current met has to be calculated inside the loop since adding new genes can disable existing ones
+            if (pawnGenes.GenesListForReading.Where(g => g.Active).Sum(g => g.def.biostatMet) >= minMet)
                 break;
 
-            if (info.geneDef == null || info.geneDef.biostatMet >= 0)
+            if (info.geneDef == null || info.geneDef.biostatMet <= 0)
                 continue;
 
             if (pawnGenes.HasActiveGene(info.geneDef))
                 continue;
 
-            if (!Rand.Chance(info.chance))
+            if (info.chance <= 1f && !Rand.Chance(info.chance))
                 continue;
 
             pawnGenes.AddGene(info.geneDef, info.xenogene);
-            currentMet += info.geneDef.biostatMet;
         }
     }
 
