@@ -6,11 +6,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Reptile Hunter Faction** is a RimWorld 1.6 mod by kahirdragoon that adds a hostile alien faction (Reptile Hunters) who raid colonies to kidnap pawns and extract biological material to produce the "Super Bug Drug" (SBD). The mod is a mix of XML definitions, Harmony patches, and custom C# game logic compiled into `Assemblies/ReptileHunterFaction.dll`.
 
+The original already decompiled Rimworld Source can be found under D:\Rimworld Modding\Rimworld Source
+
 ## Build & Development
 
 **Solution**: `ReptileHunterFaction.sln` (Visual Studio)
 
-To build: open the solution in Visual Studio (or run `dotnet build`). The compiled DLL should land in `Assemblies/ReptileHunterFaction.dll`. RimWorld must be installed at its default Steam path for the project references to resolve.
+To build: open the solution in Visual Studio, or run `dotnet build` from `Source/ReptileHunterFaction/`. The compiled DLL lands in `1.6/Assemblies/ReptileHunterFaction.dll`. RimWorld must be installed at its default Steam path for the project references to resolve.
 
 BUILD the dll at the end of every task to verify if there are any errors.
 
@@ -22,9 +24,9 @@ Performance is important. Cache when it makes sense. Be very careful with everyt
 
 ## Architecture
 
-### Two-Tier Raid System
+### Three-Tier Raid System
 
-The mod uses two distinct raid types with parallel but separate class hierarchies:
+The mod uses three distinct raid types with parallel but separate class hierarchies:
 
 **Small Raid** (`KidnappingRaid`) — targeted, fixed-force kidnapping:
 - Force = (free colonist count − 1), ignores storyteller points
@@ -37,7 +39,12 @@ The mod uses two distinct raid types with parallel but separate class hierarchie
 - Carries downed/dead pawns off-map
 - Files: same pattern but `*Big` variants + `LordToil_RHF_RetreatWithCarry` and `JobDriver_RHF_CarryCorpseOffMap`
 
-Both share `IKidnappingLordJob.cs` interface and the pawn-targeting logic in `RHFPawnTargetingUtility.cs`.
+**Boss Raid** (`KidnappingRaidBoss`) — extends Large Raid with a minimum colonist gate:
+- Only fires when free colonist count ≥ `minPawnsForBossRaid` (mod setting)
+- Uses `RHF_KidnappingRaidStrategy_Boss`; otherwise identical to Large Raid flow
+- File: `IncidentWorker_RHF_KidnappingRaidBoss` (subclasses `IncidentWorker_RHF_KidnappingRaidBig`)
+
+All three share `IKidnappingLordJob.cs` interface and the pawn-targeting logic in `RHFPawnTargetingUtility.cs`.
 
 ### Pawn Targeting & Mod Settings
 
@@ -73,11 +80,20 @@ When an RHF raider kills a player pawn, `Patch_Pawn_Kill_RHF.cs` notifies `LordJ
 
 When a pawn is kidnapped: `QuestNode_GetKidnappedPlayerPawn` fires → generates an `RHF_OpportunitySite_KidnappedPawnPrison` site → `SitePartWorker_RHFPrison` + `GenStep_RHFPrison` build a prison map. Quest timeout is 12–28 hours; missing it sends the pawn to "further processing".
 
+### Complex Looting
+
+When RHF raids an ancient complex or site with crates, a separate lord job handles systematic looting:
+- Raiders are assigned rooms; each explores and loots crates via `JobGiver_RHF_LootCrate` / `JobDriver_RHF_OpenAndLoot`
+- `MapComponent_RHF_ComplexWatch` monitors the map and fires `ThreatAwakened` / `AllCratesDone` memos to trigger retreat
+- `Patch_Map_FinalizeInit_RHF.cs` installs the component on relevant maps
+- Files: `LordJob_RHF_ComplexLooting`, `LordToil_RHF_ComplexLoot`, `MapComponent_RHF_ComplexWatch`
+
 ### Other Harmony Patches
 
 - `Patch_ChooseOrGenerateIdeo.cs` — postfix on `IdeoGenerator.GenerateIdeo`; forces Barbarian, PSECannibal, and GM_CannibalStyle themes onto generated RHF ideologies (gracefully skips styles not loaded)
 - `Patch_GlobalSetting_Clear.cs` — hooks `GlobalSettings.Clear()` to also reset `BaseGen_RHFGlobalSettings`
 - `Patch_PawnGenerator_RemoveSBDFromHuners.cs` — strips SBD items from RHF pawns at generation so raiders don't spawn carrying the drug
+- `Patch_FactionGiftUtility_RHF.cs` / `Patch_GiftAcceptance_RHF.cs` — handle prisoner gifting/trading to the RHF faction; qualifying prisoners (matching targeting criteria) reduce raid size or provide other benefits
 
 ### Optional Mod Compatibility
 
@@ -102,4 +118,5 @@ Beyond `SettlementGeneration_Patches.xml`, two vanilla-compatibility patches run
 All mod-specific defs use the `RHF_` prefix (e.g., `RHF_ReptileHunters`, `RHF_KidnappingRaid`, `RHF_SBD`). C# class names also follow `*_RHF_*` or `RHF*` patterns.
 
 ## C# Conventions
-- use C# 14 features
+- Use C# 14 features (`LangVersion>latest` is set)
+- Target framework is `net481` (Mono/.NET Framework 4.8.1) — C# 14 syntax compiles fine, but .NET 5+ runtime APIs do not exist; rely only on APIs available in .NET Framework 4.8

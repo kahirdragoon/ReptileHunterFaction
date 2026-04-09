@@ -136,16 +136,7 @@
             <xenotypeChances />
         </xenotypeSet>
         <modExtensions>
-            <li Class="ReptileHunterFaction.SpawnGenesExtension">
-                <randomOrder>false</randomOrder>
-                <respectMetabolicEfficiency>true</respectMetabolicEfficiency>
-                <maxNumberOfGenesAdded>5</maxNumberOfGenesAdded>
-                <genes>
-                    <li>
-                        <defName>ArchiteMetabolism</defName>
-                    </li>
-                </genes>
-            </li>
+            
         </modExtensions>
     </PawnKindDef>
 </Defs>

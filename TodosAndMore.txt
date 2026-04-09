@@ -14,19 +14,6 @@
 
 - end game like event to capture activate an anti air defense grid to protect against the raids (ends events)
 
-- turn the gene adding into its own mod
-    - option for random genes in list
-    - add single gene 
-        - optional 5 chance
-    - add group of genes 
-        - percentage per group
-        - max numbe per group
-        - percntage per gene in group
-        - split positive genes and randomly choosen negative genes to offset the effects
-        - mayRequire should work for genes and groups
-        - optionally prefix or change the xenotype name
-        - pnöy add gene if no already present
-
 - make the genes necessary for creating the drug -> no idea what i meant with this
 - create stronger pawnkind leader
 - building for scanning for luciferium?
