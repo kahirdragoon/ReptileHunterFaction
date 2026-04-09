@@ -8,15 +8,6 @@ using Verse;
 
 namespace GeneSpawnerExtension;
 
-[StaticConstructorOnStartup]
-internal static class GeneSpawnerExtensionInit
-{
-    static GeneSpawnerExtensionInit()
-    {
-        new Harmony("kahirdragoon.GeneSpawnerExtension").PatchAll(Assembly.GetExecutingAssembly());
-    }
-}
-
 [HarmonyPatch(typeof(PawnGenerator), nameof(PawnGenerator.GeneratePawn), [typeof(PawnGenerationRequest)])]
 public static class Patch_PawnGenerator_GeneExtension
 {
@@ -28,13 +19,25 @@ public static class Patch_PawnGenerator_GeneExtension
             if (__result?.genes == null)
                 return;
 
-            var pawnKindExtension = __result.kindDef?.GetModExtension<SpawnGenesExtension>();
             var factionExtension = __result.Faction?.def.GetModExtension<SpawnGenesExtension>();
+            var pawnKindExtension = __result.kindDef?.GetModExtension<SpawnGenesExtension>();
 
-            if (pawnKindExtension != null)
-                ApplyExtension(pawnKindExtension, __result);
             if (factionExtension != null)
                 ApplyExtension(factionExtension, __result);
+            if (pawnKindExtension != null)
+                ApplyExtension(pawnKindExtension, __result);
+
+            // Player-configured settings (applied after XML extensions)
+            if (GeneSpawnerExtensionMod.Settings != null)
+            {
+                var factionConfig = GeneSpawnerExtensionMod.Settings.GetFactionConfig(__result.Faction?.def?.defName);
+                var pawnKindConfig = GeneSpawnerExtensionMod.Settings.GetPawnKindConfig(__result.kindDef?.defName);
+
+                if (factionConfig != null)
+                    ApplyConfig(factionConfig, __result);
+                if (pawnKindConfig != null)
+                    ApplyConfig(pawnKindConfig, __result);
+            }
         }
         catch (Exception ex)
         {
@@ -49,13 +52,13 @@ public static class Patch_PawnGenerator_GeneExtension
 
         var pawnGenes = pawn.genes;
         var groups = extension.randomOrder
-            ? extension.groups.InRandomOrder().ToList()
+            ? [.. extension.groups.InRandomOrder()]
             : extension.groups;
 
         var groupsApplied = 0;
         foreach (var group in groups)
         {
-            if (extension.maxGroupsApplied.HasValue && groupsApplied >= extension.maxGroupsApplied.Value)
+            if (extension.maxGroupsApplied >= 0 && groupsApplied >= extension.maxGroupsApplied)
                 break;
 
             if (!ConditionsMet(group))
@@ -71,37 +74,69 @@ public static class Patch_PawnGenerator_GeneExtension
         }
 
         ApplyMetOffsetGenes(extension.metOffsetGenes, pawnGenes);
-        ApplyXenotypeNameOverrides(extension, pawnGenes);
+        ApplyXenotypeNameOverrides(extension.xenotypeNamePrefix, extension.xenotypeNameSuffix, extension.xenotypeNameReplacement, pawnGenes);
+    }
+
+    private static void ApplyConfig(DefGeneSpawnConfig config, Pawn pawn)
+    {
+        if (config.groups == null || config.groups.Count == 0)
+            return;
+
+        var pawnGenes = pawn.genes;
+        var groups = config.randomOrder
+            ? config.groups.InRandomOrder().ToList()
+            : config.groups;
+
+        var groupsApplied = 0;
+        foreach (var group in groups)
+        {
+            if (config.maxGroupsApplied >= 0 && groupsApplied >= config.maxGroupsApplied)
+                break;
+
+            if (!ConditionsMet(group))
+                continue;
+
+            if (!Rand.Chance(group.chance))
+                continue;
+
+            ApplyGenes(group, pawnGenes);
+            ApplyMetOffsetGenes(group.metOffsetGenes, pawnGenes);
+
+            groupsApplied++;
+        }
+
+        ApplyMetOffsetGenes(config.metOffsetGenes, pawnGenes);
+        ApplyXenotypeNameOverrides(config.xenotypeNamePrefix, config.xenotypeNameSuffix, config.xenotypeNameReplacement, pawnGenes);
     }
 
     private static bool ConditionsMet(GeneGroup group)
     {
         var map = Find.AnyPlayerHomeMap;
 
-        if (group.minRaidPoints.HasValue || group.maxRaidPoints.HasValue)
+        if (group.minRaidPoints >= 0 || group.maxRaidPoints >= 0)
         {
             var raidPoints = map != null ? StorytellerUtility.DefaultThreatPointsNow(map) : 0f;
-            if (group.minRaidPoints.HasValue && raidPoints < group.minRaidPoints.Value)
+            if (group.minRaidPoints >= 0 && raidPoints < group.minRaidPoints)
                 return false;
-            if (group.maxRaidPoints.HasValue && raidPoints > group.maxRaidPoints.Value)
+            if (group.maxRaidPoints >= 0 && raidPoints > group.maxRaidPoints)
                 return false;
         }
 
-        if (group.minWealth.HasValue || group.maxWealth.HasValue)
+        if (group.minWealth >= 0 || group.maxWealth >= 0)
         {
             var wealth = map?.wealthWatcher?.WealthTotal ?? 0f;
-            if (group.minWealth.HasValue && wealth < group.minWealth.Value)
+            if (group.minWealth >= 0 && wealth < group.minWealth)
                 return false;
-            if (group.maxWealth.HasValue && wealth > group.maxWealth.Value)
+            if (group.maxWealth >= 0 && wealth > group.maxWealth)
                 return false;
         }
 
-        if (group.minDay.HasValue || group.maxDay.HasValue)
+        if (group.minDay >= 0 || group.maxDay >= 0)
         {
             var day = Find.TickManager.TicksGame / (float)GenDate.TicksPerDay;
-            if (group.minDay.HasValue && day < group.minDay.Value)
+            if (group.minDay >= 0 && day < group.minDay)
                 return false;
-            if (group.maxDay.HasValue && day > group.maxDay.Value)
+            if (group.maxDay >= 0 && day > group.maxDay)
                 return false;
         }
 
@@ -154,7 +189,7 @@ public static class Patch_PawnGenerator_GeneExtension
         ResolveGeneDefs(config.genes, pawnGenes.pawn);
 
         var offsetGenes = config.randomOrder
-            ? config.genes.InRandomOrder().ToList()
+            ? [.. config.genes.InRandomOrder()]
             : config.genes;
 
         foreach (var info in offsetGenes)
@@ -189,18 +224,18 @@ public static class Patch_PawnGenerator_GeneExtension
         }
     }
 
-    private static void ApplyXenotypeNameOverrides(SpawnGenesExtension extension, Pawn_GeneTracker pawnGenes)
+    private static void ApplyXenotypeNameOverrides(string? prefix, string? suffix, string? replacement, Pawn_GeneTracker pawnGenes)
     {
-        if (extension.xenotypeNameReplacement != null)
+        if (replacement != null)
         {
-            pawnGenes.xenotypeName = extension.xenotypeNameReplacement;
+            pawnGenes.xenotypeName = replacement;
             return;
         }
 
-        if (extension.xenotypeNamePrefix != null)
-            pawnGenes.xenotypeName = extension.xenotypeNamePrefix + " " + pawnGenes.xenotypeName;
+        if (prefix != null)
+            pawnGenes.xenotypeName = prefix + " " + pawnGenes.xenotypeName;
 
-        if (extension.xenotypeNameSuffix != null)
-            pawnGenes.xenotypeName = pawnGenes.xenotypeName + " " + extension.xenotypeNameSuffix;
+        if (suffix != null)
+            pawnGenes.xenotypeName = pawnGenes.xenotypeName + " " + suffix;
     }
 }

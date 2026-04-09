@@ -83,10 +83,19 @@
             <li Class="GeneSpawnerExtension.SpawnGenesExtension">
                 <randomOrder>false</randomOrder>
                 <groups>
-                    <li MayRequire="mytigio.harbingerkin">
+                    <li>
                         <genes>
-                            <li>
+                            <li MayRequire="mytigio.harbingerkin">
                                 <defName>myt_flesheater</defName>
+                            </li>
+                            <li MayRequire="redmattis.bigsmall.core">
+                                <defName>Cannibal</defName>
+                            </li>
+                            <li MayRequire="redmattis.bigsmall.core">
+                                <defName>BS_Bloodlust</defName>
+                            </li>
+                            <li MayRequire="redmattis.bigsmall.core">
+                                <defName>BS_Diet_Carnivore</defName>
                             </li>
                         </genes>
                     </li>

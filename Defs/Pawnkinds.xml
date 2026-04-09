@@ -113,7 +113,7 @@
         </weaponTags>
         <apparelRequired>
         </apparelRequired>
-        <itemQuality>masterwork</itemQuality>
+        <itemQuality>Masterwork</itemQuality>
         <skills>
             <li>
                 <skill>Shooting</skill>
@@ -136,7 +136,156 @@
             <xenotypeChances />
         </xenotypeSet>
         <modExtensions>
-            
+            <li Class="GeneSpawnerExtension.SpawnGenesExtension">
+                <randomOrder>false</randomOrder>
+                <groups>
+                    <li MayRequire="mytigio.harbingerkin">
+                        <genes>
+                            <li>
+                                <defName>myt_flesheater</defName>
+                            </li>
+                        </genes>
+                    </li>
+                    <li>
+                        <genes>
+                            <li>
+                                <defName>MoveSpeed_VeryQuick</defName>
+                            </li>
+                            <li>
+                                <defName>ToxResist_Total</defName>
+                            </li>
+                            <li>
+                                <defName>FireResistant</defName>
+                            </li>
+                            <li>
+                                <defName>MeleeDamage_Strong</defName>
+                            </li>
+                            <li>
+                                <defName>Robust</defName>
+                            </li>
+                            <li>
+                                <defName>DarkVision</defName>
+                            </li>
+                            <li>
+                                <defName>ElongatedFingers</defName>
+                            </li>
+                            <li>
+                                <defName>WoundHealing_SuperFast</defName>
+                            </li>
+                            <li>
+                                <defName>Unstoppable</defName>
+                            </li>
+                            <li>
+                                <defName>AptitudeRemarkable_Shooting</defName>
+                            </li>
+                            <li>
+                                <defName>AptitudeRemarkable_Melee</defName>
+                            </li>
+                            <li>
+                                <defName>PerfectImmunity</defName>
+                            </li>
+                            <li>
+                                <defName>ArchiteMetabolism</defName>
+                            </li>
+                            <li MayRequire="redmattis.bigsmall.core">
+                                <defName>BS_Concussive_Resistance</defName>
+                            </li>
+                            <li MayRequire="redmattis.bigsmall.core">
+                                <defName>VU_Lesser_Unliving_Resilience</defName>
+                            </li>
+                            <li MayRequire="redmattis.bigsmall.core">
+                                <defName>BS_Fast_TotalHealing</defName>
+                            </li>
+                            <li MayRequire="redmattis.bigsmall.core">
+                                <defName>FireImmunity</defName>
+                            </li>
+                            <li MayRequire="redmattis.bigsmall.core">
+                                <defName>HalfJotunFrame</defName>
+                            </li>
+                            <li MayRequire="sarg.alphagenes">
+                                <defName>AG_ArmourMajor</defName>
+                            </li>
+                            <li MayRequire="sarg.alphagenes">
+                                <defName>AG_FeraliskEyes</defName>
+                            </li>
+                        </genes>
+                    </li>
+                </groups>
+                <metOffsetGenes>
+                    <randomOrder>true</randomOrder>
+                    <genes>
+                        <li>
+                            <defName>Mood_Depressive</defName>
+                        </li>
+                        <li>
+                            <defName>KillThirst</defName>
+                        </li>
+                        <li>
+                            <defName>Sterile</defName>
+                        </li>
+                        <li>
+                            <defName>Instability_Major</defName>
+                        </li>
+                        <li>
+                            <defName>AptitudeTerrible_Construction</defName>
+                        </li>
+                        <li>
+                            <defName>AptitudeTerrible_Mining</defName>
+                        </li>
+                        <li>
+                            <defName>AptitudeTerrible_Cooking</defName>
+                        </li>
+                        <li>
+                            <defName>AptitudeTerrible_Plants</defName>
+                        </li>
+                        <li>
+                            <defName>AptitudeTerrible_Animals</defName>
+                        </li>
+                        <li>
+                            <defName>AptitudeTerrible_Social</defName>
+                        </li>
+                        <li>
+                            <defName>AptitudeTerrible_Artistic</defName>
+                        </li>
+                        <li>
+                            <defName>AptitudeTerrible_Crafting</defName>
+                        </li>
+                        <li>
+                            <defName>AptitudeTerrible_Medicine</defName>
+                        </li>
+                        <li>
+                            <defName>AptitudeTerrible_Intellectual</defName>
+                        </li>
+                        <li>
+                            <defName>ChemicalDependency_Psychite</defName>
+                        </li>
+                        <li>
+                            <defName>ChemicalDependency_WakeUp</defName>
+                        </li>
+                        <li>
+                            <defName>ChemicalDependency_GoJuice</defName>
+                        </li>
+                        <li>
+                            <defName>Aggression_HyperAggressive</defName>
+                        </li>
+                        <li>
+                            <defName>Pain_Extra</defName>
+                        </li>
+                        <li>
+                            <defName>Beauty_VeryUgly</defName>
+                        </li>
+                        <li MayRequire="sarg.alphagenes">
+                            <defName>AG_MiningYield_Low</defName>
+                        </li>
+                        <li MayRequire="sarg.alphagenes">
+                            <defName>AG_FasterAging</defName>
+                        </li>
+                        <li MayRequire="sarg.alphagenes">
+                            <defName>AG_ReducedFertile</defName>
+                        </li>
+                    </genes>
+                </metOffsetGenes>
+            </li>
         </modExtensions>
     </PawnKindDef>
 </Defs>

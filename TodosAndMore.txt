@@ -8,6 +8,11 @@
 - have small bases in the world as events where captured pawn or trophie head stand 
 - expand prisoner places and turn them into small hunting places
 
+- alternativ groups
+    - add small greatest hunter
+
+- boss patch add alpha genes larger body if bs is not present
+
 - finetune raider apparel
     - remove eltex from pawnkinds
     - no generic best spacer/ultra armor apporach?
