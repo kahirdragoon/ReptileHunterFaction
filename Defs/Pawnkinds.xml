@@ -139,13 +139,6 @@
             <li Class="GeneSpawnerExtension.SpawnGenesExtension">
                 <randomOrder>false</randomOrder>
                 <groups>
-                    <li MayRequire="mytigio.harbingerkin">
-                        <genes>
-                            <li>
-                                <defName>myt_flesheater</defName>
-                            </li>
-                        </genes>
-                    </li>
                     <li>
                         <genes>
                             <li>
@@ -201,9 +194,6 @@
                             </li>
                             <li MayRequire="redmattis.bigsmall.core">
                                 <defName>HalfJotunFrame</defName>
-                            </li>
-                            <li MayRequire="sarg.alphagenes">
-                                <defName>AG_ArmourMajor</defName>
                             </li>
                             <li MayRequire="sarg.alphagenes">
                                 <defName>AG_FeraliskEyes</defName>
@@ -279,9 +269,6 @@
                         </li>
                         <li MayRequire="sarg.alphagenes">
                             <defName>AG_FasterAging</defName>
-                        </li>
-                        <li MayRequire="sarg.alphagenes">
-                            <defName>AG_ReducedFertile</defName>
                         </li>
                     </genes>
                 </metOffsetGenes>

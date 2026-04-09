@@ -21,10 +21,8 @@
 - end game like event to capture activate an anti air defense grid to protect against the raids (ends events)
 
 - make the genes necessary for creating the drug -> no idea what i meant with this
-- create stronger pawnkind leader
 - building for scanning for luciferium?
     - can be found at settlements or prison outpost
     - will break down over time
-- add gene support for big gen mods
 
 - finish up descriptions
