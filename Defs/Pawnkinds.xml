@@ -19,6 +19,9 @@
             <li>BeltDefensePop</li>
             <li>SpacerOrUltraTechApparelOrArmor</li>
         </apparelTags>
+        <apparelDisallowTags>
+            <li>Psychic</li>
+        </apparelDisallowTags>
         <techHediffsChance>0.8</techHediffsChance>
         <techHediffsMoney>200000~350000</techHediffsMoney>
         <techHediffsMaxAmount>25</techHediffsMaxAmount>
