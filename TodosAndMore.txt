@@ -3,6 +3,9 @@
 - one add leader to settlements
 - add props from gerrymons cannibal style to bases if installed
 - medical drug fields
+- add barracks
+
+- pirate using jump pack if they have them?
 
 - have small bases in the world as events where captured pawn or trophie head stand 
 - expand prisoner places and turn them into small hunting places
@@ -19,3 +22,5 @@
     - will break down over time
 
 - finish up descriptions
+
+- icons and images

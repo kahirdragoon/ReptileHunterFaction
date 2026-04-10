@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+    <!-- House 1 -->
+
+    <KCSG.StructureLayoutDef>
+        <defName>PH_House1</defName>
+        <layouts>
+            <li>
+                <li>Wall_BlocksGranite,Autodoor_Steel,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
+                <li>Wall_BlocksGranite,.,Table1x2c_WoodLog_Morbid_East,.,GibbetCage_Steel,Wall_BlocksGranite</li>
+                <li>Wall_BlocksGranite,.,.,.,MinifiedThing,Wall_BlocksGranite</li>
+                <li>Wall_BlocksGranite,.,.,.,Armchair_Cloth_Cannibal_West,Wall_BlocksGranite</li>
+                <li>Wall_BlocksGranite,WoodLog,.,.,Shelf_WoodLog_South,Wall_BlocksGranite</li>
+                <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
+            </li>
+            <li>
+                <li>.,.,.,.,.,.</li>
+                <li>.,.,Meat_Human,GM_Cannibal_MealBoney,.,.</li>
+                <li>.,.,.,.,WallLamp_Morbid,.</li>
+                <li>.,.,.,.,.,.</li>
+                <li>.,Bed_WoodLog_East,.,.,.,.</li>
+                <li>.,.,.,.,.,.</li>
+            </li>
+            <li>
+                <li>.,.,.,.,.,.</li>
+                <li>.,.,GM_Cannibal_MealBoneyTribal,.,.,.</li>
+                <li>.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.</li>
+            </li>
+        </layouts>
+        <terrainGrid>
+            <li>FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone</li>
+            <li>FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone</li>
+            <li>FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone</li>
+            <li>FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone</li>
+            <li>FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone</li>
+            <li>FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone</li>
+        </terrainGrid>
+        <randomizeWallStuffAtGen>true</randomizeWallStuffAtGen>
+        <tags>
+            <li>PH_House</li>
+        </tags>
+    </KCSG.StructureLayoutDef>
+
+    <!-- House 2 -->
+
+    <KCSG.StructureLayoutDef>
+        <defName>PH_House2</defName>
+        <layouts>
+            <li>
+                <li>Wall_BlocksGranite,Wall_BlocksGranite,Autodoor_Steel,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,.,.,.</li>
+                <li>Wall_BlocksGranite,.,.,.,Table1x2c_WoodLog_Morbid_North,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
+                <li>Wall_BlocksGranite,Dresser_WoodLog_Cannibal_East,.,.,.,Wall_BlocksGranite,.,SleepingSpot_West,Wall_BlocksGranite</li>
+                <li>Wall_BlocksGranite,.,.,.,.,Door_Steel,.,GM_Cannibal_BonePileRotateble,Wall_BlocksGranite</li>
+                <li>Wall_BlocksGranite,Bed_WoodLog_South,Armchair_Cloth_Cannibal_South,.,Shelf_WoodLog_South,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
+                <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,.,.,.</li>
+            </li>
+            <li>
+                <li>.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,GM_Cannibal_MealBoneyTribal,.,.,.,.</li>
+                <li>.,.,.,.,GM_Cannibal_MealMeat,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,MinifiedThing,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.</li>
+            </li>
+            <li>
+                <li>.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,WallLamp_Morbid,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.</li>
+            </li>
+        </layouts>
+        <terrainGrid>
+            <li>FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.,.,.</li>
+            <li>FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone</li>
+            <li>FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone</li>
+            <li>FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone</li>
+            <li>FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone</li>
+            <li>FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.,.,.</li>
+        </terrainGrid>
+        <randomizeWallStuffAtGen>true</randomizeWallStuffAtGen>
+        <tags>
+            <li>PH_House</li>
+        </tags>
+    </KCSG.StructureLayoutDef>
+
+</Defs>

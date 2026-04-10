@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+    <!-- <KCSG.SymbolDef>
+        <defName>Altar_Grand_BlocksGranite_Cannibal</defName>
+        <thing>Altar_Grand</thing>
+        <stuff>BlocksGranite</stuff>
+        <styleCategory>GM_CannibalStyle</styleCategory>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>Armchair_Cloth_Cannibal</defName>
+        <thing>Armchair</thing>
+        <stuff>Cloth</stuff>
+        <styleCategory>GM_CannibalStyle</styleCategory>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>Brazier_Steel_Cannibal</defName>
+        <thing>Brazier</thing>
+        <stuff>Steel</stuff>
+        <styleCategory>GM_CannibalStyle</styleCategory>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>Couch_Cloth_Cannibal</defName>
+        <thing>Couch</thing>
+        <stuff>Cloth</stuff>
+        <styleCategory>GM_CannibalStyle</styleCategory>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>Drape_Cloth_Cannibal</defName>
+        <thing>Drape</thing>
+        <stuff>Cloth</stuff>
+        <styleCategory>GM_CannibalStyle</styleCategory>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>Dresser_WoodLog_Cannibal</defName>
+        <thing>Dresser</thing>
+        <stuff>WoodLog</stuff>
+        <styleCategory>GM_CannibalStyle</styleCategory>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>GM_Cannibal_BonePileRotateble</defName>
+        <thing>GM_Cannibal_BonePileRotateble</thing>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>GM_Cannibal_BonePileSmall</defName>
+        <thing>GM_Cannibal_BonePileSmall</thing>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>GM_Cannibal_BoneSpine</defName>
+        <thing>GM_Cannibal_BoneSpine</thing>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>GM_Cannibal_Bowl</defName>
+        <thing>GM_Cannibal_Bowl</thing>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>GM_Cannibal_EffigyLarge</defName>
+        <thing>GM_Cannibal_EffigyLarge</thing>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>GM_Cannibal_GoreCrate</defName>
+        <thing>GM_Cannibal_GoreCrate</thing>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>GM_Cannibal_MealBoney</defName>
+        <thing>GM_Cannibal_MealBoney</thing>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>GM_Cannibal_MealBoneyTribal</defName>
+        <thing>GM_Cannibal_MealBoneyTribal</thing>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>GM_Cannibal_MealCorpse</defName>
+        <thing>GM_Cannibal_MealCorpse</thing>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>GM_Cannibal_MealMeat</defName>
+        <thing>GM_Cannibal_MealMeat</thing>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>GM_Cannibal_MeatPlateLarge</defName>
+        <thing>GM_Cannibal_MeatPlateLarge</thing>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>GM_Cannibal_SkullBloody</defName>
+        <thing>GM_Cannibal_SkullBloody</thing>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>GM_Cannibal_SkullBrazier</defName>
+        <thing>GM_Cannibal_SkullBrazier</thing>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>GM_Cannibal_SkullCupB</defName>
+        <thing>GM_Cannibal_SkullCupB</thing>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>RHF_SBD_Extractor</defName>
+        <thing>RHF_SBD_Extractor</thing>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>Table1x2c_WoodLog_Morbid</defName>
+        <thing>Table1x2c</thing>
+        <stuff>WoodLog</stuff>
+        <styleCategory>Morbid</styleCategory>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>Throne_Gold_Cannibal</defName>
+        <thing>Throne</thing>
+        <stuff>Gold</stuff>
+        <styleCategory>GM_CannibalStyle</styleCategory>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>WallLamp_Morbid</defName>
+        <thing>WallLamp</thing>
+        <styleCategory>Morbid</styleCategory>
+    </KCSG.SymbolDef> -->
+
+</Defs>

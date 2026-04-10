@@ -230,25 +230,7 @@
                 <preventBridgeable>true</preventBridgeable>
                 <tryFindFreeArea>True</tryFindFreeArea>
                 <symbolResolvers>
-                    <li>kcsg_randomdamage</li>
-                    <li>kcsg_randomfilth</li>
-                    <li>kcsg_randomterrainremoval</li>
-                    <li>kcsg_randomroofremoval</li>
-                    <li>kcsg_randomitemremoval</li>
-                    <li>kcsg_removeperishable</li>
-                    <li>kcsg_destroyrefuelablelightsource</li>
-                    <li>kcsg_scatterstuffaround</li>
                 </symbolResolvers>
-                <filthTypes>
-                    <li>Filth_Dirt</li>
-                    <li>Filth_Trash</li>
-                    <li>Filth_RubbleBuilding</li>
-                </filthTypes>
-                <scatterThings>
-                    <li>Gold</li>
-                    <li>Silver</li>
-                </scatterThings>
-                <scatterChance>0.02</scatterChance>
                 <chooseFromSettlements>
                     <li>PH_Settlement</li>
                 </chooseFromSettlements>
