@@ -230,6 +230,7 @@
                 <preventBridgeable>true</preventBridgeable>
                 <tryFindFreeArea>True</tryFindFreeArea>
                 <symbolResolvers>
+                    <li>rhf_assignBoss</li>
                 </symbolResolvers>
                 <chooseFromSettlements>
                     <li>PH_Settlement</li>

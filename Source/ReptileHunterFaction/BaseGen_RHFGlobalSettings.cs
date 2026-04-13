@@ -14,7 +14,6 @@ public static class BaseGen_RHFGlobalSettings
     public static int maxExtractionRooms = 0;
     public static int druglabsResolved = 0;
     public static int maxDruglabs = 0;
-
     public static void Clear()
     {
         prisonsResolved = 0;

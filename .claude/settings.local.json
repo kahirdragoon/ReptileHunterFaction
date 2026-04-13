@@ -4,7 +4,11 @@
       "Bash(dotnet build:*)",
       "Bash(grep -l \"StructureLayoutDef\" \"e:/SteamLibrary/steamapps/common/RimWorld/Mods/Hunter Faction/Mods/VanillaExpandedFramework/Defs/\"*.xml)",
       "Bash(python3 -)",
-      "Bash(python)"
+      "Bash(python)",
+      "Read(//d/Rimworld Modding/**)",
+      "Bash(cat)",
+      "Read(//tmp/**)",
+      "Bash(powershell -Command ':*)"
     ]
   }
 }

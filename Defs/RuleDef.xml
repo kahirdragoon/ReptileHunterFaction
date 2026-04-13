@@ -73,4 +73,13 @@
         </resolvers>
     </RuleDef>
 
+
+    <RuleDef>
+        <defName>RHF_AssignBoss</defName>
+        <symbol>rhf_assignBoss</symbol>
+        <resolvers>
+            <li Class="ReptileHunterFaction.SymbolResolver_RHF_AssignBoss" />
+        </resolvers>
+    </RuleDef>
+
 </Defs>
