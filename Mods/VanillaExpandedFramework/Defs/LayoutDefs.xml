@@ -5,9 +5,9 @@
 
   <KCSG.SettlementLayoutDef>
     <defName>PH_Settlement</defName>
-    <settlementSize>80,80</settlementSize>
+    <settlementSize>75,75</settlementSize>
     <centerBuildings>
-      <centerSize>55,55</centerSize>
+      <centerSize>60,60</centerSize>
       <forceClean>true</forceClean>
       <allowedStructures>
         <li>
@@ -40,10 +40,10 @@
         </li>
         <li>
           <count>2~5</count>
-          <tag>PH_Storage</tag>
+          <tag>PH_Vault</tag>
         </li>
         <li>
-          <count>2~4</count>
+          <count>2~6</count>
           <tag>PH_Energy</tag>
         </li>
       </allowedStructures>
@@ -56,16 +56,34 @@
         </li>
         <li>
           <count>2~4</count>
+          <tag>PH_Barracks</tag>
+        </li>
+        <li>
+          <count>2~4</count>
+          <tag>PH_DrugField</tag>
+        </li>
+        <li>
+          <count>2~4</count>
           <tag>PH_Battery</tag>
         </li>
         <li>
-          <count>4~10</count>
+          <count>4~15</count>
           <tag>PH_Defense</tag>
         </li>
       </allowedStructures>
     </peripheralBuildings>
     <stuffableOptions>
       <randomizeFurniture>true</randomizeFurniture>
+      <disallowedWallStuff>
+        <li>Jade</li>
+        <li>Gold</li>
+        <li>Silver</li>
+      </disallowedWallStuff>
+      <excludedFunitureDefs>
+        <li>Barricade</li>
+        <li>Sandbags</li>
+        <li>Fence</li>
+      </excludedFunitureDefs>
     </stuffableOptions>
     <propsOptions>
       <scatterProps>true</scatterProps>
@@ -89,6 +107,19 @@
         <li MayRequire="VanillaExpanded.VFEPropsandDecor">VFEPD_ConcreteBags</li>
         <li MayRequire="VanillaExpanded.VFEPropsandDecor">VFEPD_WoodenLogs</li>
         <li MayRequire="VanillaExpanded.VFEPropsandDecor">VFEPD_WoodenLogsLarge</li>
+        <li MayRequire="GM.Cannibal.Style">GM_Cannibal_EffigySkull</li>
+        <li MayRequire="GM.Cannibal.Style">GM_Cannibal_EffigySkullDouble</li>
+        <li MayRequire="GM.Cannibal.Style">GM_Cannibal_EffigyLarge</li>
+        <li MayRequire="GM.Cannibal.Style">GM_Cannibal_SkullClean</li>
+        <li MayRequire="GM.Cannibal.Style">GM_Cannibal_SkullBloody</li>
+        <li MayRequire="GM.Cannibal.Style">GM_Cannibal_BonePileSmall</li>
+        <li MayRequire="GM.Cannibal.Style">GM_Cannibal_BonePileRotateble</li>
+        <li MayRequire="GM.Cannibal.Style">GM_Cannibal_BonePelvic</li>
+        <li MayRequire="GM.Cannibal.Style">GM_Cannibal_BoneSpine</li>
+        <li MayRequire="GM.Cannibal.Style">GM_Cannibal_SkullBrazier</li>
+        <li MayRequire="GM.Cannibal.Style">GM_Cannibal_StatueGreenPact</li>
+        <li MayRequire="GM.Cannibal.Style">GM_Cannibal_GoreCrate</li>
+        <li MayRequire="GM.Cannibal.Style">GM_Cannibal_GoreCart</li>
       </scatterPropsDefs>
     </propsOptions>
     <defenseOptions>
@@ -100,7 +131,6 @@
         <li>Turret_MiniTurret</li>
         <li>Turret_Autocannon</li>
         <li>Turret_Sniper</li>
-        <li MayRequire="vanillaexpanded.vfesecurity">VFES_SmallRepulsor</li>
         <li MayRequire="vanillaexpanded.vfesecurity">VFES_Turret_MilitaryTurret</li>
         <li MayRequire="vanillaexpanded.vfesecurity">VFES_Turret_ArmoredTurret</li>
         <li MayRequire="vanillaexpanded.vfesecurity">VFES_Turret_ShotgunTurret</li>
@@ -110,7 +140,10 @@
         <li MayRequire="vanillaexpanded.vfesecurity">VFES_Turret_ChargeRailgun</li>
       </allowedTurretsDefs>
       <addMortars>true</addMortars>
-      <pawnGroupMultiplier>1.3</pawnGroupMultiplier>
+      <allowedMortarsDefs>
+       <li>Turret_Mortar</li>
+     </allowedMortarsDefs>
+      <pawnGroupMultiplier>1.5</pawnGroupMultiplier>
     </defenseOptions>
     <stockpileOptions>
       <fillStorageBuildings>true</fillStorageBuildings>
@@ -125,12 +158,9 @@
         <li>MedicineUltratech</li>
         <li>Plasteel</li>
         <li>Hyperweave</li>
-        <li MayRequire="Ludeon.RimWorld.Biotech">SubcoreRegular</li>
         <li MayRequire="Ludeon.RimWorld.Biotech">SubcoreHigh</li>
         <li MayRequire="Ludeon.RimWorld.Biotech">NanostructuringChip</li>
         <li MayRequire="Ludeon.RimWorld.Royalty">BroadshieldCore</li>
-        <li MayRequire="Ludeon.RimWorld.Biotech">HemogenPack</li>
-        <li MayRequire="Ludeon.RimWorld.Biotech">Genepack</li>
         <li MayRequire="Ludeon.RimWorld.Anomaly">VoidsightSerum</li>
         <li MayRequire="Ludeon.RimWorld.Anomaly">MetalbloodSerum</li>
         <li MayRequire="Ludeon.RimWorld.Anomaly">JuggernautSerum</li>
@@ -195,7 +225,8 @@
         <li>OrbitalTargeterPowerBeam</li>
         <li>TornadoGenerator</li>
       </fillWithDefs>
-      <fillChance>0.5</fillChance>
+      <maxValueStackIncrease>100</maxValueStackIncrease>
+      <stockpileValueMultiplier>1.5</stockpileValueMultiplier>
     </stockpileOptions>
   </KCSG.SettlementLayoutDef>
 

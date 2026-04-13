@@ -5,21 +5,22 @@
 
     <KCSG.StructureLayoutDef>
         <defName>PH_AltarRoom</defName>
+        <randomRotation>true</randomRotation>
         <layouts>
             <li>
                 <li>.,.,.,.,GM_Cannibal_EffigyLarge,.,.,.,GM_Cannibal_EffigyLarge,.,.,.,.</li>
                 <li>.,.,.,Wall_Obsidian,Wall_Obsidian,Wall_Obsidian,Door_Steel,Wall_Obsidian,Wall_Obsidian,Wall_Obsidian,.,.,.</li>
                 <li>.,.,Wall_Obsidian,Wall_Obsidian,.,.,.,.,.,Wall_Obsidian,Wall_Obsidian,.,.</li>
                 <li>.,Wall_Obsidian,Wall_Obsidian,.,.,.,.,.,.,.,Wall_Obsidian,Wall_Obsidian,.</li>
-                <li>Wall_Obsidian,Wall_Obsidian,.,Steel,.,.,.,.,.,Steel,.,Wall_Obsidian,Wall_Obsidian</li>
+                <li>Wall_Obsidian,Wall_Obsidian,.,.,.,.,.,.,.,.,.,Wall_Obsidian,Wall_Obsidian</li>
                 <li>Wall_Obsidian,.,.,.,.,.,.,.,.,.,.,.,Wall_Obsidian</li>
                 <li>Wall_Obsidian,Table1x2c_WoodLog_Morbid_South,.,.,.,.,.,.,.,.,.,Table1x2c_WoodLog_Morbid_South,Wall_Obsidian</li>
                 <li>Wall_Obsidian,.,.,GM_Cannibal_SkullBrazier,.,.,Altar_Grand_BlocksGranite_Cannibal_North,.,.,GM_Cannibal_SkullBrazier,.,.,Wall_Obsidian</li>
                 <li>Wall_Obsidian,.,.,.,.,.,.,.,.,.,.,.,Wall_Obsidian</li>
                 <li>Wall_Obsidian,Table1x2c_WoodLog_Morbid_South,.,.,.,.,.,.,.,.,.,Table1x2c_WoodLog_Morbid_South,Wall_Obsidian</li>
-                <li>Wall_Obsidian,Wall_Obsidian,.,Steel,.,.,GM_Cannibal_SkullBrazier,.,.,Steel,.,Wall_Obsidian,Wall_Obsidian</li>
+                <li>Wall_Obsidian,Wall_Obsidian,.,.,.,.,GM_Cannibal_SkullBrazier,.,.,.,.,Wall_Obsidian,Wall_Obsidian</li>
                 <li>.,Wall_Obsidian,Wall_Obsidian,.,.,.,.,.,.,.,Wall_Obsidian,Wall_Obsidian,.</li>
-                <li>.,.,Wall_Obsidian,Wall_Obsidian,Table1x2c_WoodLog_Morbid,.,.,Table1x2c_WoodLog_Morbid,.,Wall_Obsidian,Wall_Obsidian,.,.</li>
+                <li>.,.,Wall_Obsidian,Wall_Obsidian,Table1x2c_WoodLog_Morbid_East,.,.,Table1x2c_WoodLog_Morbid_East,.,Wall_Obsidian,Wall_Obsidian,.,.</li>
                 <li>.,.,.,Wall_Obsidian,Wall_Obsidian,Wall_Obsidian,Wall_Obsidian,Wall_Obsidian,Wall_Obsidian,Wall_Obsidian,.,.,.</li>
             </li>
             <li>
@@ -96,43 +97,11 @@
         </tags>
     </KCSG.StructureLayoutDef>
 
-    <!-- Battery -->
-
-    <KCSG.StructureLayoutDef>
-        <defName>PH_Battery</defName>
-        <layouts>
-            <li>
-                <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
-                <li>Autodoor_Steel_Techist,.,.,.,.,.,.,Autodoor_Steel_Techist</li>
-                <li>Wall_BlocksGranite,Battery_North,Battery_North,Battery_North,Battery_North,Battery_North,Battery_North,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,.,.,.,.,.,.,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
-            </li>
-            <li>
-                <li>.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.</li>
-                <li>.,WallLamp_Morbid_West,.,.,.,.,WallLamp_Morbid_East,.</li>
-                <li>.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.</li>
-            </li>
-        </layouts>
-        <terrainGrid>
-            <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>
-            <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>
-            <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>
-            <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>
-            <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>
-        </terrainGrid>
-        <randomizeWallStuffAtGen>true</randomizeWallStuffAtGen>
-        <tags>
-            <li>PH_Battery</li>
-        </tags>
-    </KCSG.StructureLayoutDef>
-
     <!-- Butchery -->
 
     <KCSG.StructureLayoutDef>
         <defName>PH_Butchery</defName>
+        <randomRotation>true</randomRotation>
         <layouts>
             <li>
                 <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
@@ -181,6 +150,7 @@
 
     <KCSG.StructureLayoutDef>
         <defName>PH_DrugLab</defName>
+        <randomRotation>true</randomRotation>
         <layouts>
             <li>
                 <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Autodoor_Steel,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
@@ -223,6 +193,7 @@
 
     <KCSG.StructureLayoutDef>
         <defName>PH_ExtractorRoom</defName>
+        <randomRotation>true</randomRotation>
         <layouts>
             <li>
                 <li>.,.,.,.,.,.,.,.,GM_Cannibal_GoreCrate_East,.,.,.,.</li>
@@ -230,12 +201,12 @@
                 <li>Wall_BlocksGranite,SleepingSpot_East,.,.,Wall_BlocksGranite,.,.,.,Wall_BlocksGranite,.,.,SleepingSpot_West,Wall_BlocksGranite</li>
                 <li>Wall_BlocksGranite,SleepingSpot_East,.,.,Door_Steel,.,.,.,Door_Steel,.,.,SleepingSpot_West,Wall_BlocksGranite</li>
                 <li>Wall_BlocksGranite,SleepingSpot_East,.,.,Wall_BlocksGranite,.,.,.,Wall_BlocksGranite,.,.,SleepingSpot_West,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,SleepingSpot_East,.,.,Steel,MinifiedThing,Steel,MinifiedThing,Wall_BlocksGranite,.,.,SleepingSpot_West,Wall_BlocksGranite</li>
+                <li>Wall_BlocksGranite,SleepingSpot_East,.,.,.,.,.,.,Wall_BlocksGranite,.,.,SleepingSpot_West,Wall_BlocksGranite</li>
                 <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,.,.,.,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
                 <li>.,.,Wall_BlocksGranite,.,.,.,.,.,.,.,Wall_BlocksGranite,.,.</li>
                 <li>.,.,Wall_BlocksGranite,.,.,.,.,.,.,.,Wall_BlocksGranite,.,.</li>
                 <li>.,.,Wall_BlocksGranite,.,RHF_SBD_Extractor_North,.,.,.,RHF_SBD_Extractor_North,.,Wall_BlocksGranite,.,.</li>
-                <li>.,.,Wall_BlocksGranite,.,.,.,MinifiedThing,.,.,.,Wall_BlocksGranite,.,.</li>
+                <li>.,.,Wall_BlocksGranite,.,.,.,.,.,.,.,Wall_BlocksGranite,.,.</li>
                 <li>.,.,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,BlocksGranite,.</li>
             </li>
             <li>
@@ -244,12 +215,12 @@
                 <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
                 <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
                 <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,Wall_BlocksGranite,WallLamp_Morbid,.,WallLamp_Morbid,.,.,.,.,.</li>
+                <li>.,.,.,.,Wall_BlocksGranite,WallLamp_Morbid_West,.,WallLamp_Morbid_East,.,.,.,.,.</li>
                 <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
                 <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
                 <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
                 <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,Steel,WallLamp_Morbid,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,WallLamp_Morbid,.,.,.,.,.,.</li>
                 <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
             </li>
         </layouts>
@@ -277,20 +248,21 @@
 
     <KCSG.StructureLayoutDef>
         <defName>PH_Genelab</defName>
+        <randomRotation>true</randomRotation>
         <layouts>
             <li>
-                <li>.,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Steel</li>
+                <li>.,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,.</li>
                 <li>Wall_BlocksGranite,Wall_BlocksGranite,SleepingSpot_North,SleepingSpot_North,SleepingSpot_North,SleepingSpot_North,SleepingSpot_North,SleepingSpot_North,Wall_BlocksGranite,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,Steel,.,.,.,.,.,.,Steel,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,Steel,.,.,.,.,.,.,Steel,Wall_BlocksGranite</li>
+                <li>Wall_BlocksGranite,.,.,.,.,.,.,.,.,Wall_BlocksGranite</li>
+                <li>Wall_BlocksGranite,.,.,.,.,.,.,.,.,Wall_BlocksGranite</li>
                 <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Door_Steel,Door_Steel,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
                 <li>Wall_BlocksGranite,.,.,.,.,.,.,.,.,Wall_BlocksGranite</li>
                 <li>Autodoor_Steel,.,.,.,.,.,.,.,.,Autodoor_Steel</li>
-                <li>Steel,MinifiedThing,.,.,.,.,.,Steel,MinifiedThing,Wall_BlocksGranite</li>
+                <li>.,.,.,.,.,.,.,.,.,Wall_BlocksGranite</li>
                 <li>Wall_BlocksGranite,.,.,.,.,.,.,.,.,Wall_BlocksGranite</li>
                 <li>Wall_BlocksGranite,GeneBank_East,.,GeneAssembler_South,.,.,GeneAssembler_South,.,GeneBank_East,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,Wall_BlocksGranite,Steel,GeneProcessor,.,GeneProcessor,.,Steel,Wall_BlocksGranite,Wall_BlocksGranite</li>
-                <li>.,Wall_BlocksGranite,Steel,.,.,.,.,Steel,Wall_BlocksGranite,.</li>
+                <li>Wall_BlocksGranite,Wall_BlocksGranite,.,GeneProcessor,.,GeneProcessor,.,.,Wall_BlocksGranite,Wall_BlocksGranite</li>
+                <li>.,Wall_BlocksGranite,.,.,.,.,.,.,Wall_BlocksGranite,.</li>
                 <li>.,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,.</li>
             </li>
             <li>
@@ -334,17 +306,18 @@
 
     <KCSG.StructureLayoutDef>
         <defName>PH_PodLauncher</defName>
+        <randomRotation>true</randomRotation>
         <layouts>
             <li>
                 <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
                 <li>Wall_BlocksGranite,.,.,.,.,.,.,Wall_BlocksGranite</li>
                 <li>Wall_BlocksGranite,.,.,.,PodLauncher_North,TransportPod,.,Wall_BlocksGranite</li>
-                <li>Autodoor_Steel_Techist,.,TransportPod,PodLauncher_South,.,.,.,Autodoor_Steel_Techist</li>
+                <li>Autodoor_Steel,.,TransportPod,PodLauncher_South,.,.,.,Autodoor_Steel</li>
                 <li>Wall_BlocksGranite,WallLamp_Morbid_West,.,.,PodLauncher_North,TransportPod,WallLamp_Morbid_East,Wall_BlocksGranite</li>
                 <li>Wall_BlocksGranite,.,TransportPod,PodLauncher_South,.,.,.,Wall_BlocksGranite</li>
                 <li>Wall_BlocksGranite,.,.,.,PodLauncher_North,TransportPod,.,Wall_BlocksGranite</li>
                 <li>Wall_BlocksGranite,WallLamp_Morbid_West,TransportPod,PodLauncher_South,.,.,WallLamp_Morbid_East,Wall_BlocksGranite</li>
-                <li>Autodoor_Steel_Techist,.,.,.,PodLauncher_North,TransportPod,.,Autodoor_Steel_Techist</li>
+                <li>Autodoor_Steel,.,.,.,PodLauncher_North,TransportPod,.,Autodoor_Steel</li>
                 <li>Wall_BlocksGranite,.,TransportPod,PodLauncher_South,.,.,.,Wall_BlocksGranite</li>
                 <li>Wall_BlocksGranite,.,.,.,.,.,.,Wall_BlocksGranite</li>
                 <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
@@ -371,67 +344,20 @@
         </tags>
     </KCSG.StructureLayoutDef>
 
-    <!-- Storage -->
-
-    <KCSG.StructureLayoutDef>
-        <defName>PH_Storage</defName>
-        <layouts>
-            <li>
-                <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Autodoor_Steel_Techist,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Autodoor_Steel_Techist,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,Wall_BlocksGranite,.,Shelf_WoodLog_North,.,.,Shelf_WoodLog_North,.,Shelf_WoodLog_West,Wall_BlocksGranite,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,Wall_BlocksGranite,Shelf_WoodLog_East,.,.,FirefoamPopper,.,.,.,Wall_BlocksGranite,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,Wall_BlocksGranite,.,.,.,.,Shelf_WoodLog_West,.,Shelf_WoodLog_West,Wall_BlocksGranite,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,Wall_BlocksGranite,Shelf_WoodLog_East,.,Shelf_WoodLog_East,.,.,.,.,Wall_BlocksGranite,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,Wall_BlocksGranite,.,.,.,.,.,.,Shelf_WoodLog_West,Wall_BlocksGranite,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,Wall_BlocksGranite,Shelf_WoodLog_East,.,Shelf_WoodLog_South,ShelfSmall_WoodLog_South,.,Shelf_WoodLog_South,.,Wall_BlocksGranite,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
-            </li>
-            <li>
-                <li>.,.,.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,WallLamp_Morbid_West,.,.,.,.,.,WallLamp_Morbid_East,.,.</li>
-                <li>.,.,.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.,.,.,.</li>
-            </li>
-        </layouts>
-        <terrainGrid>
-            <li>MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile</li>
-            <li>MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile</li>
-            <li>MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile</li>
-            <li>MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile</li>
-            <li>MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile</li>
-            <li>MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile</li>
-            <li>MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile</li>
-            <li>MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile</li>
-            <li>MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile</li>
-            <li>MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile</li>
-        </terrainGrid>
-        <randomizeWallStuffAtGen>true</randomizeWallStuffAtGen>
-        <tags>
-            <li>PH_Storage</li>
-        </tags>
-    </KCSG.StructureLayoutDef>
-
     <!-- Throne Room -->
 
     <KCSG.StructureLayoutDef>
         <defName>PH_ThroneRoom</defName>
+        <randomRotation>true</randomRotation>
         <layouts>
             <li>
                 <li>Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Autodoor_Steel,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium</li>
-                <li>Wall_Uranium,.,.,Steel,.,Steel,Steel,Drape_Cloth_Cannibal_West,Wall_Uranium</li>
+                <li>Wall_Uranium,.,.,.,.,.,.,Drape_Cloth_Cannibal_West,Wall_Uranium</li>
                 <li>Wall_Uranium,Drape_Cloth_Cannibal_East,.,.,.,.,.,.,Wall_Uranium</li>
                 <li>Wall_Uranium,WallLamp_Morbid,.,.,.,.,.,WallLamp_Morbid,Wall_Uranium</li>
                 <li>Wall_Uranium,WoodLog,Cloth,.,Throne_Gold_Cannibal_South,.,WoodLog,Cloth,Wall_Uranium</li>
-                <li>Wall_Uranium,Drape_Cloth_Cannibal_North,.,Gold,Gold,.,Drape_Cloth_Cannibal_North,.,Wall_Uranium</li>
-                <li>Wall_Uranium,Wall_Uranium,Wall_Uranium,Uranium,Wall_Uranium,Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium</li>
+                <li>Wall_Uranium,Drape_Cloth_Cannibal_North,.,.,.,.,Drape_Cloth_Cannibal_North,.,Wall_Uranium</li>
+                <li>Wall_Uranium,Wall_Uranium,Wall_Uranium,.,Wall_Uranium,.,Wall_Uranium,Wall_Uranium,Wall_Uranium</li>
                 <li>Uranium,Wall_Uranium,.,.,.,.,ShelfSmall_WoodLog_West,Wall_Uranium,.</li>
                 <li>.,Wall_Uranium,Dresser_WoodLog_Cannibal,.,.,.,Couch_Cloth_Cannibal_West,Wall_Uranium,.</li>
                 <li>.,Wall_Uranium,Bed_WoodLog_East,.,WallLamp_Morbid,.,.,Wall_Uranium,.</li>
@@ -454,21 +380,8 @@
                 <li>.,.,.,.,.,.,.,.,.</li>
                 <li>.,.,.,.,.,.,.,.,.</li>
                 <li>.,.,.,.,.,.,.,.,.</li>
-                <li>.,Meat_Human,.,.,.,.,.,GM_Cannibal_MeatPlateLarge_West,.</li>
+                <li>.,.,.,.,.,.,.,GM_Cannibal_MeatPlateLarge_West,.</li>
                 <li>.,GM_Cannibal_MeatPlateLarge_East,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.,.</li>
-            </li>
-            <li>
-                <li>.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,Meat_Human,.</li>
-                <li>.,.,.,.,.,.,.,.,.</li>
                 <li>.,.,.,.,.,.,.,.,.</li>
                 <li>.,.,.,.,.,.,.,.,.</li>
                 <li>.,.,.,.,.,.,.,.,.</li>
@@ -498,5 +411,49 @@
             <li>PH_ThroneRoom</li>
         </tags>
     </KCSG.StructureLayoutDef>
+
+    <KCSG.StructureLayoutDef>
+  <defName>PH_Barracks1</defName>
+        <randomRotation>true</randomRotation>
+  <layouts>
+    <li>
+      <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
+      <li>Wall_BlocksGranite,.,Bed_WoodLog_North,EndTable_WoodLog_North,Bed_WoodLog_North,EndTable_WoodLog_North,Bed_WoodLog_North,EndTable_WoodLog_North,Bed_WoodLog_North,EndTable_WoodLog_North,Bed_WoodLog_North,.,Wall_BlocksGranite</li>
+      <li>Wall_BlocksGranite,.,.,.,.,.,.,.,.,.,.,.,Wall_BlocksGranite</li>
+      <li>Wall_BlocksGranite,WallLamp_West,.,.,.,.,.,.,.,.,.,WallLamp_East,Wall_BlocksGranite</li>
+      <li>Autodoor_WoodLog,.,.,.,.,Dresser_WoodLog_South,.,.,Dresser_WoodLog_South,.,.,.,Autodoor_WoodLog</li>
+      <li>Wall_BlocksGranite,WallLamp_West,.,.,.,.,.,.,.,.,.,WallLamp_East,Wall_BlocksGranite</li>
+      <li>Wall_BlocksGranite,.,.,.,.,.,.,.,.,.,.,.,Wall_BlocksGranite</li>
+      <li>Wall_BlocksGranite,.,Bed_WoodLog_South,EndTable_WoodLog_South,Bed_WoodLog_South,EndTable_WoodLog_South,Bed_WoodLog_South,EndTable_WoodLog_South,Bed_WoodLog_South,EndTable_WoodLog_South,Bed_WoodLog_South,.,Wall_BlocksGranite</li>
+      <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
+    </li>
+  </layouts>
+  <roofGrid>
+    <li>.,1,1,1,1,1,1,1,1,1,1,1,1</li>
+    <li>1,1,1,1,1,1,1,1,1,1,1,1,1</li>
+    <li>1,1,1,1,1,1,1,1,1,1,1,1,1</li>
+    <li>1,1,1,1,1,1,1,1,1,1,1,1,1</li>
+    <li>1,1,1,1,1,1,1,1,1,1,1,1,1</li>
+    <li>1,1,1,1,1,1,1,1,1,1,1,1,1</li>
+    <li>1,1,1,1,1,1,1,1,1,1,1,1,1</li>
+    <li>1,1,1,1,1,1,1,1,1,1,1,1,1</li>
+    <li>1,1,1,1,1,1,1,1,1,1,1,1,1</li>
+  </roofGrid>
+  <terrainGrid>
+    <li>TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone</li>
+    <li>TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone</li>
+    <li>TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone</li>
+    <li>TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone</li>
+    <li>TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone</li>
+    <li>TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone</li>
+    <li>TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone</li>
+    <li>TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone</li>
+    <li>TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone,TileSandstone</li>
+  </terrainGrid>
+  <randomizeWallStuffAtGen>true</randomizeWallStuffAtGen>
+  <tags>
+    <li>PH_Barracks</li>
+  </tags>
+</KCSG.StructureLayoutDef>
 
 </Defs>

@@ -3,6 +3,7 @@
 
     <KCSG.StructureLayoutDef>
         <defName>PH_Defense1</defName>
+        <randomRotation>true</randomRotation>
         <layouts>
             <li>
                 <li>Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth</li>
@@ -15,7 +16,7 @@
                 <li>Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth</li>
             </li>
         </layouts>
-        <randomizeWallStuffAtGen>true</randomizeWallStuffAtGen>
+        <randomizeWallStuffAtGen>false</randomizeWallStuffAtGen>
         <tags>
             <li>PH_Defense</li>
         </tags>
@@ -23,6 +24,7 @@
 
     <KCSG.StructureLayoutDef>
         <defName>PH_Defense2</defName>
+        <randomRotation>true</randomRotation>
         <layouts>
             <li>
                 <li>Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth</li>
@@ -30,7 +32,7 @@
                 <li>Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth</li>
             </li>
         </layouts>
-        <randomizeWallStuffAtGen>true</randomizeWallStuffAtGen>
+        <randomizeWallStuffAtGen>false</randomizeWallStuffAtGen>
         <tags>
             <li>PH_Defense</li>
         </tags>
@@ -38,6 +40,7 @@
 
     <KCSG.StructureLayoutDef>
         <defName>PH_Defense3</defName>
+        <randomRotation>true</randomRotation>
         <layouts>
             <li>
                 <li>Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth</li>
@@ -46,7 +49,7 @@
                 <li>Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth</li>
             </li>
         </layouts>
-        <randomizeWallStuffAtGen>true</randomizeWallStuffAtGen>
+        <randomizeWallStuffAtGen>false</randomizeWallStuffAtGen>
         <tags>
             <li>PH_Defense</li>
         </tags>
@@ -54,15 +57,16 @@
 
     <KCSG.StructureLayoutDef>
         <defName>PH_Defense4</defName>
+        <randomRotation>true</randomRotation>
         <layouts>
             <li>
                 <li>Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,.</li>
-                <li>Sandbags_Cloth,Cloth,Sandbags_Cloth,Sandbags_Cloth</li>
+                <li>Sandbags_Cloth,.,Sandbags_Cloth,Sandbags_Cloth</li>
                 <li>Sandbags_Cloth,VFES_Turret_AutocannonDouble,.,Sandbags_Cloth</li>
                 <li>Sandbags_Cloth,.,.,Sandbags_Cloth</li>
                 <li>Sandbags_Cloth,VFES_Turret_AutocannonDouble,.,Sandbags_Cloth</li>
                 <li>Sandbags_Cloth,.,.,Sandbags_Cloth</li>
-                <li>Sandbags_Cloth,Cloth,Sandbags_Cloth,Sandbags_Cloth</li>
+                <li>Sandbags_Cloth,.,Sandbags_Cloth,Sandbags_Cloth</li>
                 <li>Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,.</li>
             </li>
             <li>
@@ -77,7 +81,7 @@
             </li>
         </layouts>
         <needRoofClearance>true</needRoofClearance>
-        <randomizeWallStuffAtGen>true</randomizeWallStuffAtGen>
+        <randomizeWallStuffAtGen>false</randomizeWallStuffAtGen>
         <modRequirements>
             <li>vanillaexpanded.vfesecurity</li>
         </modRequirements>
@@ -88,11 +92,12 @@
 
     <KCSG.StructureLayoutDef>
         <defName>PH_Defense5</defName>
+        <randomRotation>true</randomRotation>
         <layouts>
             <li>
                 <li>.,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,.</li>
                 <li>Sandbags_Cloth,Sandbags_Cloth,VFES_Turret_ChargeRailgun,.,VFES_Turret_ChargeRailgun,.,Sandbags_Cloth,Sandbags_Cloth</li>
-                <li>Sandbags_Cloth,Cloth,.,.,.,.,Cloth,Sandbags_Cloth</li>
+                <li>Sandbags_Cloth,.,.,.,.,.,.,Sandbags_Cloth</li>
                 <li>Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth</li>
             </li>
             <li>
@@ -102,7 +107,7 @@
                 <li>.,.,.,.,.,.,.,.</li>
             </li>
         </layouts>
-        <randomizeWallStuffAtGen>true</randomizeWallStuffAtGen>
+        <randomizeWallStuffAtGen>false</randomizeWallStuffAtGen>
         <modRequirements>
             <li>vanillaexpanded.vfesecurity</li>
         </modRequirements>
@@ -113,6 +118,7 @@
 
     <KCSG.StructureLayoutDef>
         <defName>PH_Defense6</defName>
+        <randomRotation>true</randomRotation>
         <layouts>
             <li>
                 <li>Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth</li>
@@ -124,7 +130,7 @@
                 <li>Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth</li>
             </li>
         </layouts>
-        <randomizeWallStuffAtGen>true</randomizeWallStuffAtGen>
+        <randomizeWallStuffAtGen>false</randomizeWallStuffAtGen>
         <modRequirements>
             <li>vanillaexpanded.vfesecurity</li>
         </modRequirements>
@@ -135,6 +141,7 @@
 
     <KCSG.StructureLayoutDef>
         <defName>PH_Defense7</defName>
+        <randomRotation>true</randomRotation>
         <layouts>
             <li>
                 <li>Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth</li>
@@ -143,7 +150,7 @@
                 <li>Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth</li>
             </li>
         </layouts>
-        <randomizeWallStuffAtGen>true</randomizeWallStuffAtGen>
+        <randomizeWallStuffAtGen>false</randomizeWallStuffAtGen>
         <modRequirements>
             <li>vanillaexpanded.vfesecurity</li>
         </modRequirements>
@@ -154,24 +161,25 @@
 
     <KCSG.StructureLayoutDef>
         <defName>PH_Defense8</defName>
+        <randomRotation>true</randomRotation>
         <layouts>
             <li>
                 <li>.,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,.</li>
                 <li>Sandbags_Cloth,Sandbags_Cloth,VFES_Turret_AntiAir,.,Sandbags_Cloth,Sandbags_Cloth</li>
                 <li>Sandbags_Cloth,VFES_Turret_Searchlight_Steel,.,.,VFES_Turret_Searchlight_Steel,Sandbags_Cloth</li>
-                <li>Sandbags_Cloth,VFES_Turret_ArmoredTurret_Steel,VFES_Turret_ArmoredTurret_Steel,VFES_Turret_ArmoredTurret_Steel,VFES_Turret_ArmoredTurret_Steel,Steel</li>
+                <li>Sandbags_Cloth,VFES_Turret_ArmoredTurret_Steel,VFES_Turret_ArmoredTurret_Steel,VFES_Turret_ArmoredTurret_Steel,VFES_Turret_ArmoredTurret_Steel,.</li>
                 <li>Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth,Sandbags_Cloth</li>
             </li>
             <li>
                 <li>.,.,.,.,.,.</li>
                 <li>.,.,.,.,.,.</li>
                 <li>.,.,.,.,.,.</li>
-                <li>.,.,.,.,ComponentIndustrial,Sandbags_Cloth</li>
+                <li>.,.,.,.,.,Sandbags_Cloth</li>
                 <li>.,.,.,.,.,.</li>
             </li>
         </layouts>
         <needRoofClearance>true</needRoofClearance>
-        <randomizeWallStuffAtGen>true</randomizeWallStuffAtGen>
+        <randomizeWallStuffAtGen>false</randomizeWallStuffAtGen>
         <modRequirements>
             <li>vanillaexpanded.vfesecurity</li>
         </modRequirements>

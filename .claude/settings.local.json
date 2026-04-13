@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(dotnet build:*)"
+      "Bash(dotnet build:*)",
+      "Bash(grep -l \"StructureLayoutDef\" \"e:/SteamLibrary/steamapps/common/RimWorld/Mods/Hunter Faction/Mods/VanillaExpandedFramework/Defs/\"*.xml)",
+      "Bash(python3 -)",
+      "Bash(python)"
     ]
   }
 }

@@ -1,14 +1,13 @@
 - add configured gene/xenotype packs to bases showing they turn people into ingrdients to turn them into the drug
 - add prisoner, dead bodies and pawn sitting in extractors
 - one add leader to settlements
-- add props from gerrymons cannibal style to bases if installed
-- medical drug fields
-- add barracks
 
 - pirate using jump pack if they have them?
 
 - have small bases in the world as events where captured pawn or trophie head stand 
 - expand prisoner places and turn them into small hunting places
+
+- compat with simple leadership
 
 - alternativ groups
     - add small greatest hunter
@@ -24,3 +23,5 @@
 - finish up descriptions
 
 - icons and images
+
+- brakes normal raids?

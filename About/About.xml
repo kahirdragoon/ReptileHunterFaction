@@ -10,6 +10,10 @@
         
     </modDependencies>
     <loadAfter>
-        
+        <li>ludeon.rimworld.biotech</li>
+        <li>ludeon.rimworld.odyssey</li>
+        <li>redmattis.bigsmall.core</li>
+        <li>redmattis.lamiasandothersnakes</li>
+        <li>sarg.alphagenes</li>
     </loadAfter>
 </ModMetaData>

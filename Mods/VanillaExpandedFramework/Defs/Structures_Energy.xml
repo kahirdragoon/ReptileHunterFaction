@@ -3,24 +3,25 @@
 
     <KCSG.StructureLayoutDef>
         <defName>PH_EnergyChemfuel</defName>
+        <randomRotation>true</randomRotation>
         <layouts>
             <li>
-                <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,.,.,.,PowerConduit,.,.,.,Wall_BlocksGranite,.,Battery_East_Power100,ChunkGranite,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,.,ChemfuelPoweredGenerator_Fuel0,.,PowerConduit,ChemfuelPoweredGenerator_Fuel0,.,.,Wall_BlocksGranite,.,Battery_East_Power100,.,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,WallLamp_Morbid_West,.,.,PowerConduit,.,.,WallLamp_Morbid_East,Wall_BlocksGranite,WallLamp_Morbid_West,Battery_East_Power100,.,Wall_BlocksGranite</li>
-                <li>Autodoor_Steel_Techist,PowerConduit,PowerConduit,PowerConduit,PowerConduit,PowerConduit,PowerConduit,PowerConduit,Autodoor_Steel_Techist,PowerConduit,Battery_East_Power100,.,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,WallLamp_Morbid_West,ChemfuelPoweredGenerator_Fuel0,.,PowerConduit,ChemfuelPoweredGenerator_Fuel0,.,WallLamp_Morbid_East,Wall_BlocksGranite,WallLamp_Morbid_West,Battery_East_Power100,.,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,.,.,.,PowerConduit,.,.,.,Wall_BlocksGranite,.,Battery_East_Power100,.,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,.,.,.,PowerConduit,.,.,.,Wall_BlocksGranite,.,Battery_East_Power100,.,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
+                <li>Wall_Steel,Wall_Steel,Wall_Steel,Wall_Steel,Wall_Steel,Wall_Steel,Wall_Steel,Wall_Steel,Wall_Steel,Wall_Steel,Wall_Steel,Wall_Steel,Wall_Steel</li>
+                <li>Wall_Steel,Battery_East_Power100,.,.,Wall_Steel,.,.,.,HiddenConduit,.,.,.,Wall_Steel</li>
+                <li>Wall_Steel,Battery_East_Power100,.,.,Wall_Steel,.,ChemfuelPoweredGenerator_Fuel100,.,HiddenConduit,ChemfuelPoweredGenerator_Fuel100,.,.,Wall_Steel</li>
+                <li>Wall_Steel,Battery_East_Power100,.,WallLamp_Morbid_East,Wall_Steel,WallLamp_Morbid_West,.,.,HiddenConduit,.,.,WallLamp_Morbid_East,Wall_Steel</li>
+                <li>Wall_Steel,Battery_East_Power100,.,.,Autodoor_Steel,HiddenConduit,HiddenConduit,HiddenConduit,HiddenConduit,HiddenConduit,HiddenConduit,HiddenConduit,Autodoor_Steel</li>
+                <li>Wall_Steel,Battery_East_Power100,.,WallLamp_Morbid_East,Wall_Steel,WallLamp_Morbid_West,ChemfuelPoweredGenerator_Fuel100,.,HiddenConduit,ChemfuelPoweredGenerator_Fuel100,.,WallLamp_Morbid_East,Wall_Steel</li>
+                <li>Wall_Steel,Battery_East_Power100,.,.,Wall_Steel,.,.,.,HiddenConduit,.,.,.,Wall_Steel</li>
+                <li>Wall_Steel,Battery_East_Power100,.,.,Wall_Steel,.,.,.,HiddenConduit,.,.,.,Wall_Steel</li>
+                <li>Wall_Steel,Wall_Steel,Wall_Steel,Wall_Steel,Wall_Steel,Wall_Steel,Wall_Steel,Wall_Steel,Wall_Steel,Wall_Steel,Wall_Steel,Wall_Steel,Wall_Steel</li>
             </li>
             <li>
                 <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
                 <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
                 <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
                 <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.,PowerConduit,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
                 <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
                 <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
                 <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
@@ -46,6 +47,7 @@
 
     <KCSG.StructureLayoutDef>
         <defName>PH_EnergyToxifier</defName>
+        <randomRotation>true</randomRotation>
         <layouts>
             <li>
                 <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
@@ -92,6 +94,8 @@
 
     <KCSG.StructureLayoutDef>
         <defName>PH_EnergySolar</defName>
+        <randomRotation>true</randomRotation>
+        <needRoofClearance>true</needRoofClearance>
         <layouts>
             <li>
                 <li>.,.,.,.,.,.,.,.,.,.,.</li>
@@ -110,6 +114,38 @@
         <randomizeWallStuffAtGen>true</randomizeWallStuffAtGen>
         <tags>
             <li>PH_Energy</li>
+        </tags>
+    </KCSG.StructureLayoutDef>
+
+    <KCSG.StructureLayoutDef>
+        <defName>PH_Battery</defName>
+        <randomRotation>true</randomRotation>
+        <layouts>
+            <li>
+                <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
+                <li>Autodoor_Steel,.,.,.,.,.,.,Autodoor_Steel</li>
+                <li>Wall_BlocksGranite,Battery_North,Battery_North,Battery_North,Battery_North,Battery_North,Battery_North,Wall_BlocksGranite</li>
+                <li>Wall_BlocksGranite,.,.,.,.,.,.,Wall_BlocksGranite</li>
+                <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
+            </li>
+            <li>
+                <li>.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.</li>
+                <li>.,WallLamp_Morbid_West,.,.,.,.,WallLamp_Morbid_East,.</li>
+                <li>.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.</li>
+            </li>
+        </layouts>
+        <terrainGrid>
+            <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>
+            <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>
+            <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>
+            <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>
+            <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>
+        </terrainGrid>
+        <randomizeWallStuffAtGen>true</randomizeWallStuffAtGen>
+        <tags>
+            <li>PH_Battery</li>
         </tags>
     </KCSG.StructureLayoutDef>
 

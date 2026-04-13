@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
 
-    <!-- <KCSG.SymbolDef>
+    <KCSG.SymbolDef>
         <defName>Altar_Grand_BlocksGranite_Cannibal</defName>
         <thing>Altar_Grand</thing>
         <stuff>BlocksGranite</stuff>
@@ -136,6 +136,69 @@
         <defName>WallLamp_Morbid</defName>
         <thing>WallLamp</thing>
         <styleCategory>Morbid</styleCategory>
-    </KCSG.SymbolDef> -->
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>VFES_Turret_ChargeTurret_Steel</defName>
+        <thing>VFES_Turret_ChargeTurret</thing>
+        <stuff>Steel</stuff>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>VFES_Turret_MilitaryTurret_Steel</defName>
+        <thing>VFES_Turret_MilitaryTurret</thing>
+        <stuff>Steel</stuff>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>VFES_Turret_ShotgunTurret_Steel</defName>
+        <thing>VFES_Turret_ShotgunTurret</thing>
+        <stuff>Steel</stuff>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>VFES_Turret_AutocannonDouble</defName>
+        <thing>VFES_Turret_AutocannonDouble</thing>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>VFES_Turret_AntiAir</defName>
+        <thing>VFES_Turret_AntiAir</thing>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>VFES_Turret_ArmoredTurret_Steel</defName>
+        <thing>VFES_Turret_ArmoredTurret</thing>
+        <stuff>Steel</stuff>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>VFES_Turret_Searchlight_Steel</defName>
+        <thing>VFES_Turret_Searchlight</thing>
+        <stuff>Steel</stuff>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>VFES_Turret_ChargeRailgun</defName>
+        <thing>VFES_Turret_ChargeRailgun</thing>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>VFES_Turret_Minigun</defName>
+        <thing>VFES_Turret_Minigun</thing>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>ChemfuelPoweredGenerator_Fuel100</defName>
+        <thing>ChemfuelPoweredGenerator</thing>
+        <fuelPercent>1</fuelPercent>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>Battery_Power100</defName>
+        <thing>Battery</thing>
+        <rotation>East</rotation>
+        <powerPercent>1</powerPercent>
+    </KCSG.SymbolDef>
 
 </Defs>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+    <!-- House 1 -->
+
+    <KCSG.StructureLayoutDef>
+        <defName>PH_DrugPlantField</defName>
+        <randomRotation>true</randomRotation>
+        <spawnConduits>false</spawnConduits>
+        <layouts>
+            <li>
+                <li>RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine</li>
+                <li>RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine</li>
+                <li>RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine</li>
+                <li>RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine</li>
+                <li>RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine</li>
+                <li>RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine</li>
+                <li>RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine</li>
+                <li>RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine</li>
+                <li>RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine,RHF_Plant_DrugMedicine</li>
+            </li>
+            <li>
+                <li>.,.,.,.,.,.</li>
+                <li>.,.,.,.,RHF_Plant_DrugMedicine,.</li>
+                <li>.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.</li>
+                <li>.,.,.,.,RHF_Plant_DrugMedicine,.</li>
+                <li>.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.</li>
+                <li>.,RHF_Plant_DrugMedicine,.,.,.,.</li>
+                <li>.,.,.,.,.,.</li>
+            </li>
+            <li>
+                <li>.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.</li>
+                <li>.,.,.,.,RHF_Plant_DrugMedicine,.</li>
+                <li>.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.</li>
+            </li>
+        </layouts>
+        <needRoofClearance>true</needRoofClearance>
+        <tags>
+            <li>PH_DrugField</li>
+        </tags>
+    </KCSG.StructureLayoutDef>
+
+</Defs>
