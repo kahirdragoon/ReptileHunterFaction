@@ -73,12 +73,35 @@
         </resolvers>
     </RuleDef>
 
-
     <RuleDef>
         <defName>RHF_AssignBoss</defName>
         <symbol>rhf_assignBoss</symbol>
         <resolvers>
             <li Class="ReptileHunterFaction.SymbolResolver_RHF_AssignBoss" />
+        </resolvers>
+    </RuleDef>
+
+    <RuleDef>
+        <defName>PH_Genelab_Genes</defName>
+        <symbol>ph_genelab_genes</symbol>
+        <resolvers>
+            <li Class="ReptileHunterFaction.SymbolResolver_PH_Genelab_Genes" />
+        </resolvers>
+    </RuleDef>
+
+    <RuleDef>
+        <defName>PH_Prisoners</defName>
+        <symbol>ph_prisoners</symbol>
+        <resolvers>
+            <li Class="ReptileHunterFaction.SymbolResolver_PH_Prisoners" />
+        </resolvers>
+    </RuleDef>
+
+    <RuleDef>
+        <defName>PH_Butchery</defName>
+        <symbol>ph_butchery</symbol>
+        <resolvers>
+            <li Class="ReptileHunterFaction.SymbolResolver_PH_Butchery" />
         </resolvers>
     </RuleDef>
 

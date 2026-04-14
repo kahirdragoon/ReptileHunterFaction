@@ -5,9 +5,9 @@
 
   <KCSG.SettlementLayoutDef>
     <defName>PH_Settlement</defName>
-    <settlementSize>75,75</settlementSize>
+    <settlementSize>90,90</settlementSize>
     <centerBuildings>
-      <centerSize>60,60</centerSize>
+      <centerSize>65,65</centerSize>
       <forceClean>true</forceClean>
       <allowedStructures>
         <li>
@@ -31,19 +31,15 @@
           <tag>PH_AltarRoom</tag>
         </li>
         <li>
-          <count>1~1</count>
-          <tag>PH_Battery</tag>
-        </li>
-        <li>
-          <count>1~1</count>
+          <count>1~2</count>
           <tag>PH_PodLauncher</tag>
         </li>
         <li>
-          <count>2~5</count>
+          <count>2~4</count>
           <tag>PH_Vault</tag>
         </li>
         <li>
-          <count>2~6</count>
+          <count>2~4</count>
           <tag>PH_Energy</tag>
         </li>
       </allowedStructures>
@@ -51,7 +47,7 @@
     <peripheralBuildings>
       <allowedStructures>
         <li>
-          <count>5~12</count>
+          <count>3~8</count>
           <tag>PH_House</tag>
         </li>
         <li>
@@ -63,12 +59,8 @@
           <tag>PH_DrugField</tag>
         </li>
         <li>
-          <count>2~4</count>
+          <count>2~3</count>
           <tag>PH_Battery</tag>
-        </li>
-        <li>
-          <count>4~15</count>
-          <tag>PH_Defense</tag>
         </li>
       </allowedStructures>
     </peripheralBuildings>
@@ -126,7 +118,7 @@
       <addEdgeDefense>true</addEdgeDefense>
       <addSandbags>true</addSandbags>
       <addTurrets>true</addTurrets>
-      <cellsPerTurret>10</cellsPerTurret>
+      <cellsPerTurret>8</cellsPerTurret>
       <allowedTurretsDefs>
         <li>Turret_MiniTurret</li>
         <li>Turret_Autocannon</li>

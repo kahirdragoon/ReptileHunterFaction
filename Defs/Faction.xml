@@ -218,9 +218,6 @@
                             <defName>Aggression_HyperAggressive</defName>
                         </li>
                         <li>
-                            <defName>Pain_Extra</defName>
-                        </li>
-                        <li>
                             <defName>Beauty_VeryUgly</defName>
                         </li>
                     </genes>
@@ -230,7 +227,10 @@
                 <preventBridgeable>true</preventBridgeable>
                 <tryFindFreeArea>True</tryFindFreeArea>
                 <symbolResolvers>
+                    <li>ph_genelab_genes</li>
                     <li>rhf_assignBoss</li>
+                    <li>ph_prisoners</li>
+                    <li>ph_butchery</li>
                 </symbolResolvers>
                 <chooseFromSettlements>
                     <li>PH_Settlement</li>

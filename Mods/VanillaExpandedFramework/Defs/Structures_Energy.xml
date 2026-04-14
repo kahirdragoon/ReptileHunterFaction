@@ -46,44 +46,31 @@
     </KCSG.StructureLayoutDef>
 
     <KCSG.StructureLayoutDef>
-        <defName>PH_EnergyToxifier</defName>
         <randomRotation>true</randomRotation>
+        <needRoofClearance>true</needRoofClearance>
+        <defName>d</defName>
         <layouts>
             <li>
-                <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,PowerConduit,PowerConduit,PowerConduit,PowerConduit,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,PowerConduit,ToxifierGenerator,.,PowerConduit,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,PowerConduit,.,.,PowerConduit,Wall_BlocksGranite</li>
-                <li>Autodoor_Steel_Techist,PowerConduit,.,.,PowerConduit,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,PowerConduit,ToxifierGenerator,.,PowerConduit,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,PowerConduit,.,.,PowerConduit,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,PowerConduit,PowerConduit,PowerConduit,PowerConduit,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
-            </li>
-            <li>
-                <li>.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.</li>
-                <li>.,WallLamp_Morbid_West,.,.,.,.</li>
-                <li>.,.,.,.,.,.</li>
-                <li>.,WallLamp_Morbid_West,.,.,.,.</li>
-                <li>.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Autodoor_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,.</li>
+                <li>.,Wall_WoodLog,.,HiddenConduit,WallLamp_Morbid_South,.,WallLamp_Morbid_South,HiddenConduit,.,Wall_WoodLog,.</li>
+                <li>.,Wall_WoodLog,.,ToxifierGenerator,.,.,ToxifierGenerator,.,.,Wall_WoodLog,.</li>
+                <li>.,Wall_WoodLog,.,.,.,.,.,.,.,Wall_WoodLog,.</li>
+                <li>.,Wall_WoodLog,.,HiddenConduit,.,.,.,HiddenConduit,.,Wall_WoodLog,.</li>
+                <li>.,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.</li>
             </li>
         </layouts>
         <terrainGrid>
-            <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>
-            <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>
-            <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>
-            <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>
-            <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>
-            <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>
-            <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>
-            <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>
-            <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.</li>
+            <li>.,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.</li>
+            <li>.,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.</li>
+            <li>.,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.</li>
+            <li>.,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.</li>
+            <li>.,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.</li>
+            <li>.,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.</li>
         </terrainGrid>
-        <randomizeWallStuffAtGen>true</randomizeWallStuffAtGen>
         <modRequirements>
             <li>ludeon.rimworld.biotech</li>
         </modRequirements>

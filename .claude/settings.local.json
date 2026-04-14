@@ -8,7 +8,8 @@
       "Read(//d/Rimworld Modding/**)",
       "Bash(cat)",
       "Read(//tmp/**)",
-      "Bash(powershell -Command ':*)"
+      "Bash(powershell -Command ':*)",
+      "Bash(python gen_maze.py)"
     ]
   }
 }

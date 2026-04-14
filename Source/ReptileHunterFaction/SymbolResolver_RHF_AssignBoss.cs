@@ -24,15 +24,36 @@ public class SymbolResolver_RHF_AssignBoss : SymbolResolver
                 c => c.Standable(map) && !c.Fogged(map), out IntVec3 spawnCell))
             return;
 
-        BaseGen.symbolStack.Push("pawn", rp with
+        Pawn? leader = rp.faction?.leader;
+
+        if (leader != null && !leader.Destroyed && !leader.Dead)
         {
-            singlePawnKindDef = ReptileHunterFactionDefOf.RHF_ReptileHuntersFighter_Boss,
-            rect = CellRect.SingleCell(spawnCell),
-            postThingSpawn = t =>
+            if (leader.Spawned)
             {
-                if (t is Pawn boss)
-                    boss.ownership.ClaimThrone(throne);
+                if (leader.Map == map)
+                    leader.ownership.ClaimThrone(throne);
+                return;
             }
-        });
+
+            if (Find.WorldPawns.Contains(leader!))
+                Find.WorldPawns.RemovePawn(leader);
+
+            GenSpawn.Spawn(leader, spawnCell, map);
+            leader.ownership.ClaimThrone(throne);
+        }
+        else
+        {
+            // Fall back to spawning a boss pawnkind if faction has no leader
+            BaseGen.symbolStack.Push("pawn", rp with
+            {
+                singlePawnKindDef = ReptileHunterFactionDefOf.RHF_ReptileHuntersFighter_Boss,
+                rect = CellRect.SingleCell(spawnCell),
+                postThingSpawn = t =>
+                {
+                    if (t is Pawn boss)
+                        boss.ownership.ClaimThrone(throne);
+                }
+            });
+        }
     }
 }

@@ -1,6 +1,4 @@
-- add configured gene/xenotype packs to bases showing they turn people into ingrdients to turn them into the drug
-- add prisoner, dead bodies and pawn sitting in extractors
-- one add leader to settlements
+- fix fields
 
 - pirate using jump pack if they have them?
 

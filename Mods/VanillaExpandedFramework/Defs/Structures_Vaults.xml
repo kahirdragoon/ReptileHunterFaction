@@ -4,7 +4,6 @@
     <KCSG.StructureLayoutDef>
         <defName>PH_Vault1</defName>
         <randomRotation>true</randomRotation>
-        <isStorage>true</isStorage>
         <layouts>
             <li>
                 <li>Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Autodoor_Steel,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium</li>
@@ -51,7 +50,6 @@
     <KCSG.StructureLayoutDef>
         <defName>PH_Vault2</defName>
         <randomRotation>true</randomRotation>
-        <isStorage>true</isStorage>
         <layouts>
             <li>
                 <li>Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Autodoor_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium</li>
