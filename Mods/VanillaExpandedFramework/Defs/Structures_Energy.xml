@@ -28,6 +28,17 @@
                 <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
             </li>
         </layouts>
+        <roofGrid>
+            <li>1,1,1,1,1,1,1,1,1,1,1,1,1</li>
+            <li>1,1,1,1,1,1,1,1,1,1,1,1,1</li>
+            <li>1,1,1,1,1,1,1,1,1,1,1,1,1</li>
+            <li>1,1,1,1,1,1,1,1,1,1,1,1,1</li>
+            <li>1,1,1,1,1,1,1,1,1,1,1,1,1</li>
+            <li>1,1,1,1,1,1,1,1,1,1,1,1,1</li>
+            <li>1,1,1,1,1,1,1,1,1,1,1,1,1</li>
+            <li>1,1,1,1,1,1,1,1,1,1,1,1,1</li>
+            <li>1,1,1,1,1,1,1,1,1,1,1,1,1</li>
+        </roofGrid>
         <terrainGrid>
             <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>
             <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>
@@ -46,37 +57,54 @@
     </KCSG.StructureLayoutDef>
 
     <KCSG.StructureLayoutDef>
-        <randomRotation>true</randomRotation>
-        <needRoofClearance>true</needRoofClearance>
-        <defName>d</defName>
+        <defName>PH_EnergyToxifier</defName>
+        <spawnConduits>false</spawnConduits>
         <layouts>
             <li>
-                <li>.,.,.,.,.,.,.,.,.,.,.</li>
-                <li>.,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Autodoor_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,.</li>
-                <li>.,Wall_WoodLog,.,HiddenConduit,WallLamp_Morbid_South,.,WallLamp_Morbid_South,HiddenConduit,.,Wall_WoodLog,.</li>
-                <li>.,Wall_WoodLog,.,ToxifierGenerator,.,.,ToxifierGenerator,.,.,Wall_WoodLog,.</li>
-                <li>.,Wall_WoodLog,.,.,.,.,.,.,.,Wall_WoodLog,.</li>
-                <li>.,Wall_WoodLog,.,HiddenConduit,.,.,.,HiddenConduit,.,Wall_WoodLog,.</li>
-                <li>.,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,.</li>
-                <li>.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.</li>
+                <li>.,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,.</li>
+                <li>.,Wall_WoodLog,.,.,.,.,Wall_WoodLog,.</li>
+                <li>.,Wall_WoodLog,HiddenConduit,ToxifierGenerator,.,HiddenConduit,Wall_WoodLog,.</li>
+                <li>.,Wall_WoodLog,.,.,.,WallLamp_Morbid_East,Wall_WoodLog,.</li>
+                <li>.,Wall_WoodLog,.,.,.,.,Autodoor_Steel,.</li>
+                <li>.,Wall_WoodLog,.,ToxifierGenerator,.,WallLamp_Morbid_East,Wall_WoodLog,.</li>
+                <li>.,Wall_WoodLog,HiddenConduit,.,.,HiddenConduit,Wall_WoodLog,.</li>
+                <li>.,Wall_WoodLog,.,.,.,.,Wall_WoodLog,.</li>
+                <li>.,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,.</li>
+                <li>.,.,.,.,.,.,.,.</li>
             </li>
         </layouts>
+        <roofGrid>
+            <li>.,.,.,.,.,.,.,.</li>
+            <li>.,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,.</li>
+            <li>.,.,.,.,.,.,.,.</li>
+        </roofGrid>
         <terrainGrid>
-            <li>.,.,.,.,.,.,.,.,.,.,.</li>
-            <li>.,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.</li>
-            <li>.,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.</li>
-            <li>.,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.</li>
-            <li>.,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.</li>
-            <li>.,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.</li>
-            <li>.,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.</li>
-            <li>.,.,.,.,.,.,.,.,.,.,.</li>
+            <li>.,.,.,.,.,.,.,.</li>
+            <li>.,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.</li>
+            <li>.,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.</li>
+            <li>.,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.</li>
+            <li>.,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.</li>
+            <li>.,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.</li>
+            <li>.,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.</li>
+            <li>.,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.</li>
+            <li>.,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.</li>
+            <li>.,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.</li>
+            <li>.,.,.,.,.,.,.,.</li>
         </terrainGrid>
+        <randomizeWallStuffAtGen>true</randomizeWallStuffAtGen>
         <modRequirements>
+            <li>oskarpotocki.vanillafactionsexpanded.core</li>
             <li>ludeon.rimworld.biotech</li>
         </modRequirements>
-        <tags>
-            <li>PH_Energy</li>
-        </tags>
     </KCSG.StructureLayoutDef>
 
     <KCSG.StructureLayoutDef>
@@ -123,6 +151,13 @@
                 <li>.,.,.,.,.,.,.,.</li>
             </li>
         </layouts>
+        <roofGrid>
+            <li>1,1,1,1,1,1,1,1</li>
+            <li>1,1,1,1,1,1,1,1</li>
+            <li>1,1,1,1,1,1,1,1</li>
+            <li>1,1,1,1,1,1,1,1</li>
+            <li>1,1,1,1,1,1,1,1</li>
+        </roofGrid>
         <terrainGrid>
             <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>
             <li>FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite,FlagstoneGranite</li>

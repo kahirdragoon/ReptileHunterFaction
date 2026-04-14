@@ -32,6 +32,14 @@
                 <li>.,.,.,.,.,.</li>
             </li>
         </layouts>
+        <roofGrid>
+            <li>1,1,1,1,1,1</li>
+            <li>1,1,1,1,1,1</li>
+            <li>1,1,1,1,1,1</li>
+            <li>1,1,1,1,1,1</li>
+            <li>1,1,1,1,1,1</li>
+            <li>1,1,1,1,1,1</li>
+        </roofGrid>
         <terrainGrid>
             <li>FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone</li>
             <li>FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone</li>
@@ -77,6 +85,14 @@
                 <li>.,.,.,.,.,.,.,.,.</li>
             </li>
         </layouts>
+        <roofGrid>
+            <li>1,1,1,1,1,1,.,.,.</li>
+            <li>1,1,1,1,1,1,1,1,1</li>
+            <li>1,1,1,1,1,1,1,1,1</li>
+            <li>1,1,1,1,1,1,1,1,1</li>
+            <li>1,1,1,1,1,1,1,1,1</li>
+            <li>1,1,1,1,1,1,.,.,.</li>
+        </roofGrid>
         <terrainGrid>
             <li>FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,.,.,.</li>
             <li>FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone,FlagstoneSandstone</li>

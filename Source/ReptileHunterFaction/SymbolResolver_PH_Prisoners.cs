@@ -236,7 +236,7 @@ public class SymbolResolver_PH_Prisoners : SymbolResolver
         }
         if (!pawn.Dead && Rand.Chance(0.2f))
         {
-            var part = GetRandomBodyPartOfType(pawn, "Torso", BodyPartDepth.Inside);
+            var part = GetRandomBodyPartOfType(pawn, "Torso", BodyPartDepth.Outside);
             if (part != null) ApplyBiteToLimb(pawn, part);
         }
     }
