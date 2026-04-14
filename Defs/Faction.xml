@@ -231,7 +231,14 @@
                     <li>rhf_assignBoss</li>
                     <li>ph_prisoners</li>
                     <li>ph_butchery</li>
+                    <li>kcsg_randomfilth</li>
                 </symbolResolvers>
+                <filthTypes>
+                    <li>Filth_Dirt</li>
+                    <li>Filth_Trash</li>
+                    <li>Filth_RubbleBuilding</li>
+                    <li>Filth_Blood</li>
+                </filthTypes>
                 <chooseFromSettlements>
                     <li>PH_Settlement</li>
                 </chooseFromSettlements>

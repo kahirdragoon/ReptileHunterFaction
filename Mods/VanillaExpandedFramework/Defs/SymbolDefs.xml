@@ -201,4 +201,34 @@
         <powerPercent>1</powerPercent>
     </KCSG.SymbolDef>
 
+    <KCSG.SymbolDef>
+        <defName>RHF_Plant_DrugMedicine_100</defName>
+        <thing>RHF_Plant_DrugMedicine</thing>
+        <plantGrowth>1</plantGrowth>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>RHF_Plant_DrugMedicine_07</defName>
+        <thing>RHF_Plant_DrugMedicine</thing>
+        <plantGrowth>0.7</plantGrowth>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>RHF_Plant_DrugMedicine_05</defName>
+        <thing>RHF_Plant_DrugMedicine</thing>
+        <plantGrowth>0.5</plantGrowth>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>RHF_Plant_DrugMedicine_03</defName>
+        <thing>RHF_Plant_DrugMedicine</thing>
+        <plantGrowth>0.3</plantGrowth>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>RHF_Plant_DrugMedicine_01</defName>
+        <thing>RHF_Plant_DrugMedicine</thing>
+        <plantGrowth>0.1</plantGrowth>
+    </KCSG.SymbolDef>
+
 </Defs>

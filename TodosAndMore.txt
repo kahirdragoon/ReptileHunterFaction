@@ -1,4 +1,5 @@
 - fix fields
+- store the sbd and drug meds
 
 - pirate using jump pack if they have them?
 
