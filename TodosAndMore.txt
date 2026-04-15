@@ -1,5 +1,6 @@
 - fix hunters spawning on home quests (wait time and break in or not spawn at all?)
 - fix hunter immediatly attacking and boss fleeing
+- security door warehouse
 
 - pirate using jump pack if they have them?
 
