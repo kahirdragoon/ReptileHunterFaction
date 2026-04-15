@@ -53,7 +53,7 @@ public class SymbolResolver_PH_DrugLabStock : SymbolResolver
             cells = cells.InRandomOrder().ToList();
             int neutroamineSlots = Mathf.RoundToInt(cells.Count * Rand.Range(0.75f, 0.90f));
             SpawnItemsOnCells(cells.Take(neutroamineSlots).ToList(), VanillaDefOf.Neutroamine, map);
-            SpawnItemsOnCells(cells.Skip(neutroamineSlots).ToList(), ThingDefOf.Luciferium, map);
+            SpawnItemsOnCells(cells.Skip(neutroamineSlots).ToList(), ThingDefOf.Luciferium, map, 3, 10);
         }
     }
 

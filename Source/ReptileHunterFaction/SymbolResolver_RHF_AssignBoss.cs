@@ -1,6 +1,7 @@
 using RimWorld;
 using RimWorld.BaseGen;
 using Verse;
+using Verse.AI.Group;
 
 namespace ReptileHunterFaction;
 
@@ -40,6 +41,10 @@ public class SymbolResolver_RHF_AssignBoss : SymbolResolver
 
             GenSpawn.Spawn(leader, spawnCell, map);
             leader.ownership.ClaimThrone(throne);
+
+            Lord defenseLord = rp.singlePawnLord
+                ?? map.lordManager.lords.FirstOrDefault(l => l.faction == rp.faction && l.LordJob is LordJob_DefendBase);
+            defenseLord?.AddPawn(leader);
         }
         else
         {
