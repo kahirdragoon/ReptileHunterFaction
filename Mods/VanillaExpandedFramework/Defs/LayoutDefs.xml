@@ -7,7 +7,7 @@
     <defName>PH_Settlement</defName>
     <settlementSize>90,90</settlementSize>
     <centerBuildings>
-      <centerSize>65,65</centerSize>
+      <centerSize>70,70</centerSize>
       <forceClean>true</forceClean>
       <allowedStructures>
         <li>
@@ -41,6 +41,10 @@
         <li>
           <count>2~4</count>
           <tag>PH_Energy</tag>
+        </li>
+        <li>
+          <count>1~2</count>
+          <tag>PH_DrugLab</tag>
         </li>
       </allowedStructures>
     </centerBuildings>
@@ -217,7 +221,7 @@
         <li>OrbitalTargeterPowerBeam</li>
         <li>TornadoGenerator</li>
       </fillWithDefs>
-      <maxValueStackIncrease>100</maxValueStackIncrease>
+      <maxValueStackIncrease>500</maxValueStackIncrease>
       <stockpileValueMultiplier>1.5</stockpileValueMultiplier>
     </stockpileOptions>
   </KCSG.SettlementLayoutDef>

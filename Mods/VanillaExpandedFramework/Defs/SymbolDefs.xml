@@ -231,4 +231,14 @@
         <plantGrowth>0.1</plantGrowth>
     </KCSG.SymbolDef>
 
+    <KCSG.SymbolDef>
+        <defName>RHF_DrugMedicine</defName>
+        <thing>RHF_DrugMedicine</thing>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>RHF_SBD</defName>
+        <thing>RHF_SBD</thing>
+    </KCSG.SymbolDef>
+
 </Defs>

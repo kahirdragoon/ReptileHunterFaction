@@ -105,4 +105,12 @@
         </resolvers>
     </RuleDef>
 
+    <RuleDef>
+        <defName>PH_DrugLabStock</defName>
+        <symbol>ph_druglabstock</symbol>
+        <resolvers>
+            <li Class="ReptileHunterFaction.SymbolResolver_PH_DrugLabStock" />
+        </resolvers>
+    </RuleDef>
+
 </Defs>

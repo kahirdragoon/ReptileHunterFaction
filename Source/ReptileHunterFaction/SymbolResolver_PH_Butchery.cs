@@ -26,16 +26,16 @@ public class SymbolResolver_PH_Butchery : SymbolResolver
         foreach (var cooler in coolers)
         {
             var tempControl = cooler.GetComp<CompTempControl>();
-            if (tempControl != null)
-                tempControl.targetTemperature = -9f;
+            tempControl?.targetTemperature = -9f;
         }
 
-        // Collect all distinct rooms on the cold side of each cooler.
+        // Collect all distinct rooms on the cold side of each cooler, skipping rooms that
+        // contain shelves (drug storage rooms managed by SymbolResolver_PH_DrugLabStock).
         // A cooler is a wall building; cold air blows toward IntVec3.South rotated
         // by the cooler's facing — the same cell the vanilla Building_Cooler cools.
         var coolerRooms = coolers
             .Select(c => (c.Position + IntVec3.South.RotatedBy(c.Rotation)).GetRoom(map))
-            .Where(r => r != null)
+            .Where(r => r != null && !r.Cells.Any(c => c.GetThingList(map).Any(t => t is Building_Storage)))
             .Distinct()
             .ToList();
 

@@ -3,6 +3,7 @@
   <v1.6>
     <li>/</li>
     <li>1.6</li>
+    <li IfModActive="ludeon.rimworld.anomaly">Mods/Anomaly</li>
     <li IfModActive="ludeon.rimworld.odyssey">Mods/Odyssey</li>
     <li IfModActive="redmattis.lamiasandothersnakes">Mods/Lamia</li>
     <li IfModActive="sarg.alphagenes">Mods/AlphaGenes</li>

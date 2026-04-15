@@ -181,45 +181,69 @@
         <randomRotation>true</randomRotation>
         <layouts>
             <li>
-                <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Autodoor_Steel,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,.,.,.,.,.,Wall_BlocksGranite,WallLamp_Morbid_West,.,ShelfSmall_WoodLog_North,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,.,.,.,.,.,Autodoor_Steel,.,.,.,Cooler_East</li>
-                <li>Wall_BlocksGranite,.,.,.,.,.,Wall_BlocksGranite,WallLamp_Morbid_West,Shelf_WoodLog_South,ShelfSmall_WoodLog_South,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,.,.,.,.,.,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite</li>
-                <li>Wall_BlocksGranite,DrugLab_Steel_West,DiningChair_WoodLog_West,DiningChair_WoodLog_North,DiningChair_WoodLog_East,DrugLab_Steel_East,Wall_BlocksGranite,.,.,.,.</li>
-                <li>Wall_BlocksGranite,.,.,DrugLab_Steel_North,.,.,Wall_BlocksGranite,.,.,.,.</li>
-                <li>Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,Wall_BlocksGranite,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,Turret_MiniTurret_Plasteel,.,.,Turret_MiniTurret_Steel,.,.,.,.,.,.</li>
+                <li>.,Wall_BlocksSandstone,Wall_BlocksSandstone,Autodoor_WoodLog,Autodoor_WoodLog,Wall_BlocksSandstone,Wall_BlocksSandstone,.,.,.,.,.</li>
+                <li>.,Wall_BlocksSandstone,ShelfSmall_WoodLog_East,.,.,Shelf_WoodLog_West,Wall_BlocksSandstone,Wall_BlocksSandstone,Wall_BlocksSandstone,Wall_BlocksSandstone,Wall_BlocksSandstone,.</li>
+                <li>.,Wall_BlocksSandstone,.,.,.,.,Wall_BlocksSandstone,Shelf_WoodLog_North,WallLamp_Morbid_South,ShelfSmall_WoodLog_North,Wall_BlocksSandstone,.</li>
+                <li>.,Wall_BlocksSandstone,Shelf_WoodLog_East,.,.,.,Autodoor_BlocksMarble,.,RHF_DrugMedicine,.,Cooler_East,.</li>
+                <li>.,Wall_BlocksSandstone,.,.,.,Shelf_WoodLog_West,Wall_BlocksSandstone,.,WallLamp_Morbid_North,ShelfSmall_WoodLog_South,Wall_BlocksSandstone,.</li>
+                <li>.,Wall_BlocksSandstone,DrugLab_WoodLog_West,DiningChair_Steel_West,.,.,Wall_BlocksSandstone,Wall_BlocksSandstone,Wall_BlocksSandstone,Wall_BlocksSandstone,Wall_BlocksSandstone,.</li>
+                <li>.,Wall_BlocksSandstone,.,.,.,.,Autodoor_WoodLog,WallLamp_Morbid_South,Shelf_WoodLog_West,Wall_BlocksSandstone,.,.</li>
+                <li>.,Wall_BlocksSandstone,ToolCabinet_West,.,.,.,Autodoor_WoodLog,WallLamp_Morbid_North,.,Wall_BlocksSandstone,.,.</li>
+                <li>.,Wall_BlocksSandstone,.,DiningChair_Steel_North,.,.,Wall_BlocksSandstone,Wall_BlocksSandstone,Wall_BlocksSandstone,Wall_BlocksSandstone,.,.</li>
+                <li>.,Wall_BlocksSandstone,.,DrugLab_Steel_North,.,ToolCabinet_East,Wall_BlocksSandstone,.,.,.,.,.</li>
+                <li>.,Wall_BlocksSandstone,Wall_BlocksSandstone,Wall_BlocksSandstone,Wall_BlocksSandstone,Wall_BlocksSandstone,Wall_BlocksSandstone,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.</li>
             </li>
             <li>
-                <li>.,.,.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,Shelf_WoodLog_North,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.,.,.,.</li>
-                <li>.,WallLamp_Morbid_West,.,.,.,WallLamp_Morbid_East,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,Shelf_WoodLog_South,.,.,.</li>
+                <li>.,.,WallLamp_Morbid_West,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,RHF_SBD,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,WallLamp_Morbid_North,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.</li>
             </li>
         </layouts>
         <roofGrid>
-            <li>1,1,1,1,1,1,1,1,1,1,1</li>
-            <li>1,1,1,1,1,1,1,1,1,1,1</li>
-            <li>1,1,1,1,1,1,1,1,1,1,1</li>
-            <li>1,1,1,1,1,1,1,1,1,1,1</li>
-            <li>1,1,1,1,1,1,1,1,1,1,1</li>
-            <li>1,1,1,1,1,1,1,.,.,.,.</li>
-            <li>1,1,1,1,1,1,1,.,.,.,.</li>
-            <li>1,1,1,1,1,1,1,.,.,.,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.</li>
+            <li>.,1,1,1,1,1,1,.,.,.,.,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,.,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,.,.</li>
+            <li>.,1,1,1,1,1,1,.,1,1,.,.</li>
+            <li>.,1,1,1,1,1,1,.,.,.,.,.</li>
+            <li>.,1,1,1,1,1,1,.,.,.,.,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.</li>
         </roofGrid>
         <terrainGrid>
-            <li>SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile</li>
-            <li>SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile</li>
-            <li>SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile</li>
-            <li>SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile</li>
-            <li>SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile</li>
-            <li>SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,.,.,.,.</li>
-            <li>SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,.,.,.,.</li>
-            <li>SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,.,.,.,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.</li>
+            <li>.,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,.,.,.,.,.</li>
+            <li>.,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,.</li>
+            <li>.,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,.</li>
+            <li>.,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,.</li>
+            <li>.,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,.</li>
+            <li>.,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,.</li>
+            <li>.,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,.,.</li>
+            <li>.,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,.,.</li>
+            <li>.,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,.,.</li>
+            <li>.,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,.,.,.,.,.</li>
+            <li>.,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,SterileTile,.,.,.,.,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.</li>
         </terrainGrid>
         <randomizeWallStuffAtGen>true</randomizeWallStuffAtGen>
         <tags>
