@@ -4,19 +4,19 @@
     <!-- Drug Plant Fields - varying growth stages -->
 
     <KCSG.StructureLayoutDef>
-        <defName>PH_DrugPlantField_100</defName>
+        <defName>PH_DrugPlantField_10</defName>
         <randomRotation>true</randomRotation>
         <layouts>
             <li>
-                <li>RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100</li>
-                <li>RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100</li>
-                <li>RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100</li>
-                <li>RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100</li>
-                <li>RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100</li>
-                <li>RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100</li>
-                <li>RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100</li>
-                <li>RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100</li>
-                <li>RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100,RHF_Plant_DrugMedicine_100</li>
+                <li>RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10</li>
+                <li>RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10</li>
+                <li>RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10</li>
+                <li>RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10</li>
+                <li>RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10</li>
+                <li>RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10</li>
+                <li>RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10</li>
+                <li>RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10</li>
+                <li>RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10</li>
             </li>
         </layouts>
         <needRoofClearance>true</needRoofClearance>
