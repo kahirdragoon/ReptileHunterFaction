@@ -182,7 +182,7 @@
         <layouts>
             <li>
                 <li>.,.,.,.,.,.,.,.,.,.,.,.</li>
-                <li>.,.,Turret_MiniTurret_Plasteel,.,.,Turret_MiniTurret_Steel,.,.,.,.,.,.</li>
+                <li>.,.,Turret_MiniTurret_Steel,.,.,Turret_MiniTurret_Steel,.,.,.,.,.,.</li>
                 <li>.,Wall_BlocksSandstone,Wall_BlocksSandstone,Autodoor_WoodLog,Autodoor_WoodLog,Wall_BlocksSandstone,Wall_BlocksSandstone,.,.,.,.,.</li>
                 <li>.,Wall_BlocksSandstone,ShelfSmall_WoodLog_East,.,.,Shelf_WoodLog_West,Wall_BlocksSandstone,Wall_BlocksSandstone,Wall_BlocksSandstone,Wall_BlocksSandstone,Wall_BlocksSandstone,.</li>
                 <li>.,Wall_BlocksSandstone,.,.,.,.,Wall_BlocksSandstone,Shelf_WoodLog_North,WallLamp_Morbid_South,ShelfSmall_WoodLog_North,Wall_BlocksSandstone,.</li>

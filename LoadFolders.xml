@@ -8,5 +8,6 @@
     <li IfModActive="redmattis.lamiasandothersnakes">Mods/Lamia</li>
     <li IfModActive="sarg.alphagenes">Mods/AlphaGenes</li>
     <li IfModActive="oskarpotocki.vanillafactionsexpanded.core">Mods/VanillaExpandedFramework</li>
+    <li IfModActive="vanillaexpanded.vfesecurity">Mods/VFE_Security</li>
   </v1.6>
 </loadFolders>

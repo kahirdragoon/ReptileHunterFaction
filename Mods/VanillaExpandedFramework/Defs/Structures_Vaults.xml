@@ -66,7 +66,7 @@
             <li>
                 <li>Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Autodoor_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium</li>
                 <li>Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Autodoor_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium</li>
-                <li>Wall_Uranium,Wall_Uranium,.,Shelf_WoodLog_North,WoodLog,.,Shelf_WoodLog_North,.,Shelf_WoodLog_West,Wall_Uranium,Wall_Uranium</li>
+                <li>Wall_Uranium,Wall_Uranium,.,Shelf_WoodLog_North,.,.,Shelf_WoodLog_North,.,Shelf_WoodLog_West,Wall_Uranium,Wall_Uranium</li>
                 <li>Wall_Uranium,Wall_Uranium,Shelf_WoodLog_East,.,.,FirefoamPopper,.,.,.,Wall_Uranium,Wall_Uranium</li>
                 <li>Wall_Uranium,Wall_Uranium,.,.,.,.,Shelf_WoodLog_West,.,Shelf_WoodLog_West,Wall_Uranium,Wall_Uranium</li>
                 <li>Wall_Uranium,Wall_Uranium,Shelf_WoodLog_East,.,Shelf_WoodLog_East,.,.,.,.,Wall_Uranium,Wall_Uranium</li>
@@ -77,7 +77,7 @@
                 <li>Wall_Uranium,Wall_Uranium,.,.,.,.,Shelf_WoodLog_West,.,Shelf_WoodLog_West,Wall_Uranium,Wall_Uranium</li>
                 <li>Wall_Uranium,Wall_Uranium,Shelf_WoodLog_East,.,Shelf_WoodLog_East,.,.,.,.,Wall_Uranium,Wall_Uranium</li>
                 <li>Wall_Uranium,Wall_Uranium,.,.,.,FirefoamPopper,.,.,Shelf_WoodLog_West,Wall_Uranium,Wall_Uranium</li>
-                <li>Wall_Uranium,Wall_Uranium,Shelf_WoodLog_East,WoodLog,WoodLog,ShelfSmall_WoodLog_South,.,Shelf_WoodLog_South,.,Wall_Uranium,Wall_Uranium</li>
+                <li>Wall_Uranium,Wall_Uranium,Shelf_WoodLog_East,.,.,ShelfSmall_WoodLog_South,.,Shelf_WoodLog_South,.,Wall_Uranium,Wall_Uranium</li>
                 <li>Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium</li>
                 <li>Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium</li>
             </li>
@@ -141,4 +141,180 @@
         </tags>
     </KCSG.StructureLayoutDef>
 
+
+    <KCSG.StructureLayoutDef>
+        <defName>PH_Vault_SecurityDoor1</defName>
+        <layouts>
+            <li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,Turret_MiniTurret_Steel,.,.,Turret_MiniTurret_Steel,.,.,Turret_MiniTurret_Steel,.,.,Turret_MiniTurret_Steel,.,.</li>
+                <li>.,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,SecurityDoor_North,.,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,.</li>
+                <li>.,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,SecurityDoor_North,.,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,.</li>
+                <li>.,Wall_Uranium,Wall_Uranium,.,Shelf_WoodLog_North,.,.,.,Shelf_WoodLog_North,.,Shelf_WoodLog_West,Wall_Uranium,Wall_Uranium,.</li>
+                <li>.,Wall_Uranium,Wall_Uranium,Shelf_WoodLog_East,.,.,.,.,.,.,.,Wall_Uranium,Wall_Uranium,.</li>
+                <li>.,Wall_Uranium,Wall_Uranium,.,.,.,Shelf_WoodLog_South,.,Shelf_WoodLog_South,.,Shelf_WoodLog_West,Wall_Uranium,Wall_Uranium,.</li>
+                <li>.,Wall_Uranium,Wall_Uranium,Shelf_WoodLog_East,.,Shelf_WoodLog_North,.,Shelf_WoodLog_North,.,.,.,Wall_Uranium,Wall_Uranium,.</li>
+                <li>.,Wall_Uranium,Wall_Uranium,.,.,.,.,.,.,.,Shelf_WoodLog_West,Wall_Uranium,Wall_Uranium,.</li>
+                <li>.,Wall_Uranium,Wall_Uranium,Shelf_WoodLog_East,.,.,Shelf_WoodLog_South,.,Shelf_WoodLog_South,.,.,Wall_Uranium,Wall_Uranium,.</li>
+                <li>.,Wall_Uranium,Wall_Uranium,.,.,Shelf_WoodLog_North,.,Shelf_WoodLog_North,.,.,Shelf_WoodLog_West,Wall_Uranium,Wall_Uranium,.</li>
+                <li>.,Wall_Uranium,Wall_Uranium,Shelf_WoodLog_East,.,.,Shelf_WoodLog_West,.,.,.,.,Wall_Uranium,Wall_Uranium,.</li>
+                <li>.,Wall_Uranium,Wall_Uranium,.,.,.,.,Shelf_WoodLog_East,.,.,Shelf_WoodLog_West,Wall_Uranium,Wall_Uranium,.</li>
+                <li>.,Wall_Uranium,Wall_Uranium,Shelf_WoodLog_East,.,Shelf_WoodLog_South,Wall_Uranium,Wall_Uranium,.,Shelf_WoodLog_South,.,Wall_Uranium,Wall_Uranium,.</li>
+                <li>.,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,.</li>
+                <li>.,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+            </li>
+            <li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,WallLamp_Morbid_West,.,.,.,.,.,.,WallLamp_Morbid_East,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,WallLamp_Morbid_West,.,.,.,.,.,.,WallLamp_Morbid_East,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+            </li>
+        </layouts>
+        <roofGrid>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+        </roofGrid>
+        <terrainGrid>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+            <li>.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.</li>
+            <li>.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.</li>
+            <li>.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.</li>
+            <li>.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.</li>
+            <li>.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.</li>
+            <li>.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.</li>
+            <li>.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.</li>
+            <li>.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.</li>
+            <li>.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.</li>
+            <li>.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.</li>
+            <li>.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.</li>
+            <li>.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.</li>
+            <li>.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.</li>
+            <li>.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+        </terrainGrid>
+        <tags>
+            <li>PH_Vault</li>
+        </tags>
+        <modRequirements>
+            <li>ludeon.rimworld.anomaly</li>
+        </modRequirements>
+    </KCSG.StructureLayoutDef>
+
+    <KCSG.StructureLayoutDef>
+        <defName>PH_Vault_SecurityDoor2</defName>
+        <layouts>
+            <li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,Turret_MiniTurret_Steel,.,Turret_MiniTurret_Steel,.,.,Turret_MiniTurret_Steel,.,Turret_MiniTurret_Steel,.,.,.,.</li>
+                <li>.,.,.,.,Wall_Uranium,Wall_Uranium,Wall_Uranium,SecurityDoor_North,.,Wall_Uranium,Wall_Uranium,Wall_Uranium,.,.,.,.</li>
+                <li>.,.,.,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,SecurityDoor_North,.,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,.,.,.</li>
+                <li>.,.,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,.,.,.,Shelf_WoodLog_West,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,.,.</li>
+                <li>.,Wall_Uranium,Wall_Uranium,Wall_Uranium,Shelf_WoodLog_North,.,Shelf_WoodLog_East,.,.,.,Shelf_WoodLog_North,.,Wall_Uranium,Wall_Uranium,Wall_Uranium,.</li>
+                <li>.,Wall_Uranium,Wall_Uranium,Wall_Uranium,.,.,.,.,.,.,.,Shelf_WoodLog_West,Wall_Uranium,Wall_Uranium,Wall_Uranium,.</li>
+                <li>.,Wall_Uranium,Wall_Uranium,.,Shelf_WoodLog_East,.,.,.,Shelf_WoodLog_South,.,.,.,Shelf_WoodLog_West,Wall_Uranium,Wall_Uranium,.</li>
+                <li>.,Wall_Uranium,Wall_Uranium,Shelf_WoodLog_East,.,.,.,.,.,.,.,.,.,Wall_Uranium,Wall_Uranium,.</li>
+                <li>.,Wall_Uranium,Wall_Uranium,.,.,.,Shelf_WoodLog_West,.,Shelf_WoodLog_South,.,.,.,Shelf_WoodLog_West,Wall_Uranium,Wall_Uranium,.</li>
+                <li>.,Wall_Uranium,Wall_Uranium,Shelf_WoodLog_East,.,.,.,Shelf_WoodLog_North,.,Shelf_WoodLog_East,.,Shelf_WoodLog_West,.,Wall_Uranium,Wall_Uranium,.</li>
+                <li>.,Wall_Uranium,Wall_Uranium,Wall_Uranium,Shelf_WoodLog_East,.,.,.,.,.,.,.,Wall_Uranium,Wall_Uranium,Wall_Uranium,.</li>
+                <li>.,Wall_Uranium,Wall_Uranium,Wall_Uranium,.,Shelf_WoodLog_South,.,.,.,.,.,Shelf_WoodLog_South,Wall_Uranium,Wall_Uranium,Wall_Uranium,.</li>
+                <li>.,.,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,.,Shelf_WoodLog_South,.,Shelf_WoodLog_South,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,.,.</li>
+                <li>.,.,.,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,.,.,.</li>
+                <li>.,.,.,.,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,Wall_Uranium,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+            </li>
+            <li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,WallLamp_Morbid_South,.,.,.,.,WallLamp_Morbid_South,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,WallLamp_Morbid_North,.,.,.,.,WallLamp_Morbid_North,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+            </li>
+        </layouts>
+        <roofGrid>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+            <li>.,.,.,1,1,1,1,1,1,1,1,1,.,.,.,.</li>
+            <li>.,.,.,1,1,1,1,1,1,1,1,1,1,.,.,.</li>
+            <li>.,.,1,1,1,1,1,1,1,1,1,1,1,1,.,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,1,1,1,1,1,1,1,1,1,1,1,1,1,1,.</li>
+            <li>.,.,1,1,1,1,1,1,1,1,1,1,1,1,.,.</li>
+            <li>.,.,.,1,1,1,1,1,1,1,1,1,1,.,.,.</li>
+            <li>.,.,.,.,1,1,1,1,1,1,1,1,.,.,.,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+        </roofGrid>
+        <terrainGrid>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+            <li>.,.,.,.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.,.,.,.</li>
+            <li>.,.,.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.,.,.</li>
+            <li>.,.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.,.</li>
+            <li>.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.</li>
+            <li>.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.</li>
+            <li>.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.</li>
+            <li>.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.</li>
+            <li>.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.</li>
+            <li>.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.</li>
+            <li>.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.</li>
+            <li>.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.</li>
+            <li>.,.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.,.</li>
+            <li>.,.,.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.,.,.</li>
+            <li>.,.,.,.,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,MetalTile,.,.,.,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+        </terrainGrid>
+        <tags>
+            <li>PH_Vault</li>
+        </tags>
+        <modRequirements>
+            <li>ludeon.rimworld.anomaly</li>
+        </modRequirements>
+    </KCSG.StructureLayoutDef>
 </Defs>

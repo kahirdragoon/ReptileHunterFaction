@@ -3,4 +3,12 @@
     <Operation Class="PatchOperationRemove">
         <xpath>Defs/KCSG.StructureLayoutDef[defName="PH_DrugLab"]/tags</xpath>
     </Operation>
+
+    <Operation Class="PatchOperationRemove">
+        <xpath>Defs/KCSG.StructureLayoutDef[defName="PH_Vault1"]/tags</xpath>
+    </Operation>
+
+    <Operation Class="PatchOperationRemove">
+        <xpath>Defs/KCSG.StructureLayoutDef[defName="PH_Vault2"]/tags</xpath>
+    </Operation>
 </Patch>

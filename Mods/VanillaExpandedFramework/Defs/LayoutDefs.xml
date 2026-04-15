@@ -7,7 +7,7 @@
     <defName>PH_Settlement</defName>
     <settlementSize>90,90</settlementSize>
     <centerBuildings>
-      <centerSize>70,70</centerSize>
+      <centerSize>90,90</centerSize>
       <forceClean>true</forceClean>
       <allowedStructures>
         <li>
@@ -46,16 +46,12 @@
           <count>1~2</count>
           <tag>PH_DrugLab</tag>
         </li>
-      </allowedStructures>
-    </centerBuildings>
-    <peripheralBuildings>
-      <allowedStructures>
         <li>
-          <count>3~8</count>
+          <count>3~5</count>
           <tag>PH_House</tag>
         </li>
         <li>
-          <count>2~4</count>
+          <count>1~3</count>
           <tag>PH_Barracks</tag>
         </li>
         <li>
@@ -63,9 +59,13 @@
           <tag>PH_DrugField</tag>
         </li>
         <li>
-          <count>2~3</count>
+          <count>1~2</count>
           <tag>PH_Battery</tag>
         </li>
+      </allowedStructures>
+    </centerBuildings>
+    <peripheralBuildings>
+      <allowedStructures>
       </allowedStructures>
     </peripheralBuildings>
     <stuffableOptions>
