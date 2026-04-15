@@ -1,6 +1,4 @@
 - fix hunters spawning on home quests (wait time and break in or not spawn at all?)
-- fix hunter immediatly attacking and boss fleeing
-- replace druglab turrents with shotgun turrets if vfe sec is installed
 
 - pirate using jump pack if they have them?
 

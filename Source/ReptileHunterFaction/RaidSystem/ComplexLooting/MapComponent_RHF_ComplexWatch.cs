@@ -1,6 +1,7 @@
 using RimWorld;
 using RimWorld.Planet;
 using System.Linq;
+using System.Reflection;
 using Verse;
 using Verse.AI.Group;
 
@@ -16,6 +17,19 @@ public class MapComponent_RHF_ComplexWatch(Map map) : MapComponent(map)
     private bool _raidSpawned   = false;
     private int  _raidTick      = -1;
     private bool _initialized   = false;
+
+    private bool IsValidMap =>
+        !map.IsPlayerHome
+        && map.Parent is Site site
+        && site.parts.Any(p => p.def.tags?.Contains("AncientComplex") == true);
+
+    public override void FinalizeInit()
+    {
+        base.FinalizeInit();
+
+        if (!IsValidMap)
+            map.components.Remove(this);
+    }
 
     public override void MapComponentTick()
     {
