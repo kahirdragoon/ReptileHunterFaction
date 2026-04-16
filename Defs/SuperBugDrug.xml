@@ -28,6 +28,7 @@
                     <severity>1.00</severity>
                     <doToGeneratedPawnIfAddicted>false</doToGeneratedPawnIfAddicted>
                 </li>
+                <li Class="ReptileHunterFaction.IngestionOutcomeDoer_RHF_GiveCannibalTrait" />
             </outcomeDoers>
         </ingestible>
         <comps>

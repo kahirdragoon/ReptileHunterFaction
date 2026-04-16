@@ -2,7 +2,6 @@
 - expand prisoner places and turn them into small hunting places
 - building for scanning for luciferium?
     - can be found at settlements or prison outpost
-    - will break down over time
 
 - do no longer inherite from pirate base faction
 
@@ -13,8 +12,6 @@
 - alternativ groups
     - add small greatest hunter
 - cache genedefs
-
-- sbd drug gives cannibal
 
 - make the genes necessary for creating the drug -> no idea what i meant with this
 
