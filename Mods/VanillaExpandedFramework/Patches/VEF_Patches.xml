@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+    <Operation Class="PatchOperationRemove">
+        <xpath>Defs/GenStepDef[defName="RHF_KidnappedPawnPrison"]</xpath>
+    </Operation>
+</Patch>

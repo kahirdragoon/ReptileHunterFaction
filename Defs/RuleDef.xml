@@ -113,4 +113,12 @@
         </resolvers>
     </RuleDef>
 
+    <RuleDef>
+        <defName>PH_HuntingHut</defName>
+        <symbol>ph_huntinghut</symbol>
+        <resolvers>
+            <li Class="ReptileHunterFaction.SymbolResolver_RHF_HuntingHutPrison" />
+        </resolvers>
+    </RuleDef>
+
 </Defs>

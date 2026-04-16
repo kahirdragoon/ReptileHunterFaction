@@ -14,7 +14,8 @@
       "Read(//d e:/SteamLibrary/steamapps/workshop/content/294100/2023507013/1.6/**)",
       "Bash(dotnet-decompiler KCSG.dll)",
       "Bash(which ilspycmd *)",
-      "Bash(which dotnet *)"
+      "Bash(which dotnet *)",
+      "Bash(xargs -I{} basename {})"
     ]
   }
 }

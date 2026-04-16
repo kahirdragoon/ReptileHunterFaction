@@ -27,4 +27,11 @@
 			<ExcludeAssets>runtime</ExcludeAssets>
 		</PackageReference>
 	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="KCSG">
+			<HintPath>e:\SteamLibrary\steamapps\workshop\content\294100\2023507013\1.6\Assemblies\KCSG.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
 </Project>

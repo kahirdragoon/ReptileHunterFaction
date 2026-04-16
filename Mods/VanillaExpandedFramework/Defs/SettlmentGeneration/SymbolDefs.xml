@@ -241,4 +241,16 @@
         <thing>RHF_SBD</thing>
     </KCSG.SymbolDef>
 
+    <KCSG.SymbolDef>
+        <defName>TorchLamp_Morbid</defName>
+        <thing>TorchLamp</thing>
+        <styleCategory>Morbid</styleCategory>
+    </KCSG.SymbolDef>
+
+    <KCSG.SymbolDef>
+        <defName>LongRangeAncientComplexScanner</defName>
+        <thing>LongRangeAncientComplexScanner</thing>
+        <rotation>West</rotation>
+    </KCSG.SymbolDef>
+
 </Defs>

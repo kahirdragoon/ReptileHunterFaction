@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+    <GenStepDef>
+        <defName>RHF_KidnappedPawnPrison_VFE</defName>
+        <linkWithSite>RHF_KidnappedPawnPrison</linkWithSite>
+        <order>1600</order>
+        <genStep Class="ReptileHunterFaction.GenStep_RHF_HuntingHutPrisonGen">
+            <structureLayoutDefs>
+                <li>PH_HuntingHut1</li>
+            </structureLayoutDefs>
+            <fullClear>true</fullClear>
+            <preventBridgeable>false</preventBridgeable>
+            <spawnInRandomFreeLocation>true</spawnInRandomFreeLocation>
+        </genStep>
+    </GenStepDef>
+
+    <KCSG.StructureLayoutDef>
+        <defName>PH_HuntingHut1</defName>
+        <randomRotation>true</randomRotation>
+        <layouts>
+            <li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,.,.,.</li>
+                <li>.,.,Wall_WoodLog,Wall_WoodLog,Door_WoodLog,Wall_WoodLog,Wall_WoodLog,Shelf_WoodLog_North,.,Wall_WoodLog,.,.,.</li>
+                <li>.,.,Wall_WoodLog,.,.,.,.,.,.,Wall_WoodLog,.,.,.</li>
+                <li>.,.,Wall_WoodLog,Bed_WoodLog_South,.,.,TorchLamp_Morbid,.,Bed_WoodLog_West,Wall_WoodLog,.,.,.</li>
+                <li>.,.,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Door_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,.,.,.</li>
+                <li>.,.,.,.,Wall_WoodLog,.,.,Wall_WoodLog,.,.,.,.,.</li>
+                <li>.,.,LongRangeAncientComplexScanner_West,.,Wall_WoodLog,.,SleepingSpot_South,Wall_WoodLog,.,SolarGenerator,.,.,.</li>
+                <li>.,.,.,.,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,Wall_WoodLog,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+                <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+            </li>
+        </layouts>
+        <roofGrid>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+            <li>.,.,.,.,.,1,1,1,1,1,.,.,.</li>
+            <li>.,.,1,1,1,1,1,1,1,1,.,.,.</li>
+            <li>.,.,1,1,1,1,1,1,1,1,.,.,.</li>
+            <li>.,.,1,1,1,1,1,1,1,1,.,.,.</li>
+            <li>.,.,1,1,1,1,1,1,1,1,.,.,.</li>
+            <li>.,.,.,.,1,1,1,1,.,.,.,.,.</li>
+            <li>.,.,.,.,.,1,1,1,.,.,.,.,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+        </roofGrid>
+        <terrainGrid>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+            <li>.,.,.,.,.,.,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,.,.,.</li>
+            <li>.,.,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,.,.,.</li>
+            <li>.,.,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,.,.,.</li>
+            <li>.,.,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,.,.,.</li>
+            <li>.,.,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,WoodPlankFloor,.,.,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+            <li>.,.,.,.,.,.,.,.,.,.,.,.,.</li>
+        </terrainGrid>
+        <needRoofClearance>true</needRoofClearance>
+        <tags>
+            <li>PH_HuntingHut</li>
+        </tags>
+    </KCSG.StructureLayoutDef>
+
+</Defs>
