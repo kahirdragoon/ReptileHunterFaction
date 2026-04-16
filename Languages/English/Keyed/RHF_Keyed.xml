@@ -13,8 +13,8 @@
 
     <!-- ── Gift reward payment letters ── -->
     <RHF_GiftPayment_LetterLabel>RHF payment received</RHF_GiftPayment_LetterLabel>
-    <RHF_GiftPayment_LetterText_WithSBD>The Reptile Hunters have accepted your delivery of {TOTAL} prisoner(s). {QUALIFYING} met their specimen criteria. A payment of {SBD} dose(s) of SBD and {TOTAL} dose(s) of drug medicine has arrived by drop pod.</RHF_GiftPayment_LetterText_WithSBD>
-    <RHF_GiftPayment_LetterText_NoSBD>The Reptile Hunters have accepted your delivery of {TOTAL} prisoner(s). None met their specimen criteria. A payment of {TOTAL} dose(s) of drug medicine has arrived by drop pod.</RHF_GiftPayment_LetterText_NoSBD>
+    <RHF_GiftPayment_LetterText_WithQualifying>The Reptile Hunters have accepted your delivery of {TOTAL} prisoner(s). {QUALIFYING} met their specimen criteria — their interest has been noted, and the next raid against you will be smaller. A payment of {TOTAL} dose(s) of drug medicine has arrived by drop pod.</RHF_GiftPayment_LetterText_WithQualifying>
+    <RHF_GiftPayment_LetterText_NoQualifying>The Reptile Hunters have accepted your delivery of {TOTAL} prisoner(s). None met their specimen criteria. A payment of {TOTAL} dose(s) of drug medicine has arrived by drop pod.</RHF_GiftPayment_LetterText_NoQualifying>
 
     <!-- ── Mod settings window ── -->
     <RHF_Settings_MinQualifyingPawns>Min. qualifying pawns</RHF_Settings_MinQualifyingPawns>

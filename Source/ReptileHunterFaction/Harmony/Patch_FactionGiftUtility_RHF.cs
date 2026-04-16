@@ -68,36 +68,24 @@ internal static class RHFGiftRewardUtility
         Map? homeMap = Find.AnyPlayerHomeMap;
         if (homeMap == null) return;
 
-        var rewards = new List<Thing>();
-
         Thing drugMed = ThingMaker.MakeThing(ReptileHunterFactionDefOf.RHF_DrugMedicine);
         drugMed.stackCount = totalCount;
-        rewards.Add(drugMed);
-
-        int sbdCount = qualifyingCount / 2;
-        if (sbdCount > 0)
-        {
-            Thing sbd = ThingMaker.MakeThing(ReptileHunterFactionDefOf.RHF_SBD);
-            sbd.stackCount = sbdCount;
-            rewards.Add(sbd);
-        }
 
         // Register qualifying prisoners so the next kidnapping raid is reduced.
         WorldComp_SpoilsOfBattle.Get()?.AddGiftedPrisoners(qualifyingCount);
 
         IntVec3 dropCell = DropCellFinder.RandomDropSpot(homeMap);
-        DropPodUtility.DropThingsNear(dropCell, homeMap, rewards, canRoofPunch: false, forbid: false);
+        DropPodUtility.DropThingsNear(dropCell, homeMap, new List<Thing> { drugMed }, canRoofPunch: false, forbid: false);
 
-        string textKey = sbdCount > 0
-            ? "RHF_GiftPayment_LetterText_WithSBD"
-            : "RHF_GiftPayment_LetterText_NoSBD";
+        string textKey = qualifyingCount > 0
+            ? "RHF_GiftPayment_LetterText_WithQualifying"
+            : "RHF_GiftPayment_LetterText_NoQualifying";
 
         Find.LetterStack.ReceiveLetter(
             "RHF_GiftPayment_LetterLabel".Translate(),
             textKey.Translate(
                 totalCount.Named("TOTAL"),
-                qualifyingCount.Named("QUALIFYING"),
-                sbdCount.Named("SBD")),
+                qualifyingCount.Named("QUALIFYING")),
             LetterDefOf.PositiveEvent,
             new LookTargets(new TargetInfo(dropCell, homeMap)));
     }
