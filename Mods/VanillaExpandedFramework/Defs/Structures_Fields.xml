@@ -6,6 +6,17 @@
     <KCSG.StructureLayoutDef>
         <defName>PH_DrugPlantField_10</defName>
         <randomRotation>true</randomRotation>
+        <terrainGrid>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+        </terrainGrid>
         <layouts>
             <li>
                 <li>RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10,RHF_Plant_DrugMedicine_10</li>
@@ -28,6 +39,17 @@
     <KCSG.StructureLayoutDef>
         <defName>PH_DrugPlantField_07</defName>
         <randomRotation>true</randomRotation>
+        <terrainGrid>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+        </terrainGrid>
         <layouts>
             <li>
                 <li>RHF_Plant_DrugMedicine_07,RHF_Plant_DrugMedicine_07,RHF_Plant_DrugMedicine_07,RHF_Plant_DrugMedicine_07,RHF_Plant_DrugMedicine_07,RHF_Plant_DrugMedicine_07</li>
@@ -50,6 +72,17 @@
     <KCSG.StructureLayoutDef>
         <defName>PH_DrugPlantField</defName>
         <randomRotation>true</randomRotation>
+        <terrainGrid>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+        </terrainGrid>
         <layouts>
             <li>
                 <li>RHF_Plant_DrugMedicine_05,RHF_Plant_DrugMedicine_05,RHF_Plant_DrugMedicine_05,RHF_Plant_DrugMedicine_05,RHF_Plant_DrugMedicine_05,RHF_Plant_DrugMedicine_05</li>
@@ -72,6 +105,17 @@
     <KCSG.StructureLayoutDef>
         <defName>PH_DrugPlantField_03</defName>
         <randomRotation>true</randomRotation>
+        <terrainGrid>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+        </terrainGrid>
         <layouts>
             <li>
                 <li>RHF_Plant_DrugMedicine_03,RHF_Plant_DrugMedicine_03,RHF_Plant_DrugMedicine_03,RHF_Plant_DrugMedicine_03,RHF_Plant_DrugMedicine_03,RHF_Plant_DrugMedicine_03</li>
@@ -94,6 +138,17 @@
     <KCSG.StructureLayoutDef>
         <defName>PH_DrugPlantField_01</defName>
         <randomRotation>true</randomRotation>
+        <terrainGrid>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+            <li>SoilRich,SoilRich,SoilRich,SoilRich,SoilRich,SoilRich</li>
+        </terrainGrid>
         <layouts>
             <li>
                 <li>RHF_Plant_DrugMedicine_01,RHF_Plant_DrugMedicine_01,RHF_Plant_DrugMedicine_01,RHF_Plant_DrugMedicine_01,RHF_Plant_DrugMedicine_01,RHF_Plant_DrugMedicine_01</li>
