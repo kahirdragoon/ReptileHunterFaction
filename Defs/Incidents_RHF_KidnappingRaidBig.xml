@@ -42,6 +42,11 @@
         <defName>RHF_KidnappingRaidStrategy_Big</defName>
         <workerClass>ReptileHunterFaction.RaidStrategyWorker_RHF_KidnappingRaidBig</workerClass>
         <label>mass kidnapping assault</label>
+        <selectionWeightPerPointsCurve>
+            <points>
+                <li>(0, 1)</li>
+            </points>
+        </selectionWeightPerPointsCurve>
         <letterLabelEnemy>Mass kidnapping raid</letterLabelEnemy>
         <arrivalTextEnemy>A large force of reptile hunters is here to storm your colony and kidnap any downed pawns they can reach.</arrivalTextEnemy>
         <pawnsCanBringFood>false</pawnsCanBringFood>
@@ -82,6 +87,11 @@
         <defName>RHF_KidnappingRaidStrategy_Boss</defName>
         <workerClass>ReptileHunterFaction.RaidStrategyWorker_RHF_KidnappingRaidBoss</workerClass>
         <label>greatest hunter assault</label>
+        <selectionWeightPerPointsCurve>
+            <points>
+                <li>(0, 1)</li>
+            </points>
+        </selectionWeightPerPointsCurve>
         <letterLabelEnemy>Greatest hunter raid</letterLabelEnemy>
         <arrivalTextEnemy>The greatest of the reptile hunters leads this assault personally. He will storm your colony alongside his warriors and haul off anyone who falls.</arrivalTextEnemy>
         <pawnsCanBringFood>false</pawnsCanBringFood>

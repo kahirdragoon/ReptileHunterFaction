@@ -46,6 +46,11 @@
         <defName>RHF_KidnappingRaidStrategy</defName>
         <workerClass>ReptileHunterFaction.RaidStrategyWorker_RHF_KidnappingRaid</workerClass>
         <label>kidnapping assault</label>
+        <selectionWeightPerPointsCurve>
+            <points>
+                <li>(0, 1)</li>
+            </points>
+        </selectionWeightPerPointsCurve>
         <letterLabelEnemy>Kidnapping raid</letterLabelEnemy>
         <arrivalTextEnemy>The hunters are here to kidnap your pawns. They will fight and try to drag downed colonists back to their base.</arrivalTextEnemy>
         <pawnsCanBringFood>false</pawnsCanBringFood>

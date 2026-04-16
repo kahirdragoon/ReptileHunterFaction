@@ -1,7 +1,3 @@
-- fix hunters spawning on home quests (wait time and break in or not spawn at all?)
-
-- pirate using jump pack if they have them?
-
 - have small bases in the world as events where captured pawn or trophie head stand 
 - expand prisoner places and turn them into small hunting places
 
