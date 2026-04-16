@@ -1,20 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-    <FactionDef ParentName="PirateBandBase">
+    <FactionDef ParentName="FactionBase">
         <defName>RHF_ReptileHunters</defName>
         <label>Reptile Hunters</label>
         <description>Ruthless carnivorious pirates who raid to kidnap and feed using stolen glittertech technology. Loosely unified by a strong leader and their common sbd addiction. Their minds have long been influenced by the drug.</description>
         <pawnSingular>hunter</pawnSingular>
         <pawnsPlural>hunters</pawnsPlural>
-        <permanentEnemy>true</permanentEnemy>
         <hidden>false</hidden>
-        <canStageAttacks>true</canStageAttacks>
+        <listOrderPriority>10</listOrderPriority>
+        <settlementGenerationWeight>1</settlementGenerationWeight>
+        <requiredCountAtGameStart>1</requiredCountAtGameStart>
+        <permanentEnemy>true</permanentEnemy>
+        <canSiege>true</canSiege>
+        <canStageAttacks>false</canStageAttacks>
         <techLevel>Ultra</techLevel>
         <leaderTitle>strongest hunter</leaderTitle>
+        <factionIconPath>World/WorldObjects/Expanding/PirateOutpost</factionIconPath>
+        <factionNameMaker>NamerFactionPirate</factionNameMaker>
+        <settlementNameMaker>NamerSettlementPirate</settlementNameMaker>
+        <colorSpectrum>
+            <li>(0.78, 0, 0.27)</li>
+            <li>(1, 0.74, 0.83)</li>
+        </colorSpectrum>
+        <allowedCultures>
+            <li>Kriminul</li>
+        </allowedCultures>
+        <structureMemeWeights>
+            <Structure_Ideological MayRequire="Ludeon.RimWorld.Ideology">1</Structure_Ideological>
+        </structureMemeWeights>
+        <backstoryFilters>
+            <li>
+                <categories>
+                    <li>Pirate</li>
+                </categories>
+            </li>
+        </backstoryFilters>
+        <raidLootMaker>PirateRaidLootMaker</raidLootMaker>
+        <maxPawnCostPerTotalPointsCurve>
+            <points>
+                <li>(0, 35)</li>
+                <li>(70, 50)</li>
+                <li>(700, 100)</li>
+                <li>(1300, 150)</li>
+                <li>(100000, 10000)</li>
+            </points>
+        </maxPawnCostPerTotalPointsCurve>
+        <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
         <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+        <configurationListOrderPriority>60</configurationListOrderPriority>
         <maxCountAtGameStart>1</maxCountAtGameStart>
         <hostileToFactionlessHumanlikes>true</hostileToFactionlessHumanlikes>
-        <canStageAttacks>false</canStageAttacks>
         <arrivalLayerWhitelist>
             <li>Surface</li>
             <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
