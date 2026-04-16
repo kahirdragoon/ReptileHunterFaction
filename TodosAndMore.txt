@@ -1,8 +1,3 @@
-- have small bases in the world as events where captured pawn or trophie head stand 
-- expand prisoner places and turn them into small hunting places
-- building for scanning for luciferium?
-    - can be found at settlements (create structure) or prison outpost (chance to spawn)
-
 - make prisoner is settlements that are of the player faction join
 
 - do no longer inherite from pirate base faction

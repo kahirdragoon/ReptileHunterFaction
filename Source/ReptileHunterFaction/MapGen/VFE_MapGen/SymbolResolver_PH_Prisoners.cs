@@ -72,7 +72,7 @@ public class SymbolResolver_PH_Prisoners : SymbolResolver
 
                 GenSpawn.Spawn(prisoner, spot.Position, map);
                 prisoner.guest.SetGuestStatus(captorFaction, GuestStatus.Prisoner);
-                prisoner.mindState.willJoinColonyIfRescuedInt = true;
+                prisoner.mindState.willJoinColonyIfRescuedInt = prisoner.Faction == Faction.OfPlayer;
                 spot.CompAssignableToPawn?.TryAssignPawn(prisoner);
             }
         }
