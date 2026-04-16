@@ -56,11 +56,20 @@
             <li Class="CompProperties_CompAnalyzableUnlockResearch">
                 <analysisID>49541972 </analysisID>
 
-                <analysisDurationHours>1</analysisDurationHours>
+                <analysisDurationHours>2</analysisDurationHours>
                 <destroyedOnAnalyzed>true</destroyedOnAnalyzed>
                 <completedLetterLabel>Drug medicine studied: {RESEARCH} unlocked</completedLetterLabel>
                 <completedLetter>By studying the Drug medicine, {PAWN_labelShort} has acquired the insight needed for the research project(s) {RESEARCH}.\n\nYour researchers can now use research benches to begin researching how to actually cultivate this plant.</completedLetter>
                 <completedLetterDef>PositiveEvent</completedLetterDef>
+                <analysisRequiredRange>3</analysisRequiredRange>
+                <showProgress>true</showProgress>
+                <progressedLetterLabel>Drug Medicine Analysis progress</progressedLetterLabel>
+                <progressedLetters>
+                    <li>{PAWN_nameDef} has begun examining the drug medicine. The dried herb is dense with active compounds — far more potent than ordinary healing plants. Whatever its origin, something in the growth process concentrates the medicinal agents to an unusual degree.\n\n{PAWN_pronoun} suspects the plant requires very specific soil conditions to produce this quality. More study is needed to understand its requirements.</li>
+                    <li>{PAWN_nameDef} has identified the key compounds responsible for the drug medicine's regenerative effects. They appear to be stress-response metabolites — the plant produces them in high quantities only under particular environmental pressures.\n\nThis explains why wild specimens are so rare. Cultivating it will require carefully replicating those conditions. {PAWN_pronoun} needs one more round of analysis to work out the exact growing parameters.</li>
+                    <li>{PAWN_nameDef} has completed {PAWN_possessive} botanical analysis. The drug plant thrives under high-stress conditions — poor soil, aggressive pruning, and controlled drought cycles trigger maximum compound production.\n\n{PAWN_pronoun} is confident {PAWN_pronoun} now understands enough to cultivate it reliably. The knowledge needed to grow this plant is within reach.</li>
+                </progressedLetters>
+                <progressedLetterDef>PositiveEvent</progressedLetterDef>
 
                 <activateTexPath>UI/Icons/Study</activateTexPath>
                 <activateLabelString>Analyze...</activateLabelString>
@@ -118,7 +127,7 @@
             <wildClusterRadius>5</wildClusterRadius>
             <wildClusterWeight>250</wildClusterWeight>
             <pollution>Any</pollution>
-            <fertilityMin>0.70</fertilityMin>
+            <fertilityMin>0.80</fertilityMin>
             <purpose>Health</purpose>
         </plant>
     </ThingDef>

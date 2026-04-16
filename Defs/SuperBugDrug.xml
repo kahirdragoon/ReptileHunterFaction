@@ -38,14 +38,25 @@
                 <listOrder>1010</listOrder>
             </li>
             <li Class="CompProperties_CompAnalyzableUnlockResearch">
-                <analysisID>29149979 </analysisID>
+                <analysisID>29149979</analysisID>
 
                 <!-- Analyzable -->
-                <analysisDurationHours>1</analysisDurationHours>
+                <analysisDurationHours>3</analysisDurationHours>
                 <destroyedOnAnalyzed>true</destroyedOnAnalyzed>
                 <completedLetterLabel>Super bug drug studied: {RESEARCH} unlocked</completedLetterLabel>
                 <completedLetter>By studying the super bug drug, {PAWN_labelShort} has acquired the insight needed for the research project(s) {RESEARCH}.\n\nYour researchers can now use research benches to begin researching how to actually use the technology.</completedLetter>
                 <completedLetterDef>PositiveEvent</completedLetterDef>
+                <analysisRequiredRange>5</analysisRequiredRange>
+                <showProgress>true</showProgress>
+                <progressedLetterLabel>Super Bug Drug Analysis progress</progressedLetterLabel>
+                <progressedLetters>
+                    <li>{PAWN_nameDef} has begun analyzing the super bug drug. The compound defies easy classification — part chemical stimulant, part living tissue. Something inside it is still biologically active.\n\n{PAWN_pronoun} notes that the organic fraction smells faintly of chitin and old blood. More study is needed before {PAWN_pronoun} can draw any real conclusions.</li>
+                    <li>{PAWN_nameDef} has identified the drug's primary active component: concentrated blood from humanoid insectoids. When introduced to tissue samples, it triggers rapid, uncontrolled cellular mutation.\n\nThe effect is violent and immediate — cells rewire themselves at a pace {PAWN_pronoun} has never seen outside of a petri dish. {PAWN_pronoun} needs more samples to understand whether this process can be replicated safely.</li>
+                    <li>{PAWN_nameDef} has mapped the drug's mutation cascade. The insectoid blood hijacks the host's immune system, forcing it to reinforce muscle, bone, and nerve tissue simultaneously. The gains are extraordinary — and the cost is catastrophic.\n\nThe same process that grants power also rewrites the body's dependency pathways permanently. {PAWN_pronoun} suspects withdrawal is not a matter of discomfort but of death. Further analysis is needed to confirm this.</li>
+                    <li>{PAWN_nameDef} has confirmed {PAWN_possessive} worst hypothesis. The super bug drug binds irreversibly to the body's chemical receptors after the first dose. Without continued intake the nervous system enters a catastrophic feedback loop — violent madness, then organ failure.\n\nThe Reptile Hunters didn't stumble onto this formula. Someone engineered it this way deliberately. {PAWN_pronoun} is close to understanding the full synthesis, but needs one final sample to verify {PAWN_possessive} findings.</li>
+                    <li>{PAWN_nameDef} has nearly completed the analysis. {PAWN_pronoun} has reconstructed the full production process: the precise ratio of insectoid blood, the role of luciferium as a stabilizer, the neutroamine base that makes the compound ingestible.\n\nOne more round of study and {PAWN_pronoun} will have everything needed to document this properly — and perhaps find a way to produce it without depending on the Reptile Hunters' supply chain.</li>
+                </progressedLetters>
+                <progressedLetterDef>PositiveEvent</progressedLetterDef>
 
                 <!-- Interactable -->
                 <activateTexPath>UI/Icons/Study</activateTexPath>
