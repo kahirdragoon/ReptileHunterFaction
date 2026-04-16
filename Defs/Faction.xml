@@ -2,7 +2,7 @@
     <FactionDef ParentName="PirateBandBase">
         <defName>RHF_ReptileHunters</defName>
         <label>Reptile Hunters</label>
-        <description>Ruthless carnivorious reptiles who raid to kidnap and feed using superior technology.</description>
+        <description>Ruthless carnivorious pirates who raid to kidnap and feed using superior technology. Loosely together by a strong leader and their addiction.</description>
         <pawnSingular>hunter</pawnSingular>
         <pawnsPlural>hunters</pawnsPlural>
         <permanentEnemy>true</permanentEnemy>
