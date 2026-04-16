@@ -135,7 +135,7 @@
         <li MayRequire="vanillaexpanded.vfesecurity">VFES_Turret_ChargeTurret</li>
         <li MayRequire="vanillaexpanded.vfesecurity">VFES_Turret_ChargeRailgun</li>
       </allowedTurretsDefs>
-      <pawnGroupMultiplier>1.5</pawnGroupMultiplier>
+      <pawnGroupMultiplier>7</pawnGroupMultiplier>
     </defenseOptions>
     <stockpileOptions>
       <fillStorageBuildings>true</fillStorageBuildings>

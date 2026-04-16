@@ -71,4 +71,13 @@ public static class DebugActions_RHF
         }
         return nodes;
     }
+
+    [DebugAction("RHF", "Fire kidnapped pawn quest", actionType = DebugActionType.Action, allowedGameStates = AllowedGameStates.PlayingOnMap)]
+    private static void FireKidnappedPawnQuest()
+    {
+        var questDef = DefDatabase<QuestScriptDef>.GetNamed("RHF_OpportunitySite_KidnappedPawnPrison");
+        var quest = QuestUtility.GenerateQuestAndMakeAvailable(questDef, StorytellerUtility.DefaultThreatPointsNow(Find.CurrentMap));
+        if (!quest.hidden && quest.root.sendAvailableLetter)
+            QuestUtility.SendLetterQuestAvailable(quest);
+    }
 }

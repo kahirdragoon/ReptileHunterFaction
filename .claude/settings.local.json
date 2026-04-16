@@ -9,7 +9,12 @@
       "Bash(cat)",
       "Read(//tmp/**)",
       "Bash(powershell -Command ':*)",
-      "Bash(python gen_maze.py)"
+      "Bash(python gen_maze.py)",
+      "Bash(find \"e:/SteamLibrary/steamapps/workshop/content/294100/\" -maxdepth 2 -name \"About.xml\" -exec grep -l \"KCSG\\\\|VanillaExpanded\" {} \\\\;)",
+      "Read(//d e:/SteamLibrary/steamapps/workshop/content/294100/2023507013/1.6/**)",
+      "Bash(dotnet-decompiler KCSG.dll)",
+      "Bash(which ilspycmd *)",
+      "Bash(which dotnet *)"
     ]
   }
 }

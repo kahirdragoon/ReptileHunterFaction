@@ -55,10 +55,63 @@ internal class GenStep_RHFSettlement : GenStep_Settlement
         BaseGen.Generate();
         if (BaseGen.globalSettings.landingPadsGenerated == 0)
             GenerateLandingPadNearby(resolveParams.rect, map, faction, out CellRect _);
+        TrySpawnScannerInSettlement(map, var, faction);
+
         if (!WillPostProcess)
             return;
         var list = map.listerThings.GetThingsOfType<Building>().Where(b => !previous!.Contains(b)).ToList();
         previous!.Clear();
         MapGenUtility.PostProcessSettlement(map, list, postProcessSettlementParams);
+    }
+
+    private static void TrySpawnScannerInSettlement(Map map, CellRect settlementRect, Faction faction)
+    {
+        ThingDef? scannerDef = DefDatabase<ThingDef>.GetNamedSilentFail("LongRangeAncientComplexScanner");
+        if (scannerDef == null)
+            return;
+
+        // Search the settlement rect for a clear, unroofed 3×3 footprint.
+        // Shuffle candidate anchor positions so we don't always prefer the same corner.
+        List<IntVec3> candidates = [];
+        foreach (IntVec3 cell in settlementRect.Cells)
+        {
+            // Anchor so the 3×3 footprint stays inside the rect.
+            if (cell.x + 2 > settlementRect.maxX || cell.z + 2 > settlementRect.maxZ)
+                continue;
+            candidates.Add(cell);
+        }
+        candidates.Shuffle();
+
+        foreach (IntVec3 anchor in candidates)
+        {
+            if (!CanPlace3x3Unroofed(map, anchor))
+                continue;
+
+            Thing scanner = ThingMaker.MakeThing(scannerDef);
+            if (scannerDef.CanHaveFaction)
+                scanner.SetFaction(faction);
+            GenSpawn.Spawn(scanner, anchor, map, Rot4.South);
+            return;
+        }
+    }
+
+    private static bool CanPlace3x3Unroofed(Map map, IntVec3 anchor)
+    {
+        for (int dx = 0; dx < 3; dx++)
+        {
+            for (int dz = 0; dz < 3; dz++)
+            {
+                IntVec3 cell = new(anchor.x + dx, anchor.y, anchor.z + dz);
+                if (!cell.InBounds(map))
+                    return false;
+                if (cell.GetTerrain(map).passability == Traversability.Impassable)
+                    return false;
+                if (cell.GetEdifice(map) != null)
+                    return false;
+                if (cell.Roofed(map))
+                    return false;
+            }
+        }
+        return true;
     }
 }

@@ -8,15 +8,20 @@
         <autoAccept>true</autoAccept>
         <questNameRules>
             <rulesStrings>
-                <li>questName->Rescue [kidnappedPawn_nameDef]</li>
-                <li>questName->[kidnappedPawn_nameDef]'s Escape</li>
-                <li>questName->[kidnappedPawn_nameDef]'s Liberation</li>
+                <li>questName(hasPrisoner==yes)->Rescue [kidnappedPawn_nameDef]</li>
+                <li>questName(hasPrisoner==yes)->[kidnappedPawn_nameDef]'s Escape</li>
+                <li>questName(hasPrisoner==yes)->[kidnappedPawn_nameDef]'s Liberation</li>
+                <li>questName(hasPrisoner==no)->Hunter Detention Site</li>
+                <li>questName(hasPrisoner==no)->Reptile Hunter Outpost</li>
+                <li>questName(hasPrisoner==no)->Hunters' Prison Camp</li>
             </rulesStrings>
         </questNameRules>
         <questDescriptionRules>
             <rulesStrings>
-                <li>questDescription->A kidnapped pawn has smuggled out a message. [kidnappedPawn_nameDef] is being held at a hostile outpost near [map_definite]. Rescue [kidnappedPawn_objective], and [kidnappedPawn_pronoun] will join your colony. [kidnappedPawn_pronoun] is a [kidnappedPawn_age]-year-old [kidnappedPawn_title]. [kidnappedPawn_pronoun] says that [allSitePartsDescriptionsExceptFirst]
+                <li>questDescription(hasPrisoner==yes)->A kidnapped pawn has smuggled out a message. [kidnappedPawn_nameDef] is being held at a hostile outpost near [map_definite]. Rescue [kidnappedPawn_objective], and [kidnappedPawn_pronoun] will join your colony. [kidnappedPawn_pronoun] is a [kidnappedPawn_age]-year-old [kidnappedPawn_title]. [kidnappedPawn_pronoun] says that [allSitePartsDescriptionsExceptFirst]
                     \nIf you miss this opportunity, [kidnappedPawn_nameDef] might be moved for further processing.</li>
+                <li>questDescription(hasPrisoner==no)->A Reptile Hunter prison camp has been detected near [map_definite]. The facility is guarded and may contain captives, loot, or other resources worth extracting. [allSitePartsDescriptionsExceptFirst]
+                    \nThe camp will relocate if you wait too long.</li>
             </rulesStrings>
         </questDescriptionRules>
         <root Class="QuestNode_Sequence">
@@ -102,7 +107,7 @@
                 <li Class="QuestNode_WorldObjectTimeout">
                     <worldObject>$site</worldObject>
                     <isQuestTimeout>true</isQuestTimeout>
-                    <delayTicks>$(randInt(12,28)*60000)</delayTicks>
+                    <delayTicks>$(randInt(7,15)*60000)</delayTicks>
                     <inSignalDisable>site.MapGenerated</inSignalDisable>
                     <node Class="QuestNode_End">
                         <outcome>Fail</outcome>
@@ -110,10 +115,13 @@
                     </node>
                 </li>
 
-                <li Class="QuestNode_AddPawnReward">
-                    <pawn>$kidnappedPawn</pawn>
-                    <inSignalChoiceUsed>site.MapGenerated</inSignalChoiceUsed>
-                    <rewardDetailsHidden>true</rewardDetailsHidden>
+                <li Class="QuestNode_IsNull">
+                    <value>$kidnappedPawn</value>
+                    <elseNode Class="QuestNode_AddPawnReward">
+                        <pawn>$kidnappedPawn</pawn>
+                        <inSignalChoiceUsed>site.MapGenerated</inSignalChoiceUsed>
+                        <rewardDetailsHidden>true</rewardDetailsHidden>
+                    </elseNode>
                 </li>
 
                 <li Class="QuestNode_NoWorldObject">

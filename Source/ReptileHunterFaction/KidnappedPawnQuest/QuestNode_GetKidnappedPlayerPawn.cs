@@ -17,30 +17,16 @@ public class QuestNode_GetKidnappedPlayerPawn : QuestNode
     [NoTranslate]
     public SlateRef<Faction> factionRef = new("siteFaction");
 
-    protected override bool TestRunInt(Slate slate)
-    {
-        var faction = factionRef.GetValue(slate);
-        return AreThereKidnappedPawns(faction);
-    }
+    protected override bool TestRunInt(Slate slate) => true;
 
     protected override void RunInt()
     {
         var faction = factionRef.GetValue(QuestGen.slate);
-        if (!TryGetKidnappedPawn(faction, out Pawn? pawn))
-        {
-            Log.Error("QuestNode_GetKidnappedPlayerPawn: could not find a kidnapped player pawn for faction " + faction?.Name);
-            return;
-        }
-        QuestGen.slate.Set(storeAs.GetValue(QuestGen.slate), pawn);
-    }
-
-    private bool AreThereKidnappedPawns(Faction kidnappingFaction)
-    {
-        if (kidnappingFaction?.kidnapped == null)
-            return false;
-
-        int count = kidnappingFaction.kidnapped.KidnappedPawnsListForReading?.Count ?? 0;
-        return count > 0;
+        // If a kidnapped pawn exists, store it in the slate so downstream nodes can use it.
+        // If none exists the slate key stays unset (null), and QuestNode_IsNull in the quest
+        // XML conditionally skips the pawn reward node.
+        if (TryGetKidnappedPawn(faction, out Pawn? pawn))
+            QuestGen.slate.Set(storeAs.GetValue(QuestGen.slate), pawn);
     }
 
     private bool TryGetKidnappedPawn(Faction kidnappingFaction, out Pawn? pawn)

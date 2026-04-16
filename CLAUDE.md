@@ -2,6 +2,8 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+DO NOT GUESS, ASK IF UNSURE
+
 ## Project Overview
 
 **Reptile Hunter Faction** is a RimWorld 1.6 mod by kahirdragoon that adds a hostile alien faction (Reptile Hunters) who raid colonies to kidnap pawns and extract biological material to produce the "Super Bug Drug" (SBD). The mod is a mix of XML definitions, Harmony patches, and custom C# game logic compiled into `Assemblies/ReptileHunterFaction.dll`.

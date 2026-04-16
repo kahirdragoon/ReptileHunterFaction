@@ -26,13 +26,7 @@ public class GenStep_RHFPrison : GenStep
     public override void Generate(Map map, GenStepParams parms)
     {
         kidnapperFaction = map.Parent?.Faction;
-        Pawn kidnappedPawn = TryGetKidnappedPawnForMap(map);
-
-        if (kidnappedPawn == null)
-        {
-            Log.Warning("GenStep_RHFPrison: Could not find kidnapped pawn on site part");
-            return;
-        }
+        Pawn? kidnappedPawn = TryGetKidnappedPawnForMap(map);
 
         // Find top-left corner for the room
         IntVec3 roomTopLeft = FindRoomLocation(map);
@@ -48,7 +42,7 @@ public class GenStep_RHFPrison : GenStep
         // Populate bedroom (left side)
         PopulateBedroom(map, roomTopLeft);
 
-        // Populate prison (right side)
+        // Populate prison (right side) 
         PopulatePrison(map, roomTopLeft, kidnappedPawn);
 
         // Spawn Hunter faction guards with random count (30% = 0 guards, 60% = 1 guard, 10% = 2 guards)
@@ -56,6 +50,9 @@ public class GenStep_RHFPrison : GenStep
 
         // Scatter land mines around the prison.
         SpawnMinesAroundBuilding(map, roomTopLeft);
+
+        // 10% chance: spawn a minified Ancient Complex Scanner near the room (Ideology only).
+        TrySpawnScannerNearRoom(map, roomTopLeft);
     }
 
     private Pawn TryGetKidnappedPawnForMap(Map map)
@@ -261,7 +258,7 @@ public class GenStep_RHFPrison : GenStep
         GenSpawn.Spawn(MakeThingWithDefaultStuff(ThingDefOf.Bed), bedPos, map);
 
         // Place shelf with survival packages and human meat
-        IntVec3 shelfPos = new(roomTopLeft.x + 2, roomTopLeft.y, roomTopLeft.z + 3);
+        IntVec3 shelfPos = new(roomTopLeft.x + 2, roomTopLeft.y, roomTopLeft.z + 1);
 
         if (GenSpawn.Spawn(MakeThingWithDefaultStuff(ThingDefOf.Shelf), shelfPos, map) is Building shelf)
         {
@@ -282,6 +279,21 @@ public class GenStep_RHFPrison : GenStep
                 Thing humanMeat = ThingMaker.MakeThing(ThingDefOf.Meat_Human);
                 GenPlace.TryPlaceThing(humanMeat, shelfPos, map, ThingPlaceMode.Near);
             }
+
+            // 30% chance: a few units of drug medicine stashed on the shelf
+            if (Rand.Chance(0.30f))
+            {
+                Thing drugMed = ThingMaker.MakeThing(ReptileHunterFactionDefOf.RHF_DrugMedicine);
+                drugMed.stackCount = Rand.RangeInclusive(1, 3);
+                GenPlace.TryPlaceThing(drugMed, shelfPos, map, ThingPlaceMode.Near);
+            }
+
+            // 5% chance: a single super bug drug on the shelf
+            if (Rand.Chance(0.05f))
+            {
+                Thing sbd = ThingMaker.MakeThing(ReptileHunterFactionDefOf.RHF_SBD);
+                GenPlace.TryPlaceThing(sbd, shelfPos, map, ThingPlaceMode.Near);
+            }
         }
     }
 
@@ -289,6 +301,21 @@ public class GenStep_RHFPrison : GenStep
     {
         int prisonX = roomTopLeft.x + 5;
         int prisonZ = roomTopLeft.z + 2;
+
+        IntVec3 sleepingSpotPos = new(prisonX, roomTopLeft.y, prisonZ);
+        if (GenSpawn.Spawn(MakeThingWithDefaultStuff(ThingDefOf.SleepingSpot), sleepingSpotPos, map) is Building_Bed sleepingSpot)
+        {
+            sleepingSpot.ForPrisoners = true;
+            if (kidnappedPawn != null)
+                sleepingSpot.CompAssignableToPawn?.TryAssignPawn(kidnappedPawn);
+        }
+
+        if (kidnappedPawn == null)
+            return;
+            
+        kidnapperFaction?.kidnapped?.RemoveKidnappedPawn(kidnappedPawn);
+        PawnDiedOrDownedThoughtsUtility.RemoveLostThoughts(kidnappedPawn);
+        kidnappedPawn.SetFaction(null);
 
         foreach (BodyPartRecord bodyPart in kidnappedPawn.health.hediffSet.GetNotMissingParts())
         {
@@ -298,17 +325,6 @@ public class GenStep_RHFPrison : GenStep
             }
         }
         ApplyBiteDamageToRandomLimbs(kidnappedPawn);
-
-        IntVec3 sleepingSpotPos = new(prisonX, roomTopLeft.y, prisonZ);
-        if (GenSpawn.Spawn(MakeThingWithDefaultStuff(ThingDefOf.SleepingSpot), sleepingSpotPos, map) is Building_Bed sleepingSpot)
-        {
-            sleepingSpot.ForPrisoners = true;
-            sleepingSpot.CompAssignableToPawn?.TryAssignPawn(kidnappedPawn);
-        }
-
-        kidnapperFaction?.kidnapped?.RemoveKidnappedPawn(kidnappedPawn);
-        PawnDiedOrDownedThoughtsUtility.RemoveLostThoughts(kidnappedPawn);
-        kidnappedPawn.SetFaction(null);
 
         if (kidnappedPawn.SpawnedOrAnyParentSpawned)
             kidnappedPawn.DeSpawnOrDeselect();
@@ -412,6 +428,59 @@ public class GenStep_RHFPrison : GenStep
             thing.SetFaction(kidnapperFaction);
         }
         return thing;
+    }
+
+    private void TrySpawnScannerNearRoom(Map map, IntVec3 roomTopLeft)
+    {
+        if (!Rand.Chance(0.10f))
+            return;
+
+        ThingDef? scannerDef = DefDatabase<ThingDef>.GetNamedSilentFail("LongRangeAncientComplexScanner");
+        if (scannerDef == null)
+            return;
+
+        // The scanner is 3×3. Try anchor positions (top-left of the 3×3 footprint) just
+        // outside each wall of the room, with a small gap so the building doesn't touch walls.
+        const int Gap = 2;
+        IntVec3[] anchors =
+        [
+            new(roomTopLeft.x + RoomWidth / 2 - 1, roomTopLeft.y, roomTopLeft.z - Gap - 3),          // above top wall
+            new(roomTopLeft.x - Gap - 3,            roomTopLeft.y, roomTopLeft.z + RoomHeight / 2 - 1), // left of left wall
+            new(roomTopLeft.x + RoomWidth + Gap,    roomTopLeft.y, roomTopLeft.z + RoomHeight / 2 - 1), // right of right wall
+            new(roomTopLeft.x + RoomWidth / 2 - 1, roomTopLeft.y, roomTopLeft.z + RoomHeight + Gap),  // below bottom wall
+        ];
+
+        foreach (IntVec3 anchor in anchors)
+        {
+            if (!CanPlace3x3(map, anchor))
+                continue;
+
+            // Spawn at the center cell (GenSpawn.Spawn for multi-cell buildings uses the origin,
+            // which for a 3×3 def is the bottom-left / south-west corner in RimWorld's coordinate system).
+            Thing scanner = ThingMaker.MakeThing(scannerDef);
+            if (kidnapperFaction != null && scannerDef.CanHaveFaction)
+                scanner.SetFaction(kidnapperFaction);
+            GenSpawn.Spawn(scanner, anchor, map, Rot4.South);
+            return;
+        }
+    }
+
+    private static bool CanPlace3x3(Map map, IntVec3 anchor)
+    {
+        for (int dx = 0; dx < 3; dx++)
+        {
+            for (int dz = 0; dz < 3; dz++)
+            {
+                IntVec3 cell = new(anchor.x + dx, anchor.y, anchor.z + dz);
+                if (!cell.InBounds(map))
+                    return false;
+                if (cell.GetTerrain(map).passability == Traversability.Impassable)
+                    return false;
+                if (cell.GetEdifice(map) != null)
+                    return false;
+            }
+        }
+        return true;
     }
 
     private void SpawnMinesAroundBuilding(Map map, IntVec3 roomTopLeft)
