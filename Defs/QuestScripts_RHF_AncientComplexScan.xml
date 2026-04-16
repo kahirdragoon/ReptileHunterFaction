@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Triggered programmatically by CompAncientComplexScanner when a successful scan occurs.
+       Requires Ideology DLC (QuestNode_Root_Loot_AncientComplex is an Ideology class). -->
+  <QuestScriptDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>RHF_AncientComplexScan</defName>
+    <isRootSpecial>true</isRootSpecial>
+    <autoAccept>true</autoAccept>
+    <defaultChallengeRating>1</defaultChallengeRating>
+    <questNameRules>
+      <rulesStrings>
+        <li>questName->Ancient complex detected</li>
+        <li>questName->Complex located by scanner</li>
+        <li>questName->Scanner signal: ancient complex</li>
+        <li>questName->Scanned ancient complex</li>
+      </rulesStrings>
+    </questNameRules>
+    <questDescriptionRules>
+      <rulesStrings>
+        <li>questDescription->The ancient complex scanner has detected the resonance signature of a nearby ancient complex.\n\nThe structures within likely contain valuable loot, but be warned — ancient complexes harbor their own dangers. Act quickly before others discover it first.</li>
+      </rulesStrings>
+    </questDescriptionRules>
+    <root Class="QuestNode_Root_Loot_AncientComplex" />
+  </QuestScriptDef>
+
+</Defs>

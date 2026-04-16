@@ -1,5 +1,12 @@
 - have small bases in the world as events where captured pawn or trophie head stand 
 - expand prisoner places and turn them into small hunting places
+- building for scanning for luciferium?
+    - can be found at settlements or prison outpost
+    - will break down over time
+
+- do no longer inherite from pirate base faction
+
+- fix: "Added injury to Waist but it should be impossible to hit it. pawn=Sam dinfo=null" during base generation
 
 - compat with simple leadership
 
@@ -10,9 +17,6 @@
 - sbd drug gives cannibal
 
 - make the genes necessary for creating the drug -> no idea what i meant with this
-- building for scanning for luciferium?
-    - can be found at settlements or prison outpost
-    - will break down over time
 
 - finish up descriptions
 

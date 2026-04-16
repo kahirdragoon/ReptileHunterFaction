@@ -61,7 +61,7 @@
                 <completedLetterLabel>Drug medicine studied: {RESEARCH} unlocked</completedLetterLabel>
                 <completedLetter>By studying the Drug medicine, {PAWN_labelShort} has acquired the insight needed for the research project(s) {RESEARCH}.\n\nYour researchers can now use research benches to begin researching how to actually cultivate this plant.</completedLetter>
                 <completedLetterDef>PositiveEvent</completedLetterDef>
-                <analysisRequiredRange>3</analysisRequiredRange>
+                <analysisRequiredRange>4</analysisRequiredRange>
                 <showProgress>true</showProgress>
                 <progressedLetterLabel>Drug Medicine Analysis progress</progressedLetterLabel>
                 <progressedLetters>

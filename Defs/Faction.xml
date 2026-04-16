@@ -1,15 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <FactionDef ParentName="PirateBandBase">
         <defName>RHF_ReptileHunters</defName>
         <label>Reptile Hunters</label>
-        <description>Ruthless carnivorious pirates who raid to kidnap and feed using superior technology. Loosely together by a strong leader and their addiction.</description>
+        <description>Ruthless carnivorious pirates who raid to kidnap and feed using stolen glittertech technology. Loosely unified by a strong leader and their common sbd addiction. Their minds have long been influenced by the drug.</description>
         <pawnSingular>hunter</pawnSingular>
         <pawnsPlural>hunters</pawnsPlural>
         <permanentEnemy>true</permanentEnemy>
         <hidden>false</hidden>
         <canStageAttacks>true</canStageAttacks>
         <techLevel>Ultra</techLevel>
-        <leaderTitle>greatest hunter</leaderTitle>
+        <leaderTitle>strongest hunter</leaderTitle>
         <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
         <maxCountAtGameStart>1</maxCountAtGameStart>
         <hostileToFactionlessHumanlikes>true</hostileToFactionlessHumanlikes>
@@ -21,8 +22,8 @@
         <allowedArrivalTemperatureRange>-80~45</allowedArrivalTemperatureRange>
         <requiredMemes Inherit="false">
             <li MayRequire="sarg.alphamemes">AM_Sadist</li>
-            <li>Cannibal</li>
-            <li>Raider</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Cannibal</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Raider</li>
         </requiredMemes>
         <allowedMemes Inherit="False">
             <li MayRequire="Ludeon.RimWorld.Ideology">PainIsVirtue</li>

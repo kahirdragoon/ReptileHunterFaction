@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="BuildingBase">
+        <defName>LongRangeAncientComplexScanner</defName>
+        <label>long-range ancient complex scanner</label>
+        <description>Originally just a normal long range mineral scanner, this device has been refittet with glitterworld technology to find the unqiue signatures of ancient complexes. Because of the hig drain of the added glittertech components these scanner usually dont hold very long.</description>
+        <graphicData>
+            <texPath>Buildings/LongRangeAncienComplexScanner</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(4, 4)</drawSize>
+            <shadowData>
+                <volume>(1.4, 0.4, 1.4)</volume>
+                <offset>(0,0,-0.1)</offset>
+            </shadowData>
+        </graphicData>
+        <thingCategories>
+            <li>BuildingsMisc</li>
+        </thingCategories>
+        <building>
+            <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+        </building>
+        <minifiedDef>MinifiedThing</minifiedDef>
+        <comps>
+            <li Class="CompProperties_Forbiddable" />
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>700</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Flickable" />
+            <li Class="ReptileHunterFaction.CompProperties_AncientComplexScanner">
+                <scanSpeedStat>ResearchSpeed</scanSpeedStat>
+                <scanFindMtbDays>4</scanFindMtbDays>
+                <scanFindGuaranteedDays>8</scanFindGuaranteedDays>
+                <soundWorking>ScannerLongRangeMineral_Ambience</soundWorking>
+                <minScansBeforeBreakdown>5</minScansBeforeBreakdown>
+                <maxScansBeforeBreakdown>10</maxScansBeforeBreakdown>
+            </li>
+        </comps>
+        <placeWorkers>
+            <li>PlaceWorker_NotUnderRoof</li>
+            <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+        </placeWorkers>
+        <altitudeLayer>Building</altitudeLayer>
+        <canBeUsedUnderRoof>false</canBeUsedUnderRoof>
+        <statBases>
+            <MaxHitPoints>250</MaxHitPoints>
+            <Mass>40</Mass>
+            <Flammability>0.5</Flammability>
+            <Beauty>-8</Beauty>
+        </statBases>
+        <fillPercent>0.40</fillPercent>
+        <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+        <passability>PassThroughOnly</passability>
+        <pathCost>50</pathCost>
+        <rotatable>true</rotatable>
+        <hasInteractionCell>true</hasInteractionCell>
+        <interactionCellOffset>(0,0,2)</interactionCellOffset>
+        <interactionCellIcon>DiningChair</interactionCellIcon>
+        <interactionCellIconReverse>true</interactionCellIconReverse>
+        <defaultPlacingRot>South</defaultPlacingRot>
+        <canOverlapZones>false</canOverlapZones>
+        <size>(3, 3)</size>
+        <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    </ThingDef>
+</Defs>

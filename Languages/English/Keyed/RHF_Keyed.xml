@@ -16,6 +16,14 @@
     <RHF_GiftPayment_LetterText_WithQualifying>The Reptile Hunters have accepted your delivery of {TOTAL} prisoner(s). {QUALIFYING} met their specimen criteria — their interest has been noted, and the next raid against you will be smaller. A payment of {TOTAL} dose(s) of drug medicine has arrived by drop pod.</RHF_GiftPayment_LetterText_WithQualifying>
     <RHF_GiftPayment_LetterText_NoQualifying>The Reptile Hunters have accepted your delivery of {TOTAL} prisoner(s). None met their specimen criteria. A payment of {TOTAL} dose(s) of drug medicine has arrived by drop pod.</RHF_GiftPayment_LetterText_NoQualifying>
 
+    <!-- ── Ancient complex scanner ── -->
+    <RHF_AncientComplexFound_Label>Ancient complex located</RHF_AncientComplexFound_Label>
+    <RHF_AncientComplexFound_Desc>{0} has detected an ancient complex nearby. The glittertech sensors have pinpointed its location — but the strain on the components is beginning to show.</RHF_AncientComplexFound_Desc>
+    <RHF_ScannerNoSiteFound>The scanner could not find any viable site nearby.</RHF_ScannerNoSiteFound>
+    <RHF_ScannerBurnedOut>Scanner burned out</RHF_ScannerBurnedOut>
+    <RHF_ScannerBurnedOutMsg>{0} has burned out after too many scans. The overloaded glittertech components are beyond repair.</RHF_ScannerBurnedOutMsg>
+    <RHF_ScansRemaining>Scans remaining: {0}</RHF_ScansRemaining>
+
     <!-- ── Mod settings window ── -->
     <RHF_Settings_MinQualifyingPawns>Min. qualifying pawns</RHF_Settings_MinQualifyingPawns>
     <RHF_Settings_MinPawnsForBossRaid>Min. colonists for greatest hunter raid</RHF_Settings_MinPawnsForBossRaid>

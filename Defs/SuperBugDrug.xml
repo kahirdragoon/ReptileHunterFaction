@@ -46,7 +46,7 @@
                 <completedLetterLabel>Super bug drug studied: {RESEARCH} unlocked</completedLetterLabel>
                 <completedLetter>By studying the super bug drug, {PAWN_labelShort} has acquired the insight needed for the research project(s) {RESEARCH}.\n\nYour researchers can now use research benches to begin researching how to actually use the technology.</completedLetter>
                 <completedLetterDef>PositiveEvent</completedLetterDef>
-                <analysisRequiredRange>5</analysisRequiredRange>
+                <analysisRequiredRange>6</analysisRequiredRange>
                 <showProgress>true</showProgress>
                 <progressedLetterLabel>Super Bug Drug Analysis progress</progressedLetterLabel>
                 <progressedLetters>
