@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
     <RuleDef>
-        <defName>RHF_AutocannonDefense</defName>
+        <defName>PH_AutocannonDefense</defName>
         <symbol>rhf_autocannonDefense</symbol>
         <resolvers>
-            <li Class="ReptileHunterFaction.SymbolResolver_AutocannonDefense" />
+            <li Class="PawnHunters.SymbolResolver_AutocannonDefense" />
         </resolvers>
     </RuleDef>
 
     <RuleDef>
-        <defName>RHF_MineDefense</defName>
+        <defName>PH_MineDefense</defName>
         <symbol>rhf_mineDefense</symbol>
         <resolvers>
-            <li Class="ReptileHunterFaction.SymbolResolver_MineDefense" />
+            <li Class="PawnHunters.SymbolResolver_MineDefense" />
         </resolvers>
     </RuleDef>
 
     <RuleDef>
-        <defName>RHF_Prison</defName>
+        <defName>PH_Prison</defName>
         <symbol>rhf_prison</symbol>
         <resolvers>
             <li Class="SymbolResolver_GenericRoom">
@@ -28,15 +28,15 @@
     </RuleDef>
 
     <RuleDef>
-        <defName>RHF_Interior_Prison</defName>
+        <defName>PH_Interior_Prison</defName>
         <symbol>rhf_interior_prison</symbol>
         <resolvers>
-            <li Class="ReptileHunterFaction.SymbolResolver_Interior_Prison" />
+            <li Class="PawnHunters.SymbolResolver_Interior_Prison" />
         </resolvers>
     </RuleDef>
 
     <RuleDef>
-        <defName>RHF_ExtractionRoom</defName>
+        <defName>PH_ExtractionRoom</defName>
         <symbol>rhf_extractionroom</symbol>
         <resolvers>
             <li Class="SymbolResolver_GenericRoom">
@@ -47,15 +47,15 @@
     </RuleDef>
 
     <RuleDef>
-        <defName>RHF_Interior_ExtractionRoom</defName>
+        <defName>PH_Interior_ExtractionRoom</defName>
         <symbol>rhf_interior_extractionroom</symbol>
         <resolvers>
-            <li Class="ReptileHunterFaction.SymbolResolver_Interior_ExtractionRoom" />
+            <li Class="PawnHunters.SymbolResolver_Interior_ExtractionRoom" />
         </resolvers>
     </RuleDef>
 
     <RuleDef>
-        <defName>RHF_Druglab</defName>
+        <defName>PH_Druglab</defName>
         <symbol>rhf_druglab</symbol>
         <resolvers>
             <li Class="SymbolResolver_GenericRoom">
@@ -66,18 +66,18 @@
     </RuleDef>
 
     <RuleDef>
-        <defName>RHF_Interior_Druglab</defName>
+        <defName>PH_Interior_Druglab</defName>
         <symbol>rhf_interior_druglab</symbol>
         <resolvers>
-            <li Class="ReptileHunterFaction.SymbolResolver_Interior_Druglab"/>
+            <li Class="PawnHunters.SymbolResolver_Interior_Druglab"/>
         </resolvers>
     </RuleDef>
 
     <RuleDef>
-        <defName>RHF_AssignBoss</defName>
+        <defName>PH_AssignBoss</defName>
         <symbol>rhf_assignBoss</symbol>
         <resolvers>
-            <li Class="ReptileHunterFaction.SymbolResolver_RHF_AssignBoss" />
+            <li Class="PawnHunters.SymbolResolver_PH_AssignBoss" />
         </resolvers>
     </RuleDef>
 
@@ -85,7 +85,7 @@
         <defName>PH_Genelab_Genes</defName>
         <symbol>ph_genelab_genes</symbol>
         <resolvers>
-            <li Class="ReptileHunterFaction.SymbolResolver_PH_Genelab_Genes" />
+            <li Class="PawnHunters.SymbolResolver_PH_Genelab_Genes" />
         </resolvers>
     </RuleDef>
 
@@ -93,7 +93,7 @@
         <defName>PH_Prisoners</defName>
         <symbol>ph_prisoners</symbol>
         <resolvers>
-            <li Class="ReptileHunterFaction.SymbolResolver_PH_Prisoners" />
+            <li Class="PawnHunters.SymbolResolver_PH_Prisoners" />
         </resolvers>
     </RuleDef>
 
@@ -101,7 +101,7 @@
         <defName>PH_Butchery</defName>
         <symbol>ph_butchery</symbol>
         <resolvers>
-            <li Class="ReptileHunterFaction.SymbolResolver_PH_Butchery" />
+            <li Class="PawnHunters.SymbolResolver_PH_Butchery" />
         </resolvers>
     </RuleDef>
 
@@ -109,7 +109,7 @@
         <defName>PH_DrugLabStock</defName>
         <symbol>ph_druglabstock</symbol>
         <resolvers>
-            <li Class="ReptileHunterFaction.SymbolResolver_PH_DrugLabStock" />
+            <li Class="PawnHunters.SymbolResolver_PH_DrugLabStock" />
         </resolvers>
     </RuleDef>
 
@@ -117,7 +117,7 @@
         <defName>PH_HuntingHut</defName>
         <symbol>ph_huntinghut</symbol>
         <resolvers>
-            <li Class="ReptileHunterFaction.SymbolResolver_RHF_HuntingHutPrison" />
+            <li Class="PawnHunters.SymbolResolver_PH_HuntingHutPrison" />
         </resolvers>
     </RuleDef>
 

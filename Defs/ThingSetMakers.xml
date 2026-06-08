@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
   <ThingSetMakerDef>
-    <defName>RHF_MapGen_FactionSettlement</defName>
+    <defName>PH_MapGen_FactionSettlement</defName>
     <debugParams>
       <countRange>8~8</countRange>
       <totalMarketValueRange>6000~6000</totalMarketValueRange>
@@ -88,7 +88,7 @@
             <fixedParams>
               <filter>
                 <thingDefs>
-                  <li>RHF_SBD</li>
+                  <li>PH_BP</li>
                 </thingDefs>
               </filter>
               <countRange>2~5</countRange>

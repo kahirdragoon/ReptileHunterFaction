@@ -27,7 +27,7 @@
                 <basePowerConsumption>700</basePowerConsumption>
             </li>
             <li Class="CompProperties_Flickable" />
-            <li Class="ReptileHunterFaction.CompProperties_AncientComplexScanner">
+            <li Class="PawnHunters.CompProperties_AncientComplexScanner">
                 <scanSpeedStat>ResearchSpeed</scanSpeedStat>
                 <scanFindMtbDays>4</scanFindMtbDays>
                 <scanFindGuaranteedDays>8</scanFindGuaranteedDays>

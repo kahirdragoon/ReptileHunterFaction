@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <DutyDef>
+    <defName>PH_ComplexLooterDuty</defName>
+    <label>complex looter</label>
+    <thinkNode Class="ThinkNode_Priority">
+      <subNodes>
+        <li Class="PawnHunters.JobGiver_PH_ExploreRoom" />
+      </subNodes>
+    </thinkNode>
+  </DutyDef>
+
+  <JobDef>
+    <defName>PH_ExploreRoom</defName>
+    <driverClass>PawnHunters.JobDriver_PH_ExploreRoom</driverClass>
+    <reportString>searching TargetA.</reportString>
+  </JobDef>
+
+</Defs>

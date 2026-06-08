@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+    <!-- ── Building_Extractor rejection reasons ── -->
+    <!-- Shown when the selected pawn does not match the configured xenotype/gene criteria -->
+    <ExtractorInvalidTarget>Pawn does not match the configured target criteria.</ExtractorInvalidTarget>
+    <!-- Shown when the selected pawn is missing required organs for extraction -->
+    <ExtractorNoRequiredOrgans>Pawn does not have the required organs for extraction.</ExtractorNoRequiredOrgans>
+
+    <!-- ── Complex looting raid letters ── -->
+    <PH_ComplexLooters_LetterLabel>Hunter scouts spotted</PH_ComplexLooters_LetterLabel>
+    <PH_ComplexLooters_LetterText>Hunter scouts have been spotted near the ancient complex. They appear to be after supplies, not your people — for now.</PH_ComplexLooters_LetterText>
+
+    <!-- ── Gift reward payment letters ── -->
+    <PH_GiftPayment_LetterLabel>PH payment received</PH_GiftPayment_LetterLabel>
+    <PH_GiftPayment_LetterText_WithQualifying>The Pawn Hunters have accepted your delivery of {TOTAL} prisoner(s). {QUALIFYING} met their specimen criteria — their interest has been noted, and the next raid against you will be smaller. A payment of {TOTAL} dose(s) of drug medicine has arrived by drop pod.</PH_GiftPayment_LetterText_WithQualifying>
+    <PH_GiftPayment_LetterText_NoQualifying>The Pawn Hunters have accepted your delivery of {TOTAL} prisoner(s). None met their specimen criteria. A payment of {TOTAL} dose(s) of drug medicine has arrived by drop pod.</PH_GiftPayment_LetterText_NoQualifying>
+
+    <!-- ── Ancient complex scanner ── -->
+    <PH_AncientComplexFound_Label>Ancient complex located</PH_AncientComplexFound_Label>
+    <PH_AncientComplexFound_Desc>{0} has detected an ancient complex nearby. The glittertech sensors have pinpointed its location — but the strain on the components is beginning to show.</PH_AncientComplexFound_Desc>
+    <PH_ScannerNoSiteFound>The scanner could not find any viable site nearby.</PH_ScannerNoSiteFound>
+    <PH_ScannerBurnedOut>Scanner burned out</PH_ScannerBurnedOut>
+    <PH_ScannerBurnedOutMsg>{0} has burned out after too many scans. The overloaded glittertech components are beyond repair.</PH_ScannerBurnedOutMsg>
+    <PH_ScansRemaining>Scans remaining: {0}</PH_ScansRemaining>
+
+    <!-- ── Mod settings window ── -->
+    <PH_Settings_MinQualifyingPawns>Min. qualifying pawns</PH_Settings_MinQualifyingPawns>
+    <PH_Settings_MinPawnsForBossRaid>Min. colonists for greatest hunter raid</PH_Settings_MinPawnsForBossRaid>
+    <PH_Settings_GeneMatchMode>Gene match mode</PH_Settings_GeneMatchMode>
+    <PH_Settings_AnyGene>Any gene</PH_Settings_AnyGene>
+    <PH_Settings_AllGenes>All genes</PH_Settings_AllGenes>
+    <PH_Settings_TargetXenotypes>Target xenotypes</PH_Settings_TargetXenotypes>
+    <PH_Settings_TargetGenes>Target genes</PH_Settings_TargetGenes>
+
+</LanguageData>

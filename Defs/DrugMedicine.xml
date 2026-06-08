@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
     <ThingDef ParentName="DrugPillBase">
-        <defName>RHF_DrugMedicine</defName>
+        <defName>PH_DrugMedicine</defName>
         <label>drug medicine</label>
         <description>A pack of herbal concoctions extracted from the drug plant. Boosts the pawn healing capabilities but can cause pain, vomitting, makes sleepy and mentally unstable. Can be taken multiple times to increase its effectivnes. /n/nThis no effect on Pawns who are already addichted to the super bud drug.</description>
         <descriptionHyperlinks>
-            <HediffDef>RHF_DrugMedicineHediff</HediffDef>
+            <HediffDef>PH_DrugMedicineHediff</HediffDef>
         </descriptionHyperlinks>
         <graphicData>
-            <texPath>Drugs/RHF_DrugMedicine</texPath>
+            <texPath>Drugs/PH_DrugMedicine</texPath>
             <graphicClass>Graphic_StackCount</graphicClass>
         </graphicData>
         <rotatable>false</rotatable>
@@ -23,18 +23,18 @@
             <drugCategory>Medical</drugCategory>
             <outcomeDoers>
                 <li Class="IngestionOutcomeDoer_GiveHediff">
-                    <hediffDef>RHF_DrugMedicineHediff</hediffDef>
+                    <hediffDef>PH_DrugMedicineHediff</hediffDef>
                     <severity>0.33</severity>
                     <doToGeneratedPawnIfAddicted>false</doToGeneratedPawnIfAddicted>
                 </li>
                 <li Class="IngestionOutcomeDoer_OffsetNeed">
                     <need>Rest</need>
                     <offset>-0.2</offset>
-                    <toleranceChemical>RHF_DrugMedicine</toleranceChemical>
+                    <toleranceChemical>PH_DrugMedicine</toleranceChemical>
                 </li>
                 <li Class="IngestionOutcomeDoer_GiveHediff">
-                    <hediffDef>RHF_DrugMedicineTolerance</hediffDef>
-                    <toleranceChemical>RHF_DrugMedicine</toleranceChemical>
+                    <hediffDef>PH_DrugMedicineTolerance</hediffDef>
+                    <toleranceChemical>PH_DrugMedicine</toleranceChemical>
                     <severity>0.1</severity>
                     <divideByBodySize>true</divideByBodySize>
                     <multiplyByGeneToleranceFactors>true</multiplyByGeneToleranceFactors>
@@ -43,7 +43,7 @@
         </ingestible>
         <comps>
             <li Class="CompProperties_Drug">
-                <chemical>RHF_DrugMedicine</chemical>
+                <chemical>PH_DrugMedicine</chemical>
                 <addictiveness>0.2</addictiveness>
                 <existingAddictionSeverityOffset>0.30</existingAddictionSeverityOffset>
                 <needLevelOffset>0.9</needLevelOffset>
@@ -90,7 +90,7 @@
     </ThingDef>
 
     <ThingDef ParentName="PlantBase">
-        <defName>RHF_Plant_DrugMedicine</defName>
+        <defName>PH_Plant_DrugMedicine</defName>
         <label>drug plant</label>
         <description>Produces a very strong healing herb. Also addictive. Hard to grow</description>
         <statBases>
@@ -98,14 +98,14 @@
             <Nutrition>0.2</Nutrition>
         </statBases>
         <graphicData>
-            <texPath>Plants/RHF_DrugMedicinePlant</texPath>
+            <texPath>Plants/PH_DrugMedicinePlant</texPath>
             <graphicClass>Graphic_Single</graphicClass>
         </graphicData>
         <selectable>true</selectable>
         <pathCost>14</pathCost>
         <ingestible />
         <plant>
-            <immatureGraphicPath>Plants/RHF_DrugMedicinePlant_Immature</immatureGraphicPath>
+            <immatureGraphicPath>Plants/PH_DrugMedicinePlant_Immature</immatureGraphicPath>
             <growDays>13</growDays>
             <sowWork>600</sowWork>
             <dieIfLeafless>false</dieIfLeafless>
@@ -119,7 +119,7 @@
             </sowTags>
             <sowMinSkill>12</sowMinSkill>
             <sowResearchPrerequisites>
-                <li>RHF_DrugMedicinePlantSowing</li>
+                <li>PH_DrugMedicinePlantSowing</li>
             </sowResearchPrerequisites>
             <topWindExposure>0.1</topWindExposure>
             <visualSizeRange>0.5~1.0</visualSizeRange>
@@ -133,7 +133,7 @@
     </ThingDef>
 
     <ResearchProjectDef>
-        <defName>RHF_DrugMedicinePlantSowing</defName>
+        <defName>PH_DrugMedicinePlantSowing</defName>
         <label>Drug medicine</label>
         <description>The knowledge how to cultivate the drug medicine plant.</description>
         <baseCost>1000</baseCost>
@@ -142,14 +142,14 @@
         <prerequisites>
         </prerequisites>
         <requiredAnalyzed>
-            <li>RHF_DrugMedicine</li>
+            <li>PH_DrugMedicine</li>
         </requiredAnalyzed>
         <heldByFactionCategoryTags Inherit="False" />
         <techLevel>Neolithic</techLevel>
     </ResearchProjectDef>
 
     <HediffDef>
-        <defName>RHF_DrugMedicineHediff</defName>
+        <defName>PH_DrugMedicineHediff</defName>
         <hediffClass>Hediff_High</hediffClass>
         <label>drug medicine</label>
         <description>Drug medicine. Strong regenerative properties but can makes the pawn mentally unstable.</description>
@@ -229,16 +229,16 @@
     </HediffDef>
 
     <ChemicalDef>
-        <defName>RHF_DrugMedicine</defName>
+        <defName>PH_DrugMedicine</defName>
         <label>drug medicine</label>
-        <addictionHediff>RHF_DrugMedicineAddiction</addictionHediff>
-        <toleranceHediff>RHF_DrugMedicineTolerance</toleranceHediff>
+        <addictionHediff>PH_DrugMedicineAddiction</addictionHediff>
+        <toleranceHediff>PH_DrugMedicineTolerance</toleranceHediff>
         <canBinge>true</canBinge>
         <generateAddictionGenes>false</generateAddictionGenes>
     </ChemicalDef>
 
     <NeedDef ParentName="DrugAddictionNeedBase">
-        <defName>RHF_Chemical_DrugMedicine</defName>
+        <defName>PH_Chemical_DrugMedicine</defName>
         <needClass>Need_Chemical</needClass>
         <label>drug medicine</label>
         <description>This person is addited to the drug medicine. The addiction is painfull but not deadly.</description>
@@ -248,11 +248,11 @@
     </NeedDef>
 
     <HediffDef ParentName="AddictionBase">
-        <defName>RHF_DrugMedicineAddiction</defName>
+        <defName>PH_DrugMedicineAddiction</defName>
         <label>drug medicine need</label>
         <description>Healing but painfull addiction.</description>
         <hediffClass>Hediff_Addiction</hediffClass>
-        <chemicalNeed>RHF_Chemical_DrugMedicine</chemicalNeed>
+        <chemicalNeed>PH_Chemical_DrugMedicine</chemicalNeed>
         <everCurableByItem>true</everCurableByItem>
         <stages>
             <li>
@@ -291,7 +291,7 @@
     </HediffDef>
 
     <HediffDef ParentName="DrugToleranceBase">
-        <defName>RHF_DrugMedicineTolerance</defName>
+        <defName>PH_DrugMedicineTolerance</defName>
         <label>drug medicine tolerance</label>
         <description>A built-up tolerance to the drug medicine. The more severe this tolerance is, the more drug medicine it takes to get the same effect.</description>
         <comps>
@@ -299,7 +299,7 @@
                 <severityPerDay>-0.01</severityPerDay>
             </li>
             <li Class="HediffCompProperties_DrugEffectFactor">
-                <chemical>RHF_DrugMedicine</chemical>
+                <chemical>PH_DrugMedicine</chemical>
             </li>
         </comps>
         <!-- <hediffGivers>

@@ -2,10 +2,10 @@
 <Defs>
 
     <GenStepDef>
-        <defName>RHF_KidnappedPawnPrison_VFE</defName>
-        <linkWithSite>RHF_KidnappedPawnPrison</linkWithSite>
+        <defName>PH_KidnappedPawnPrison_VFE</defName>
+        <linkWithSite>PH_KidnappedPawnPrison</linkWithSite>
         <order>1600</order>
-        <genStep Class="ReptileHunterFaction.GenStep_RHF_HuntingHutPrisonGen">
+        <genStep Class="PawnHunters.GenStep_PH_HuntingHutPrisonGen">
             <structureLayoutDefs>
                 <li>PH_HuntingHut1</li>
             </structureLayoutDefs>

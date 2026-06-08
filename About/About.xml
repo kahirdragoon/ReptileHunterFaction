@@ -1,7 +1,7 @@
 <ModMetaData>
-    <name>Reptile Hunter Faction</name>
+    <name>Pawn Hunters</name>
     <author>kahirdragoon</author>
-    <packageId>kahirDragoon.reptilehunters</packageId>
+    <packageId>kahirDragoon.pawnhunters</packageId>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>

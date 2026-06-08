@@ -5,7 +5,7 @@
             <li>Big and Small - Lamias and other Snake-People</li>
         </mods>
         <nomatch Class="PatchOperationAdd">
-            <xpath>Defs/PawnKindDef[defName="RHF_ReptileHuntersFighter_Boss"]/modExtensions/li[@Class="GeneSpawnerExtension.SpawnGenesExtension"]/groups/li/genes</xpath>
+            <xpath>Defs/PawnKindDef[defName="PH_PawnHuntersFighter_Boss"]/modExtensions/li[@Class="GeneSpawnerExtension.SpawnGenesExtension"]/groups/li/genes</xpath>
             <value>
                 <li>
                     <defName>AG_LargerBodySize</defName>
@@ -18,7 +18,7 @@
             <li>Big and Small - Lamias and other Snake-People</li>
         </mods>
         <nomatch Class="PatchOperationAdd">
-            <xpath>Defs/PawnKindDef[defName="RHF_ReptileHuntersFighter_Boss"]/modExtensions/li[@Class="GeneSpawnerExtension.SpawnGenesExtension"]/groups/li/genes</xpath>
+            <xpath>Defs/PawnKindDef[defName="PH_PawnHuntersFighter_Boss"]/modExtensions/li[@Class="GeneSpawnerExtension.SpawnGenesExtension"]/groups/li/genes</xpath>
             <value>
                 <li>
                     <defName>AG_ArmourMajor</defName>

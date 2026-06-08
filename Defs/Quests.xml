@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
     <QuestScriptDef>
-        <defName>RHF_OpportunitySite_KidnappedPawnPrison</defName>
+        <defName>PH_OpportunitySite_KidnappedPawnPrison</defName>
         <rootSelectionWeight>100</rootSelectionWeight>
         <rootMinPoints>0</rootMinPoints>
         <rootIncreasesPopulation>false</rootIncreasesPopulation> <!-- set to false so it fires regardless of current population count -->
@@ -12,7 +12,7 @@
                 <li>questName(hasPrisoner==yes)->[kidnappedPawn_nameDef]'s Escape</li>
                 <li>questName(hasPrisoner==yes)->[kidnappedPawn_nameDef]'s Liberation</li>
                 <li>questName(hasPrisoner==no)->Hunter Detention Site</li>
-                <li>questName(hasPrisoner==no)->Reptile Hunter Outpost</li>
+                <li>questName(hasPrisoner==no)->Pawn Hunter Outpost</li>
                 <li>questName(hasPrisoner==no)->Hunters' Prison Camp</li>
             </rulesStrings>
         </questNameRules>
@@ -20,7 +20,7 @@
             <rulesStrings>
                 <li>questDescription(hasPrisoner==yes)->A kidnapped pawn has smuggled out a message. [kidnappedPawn_nameDef] is being held at a hostile outpost near [map_definite]. Rescue [kidnappedPawn_objective], and [kidnappedPawn_pronoun] will join your colony. [kidnappedPawn_pronoun] is a [kidnappedPawn_age]-year-old [kidnappedPawn_title]. [kidnappedPawn_pronoun] says that [allSitePartsDescriptionsExceptFirst]
                     \nIf you miss this opportunity, [kidnappedPawn_nameDef] might be moved for further processing.</li>
-                <li>questDescription(hasPrisoner==no)->A Reptile Hunter prison camp has been detected near [map_definite]. The facility is guarded and may contain captives, loot, or other resources worth extracting. [allSitePartsDescriptionsExceptFirst]
+                <li>questDescription(hasPrisoner==no)->A Pawn Hunter prison camp has been detected near [map_definite]. The facility is guarded and may contain captives, loot, or other resources worth extracting. [allSitePartsDescriptionsExceptFirst]
                     \nThe camp will relocate if you wait too long.</li>
             </rulesStrings>
         </questDescriptionRules>
@@ -75,12 +75,12 @@
                     <storeFactionAs>siteFaction</storeFactionAs>
                     <sitePartsTags>
                         <li>
-                            <tag>RHF_KidnappedPawnPrison</tag>
+                            <tag>PH_KidnappedPawnPrison</tag>
                         </li>
                     </sitePartsTags>
                 </li>
 
-                <li Class="ReptileHunterFaction.QuestNode_GetKidnappedPlayerPawn">
+                <li Class="PawnHunters.QuestNode_GetKidnappedPlayerPawn">
                     <storeAs>kidnappedPawn</storeAs>
                     <factionRef>$siteFaction</factionRef>
                 </li>

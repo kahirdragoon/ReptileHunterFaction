@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
     <Operation Class="PatchOperationAdd">
-        <xpath>Defs/FactionDef[defName="RHF_ReptileHunters"]/xenotypeSet/xenotypeChances</xpath>
+        <xpath>Defs/FactionDef[defName="PH_PawnHunters"]/xenotypeSet/xenotypeChances</xpath>
         <value>
             <LoS_Lamia>0.125</LoS_Lamia>
             <LoS_Siren>0.125</LoS_Siren>
@@ -15,7 +15,7 @@
         </value>
     </Operation>
     <Operation Class="PatchOperationAdd">
-        <xpath>Defs/PawnKindDef[defName="RHF_ReptileHuntersFighter_Boss"]/xenotypeSet/xenotypeChances</xpath>
+        <xpath>Defs/PawnKindDef[defName="PH_PawnHuntersFighter_Boss"]/xenotypeSet/xenotypeChances</xpath>
         <value>
             <LoS_Gorgon>1</LoS_Gorgon>
         </value>

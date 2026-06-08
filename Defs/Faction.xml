@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <FactionDef ParentName="FactionBase">
-        <defName>RHF_ReptileHunters</defName>
-        <label>Reptile Hunters</label>
+        <defName>PH_PawnHunters</defName>
+        <label>Pawn Hunters</label>
         <description>Ruthless carnivorious pirates who raid to kidnap and feed using stolen glittertech technology. Loosely unified by a strong leader and their common sbd addiction. Their minds have long been influenced by the drug.</description>
         <pawnSingular>hunter</pawnSingular>
         <pawnsPlural>hunters</pawnsPlural>
@@ -82,28 +82,28 @@
                 <kindDef>Combat</kindDef>
                 <commonality>0</commonality>
                 <options>
-                    <RHF_ReptileHuntersFighter_Boss>1</RHF_ReptileHuntersFighter_Boss>
+                    <PH_PawnHuntersFighter_Boss>1</PH_PawnHuntersFighter_Boss>
                 </options>
             </li>
             <li>
                 <kindDef>Combat</kindDef>
                 <commonality>1</commonality>
                 <options>
-                    <RHF_ReptileHuntersFighter_Melee>1</RHF_ReptileHuntersFighter_Melee>
-                    <RHF_ReptileHuntersFighter_Ranged>1</RHF_ReptileHuntersFighter_Ranged>
+                    <PH_PawnHuntersFighter_Melee>1</PH_PawnHuntersFighter_Melee>
+                    <PH_PawnHuntersFighter_Ranged>1</PH_PawnHuntersFighter_Ranged>
                 </options>
             </li>
             <li>
                 <kindDef>Settlement</kindDef>
                 <commonality>1</commonality>
                 <options>
-                    <RHF_ReptileHuntersFighter_Melee>1</RHF_ReptileHuntersFighter_Melee>
-                    <RHF_ReptileHuntersFighter_Ranged>1</RHF_ReptileHuntersFighter_Ranged>
+                    <PH_PawnHuntersFighter_Melee>1</PH_PawnHuntersFighter_Melee>
+                    <PH_PawnHuntersFighter_Ranged>1</PH_PawnHuntersFighter_Ranged>
                 </options>
             </li>
         </pawnGroupMakers>
         <fixedLeaderKinds>
-            <li>RHF_ReptileHuntersFighter_Boss</li>
+            <li>PH_PawnHuntersFighter_Boss</li>
         </fixedLeaderKinds>
         <apparelStuffFilter>
             <thingDefs>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
     <Operation Class="PatchOperationAdd">
-        <xpath>Defs/HediffDef[defName="RHF_SBDHigh"]/stages/li/statOffsets</xpath>
+        <xpath>Defs/HediffDef[defName="PH_BPHigh"]/stages/li/statOffsets</xpath>
         <value>
             <VacuumResistance>0.3</VacuumResistance>
         </value>

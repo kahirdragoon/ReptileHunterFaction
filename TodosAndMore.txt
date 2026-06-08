@@ -1,15 +1,3 @@
-- do no longer inherite from pirate base faction
-
 - fix: "Added injury to Waist but it should be impossible to hit it. pawn=Sam dinfo=null" during base generation
-
-- compat with simple leadership
-
-- alternativ groups
-    - add small greatest hunter
-- cache genedefs
-
-- make the genes necessary for creating the drug -> no idea what i meant with this
-
-- finish up descriptions
 
 - icons and images

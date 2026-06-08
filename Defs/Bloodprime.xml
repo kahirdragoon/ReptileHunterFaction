@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <ThingDef ParentName="DrugPillBase">
+        <defName>PH_BP</defName>
+        <label>bloodprime</label>
+        <description>A drug distilled from the extracted essence of gene-rich pawns. Massively enhances combat capability — and permanently rewires the user's biology upon first dose.</description>
+        <descriptionHyperlinks>
+            <HediffDef>PH_BPHigh</HediffDef>
+            <HediffDef>PH_BPAddiction</HediffDef>
+        </descriptionHyperlinks>
+        <graphicData>
+            <texPath>Drugs/PH_BP</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <rotatable>false</rotatable>
+        <statBases>
+            <MarketValue>100</MarketValue>
+            <Mass>0.01</Mass>
+        </statBases>
+        <techLevel>Ultra</techLevel>
+        <minRewardCount>2</minRewardCount>
+        <ingestible>
+            <drugCategory>Medical</drugCategory>
+            <outcomeDoers>
+                <li Class="IngestionOutcomeDoer_GiveHediff">
+                    <hediffDef>PH_BPHigh</hediffDef>
+                    <severity>1.00</severity>
+                    <doToGeneratedPawnIfAddicted>false</doToGeneratedPawnIfAddicted>
+                </li>
+                <li Class="PawnHunters.IngestionOutcomeDoer_PH_GiveCannibalTrait" />
+            </outcomeDoers>
+        </ingestible>
+        <comps>
+            <li Class="CompProperties_Drug">
+                <chemical>PH_BP</chemical>
+                <addictiveness>1.00</addictiveness>
+                <needLevelOffset>0.5</needLevelOffset>
+                <listOrder>1010</listOrder>
+            </li>
+            <li Class="CompProperties_CompAnalyzableUnlockResearch">
+                <analysisID>29149979</analysisID>
+
+                <!-- Analyzable -->
+                <analysisDurationHours>3</analysisDurationHours>
+                <destroyedOnAnalyzed>true</destroyedOnAnalyzed>
+                <completedLetterLabel>Bloodprime studied: {RESEARCH} unlocked</completedLetterLabel>
+                <completedLetter>By studying the bloodprime, {PAWN_labelShort} has acquired the insight needed for the research project(s) {RESEARCH}.\n\nYour researchers can now use research benches to begin researching how to actually use the technology.</completedLetter>
+                <completedLetterDef>PositiveEvent</completedLetterDef>
+                <analysisRequiredRange>6</analysisRequiredRange>
+                <showProgress>true</showProgress>
+                <progressedLetterLabel>Bloodprime Analysis progress</progressedLetterLabel>
+                <progressedLetters>
+                    <li>{PAWN_nameDef} has begun analyzing the bloodprime. The compound defies easy classification — part chemical stimulant, part living tissue. Something inside it is still biologically active.\n\n{PAWN_pronoun} notes traces of complex organic structures in the base matrix. Whatever the active ingredient is, it wasn't synthesized — it was extracted from something living. More study is needed before {PAWN_pronoun} can draw any real conclusions.</li>
+                    <li>{PAWN_nameDef} has identified the drug's primary active component: a dense biological extract derived from gene-rich humanoid tissue. When introduced to cell samples, it triggers rapid, cascading cellular mutations.\n\nThe effect is violent and immediate — host cells begin rewiring themselves at a pace {PAWN_pronoun} has never seen outside of extreme gene therapy. {PAWN_pronoun} needs more samples to understand whether this process can be controlled — or reversed.</li>
+                    <li>{PAWN_nameDef} has mapped the drug's mutation cascade. The biological extract overwhelms the host's regulatory systems, forcing simultaneous reinforcement of muscle, bone, and neural tissue. The gains are extraordinary — and the cost is catastrophic.\n\nThe same process that grants power also rewrites the body's dependency pathways permanently. {PAWN_pronoun} suspects withdrawal is not a matter of discomfort but of death. Further analysis is needed to confirm this.</li>
+                    <li>{PAWN_nameDef} has confirmed {PAWN_possessive} worst hypothesis. Bloodprime binds irreversibly to the body's chemical receptors after the first dose. Without continued intake the nervous system enters a catastrophic feedback loop — violent madness, then organ failure.\n\nThe Pawn Hunters didn't stumble onto this formula. Someone engineered it this way deliberately. {PAWN_pronoun} is close to understanding the full synthesis, but needs one final sample to verify {PAWN_possessive} findings.</li>
+                    <li>{PAWN_nameDef} has nearly completed the analysis. {PAWN_pronoun} has reconstructed the full production process: the biological extract acts as the mutation catalyst, luciferium stabilizes the cascade, and neutroamine provides an ingestible base.\n\nOne more round of study and {PAWN_pronoun} will have everything needed to document this properly — and perhaps find a way to produce it without depending on the Pawn Hunters' supply chain.</li>
+                </progressedLetters>
+                <progressedLetterDef>PositiveEvent</progressedLetterDef>
+
+                <!-- Interactable -->
+                <activateTexPath>UI/Icons/Study</activateTexPath>
+                <activateLabelString>Analyze...</activateLabelString>
+                <activateDescString>Analyze the bloodprime.</activateDescString>
+                <jobString>Analyze bloodprime</jobString>
+                <guiLabelString>Choose who should analyze this</guiLabelString>
+                <inspectString>Can be analyzed by a colonist.</inspectString>
+
+                <targetingParameters>
+                    <canTargetBuildings>false</canTargetBuildings>
+                    <canTargetAnimals>false</canTargetAnimals>
+                    <canTargetMechs>false</canTargetMechs>
+                    <onlyTargetControlledPawns>true</onlyTargetControlledPawns>
+                </targetingParameters>
+            </li>
+        </comps>
+        <tradeTags>
+        </tradeTags>
+        <allowedArchonexusCount>20</allowedArchonexusCount>
+        <costList>
+            <Luciferium>1</Luciferium>
+            <Neutroamine>10</Neutroamine>
+            <PH_BiologicalExtract>1</PH_BiologicalExtract>
+            <PH_DrugMedicine>10</PH_DrugMedicine>
+        </costList>
+        <recipeMaker>
+            <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+            <workSkill>Intellectual</workSkill>
+            <productCount>2</productCount>
+            <recipeUsers>
+                <li>DrugLab</li>
+            </recipeUsers>
+            <skillRequirements>
+                <Crafting>15</Crafting>
+                <Intellectual>15</Intellectual>
+            </skillRequirements>
+            <bulkRecipeCount>4</bulkRecipeCount>
+            <displayPriority>2000</displayPriority>
+        </recipeMaker>
+    </ThingDef>
+
+    <HediffDef>
+        <defName>PH_BPHigh</defName>
+        <hediffClass>Hediff_High</hediffClass>
+        <label>bloodprime</label>
+        <description>Bloodprime. Massively powerful. Permanently addictive. Distilled from the essence of living pawns.</description>
+        <defaultLabelColor>(0.5,1,0.5)</defaultLabelColor>
+        <scenarioCanAdd>true</scenarioCanAdd>
+        <maxSeverity>1.0</maxSeverity>
+        <isBad>false</isBad>
+        <tendable>false</tendable>
+        <allowMothballIfLowPriorityWorldPawn>true</allowMothballIfLowPriorityWorldPawn>
+        <stages>
+            <li>
+                <painFactor>0.5</painFactor>
+                <socialFightChanceFactor>1.1</socialFightChanceFactor>
+                <capMods>
+                    <li>
+                        <capacity>Consciousness</capacity>
+                        <offset>0.50</offset>
+                    </li>
+                    <li>
+                        <capacity>Moving</capacity>
+                        <offset>0.50</offset>
+                    </li>
+                    <li>
+                        <capacity>Sight</capacity>
+                        <offset>0.50</offset>
+                    </li>
+                    <li>
+                        <capacity>BloodFiltration</capacity>
+                        <offset>1.00</offset>
+                    </li>
+                    <li>
+                        <capacity>BloodPumping</capacity>
+                        <offset>0.50</offset>
+                    </li>
+                    <li>
+                        <capacity>Metabolism</capacity>
+                        <offset>0.50</offset>
+                    </li>
+                    <li>
+                        <capacity>Breathing</capacity>
+                        <offset>0.50</offset>
+                    </li>
+                    <li>
+                        <capacity>Hearing</capacity>
+                        <offset>0.50</offset>
+                    </li>
+                </capMods>
+                <statFactors>
+                    <MeleeDamageFactor>1.20</MeleeDamageFactor>
+                    <MeleeHitChance>1.2</MeleeHitChance>
+                    <MeleeDodgeChance>1.2</MeleeDodgeChance>
+                    <ShootingAccuracyPawn>1.2</ShootingAccuracyPawn>
+                    <AimingDelayFactor>0.909</AimingDelayFactor> <!-- 1/1.1 -->
+                    <MoveSpeed>1.2</MoveSpeed>
+                    <IncomingDamageFactor>0.8</IncomingDamageFactor>
+                    <InjuryHealingFactor>2</InjuryHealingFactor>
+                    <StaggerDurationFactor>0.4</StaggerDurationFactor>
+                    <MeleeCooldownFactor>1.1</MeleeCooldownFactor>
+                    <ImmunityGainSpeed>1.5</ImmunityGainSpeed>
+                    <ShootingAccuracyFactor_Long>1.2</ShootingAccuracyFactor_Long>
+                    <ShootingAccuracyFactor_Medium>1.2</ShootingAccuracyFactor_Medium>
+                    <ShootingAccuracyFactor_Short>1.2</ShootingAccuracyFactor_Short>
+                    <LifespanFactor>0.5</LifespanFactor>
+                </statFactors>
+                <statOffsets>
+                    <ComfyTemperatureMin>-30</ComfyTemperatureMin>
+                    <ComfyTemperatureMax>30</ComfyTemperatureMax>
+                    <ArmorRating_Sharp>0.80</ArmorRating_Sharp>
+                    <ArmorRating_Blunt>0.80</ArmorRating_Blunt>
+                    <ArmorRating_Heat>0.80</ArmorRating_Heat>
+                    <MentalBreakThreshold>0.1</MentalBreakThreshold>
+                </statOffsets>
+                <makeImmuneTo>
+                    <li>PH_DrugMedicineHediff</li>
+                    <li>PH_DrugMedicineTolerance</li>
+                </makeImmuneTo>
+            </li>
+        </stages>
+    </HediffDef>
+
+    <ChemicalDef>
+        <defName>PH_BP</defName>
+        <label>bloodprime</label>
+        <addictionHediff>PH_BPAddiction</addictionHediff>
+        <canBinge>false</canBinge>
+        <generateAddictionGenes>false</generateAddictionGenes>
+    </ChemicalDef>
+
+    <NeedDef ParentName="DrugAddictionNeedBase">
+        <defName>PH_Chemical_BP</defName>
+        <needClass>Need_Chemical</needClass>
+        <label>bloodprime</label>
+        <description>This person's body is mutated by bloodprime.\n\nWithout regular doses of bloodprime, the user becomes continuously, violently insane and eventually dies.\n\nThis addiction never goes away.</description>
+        <listPriority>45</listPriority>
+        <fallPerDay>0.18</fallPerDay>
+        <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    </NeedDef>
+
+    <HediffDef ParentName="AddictionBase">
+        <defName>PH_BPAddiction</defName>
+        <label>bloodprime need</label>
+        <description>Mutations caused by bloodprime.
+            \nWithout new bloodprime, the victim will go insane and die.</description>
+        <hediffClass>Hediff_Addiction</hediffClass>
+        <chemicalNeed>PH_Chemical_BP</chemicalNeed>
+        <everCurableByItem>false</everCurableByItem>
+        <stages>
+            <li>
+            </li>
+            <li>
+                <label>unmet</label>
+                <painOffset>0.4</painOffset>
+                <lifeThreatening>true</lifeThreatening>
+                <deathMtbDays>10</deathMtbDays>
+                <mtbDeathDestroysBrain>true</mtbDeathDestroysBrain>
+                <capMods>
+                    <li>
+                        <capacity>Consciousness</capacity>
+                        <setMax>0.8</setMax>
+                    </li>
+                </capMods>
+                <mentalStateGivers>
+                    <li>
+                        <mentalState>Berserk</mentalState>
+                        <mtbDays>0.4</mtbDays>
+                    </li>
+                </mentalStateGivers>
+            </li>
+        </stages>
+    </HediffDef>
+</Defs>

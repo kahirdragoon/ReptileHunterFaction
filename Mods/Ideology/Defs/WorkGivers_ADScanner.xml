@@ -2,7 +2,7 @@
 <Defs>
 
   <WorkGiverDef>
-    <defName>RHF_OperateAncientComplexScanner</defName>
+    <defName>PH_OperateAncientComplexScanner</defName>
     <label>operate ancient complex scanner</label>
     <giverClass>WorkGiver_OperateScanner</giverClass>
     <workType>Research</workType>

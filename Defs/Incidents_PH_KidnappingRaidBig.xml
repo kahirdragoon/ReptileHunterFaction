@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <!-- ===== Job: carry a player corpse off the map ===== -->
+    <JobDef>
+        <defName>PH_CarryCorpseOffMap</defName>
+        <driverClass>PawnHunters.JobDriver_PH_CarryCorpseOffMap</driverClass>
+        <label>carry corpse and flee</label>
+        <reportString>carrying TargetA off the map.</reportString>
+        <allowOpportunisticPrefix>false</allowOpportunisticPrefix>
+        <collideWithPawns>true</collideWithPawns>
+        <casualInterruptible>false</casualInterruptible>
+    </JobDef>
+
+    <!-- ===== Duty: designated kidnapper (big raid) ===== -->
+    <DutyDef>
+        <defName>PH_KidnaperDuty_Big</defName>
+        <label>kidnapper (big raid)</label>
+        <thinkNode Class="ThinkNode_Priority">
+            <subNodes>
+                <li Class="PawnHunters.JobGiver_PH_KidnapDowned_Big" />
+            </subNodes>
+        </thinkNode>
+    </DutyDef>
+
+    <!-- ===== Duty: designated corpse carrier ===== -->
+    <DutyDef>
+        <defName>PH_CarryCorpseDuty</defName>
+        <label>corpse carrier</label>
+        <thinkNode Class="ThinkNode_Priority">
+            <subNodes>
+                <li Class="PawnHunters.JobGiver_PH_CarryCorpse" />
+            </subNodes>
+        </thinkNode>
+    </DutyDef>
+
+    <!-- ===== Raid strategy: point-based ===== -->
+    <!--
+        SpawnThreats is NOT overridden — the vanilla fallback handles point-based
+        pawn generation using storyteller-assigned parms.points.
+    -->
+    <RaidStrategyDef>
+        <defName>PH_KidnappingRaidStrategy_Big</defName>
+        <workerClass>PawnHunters.RaidStrategyWorker_PH_KidnappingRaidBig</workerClass>
+        <label>mass kidnapping assault</label>
+        <selectionWeightPerPointsCurve>
+            <points>
+                <li>(0, 1)</li>
+            </points>
+        </selectionWeightPerPointsCurve>
+        <letterLabelEnemy>Mass kidnapping raid</letterLabelEnemy>
+        <arrivalTextEnemy>A large force of pawn hunters is here to storm your colony and kidnap any downed pawns they can reach.</arrivalTextEnemy>
+        <pawnsCanBringFood>false</pawnsCanBringFood>
+        <arriveModes>
+            <li>EdgeWalkIn</li>
+            <li>EdgeWalkInGroups</li>
+            <li>EdgeDrop</li>
+            <li>EdgeDropGroups</li>
+            <li>CenterDrop</li>
+            <li>RandomDrop</li>
+        </arriveModes>
+    </RaidStrategyDef>
+
+    <!-- ===== Incident ===== -->
+    <!--
+        No colonist-count gate. Fires whenever the PH faction exists and at least
+        one qualifying pawn (colonist, slave, or prisoner) is present.
+        Point budget is assigned by the storyteller as normal.
+    -->
+    <IncidentDef>
+        <defName>PH_KidnappingRaid_Big</defName>
+        <workerClass>PawnHunters.IncidentWorker_PH_KidnappingRaidBig</workerClass>
+        <label>pawn hunter mass kidnapping raid</label>
+        <category>ThreatBig</category>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <baseChance>0.7</baseChance>
+        <minThreatPoints>2000</minThreatPoints>
+        <letterLabel>Reptile hunter mass kidnapping raid</letterLabel>
+        <letterText>A large force of pawn hunters approaches! They will storm your prisons first, then cut down your people — and haul off anyone who falls.</letterText>
+        <letterDef>ThreatBig</letterDef>
+    </IncidentDef>
+
+
+    <!-- ===== Boss raid strategy ===== -->
+    <RaidStrategyDef>
+        <defName>PH_KidnappingRaidStrategy_Boss</defName>
+        <workerClass>PawnHunters.RaidStrategyWorker_PH_KidnappingRaidBoss</workerClass>
+        <label>greatest hunter assault</label>
+        <selectionWeightPerPointsCurve>
+            <points>
+                <li>(0, 1)</li>
+            </points>
+        </selectionWeightPerPointsCurve>
+        <letterLabelEnemy>Greatest hunter raid</letterLabelEnemy>
+        <arrivalTextEnemy>The greatest of the pawn hunters leads this assault personally. He will storm your colony alongside his warriors and haul off anyone who falls.</arrivalTextEnemy>
+        <pawnsCanBringFood>false</pawnsCanBringFood>
+        <arriveModes>
+            <li>EdgeWalkIn</li>
+            <li>EdgeWalkInGroups</li>
+            <li>EdgeDrop</li>
+            <li>EdgeDropGroups</li>
+            <li>CenterDrop</li>
+            <li>RandomDrop</li>
+        </arriveModes>
+    </RaidStrategyDef>
+
+    <!-- ===== Boss raid incident ===== -->
+    <!--
+        Same fire conditions: faction exists, at least one qualifying pawn present.
+        Always includes one guaranteed PH_PawnHuntersFighter_Boss.
+    -->
+    <IncidentDef>
+        <defName>PH_KidnappingRaid_Boss</defName>
+        <workerClass>PawnHunters.IncidentWorker_PH_KidnappingRaidBoss</workerClass>
+        <label>pawn hunter greatest hunter raid</label>
+        <category>ThreatBig</category>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <baseChance>0.14</baseChance>
+        <minThreatPoints>4000</minThreatPoints>
+        <letterLabel>The greatest hunter comes</letterLabel>
+        <letterText>A large force of pawn hunters approaches! They will storm your prisons first, then cut down your people — and haul off anyone who falls. Theparty is led by greatest of the hunters.</letterText>
+        <letterDef>ThreatBig</letterDef>
+    </IncidentDef>
+
+</Defs>

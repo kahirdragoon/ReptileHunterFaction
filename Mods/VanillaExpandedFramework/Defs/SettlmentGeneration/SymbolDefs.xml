@@ -114,8 +114,8 @@
     </KCSG.SymbolDef>
 
     <KCSG.SymbolDef>
-        <defName>RHF_SBD_Extractor</defName>
-        <thing>RHF_SBD_Extractor</thing>
+        <defName>PH_BP_Extractor</defName>
+        <thing>PH_BP_Extractor</thing>
     </KCSG.SymbolDef>
 
     <KCSG.SymbolDef>
@@ -202,43 +202,43 @@
     </KCSG.SymbolDef>
 
     <KCSG.SymbolDef>
-        <defName>RHF_Plant_DrugMedicine_10</defName>
-        <thing>RHF_Plant_DrugMedicine</thing>
+        <defName>PH_Plant_DrugMedicine_10</defName>
+        <thing>PH_Plant_DrugMedicine</thing>
         <plantGrowth>1</plantGrowth>
     </KCSG.SymbolDef>
 
     <KCSG.SymbolDef>
-        <defName>RHF_Plant_DrugMedicine_07</defName>
-        <thing>RHF_Plant_DrugMedicine</thing>
+        <defName>PH_Plant_DrugMedicine_07</defName>
+        <thing>PH_Plant_DrugMedicine</thing>
         <plantGrowth>0.7</plantGrowth>
     </KCSG.SymbolDef>
 
     <KCSG.SymbolDef>
-        <defName>RHF_Plant_DrugMedicine_05</defName>
-        <thing>RHF_Plant_DrugMedicine</thing>
+        <defName>PH_Plant_DrugMedicine_05</defName>
+        <thing>PH_Plant_DrugMedicine</thing>
         <plantGrowth>0.5</plantGrowth>
     </KCSG.SymbolDef>
 
     <KCSG.SymbolDef>
-        <defName>RHF_Plant_DrugMedicine_03</defName>
-        <thing>RHF_Plant_DrugMedicine</thing>
+        <defName>PH_Plant_DrugMedicine_03</defName>
+        <thing>PH_Plant_DrugMedicine</thing>
         <plantGrowth>0.3</plantGrowth>
     </KCSG.SymbolDef>
 
     <KCSG.SymbolDef>
-        <defName>RHF_Plant_DrugMedicine_01</defName>
-        <thing>RHF_Plant_DrugMedicine</thing>
+        <defName>PH_Plant_DrugMedicine_01</defName>
+        <thing>PH_Plant_DrugMedicine</thing>
         <plantGrowth>0.1</plantGrowth>
     </KCSG.SymbolDef>
 
     <KCSG.SymbolDef>
-        <defName>RHF_DrugMedicine</defName>
-        <thing>RHF_DrugMedicine</thing>
+        <defName>PH_DrugMedicine</defName>
+        <thing>PH_DrugMedicine</thing>
     </KCSG.SymbolDef>
 
     <KCSG.SymbolDef>
-        <defName>RHF_SBD</defName>
-        <thing>RHF_SBD</thing>
+        <defName>PH_BP</defName>
+        <thing>PH_BP</thing>
     </KCSG.SymbolDef>
 
     <KCSG.SymbolDef>
