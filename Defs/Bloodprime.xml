@@ -168,9 +168,9 @@
                 <statOffsets>
                     <ComfyTemperatureMin>-30</ComfyTemperatureMin>
                     <ComfyTemperatureMax>30</ComfyTemperatureMax>
-                    <ArmorRating_Sharp>0.80</ArmorRating_Sharp>
-                    <ArmorRating_Blunt>0.80</ArmorRating_Blunt>
-                    <ArmorRating_Heat>0.80</ArmorRating_Heat>
+                    <ArmorRating_Sharp>0.50</ArmorRating_Sharp>
+                    <ArmorRating_Blunt>0.50</ArmorRating_Blunt>
+                    <ArmorRating_Heat>0.50</ArmorRating_Heat>
                     <MentalBreakThreshold>0.1</MentalBreakThreshold>
                 </statOffsets>
                 <makeImmuneTo>

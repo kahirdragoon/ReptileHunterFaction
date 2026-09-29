@@ -18,6 +18,9 @@ public class RaidStrategyWorker_PH_KidnappingRaidBig : RaidStrategyWorker
     // each "1 raider prevented" is roughly one fighter equivalent.
     private const float PointsPerRaider = 250f;
 
+    public override bool CanUseWith(IncidentParms parms, PawnGroupKindDef groupKind) =>
+        parms.faction?.def == PawnHuntersDefOf.PH_PawnHunters;
+
     public override LordJob MakeLordJob(
         IncidentParms parms, Map map, List<Pawn> pawns, int raidSeed)
     {

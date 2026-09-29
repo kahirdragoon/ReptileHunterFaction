@@ -12,6 +12,8 @@ public class PHModSettings : ModSettings
     public int minQualifyingPawns = minQualifyingPawnsDefault;
     public const int minPawnsForBossRaidDefault = 10;
     public int minPawnsForBossRaid = minPawnsForBossRaidDefault;
+    public const int minColonistsForKidnappingRaidDefault = 3;
+    public int minColonistsForKidnappingRaid = minColonistsForKidnappingRaidDefault;
 
     public override void ExposeData()
     {
@@ -20,6 +22,7 @@ public class PHModSettings : ModSettings
         Scribe_Values.Look(ref geneMatchRequiresAll, "geneMatchRequiresAll", false);
         Scribe_Values.Look(ref minQualifyingPawns, "minQualifyingPawns", minQualifyingPawns);
         Scribe_Values.Look(ref minPawnsForBossRaid, "minPawnsForBossRaid", minPawnsForBossRaidDefault);
+        Scribe_Values.Look(ref minColonistsForKidnappingRaid, "minColonistsForKidnappingRaid", minColonistsForKidnappingRaidDefault);
         targetXenotypes ??= [];
         targetGenes ??= [];
     }

@@ -27,6 +27,7 @@
     <!-- ── Mod settings window ── -->
     <PH_Settings_MinQualifyingPawns>Min. qualifying pawns</PH_Settings_MinQualifyingPawns>
     <PH_Settings_MinPawnsForBossRaid>Min. colonists for greatest hunter raid</PH_Settings_MinPawnsForBossRaid>
+    <PH_Settings_MinColonistsForKidnappingRaid>Min. colonists for kidnapping raid</PH_Settings_MinColonistsForKidnappingRaid>
     <PH_Settings_GeneMatchMode>Gene match mode</PH_Settings_GeneMatchMode>
     <PH_Settings_AnyGene>Any gene</PH_Settings_AnyGene>
     <PH_Settings_AllGenes>All genes</PH_Settings_AllGenes>

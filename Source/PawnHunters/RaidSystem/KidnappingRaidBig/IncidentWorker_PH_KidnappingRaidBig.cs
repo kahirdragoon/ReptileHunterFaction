@@ -18,8 +18,7 @@ public class IncidentWorker_PH_KidnappingRaidBig : IncidentWorker_RaidEnemy
     {
         if (!base.CanFireNowSub(parms)) return false;
         if (parms.target is not Map map) return false;
-        if (Find.FactionManager.FirstFactionOfDef(PawnHuntersDefOf.PH_PawnHunters) == null)
-            return false;
+        if (Find.FactionManager.FirstFactionOfDef(PawnHuntersDefOf.PH_PawnHunters) == null) return false;
 
         bool hasQualifyingColonist = map.mapPawns.FreeColonistsSpawned
             .Concat(map.mapPawns.SlavesOfColonySpawned)

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <!--
+        Runs only when an AncientComplex site map is generated (caravan arrival or gravship landing)
+        and adds MapComponent_PH_ComplexWatch, which may send Pawn Hunter looters.
+        AncientComplex_Mechanitor is intentionally not linked: it spawns no loot crates.
+    -->
+    <GenStepDef>
+        <defName>PH_ComplexWatch</defName>
+        <linkWithSite>AncientComplex</linkWithSite>
+        <order>480</order>
+        <genStep Class="PawnHunters.GenStep_PH_ComplexWatch" />
+    </GenStepDef>
+
+</Defs>

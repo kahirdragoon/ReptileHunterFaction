@@ -1,5 +1,6 @@
 using LudeonTK;
 using RimWorld;
+using RimWorld.Planet;
 using System.Collections.Generic;
 using System.Linq;
 using Verse;
@@ -20,17 +21,24 @@ public static class DebugActions_PH
         });
     }
 
+    // Returns a node (instead of being a plain action) so it can be hidden via visibilityGetter:
+    // only listed while the current map is an ancient complex site.
     [DebugAction("PH", "Spawn complex looters", actionType = DebugActionType.Action, allowedGameStates = AllowedGameStates.PlayingOnMap)]
-    private static void SpawnComplexLooters()
+    private static DebugActionNode SpawnComplexLooters() => new(null, DebugActionType.Action, () =>
     {
-        var comp = Find.CurrentMap.components.OfType<MapComponent_PH_ComplexWatch>().FirstOrDefault();
+        Map map = Find.CurrentMap;
+        var comp = map.GetComponent<MapComponent_PH_ComplexWatch>();
         if (comp == null)
         {
-            comp = new MapComponent_PH_ComplexWatch(Find.CurrentMap);
-            Find.CurrentMap.components.Add(comp);
+            comp = new MapComponent_PH_ComplexWatch(map);
+            map.components.Add(comp);
         }
         comp.TrySpawnRaid();
-    }
+    })
+    {
+        visibilityGetter = () => Find.CurrentMap?.Parent is Site site
+                                 && site.parts.Any(p => p.def == SitePartDefOf.AncientComplex)
+    };
 
     [DebugAction("PH", "Kidnapping raid (big)...", allowedGameStates = AllowedGameStates.PlayingOnMap)]
     private static List<DebugActionNode> TriggerKidnappingRaidBig()

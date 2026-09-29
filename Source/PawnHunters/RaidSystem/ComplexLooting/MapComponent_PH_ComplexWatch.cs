@@ -1,35 +1,22 @@
 using RimWorld;
 using RimWorld.Planet;
 using System.Linq;
-using System.Reflection;
 using Verse;
 using Verse.AI.Group;
 
 namespace PawnHunters;
 
 /// <summary>
-/// Injected (via Harmony) onto maps that are ancient complex sites.
-/// Waits 1–1.5 in-game hours after the player arrives, then has a 1-in-4 chance
-/// to spawn 1–2 Hunter Faction scouts who loot the complex.
+/// Only exists on ancient complex maps: CustomMapComponent is not auto-added to every map,
+/// it is added by GenStep_PH_ComplexWatch (linked to the AncientComplex site part) and saved
+/// with the map. Waits 1–1.5 in-game hours after the player arrives, then has a
+/// 1-in-4 chance to spawn 1–2 Hunter Faction scouts who loot the complex.
 /// </summary>
-public class MapComponent_PH_ComplexWatch(Map map) : MapComponent(map)
+public class MapComponent_PH_ComplexWatch(Map map) : CustomMapComponent(map)
 {
     private bool _raidSpawned   = false;
     private int  _raidTick      = -1;
     private bool _initialized   = false;
-
-    private bool IsValidMap =>
-        !map.IsPlayerHome
-        && map.Parent is Site site
-        && site.parts.Any(p => p.def.tags?.Contains("AncientComplex") == true);
-
-    public override void FinalizeInit()
-    {
-        base.FinalizeInit();
-
-        if (!IsValidMap)
-            map.components.Remove(this);
-    }
 
     public override void MapComponentTick()
     {
@@ -51,6 +38,9 @@ public class MapComponent_PH_ComplexWatch(Map map) : MapComponent(map)
 
     public void TrySpawnRaid()
     {
+        // Settling the tile replaces the Site parent with a player Settlement; no looters then.
+        // Gravship landings keep the Site parent, so they still get looters.
+        if (map.Parent is not Site) return;
         if (!Rand.Chance(0.25f)) return;
 
         Faction? faction = Find.FactionManager.FirstFactionOfDef(PawnHuntersDefOf.PH_PawnHunters);

@@ -30,7 +30,7 @@ internal class PawnHuntersMod : Mod
         const float LabelHeight  = 28f;
         const float RowHeight    = 24f;
         const float Padding      = 6f;
-        const float TopAreaHeight = LabelHeight * 3 + Padding * 4;
+        const float TopAreaHeight = LabelHeight * 4 + Padding * 5;
 
         // ── Top controls ───────────────────────────────────────────────
         var listing = new Listing_Standard();
@@ -48,6 +48,12 @@ internal class PawnHuntersMod : Mod
         Widgets.Label(bossRow.LeftHalf(), "PH_Settings_MinPawnsForBossRaid".Translate());
         string bossStr = Settings.minPawnsForBossRaid.ToString();
         Widgets.TextFieldNumeric(bossRow.RightHalf(), ref Settings.minPawnsForBossRaid, ref bossStr, 1, 99);
+
+        // Min colonists for kidnapping raid
+        Rect kidnapRow = listing.GetRect(LabelHeight);
+        Widgets.Label(kidnapRow.LeftHalf(), "PH_Settings_MinColonistsForKidnappingRaid".Translate());
+        string kidnapStr = Settings.minColonistsForKidnappingRaid.ToString();
+        Widgets.TextFieldNumeric(kidnapRow.RightHalf(), ref Settings.minColonistsForKidnappingRaid, ref kidnapStr, 1, 99);
 
         // Gene match mode
         Rect modeRow = listing.GetRect(LabelHeight);

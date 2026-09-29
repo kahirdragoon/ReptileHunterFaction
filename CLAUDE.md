@@ -18,7 +18,7 @@ To build: open the solution in Visual Studio, or run `dotnet build` from `Source
 
 BUILD the dll at the end of every task to verify if there are any errors.
 
-There are no automated tests — verification is done by loading the mod in-game. Debug actions are registered in `Source/PawnHunters/RaidSystem/KidnappingRaid/DebugActions_PH.cs` and appear under the in-game dev mode debug action menu.
+There are no automated tests — verification is done by loading the mod in-game. Debug actions are registered in `Source/PawnHunters/RaidSystem/DebugActions_PH.cs` and appear under the in-game dev mode debug action menu.
 
 Always check if something can be done with vanilla machanics and behaviour. If it can use it. Dont reinvent the wheel.
 
@@ -31,10 +31,11 @@ Performance is important. Cache when it makes sense. Be very careful with everyt
 The mod uses three distinct raid types with parallel but separate class hierarchies:
 
 **Small Raid** (`KidnappingRaid`) — targeted, fixed-force kidnapping:
-- Force = (free colonist count − 1), ignores storyteller points
-- Triggers when colony has 3–6 free colonists
+- Force = floor((adult free colonists + adult slaves) / 2) − raid discount (from `WorldComp_SpoilsOfBattle`); ignores storyteller points
+- Triggers when adult free colonists + adult slaves ≥ `minColonistsForKidnappingRaid` (mod setting, default 3) and at least `minQualifyingPawns` targetable pawns exist; no upper colonist cap. The incident def's `minThreatPoints` is 500
+- The count helper `IncidentWorker_PH_KidnappingRaid.CountAdultColonistsAndSlaves` is shared by the fire gate and the raid sizing
 - One designated kidnapper tries to grab a downed pawn and flee
-- Files: `IncidentWorker_PH_KidnappingRaid` → `RaidStrategyWorker` → `LordJob_PH_KidnappingRaid` → `LordToil_PH_Assault` → `JobGiver_PH_KidnapDowned` → `JobDriver_PH_KidnapAndFlee`
+- Files: `IncidentWorker_PH_KidnappingRaid` → `RaidStrategyWorker_PH_KidnappingRaid` → `LordJob_PH_KidnappingRaid` → `LordToil_PH_Assault` → `JobGiver_PH_KidnapDowned` → `JobDriver_PH_KidnapAndFlee`
 
 **Large Raid** (`KidnappingRaidBig`) — point-based assault with corpse carrying:
 - Force is storyteller-point-scaled; no colonist cap
@@ -46,21 +47,21 @@ The mod uses three distinct raid types with parallel but separate class hierarch
 - Uses `PH_KidnappingRaidStrategy_Boss`; otherwise identical to Large Raid flow
 - File: `IncidentWorker_PH_KidnappingRaidBoss` (subclasses `IncidentWorker_PH_KidnappingRaidBig`)
 
-All three share `IKidnappingLordJob.cs` interface and the pawn-targeting logic in `PHPawnTargetingUtility.cs`.
+All three share `IKidnappingLordJob.cs` interface and the pawn-targeting logic in `PHPawnTargetingUtility.cs`. All three `RaidStrategyWorker_PH_*` classes override `CanUseWith` so only the `PH_PawnHunters` faction can use them.
 
 ### Pawn Targeting & Mod Settings
 
-`PHModSettings.cs` stores player-configured targeting criteria (xenotype filters, gene filters, match mode). `PHPawnTargetingUtility.cs` caches validity checks against those criteria. The mod settings UI is built in `PawnHuntersMod.cs`.
+`PHModSettings.cs` stores player-configured targeting criteria (xenotype filters, gene filters, match mode) and raid gates (`minQualifyingPawns`, `minPawnsForBossRaid`, `minColonistsForKidnappingRaid`). `PHPawnTargetingUtility.cs` caches validity checks against those criteria. The mod settings UI is built in `PawnHuntersMod.cs`.
 
 ### Gene System
 
-The faction uses a custom spawning extension (`SpawnGenesExtension.cs`) hooked via `Patch_PawnGenerator_GeneratePawn_Genes.cs`. Each pawn kind can define genes with per-gene spawn probabilities and max-count limits. This is separate from vanilla Biotech gene logic.
+The faction uses a custom spawning extension (`SpawnGenesExtension.cs`) hooked via `Patch_PawnGenerator_GeneExtension.cs` (both in `Source/GeneSpawnerExtension/`). Each pawn kind can define genes with per-gene spawn probabilities and max-count limits. This is separate from vanilla Biotech gene logic.
 
 ### Settlement Generation
 
 `GenStep_PHSettlement.cs` drives procedural settlement layout using RimWorld's `BaseGen` symbol resolver stack:
 - `BaseGen_PHGlobalSettings.cs` controls how many prisons/extraction rooms/druglabs to place
-- Eight `SymbolResolver_*.cs` files handle specific room types (prison interior, extraction room, druglab, autocannon defense, mine defense)
+- `SymbolResolver_*.cs` files handle specific room types and contents (prison interior, extraction room, druglab, autocannon defense, mine defense, butchery, genelab, prisoners, boss assignment, hunting hut prison)
 - `SettlementGeneration_Patches.xml` also injects these room types into vanilla settlement generation via `PatchOperationAdd`
 - `Patch_Settlement_MapGeneratorDef.cs` overrides the map generator for PH-owned settlements
 
@@ -76,7 +77,7 @@ The faction uses a custom spawning extension (`SpawnGenesExtension.cs`) hooked v
 
 ### Skull/Trophy System
 
-When an PH raider kills a player pawn, `Patch_Pawn_Kill_PH.cs` notifies `LordJob_PH_KidnappingRaid`, which designates that raider as a skull extractor. `JobGiver_PH_ExtractSkull.cs` then gives the vanilla `ExtractSkull` job (adding an `ExtractSkull` designation so the vanilla driver doesn't abort). Collected skulls and corpses are stored in `WorldComp_SpoilsOfBattle` (`WorldComp_PHSkulls.cs`) and referenced for future  settlement map generation to place Skull/Skullspike props.
+When an PH raider kills a player pawn, `Patch_Pawn_Kill_PH.cs` notifies `LordJob_PH_KidnappingRaid`, which designates that raider as a skull extractor. `JobGiver_PH_ExtractSkull.cs` then gives the vanilla `ExtractSkull` job (adding an `ExtractSkull` designation so the vanilla driver doesn't abort). Collected skulls and corpses are stored in `WorldComp_SpoilsOfBattle` (`WorldComp_SpoilsOfBattle.cs`) and referenced for future settlement map generation to place Skull/Skullspike props.
 
 ### Quest Flow
 
@@ -86,8 +87,10 @@ When a pawn is kidnapped: `QuestNode_GetKidnappedPlayerPawn` fires → generates
 
 When PH raids an ancient complex or site with crates, a separate lord job handles systematic looting:
 - Raiders are assigned rooms; each explores and loots crates via `JobGiver_PH_LootCrate` / `JobDriver_PH_OpenAndLoot`
-- `MapComponent_PH_ComplexWatch` monitors the map and fires `ThreatAwakened` / `AllCratesDone` memos to trigger retreat
-- `Patch_Map_FinalizeInit_PH.cs` installs the component on relevant maps
+- `MapComponent_PH_ComplexWatch` is a `CustomMapComponent` (vanilla does not auto-add those to every map). `GenStep_PH_ComplexWatch` adds it; its `GenStepDef` in `Mods/Ideology/Defs/ComplexWatch.xml` uses `linkWithSite` = `AncientComplex`, so it only runs when a complex map is generated (caravan arrival or gravship landing). It waits 1–1.5 in-game hours, then has a 25% chance to spawn 1–2 scouts, unless the map's parent is no longer a `Site` (the tile was settled)
+- Never make a plain `MapComponent` subclass that should only exist on some maps: `Map.FillComponents` adds every non-abstract `MapComponent` subclass to every map, and removing it from `map.components` inside `FinalizeInit`/`MapComponentTick` skips the next component in vanilla's index loop
+- The mechanitor complex (`AncientComplex_Mechanitor`) is deliberately not linked: its layout has `roomRewardCrateFactor` 0, so it has no loot crates and no Luciferium
+- `LordToil_PH_ComplexLoot` sends the `ThreatAwakened` / `AllCratesDone` memos that trigger retreat
 - Files: `LordJob_PH_ComplexLooting`, `LordToil_PH_ComplexLoot`, `MapComponent_PH_ComplexWatch`
 
 ### Other Harmony Patches
@@ -102,6 +105,7 @@ When PH raids an ancient complex or site with crates, a separate lord job handle
 `Mods/` contains patches guarded by `<mods>` tags:
 - **Lamia**: adds 8 reptilian xenotypes to PH faction pawn generation
 - **Odyssey**: adds vacuum resistance to BP
+- Also present: `AlphaGenes`, `Anomaly`, `Ideology` (ancient complex scanner building), `VanillaExpandedFramework` (settlement layouts/structures), `VFE_Security` (turret replacement)
 
 ### XML Patches (`Patches/`)
 
