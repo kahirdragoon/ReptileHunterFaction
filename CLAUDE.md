@@ -31,7 +31,7 @@ Performance is important. Cache when it makes sense. Be very careful with everyt
 The mod uses three distinct raid types with parallel but separate class hierarchies:
 
 **Small Raid** (`KidnappingRaid`) — targeted, fixed-force kidnapping:
-- Force = floor((adult free colonists + adult slaves) / 2) − raid discount (from `WorldComp_SpoilsOfBattle`); ignores storyteller points
+- Force = floor((adult free colonists + adult slaves) / 2) − raid discount (from `WorldComp_SpoilsOfBattle`); storyteller points only pick the Combat group maker (tier mix), not the raider count. The group is picked by strict bracket (lowest `maxTotalPoints` ≥ points, so each group covers previous max < points ≤ own max), unlike vanilla where every group with a higher max is eligible
 - Triggers when adult free colonists + adult slaves ≥ `minColonistsForKidnappingRaid` (mod setting, default 3) and at least `minQualifyingPawns` targetable pawns exist; no upper colonist cap. The incident def's `minThreatPoints` is 500
 - The count helper `IncidentWorker_PH_KidnappingRaid.CountAdultColonistsAndSlaves` is shared by the fire gate and the raid sizing
 - One designated kidnapper tries to grab a downed pawn and flee

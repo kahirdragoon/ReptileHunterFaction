@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-    <PawnKindDef Name="ReptileHuntersFighterBase" Abstract="True">
+    <!-- Shared by all tiers and the boss -->
+    <PawnKindDef Name="PH_HunterBase" Abstract="True">
         <race>Human</race>
         <defaultFactionDef>PH_PawnHunters</defaultFactionDef>
         <chemicalAddictionChance>0.1</chemicalAddictionChance>
@@ -8,30 +9,12 @@
         <combatEnhancingDrugsCount>1~3</combatEnhancingDrugsCount>
         <invNutrition>2.55</invNutrition>
         <itemQuality>Good</itemQuality>
-        <combatPower>350</combatPower>
-        <weaponMoney>2000~10000</weaponMoney>
         <apparelAllowHeadgearChance>1</apparelAllowHeadgearChance>
-        <apparelMoney>30500~45000</apparelMoney>
-        <apparelTags>
-            <li>IndustrialAdvanced</li>
-            <li>IndustrialMilitaryBasic</li>
-            <li>IndustrialMilitaryAdvanced</li>
-            <li>SpacerMilitary</li>
-            <li>BeltDefensePop</li>
-            <li>SpacerOrUltraTechApparelOrArmor</li>
-        </apparelTags>
         <apparelDisallowTags>
             <li>Psychic</li>
         </apparelDisallowTags>
         <techHediffsChance>0.8</techHediffsChance>
-        <techHediffsMoney>200000~350000</techHediffsMoney>
         <techHediffsMaxAmount>25</techHediffsMaxAmount>
-        <techHediffsTags>
-            <li>Advanced</li>
-            <li>AdvancedWeapon</li>
-            <li>ImplantEmpireCommon</li>
-            <li>ImplantEmpireRoyal</li>
-        </techHediffsTags>
         <techHediffsRequired>
             <li>DeathAcidifier</li>
             <li>Painstopper</li>
@@ -57,7 +40,150 @@
         <initialResistanceRange>17~26</initialResistanceRange>
     </PawnKindDef>
 
-    <PawnKindDef ParentName="ReptileHuntersFighterBase">
+    <!-- ===== Low tier ===== -->
+    <PawnKindDef Name="PH_HunterLowTierBase" ParentName="PH_HunterBase" Abstract="True">
+        <combatPower>150</combatPower>
+        <weaponMoney>330~650</weaponMoney>
+        <apparelMoney>2000~4000</apparelMoney>
+        <apparelTags>
+            <li>IndustrialAdvanced</li>
+            <li>IndustrialMilitaryBasic</li>
+        </apparelTags>
+        <techHediffsMoney>2500~5000</techHediffsMoney>
+        <techHediffsTags>
+            <li>Advanced</li>
+            <li>ImplantEmpireCommon</li>
+        </techHediffsTags>
+    </PawnKindDef>
+
+    <PawnKindDef ParentName="PH_HunterLowTierBase">
+        <defName>PH_PawnHuntersFighter_Melee_Low</defName>
+        <label>Novice Melee Hunter</label>
+        <weaponTags>
+            <li>MedievalMeleeAdvanced</li>
+        </weaponTags>
+        <skills>
+            <li>
+                <skill>Melee</skill>
+                <range>6~10</range>
+            </li>
+        </skills>
+    </PawnKindDef>
+
+    <PawnKindDef ParentName="PH_HunterLowTierBase">
+        <defName>PH_PawnHuntersFighter_Ranged_Low</defName>
+        <label>Novice Ranged Hunter</label>
+        <weaponTags>
+            <li>Gun</li>
+        </weaponTags>
+        <skills>
+            <li>
+                <skill>Shooting</skill>
+                <range>6~10</range>
+            </li>
+        </skills>
+        <disallowedTraits>
+            <li>Brawler</li>
+        </disallowedTraits>
+    </PawnKindDef>
+
+    <!-- ===== Mid tier ===== -->
+    <!-- weaponMoney min must stay above the cheapest GunHeavy/SpacerGun (charge rifle, ~1012) -->
+    <PawnKindDef Name="PH_HunterMidTierBase" ParentName="PH_HunterBase" Abstract="True">
+        <combatPower>250</combatPower>
+        <weaponMoney>1100~3000</weaponMoney>
+        <apparelMoney>6000~12000</apparelMoney>
+        <apparelTags>
+            <li>IndustrialAdvanced</li>
+            <li>IndustrialMilitaryBasic</li>
+            <li>IndustrialMilitaryAdvanced</li>
+            <li>SpacerMilitary</li>
+            <li>BeltDefensePop</li>
+        </apparelTags>
+        <techHediffsMoney>6000~12000</techHediffsMoney>
+        <techHediffsTags>
+            <li>Advanced</li>
+            <li>ImplantEmpireCommon</li>
+        </techHediffsTags>
+    </PawnKindDef>
+
+    <PawnKindDef ParentName="PH_HunterMidTierBase">
+        <defName>PH_PawnHuntersFighter_Melee_Mid</defName>
+        <label>Veteran Melee Hunter</label>
+        <weaponTags>
+            <li>MedievalMeleeAdvanced</li>
+        </weaponTags>
+        <skills>
+            <li>
+                <skill>Melee</skill>
+                <range>10~14</range>
+            </li>
+        </skills>
+        <specificApparelRequirements>
+            <li>
+                <apparelDef>Apparel_ShieldBelt</apparelDef>
+                <alternateTagChoices>
+                    <li>
+                        <tag>BeltDefense</tag>
+                        <chance>0.5</chance>
+                    </li>
+                </alternateTagChoices>
+            </li>
+        </specificApparelRequirements>
+    </PawnKindDef>
+
+    <PawnKindDef ParentName="PH_HunterMidTierBase">
+        <defName>PH_PawnHuntersFighter_Ranged_Mid</defName>
+        <label>Veteran Ranged Hunter</label>
+        <weaponTags>
+            <li>GunHeavy</li>
+            <li>SpacerGun</li>
+        </weaponTags>
+        <skills>
+            <li>
+                <skill>Shooting</skill>
+                <range>10~14</range>
+            </li>
+        </skills>
+        <disallowedTraits>
+            <li>Brawler</li>
+        </disallowedTraits>
+        <specificApparelRequirements>
+            <li>
+                <bodyPartGroup>UpperHead</bodyPartGroup>
+                <alternateTagChoices>
+                    <li>
+                        <tag>Gunlink</tag>
+                        <chance>0.3</chance>
+                    </li>
+                </alternateTagChoices>
+            </li>
+        </specificApparelRequirements>
+    </PawnKindDef>
+
+    <!-- ===== High tier ===== -->
+    <PawnKindDef Name="PH_HunterHighTierBase" ParentName="PH_HunterBase" Abstract="True">
+        <combatPower>350</combatPower>
+        <weaponMoney>2000~10000</weaponMoney>
+        <apparelMoney>30500~45000</apparelMoney>
+        <apparelTags>
+            <li>IndustrialAdvanced</li>
+            <li>IndustrialMilitaryBasic</li>
+            <li>IndustrialMilitaryAdvanced</li>
+            <li>SpacerMilitary</li>
+            <li>BeltDefensePop</li>
+            <li>SpacerOrUltraTechApparelOrArmor</li>
+        </apparelTags>
+        <techHediffsMoney>200000~350000</techHediffsMoney>
+        <techHediffsTags>
+            <li>Advanced</li>
+            <li>AdvancedWeapon</li>
+            <li>ImplantEmpireCommon</li>
+            <li>ImplantEmpireRoyal</li>
+        </techHediffsTags>
+    </PawnKindDef>
+
+    <PawnKindDef ParentName="PH_HunterHighTierBase">
         <defName>PH_PawnHuntersFighter_Melee</defName>
         <label>Melee Hunter</label>
         <weaponTags>
@@ -75,7 +201,7 @@
         </skills>
     </PawnKindDef>
 
-    <PawnKindDef ParentName="ReptileHuntersFighterBase">
+    <PawnKindDef ParentName="PH_HunterHighTierBase">
         <defName>PH_PawnHuntersFighter_Ranged</defName>
         <label>Ranged Hunter</label>
         <weaponTags>
@@ -106,7 +232,8 @@
         </specificApparelRequirements>
     </PawnKindDef>
 
-    <PawnKindDef ParentName="ReptileHuntersFighterBase">
+    <!-- ===== Boss ===== -->
+    <PawnKindDef ParentName="PH_HunterHighTierBase">
         <defName>PH_PawnHuntersFighter_Boss</defName>
         <label>greatest hunter</label>
         <factionLeader>true</factionLeader>
