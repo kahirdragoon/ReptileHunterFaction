@@ -5,14 +5,18 @@ using Verse;
 
 namespace PawnHunters;
 
+[StaticConstructorOnStartup]
 public static class PHPawnTargetingUtility
 {
     private static List<GeneDef>     _cachedGenes     = [];
     private static List<XenotypeDef> _cachedXenotypes = [];
 
+    // Runs after all defs are loaded; the Mod constructor is too early (the DefDatabase is still empty there).
+    static PHPawnTargetingUtility() => RebuildCache();
+
     /// <summary>
     /// Resolves defNames from settings into cached def references.
-    /// Call once on startup and again whenever settings change.
+    /// Runs once on startup and again whenever the settings are saved.
     /// </summary>
     public static void RebuildCache()
     {
@@ -44,12 +48,18 @@ public static class PHPawnTargetingUtility
             && _cachedXenotypes.Contains(pawn.genes.Xenotype))
             return true;
 
-        // Gene check (AND or OR depending on setting)
+        // Gene check (AND or OR depending on setting). A plain loop: the raid toils call this every 60 ticks
+        // per candidate, and the LINQ version allocated a closure each call.
         if (_cachedGenes.Count > 0)
         {
-            return PawnHuntersMod.Settings.geneMatchRequiresAll
-                ? _cachedGenes.All(g => pawn.genes.HasActiveGene(g))
-                : _cachedGenes.Any(g => pawn.genes.HasActiveGene(g));
+            bool requireAll = PawnHuntersMod.Settings.geneMatchRequiresAll;
+            foreach (GeneDef gene in _cachedGenes)
+            {
+                // AND: the first missing gene fails. OR: the first present gene passes.
+                if (pawn.genes.HasActiveGene(gene) != requireAll)
+                    return !requireAll;
+            }
+            return requireAll;
         }
 
         return false;

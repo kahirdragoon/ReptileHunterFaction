@@ -2,7 +2,7 @@
 <Defs>
     <QuestScriptDef>
         <defName>PH_OpportunitySite_KidnappedPawnPrison</defName>
-        <rootSelectionWeight>100</rootSelectionWeight>
+        <rootSelectionWeight>2</rootSelectionWeight> <!-- vanilla opportunity sites use 1; Patch_QuestWeight_PHPrison doubles it while a pawn is kidnapped -->
         <rootMinPoints>0</rootMinPoints>
         <rootIncreasesPopulation>false</rootIncreasesPopulation> <!-- set to false so it fires regardless of current population count -->
         <autoAccept>true</autoAccept>

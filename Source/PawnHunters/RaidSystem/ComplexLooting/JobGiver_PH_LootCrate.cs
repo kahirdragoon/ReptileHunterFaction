@@ -21,41 +21,55 @@ public class JobGiver_PH_ExploreRoom : ThinkNode_JobGiver
 
         Map map = pawn.Map;
 
-        // Enumerate all unique indoor rooms on the map and find the nearest
-        // one that hasn't been explored yet and isn't currently assigned.
-        var seenRoomIDs = new HashSet<int>();
+        // Enumerate all indoor rooms on the map and find the nearest one that hasn't been explored yet
+        // and isn't currently assigned. Rooms are rebuilt first so the list can't change while we read it.
+        map.regionAndRoomUpdater.TryRebuildDirtyRegionsAndRooms();
+        IReadOnlyList<Room> rooms = map.regionGrid.AllRooms;
+
         Room?   bestRoom = null;
-        IntVec3 bestCell = default;
-        float   bestDist = float.MaxValue;
+        IntVec3 bestCell = IntVec3.Invalid;
+        int     bestDist = int.MaxValue;
 
-        foreach (IntVec3 c in map.AllCells)
+        for (int i = 0; i < rooms.Count; i++)
         {
-            Room? room = c.GetRoom(map);
-            if (room == null || room.UsesOutdoorTemperature || room.IsHuge) continue;
+            Room room = rooms[i];
+            if (room.UsesOutdoorTemperature || room.IsHuge) continue;
             if (room.CellCount <= 1) continue;                   // skip doorway micro-rooms
-            if (!seenRoomIDs.Add(room.ID)) continue;             // already considered
-            if (lordJob.IsRoomDone(room.ID)) continue;
-            if (lordJob.IsRoomAssigned(room.ID)) continue;
+            if (lordJob.IsRoomDone(room)) continue;
+            if (lordJob.IsRoomAssigned(room)) continue;
 
-            // Find the first reachable standable cell in this room
-            IntVec3 targetCell = default;
-            foreach (IntVec3 roomCell in room.Cells)
-            {
-                if (roomCell.Standable(map) && pawn.CanReach(roomCell, PathEndMode.OnCell, Danger.Some))
-                {
-                    targetCell = roomCell;
-                    break;
-                }
-            }
+            IntVec3 targetCell = FirstReachableStandableCell(pawn, room, map);
             if (!targetCell.IsValid) continue;
 
-            float dist = targetCell.DistanceToSquared(pawn.Position);
+            int dist = targetCell.DistanceToSquared(pawn.Position);
             if (dist < bestDist) { bestDist = dist; bestRoom = room; bestCell = targetCell; }
         }
 
         if (bestRoom == null) return null;
-        if (!lordJob.TryAssignRoom(pawn, bestRoom.ID)) return null;
+        if (!lordJob.TryAssignRoom(pawn, bestRoom)) return null;
 
         return JobMaker.MakeJob(PawnHuntersDefOf.PH_ExploreRoom, bestCell);
+    }
+
+    /// <summary>
+    /// The room's first standable cell (in Room.Cells order) the pawn can reach, or Invalid. Reachability is the
+    /// same for every cell of a region, so only the first standable cell of each region is checked: a locked
+    /// room costs one check per region instead of one per cell.
+    /// </summary>
+    private static IntVec3 FirstReachableStandableCell(Pawn pawn, Room room, Map map)
+    {
+        foreach (District district in room.Districts)
+        {
+            foreach (Region region in district.Regions)
+            {
+                foreach (IntVec3 cell in region.Cells)
+                {
+                    if (!cell.Standable(map)) continue;
+                    if (pawn.CanReach(cell, PathEndMode.OnCell, Danger.Some)) return cell;
+                    break; // the rest of this region is just as unreachable
+                }
+            }
+        }
+        return IntVec3.Invalid;
     }
 }

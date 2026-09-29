@@ -29,10 +29,20 @@ public class RaidStrategyWorker_PH_KidnappingRaidBig : RaidStrategyWorker
 
     public override List<Pawn> SpawnThreats(IncidentParms parms)
     {
-        int discount = WorldComp_SpoilsOfBattle.Get()?.ConsumeRaidDiscount() ?? 0;
-        if (discount > 0)
-            parms.points = Math.Max(def.minPawns * PointsPerRaider, parms.points - discount * PointsPerRaider);
-
+        ApplyGiftDiscount(parms, def);
         return null; // Vanilla fallback uses the adjusted parms.points.
+    }
+
+    /// <summary>
+    /// Lowers parms.points by PointsPerRaider per bought-off raider, but never below minPawns raiders' worth.
+    /// Only the raiders that fit above that floor are spent; the remaining prisoners carry over to the next raid.
+    /// Shared with the boss raid.
+    /// </summary>
+    internal static void ApplyGiftDiscount(IncidentParms parms, RaidStrategyDef strategy)
+    {
+        float minPoints = strategy.minPawns * PointsPerRaider;
+        int maxRaiders = (int)Math.Floor((parms.points - minPoints) / PointsPerRaider);
+        int discount = WorldComp_SpoilsOfBattle.Get()?.ConsumeRaidDiscount(maxRaiders) ?? 0;
+        parms.points -= discount * PointsPerRaider;
     }
 }

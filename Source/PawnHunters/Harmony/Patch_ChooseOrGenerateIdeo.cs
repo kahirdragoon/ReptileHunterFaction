@@ -21,8 +21,6 @@ public static class Patch_ChooseOrGenerateIdeo
         AddStyleIfNotPresentButLoaded(__result, "PSECannibal");
         AddStyleIfNotPresentButLoaded(__result, "GM_CannibalStyle");
 
-        Log.Message($"Added styles to generated ideo for {parms.forFaction.defName}: {string.Join(", ", __result.thingStyleCategories.Select(c => c.category.defName + ":" + c.priority))}");
-
         __result.SortStyleCategories();
     }
 

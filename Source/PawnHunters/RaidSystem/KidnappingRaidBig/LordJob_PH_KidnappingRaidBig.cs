@@ -90,16 +90,22 @@ public class LordJob_PH_KidnappingRaidBig : LordJob, IKidnappingLordJob
 
     public void OnCorpseCarryComplete(Pawn carrier) => activeCorpseCarriers.Remove(carrier);
 
+    /// <summary>Assault toil: back to attacking. Retreat toil: flee like every other free raider.</summary>
+    public void ResetToFreeDuty(Pawn p) =>
+        p.mindState.duty = new PawnDuty(lord.CurLordToil is LordToil_PH_RetreatWithCarry
+            ? DutyDefOf.ExitMapBestAndDefendSelf
+            : DutyDefOf.AssaultColony);
+
     // ── Shared validation (called from both toils) ───────────────────────────
 
-    /// <param name="inRetreat">
-    /// When false (assault phase), frees kidnapper is snapped back to AssaultColony.
-    /// When true (retreat phase), let UpdateAllDuties handle duty reassignment.
-    /// </param>
-    public void ValidateKidnaps(bool inRetreat = false)
-    {
-        var toRemove = new List<Pawn>();
+    // Reused by the validators, which run every 60 ticks.
+    private static readonly List<Pawn> tmpToRemove = [];
 
+    public void ValidateKidnaps()
+    {
+        if (activeKidnaps.Count == 0) return;
+
+        tmpToRemove.Clear();
         foreach (var kvp in activeKidnaps)
         {
             Pawn kidnapper = kvp.Key;
@@ -109,21 +115,23 @@ public class LordJob_PH_KidnappingRaidBig : LordJob, IKidnappingLordJob
                            && kidnapper.carryTracker.CarriedThing == target;
 
             if (target.Dead || (!target.Downed && !carried))
-                toRemove.Add(kidnapper);
+                tmpToRemove.Add(kidnapper);
         }
 
-        foreach (Pawn k in toRemove)
+        foreach (Pawn k in tmpToRemove)
         {
             OnKidnapComplete(k);
-            if (!inRetreat && !k.Dead && !k.Downed)
-                k.mindState.duty = new PawnDuty(DutyDefOf.AssaultColony);
+            if (!k.Dead && !k.Downed)
+                ResetToFreeDuty(k);
         }
+        tmpToRemove.Clear();
     }
 
     public void ValidateCorpseCarriers()
     {
-        var toRemove = new List<Pawn>();
+        if (activeCorpseCarriers.Count == 0) return;
 
+        tmpToRemove.Clear();
         foreach (var kvp in activeCorpseCarriers)
         {
             Pawn   carrier = kvp.Key;
@@ -133,15 +141,16 @@ public class LordJob_PH_KidnappingRaidBig : LordJob, IKidnappingLordJob
                            && carrier.carryTracker.CarriedThing == corpse;
 
             if (!corpse.Spawned && !carried)
-                toRemove.Add(carrier);
+                tmpToRemove.Add(carrier);
         }
 
-        foreach (Pawn c in toRemove)
+        foreach (Pawn c in tmpToRemove)
         {
             OnCorpseCarryComplete(c);
             if (!c.Dead && !c.Downed)
-                c.mindState.duty = new PawnDuty(DutyDefOf.AssaultColony);
+                ResetToFreeDuty(c);
         }
+        tmpToRemove.Clear();
     }
 
     // ── Lord callbacks ───────────────────────────────────────────────────────

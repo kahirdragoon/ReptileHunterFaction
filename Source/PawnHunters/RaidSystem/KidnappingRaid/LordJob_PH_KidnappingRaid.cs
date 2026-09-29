@@ -19,9 +19,13 @@ public class LordJob_PH_KidnappingRaid : LordJob, IKidnappingLordJob
     // ── Skull extraction ─────────────────────────────────────────────────────
 
     // raider → list of killed player pawns whose skulls are pending
-    // Not serialized — resets on load; WorldComp_PHSkulls is the persistent store.
+    // Not serialized — resets on load; WorldComp_SpoilsOfBattle is the persistent store.
     public Dictionary<Pawn, List<Pawn>> pendingSkullTargets = [];
     public HashSet<Pawn>                activeSkullExtractors = [];
+
+    // Corpses this raid put an ExtractSkull designation on (serialized, so they can be cleaned up after a load).
+    // The designation is player-visible, so a leftover one would let the player's own pawns take the skull.
+    private HashSet<Corpse> designatedCorpses = [];
 
     // ── LordJob overrides ────────────────────────────────────────────────────
 
@@ -39,10 +43,18 @@ public class LordJob_PH_KidnappingRaid : LordJob, IKidnappingLordJob
 
         Transition toRetreat = new Transition(toil_assault, toil_retreat);
         toRetreat.AddTrigger(new Trigger_FractionPawnsLost(0.5f));
+        // Everyone leaves now, so no skull extraction will happen anymore.
+        toRetreat.AddPreAction(new TransitionAction_Custom(() => RemoveStaleSkullDesignations(all: true)));
         graph.AddTransition(toRetreat);
 
         return graph;
     }
+
+    /// <summary>Assault toil: back to attacking. Retreat toil: the same exit duty vanilla's LordToil_ExitMap gives everyone.</summary>
+    public void ResetToFreeDuty(Pawn p) =>
+        p.mindState.duty = lord.CurLordToil is LordToil_PH_Assault
+            ? new PawnDuty(DutyDefOf.AssaultColony)
+            : new PawnDuty(DutyDefOf.ExitMapBest) { locomotion = LocomotionUrgency.Jog };
 
     // ── Kidnapping helpers ───────────────────────────────────────────────────
 
@@ -119,21 +131,48 @@ public class LordJob_PH_KidnappingRaid : LordJob, IKidnappingLordJob
     /// <summary>Skull extraction done — raider retreats.</summary>
     public void FinishSkullExtraction(Pawn raider)
     {
-        // Remove any ExtractSkull designations we added for this raider's pending targets.
-        if (pendingSkullTargets.TryGetValue(raider, out var list))
-        {
-            foreach (Pawn victim in list)
-            {
-                Corpse? corpse = victim.Corpse;
-                if (corpse?.Spawned == true)
-                    corpse.Map.designationManager.TryRemoveDesignationOn(corpse, DesignationDefOf.ExtractSkull);
-            }
-        }
-
         activeSkullExtractors.Remove(raider);
         pendingSkullTargets.Remove(raider);
+        RemoveStaleSkullDesignations();
         raider.mindState.duty = new PawnDuty(DutyDefOf.ExitMapBest);
         raider.jobs.EndCurrentJob(JobCondition.InterruptForced);
+    }
+
+    /// <summary>
+    /// The vanilla JobDriver_ExtractSkull fails immediately without an ExtractSkull designation on the corpse,
+    /// so add one and remember it. A corpse the player already designated is left alone.
+    /// </summary>
+    public void DesignateSkullExtraction(Corpse corpse)
+    {
+        DesignationManager designations = corpse.Map.designationManager;
+        if (designations.DesignationOn(corpse, DesignationDefOf.ExtractSkull) != null) return;
+        designations.AddDesignation(new Designation(corpse, DesignationDefOf.ExtractSkull));
+        designatedCorpses.Add(corpse);
+    }
+
+    /// <summary>
+    /// Removes our ExtractSkull designations from corpses no active skull extractor is still going for
+    /// (extractor killed, left, or state lost on load). <paramref name="all"/> removes every one of them.
+    /// </summary>
+    public void RemoveStaleSkullDesignations(bool all = false)
+    {
+        designatedCorpses.RemoveWhere(corpse =>
+        {
+            if (!all && !corpse.Destroyed && IsPendingSkull(corpse.InnerPawn)) return false;
+            if (corpse.Spawned)
+                corpse.Map.designationManager.TryRemoveDesignationOn(corpse, DesignationDefOf.ExtractSkull);
+            return true;
+        });
+    }
+
+    private bool IsPendingSkull(Pawn victim)
+    {
+        foreach (Pawn extractor in activeSkullExtractors)
+        {
+            if (pendingSkullTargets.TryGetValue(extractor, out var list) && list.Contains(victim))
+                return true;
+        }
+        return false;
     }
 
     // ── Lord callbacks ───────────────────────────────────────────────────────
@@ -144,6 +183,13 @@ public class LordJob_PH_KidnappingRaid : LordJob, IKidnappingLordJob
         activeKidnaps.Remove(p);
         pendingSkullTargets.Remove(p);
         activeSkullExtractors.Remove(p);
+        RemoveStaleSkullDesignations();
+    }
+
+    public override void Cleanup()
+    {
+        base.Cleanup();
+        RemoveStaleSkullDesignations(all: true);
     }
 
     public override void ExposeData()
@@ -157,6 +203,13 @@ public class LordJob_PH_KidnappingRaid : LordJob, IKidnappingLordJob
             ref kidnappersWorkingList,
             ref targetsWorkingList);
         // pendingSkullTargets / activeSkullExtractors intentionally not saved —
-        // WorldComp_PHSkulls holds the persistent record.
+        // WorldComp_SpoilsOfBattle holds the persistent record. Orphaned extractors go back to the free duty
+        // (JobGiver_PH_ExtractSkull) and their designations are removed by RemoveStaleSkullDesignations.
+        Scribe_Collections.Look(ref designatedCorpses, "designatedCorpses", LookMode.Reference);
+        if (Scribe.mode == LoadSaveMode.PostLoadInit)
+        {
+            designatedCorpses ??= [];
+            designatedCorpses.RemoveWhere(c => c == null);
+        }
     }
 }

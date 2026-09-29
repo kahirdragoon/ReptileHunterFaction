@@ -7,10 +7,20 @@
     </supportedVersions>
     <description>Spacer tech reptile pirates who kidnap and flee with loot.</description>
     <modDependencies>
-        
+        <li>
+            <packageId>Ludeon.RimWorld.Biotech</packageId>
+            <displayName>Biotech</displayName>
+        </li>
+        <!-- PawnHunters.dll references KCSG; without it RimWorld rejects the whole assembly -->
+        <li>
+            <packageId>OskarPotocki.VanillaFactionsExpanded.Core</packageId>
+            <displayName>Vanilla Expanded Framework</displayName>
+            <steamWorkshopUrl>steam://url/CommunityFilePage/2023507013</steamWorkshopUrl>
+        </li>
     </modDependencies>
     <loadAfter>
         <li>ludeon.rimworld.biotech</li>
+        <li>oskarpotocki.vanillafactionsexpanded.core</li>
         <li>ludeon.rimworld.odyssey</li>
         <li>redmattis.bigsmall.core</li>
         <li>redmattis.lamiasandothersnakes</li>

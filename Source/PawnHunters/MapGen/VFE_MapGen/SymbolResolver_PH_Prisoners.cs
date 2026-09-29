@@ -130,8 +130,10 @@ public class SymbolResolver_PH_Prisoners : SymbolResolver
                 var kidnappedList = captorFaction.kidnapped.KidnappedPawnsListForReading;
                 if (kidnappedList?.Count > 0)
                 {
+                    // holdingOwner != null means the pawn is reserved for a prison quest site.
                     Pawn? kidnapped = kidnappedList
-                        .Where(p => p != null && !p.DestroyedOrNull() && p.RaceProps.Humanlike && p.Faction == Faction.OfPlayer)
+                        .Where(p => p != null && !p.DestroyedOrNull() && p.RaceProps.Humanlike && p.Faction == Faction.OfPlayer
+                                    && !p.Spawned && p.holdingOwner == null)
                         .RandomElementWithFallback();
 
                     if (kidnapped != null)
@@ -166,33 +168,39 @@ public class SymbolResolver_PH_Prisoners : SymbolResolver
 
     private static Pawn GenerateGeneMatchingPrisoner(Map map, PHModSettings settings, Faction? prisonerFaction)
     {
+        // A target xenotype is generated natively (vanilla ForcedXenotype), so the pawn really has it.
+        XenotypeDef? xenotype = PickTargetXenotype(settings);
+        if (xenotype != null)
+            return GenerateBasePrisoner(map, prisonerFaction, xenotype);
+
         Pawn pawn = GenerateBasePrisoner(map, prisonerFaction);
         TryApplyTargetGenes(pawn, settings);
         return pawn;
     }
 
-    // Overwrites a pawn's exogenes to match configured xenotypes/genes, mirroring xenogerm implantation.
+    private static XenotypeDef? PickTargetXenotype(PHModSettings settings) =>
+        settings.targetXenotypes?
+            .Select(n => DefDatabase<XenotypeDef>.GetNamedSilentFail(n))
+            .Where(x => x != null)
+            .RandomElementWithFallback();
+
+    // Overwrites an existing pawn's exogenes to match configured xenotypes/genes, mirroring xenogerm implantation.
     // Endogenes are preserved. No-ops if the pawn has no gene tracker or no targets are configured.
     private static void TryApplyTargetGenes(Pawn pawn, PHModSettings settings)
     {
         if (pawn.genes == null) return;
 
-        if (settings.targetXenotypes?.Count > 0)
+        XenotypeDef? xenotype = PickTargetXenotype(settings);
+        if (xenotype != null)
         {
-            XenotypeDef? xenotype = settings.targetXenotypes
-                .Select(n => DefDatabase<XenotypeDef>.GetNamedSilentFail(n))
-                .Where(x => x != null)
-                .RandomElementWithFallback();
-
-            if (xenotype != null)
-            {
-                GeneUtility.UpdateXenogermReplication(pawn);
-                pawn.genes.SetXenotype(XenotypeDefOf.Baseliner);
-                pawn.genes.xenotypeName = xenotype.label;
-                foreach (var geneDef in xenotype.genes)
-                    pawn.genes.AddGene(geneDef, true);
-                return;
-            }
+            GeneUtility.UpdateXenogermReplication(pawn);
+            pawn.genes.SetXenotype(XenotypeDefOf.Baseliner);
+            foreach (var geneDef in xenotype.genes)
+                pawn.genes.AddGene(geneDef, true);
+            // Implantation alone leaves a Baseliner with a custom name, which PHPawnTargetingUtility.IsTargetPawn
+            // (it compares the xenotype def) would reject. Keep the real def instead.
+            pawn.genes.SetXenotypeDirect(xenotype);
+            return;
         }
 
         if (settings.targetGenes?.Count > 0)
@@ -213,13 +221,14 @@ public class SymbolResolver_PH_Prisoners : SymbolResolver
         }
     }
 
-    private static Pawn GenerateBasePrisoner(Map map, Faction? prisonerFaction)
+    private static Pawn GenerateBasePrisoner(Map map, Faction? prisonerFaction, XenotypeDef? forcedXenotype = null)
     {
         return PawnGenerator.GeneratePawn(new PawnGenerationRequest(
             kind: PawnKindDefOf.Colonist,
             faction: prisonerFaction,
             context: PawnGenerationContext.NonPlayer,
-            tile: map.Tile));
+            tile: map.Tile,
+            forcedXenotype: forcedXenotype));
     }
 
     private static void ApplyRandomBiteDamage(Pawn pawn)

@@ -80,7 +80,9 @@ internal class Building_Extractor : Building_Enterable, IThingHolderWithDrawnPaw
 
     public PawnPosture HeldPawnPosture => PawnPosture.LayingOnGroundFaceUp;
 
-    public bool PowerOn => this.TryGetComp<CompPowerTrader>().PowerOn;
+    // Read every tick through State, so the comp lookup is cached (comps never change after creation).
+    private CompPowerTrader? powerComp;
+    public bool PowerOn => (powerComp ??= GetComp<CompPowerTrader>()).PowerOn;
 
     public override Vector3 PawnDrawOffset => Vector3.zero;
 
@@ -399,17 +401,9 @@ internal class Building_Extractor : Building_Enterable, IThingHolderWithDrawnPaw
         }
         else
         {
-            // Free the extractor if the selected pawn is no longer actively pathing here
-            // (covers drafted, downed, dead, carried, or any other job interruption)
-            if (selectedPawn != null)
-            {
-                bool stillComing = !selectedPawn.Dead &&
-                                   !selectedPawn.Downed &&
-                                   selectedPawn.CurJob?.def == JobDefOf.EnterBuilding &&
-                                   selectedPawn.CurJob?.targetA.Thing == this;
-                if (!stillComing)
-                    selectedPawn = null;
-            }
+            // Free the extractor once the selected pawn can no longer get here
+            if (selectedPawn != null && !SelectedPawnCanStillArrive())
+                selectedPawn = null;
 
             effectHusk?.Cleanup();
             effectHusk = null;
@@ -419,6 +413,18 @@ internal class Building_Extractor : Building_Enterable, IThingHolderWithDrawnPaw
             effectStart?.Cleanup();
             effectStart = null;
         }
+    }
+
+    // Walk-in pawns must still be on their EnterBuilding job (drafting or any other interruption frees the
+    // extractor). Prisoners and downed pawns never get that job: a hauler carries them in
+    // (WorkGiver_CarryToExtractor), so they only need to stay alive and on this map.
+    private bool SelectedPawnCanStillArrive()
+    {
+        if (selectedPawn.Dead || selectedPawn.Destroyed || selectedPawn.MapHeld != Map)
+            return false;
+        if (selectedPawn.IsPrisonerOfColony || selectedPawn.Downed)
+            return true;
+        return selectedPawn.CurJobDef == JobDefOf.EnterBuilding && selectedPawn.CurJob.targetA.Thing == this;
     }
 
     public override IEnumerable<Gizmo> GetGizmos()

@@ -64,7 +64,7 @@ public class LordToil_PH_ComplexLoot : LordToil
         {
             if (t is not Building_Crate c || !c.HasAnyContents) continue;
             Room? room = c.GetRoom();
-            if (room != null && !lordJob.IsRoomDone(room.ID))
+            if (room != null && !lordJob.IsRoomDone(room))
             {
                 anyCratesAccessible = true;
                 break;
@@ -79,7 +79,9 @@ public class LordToil_PH_ComplexLoot : LordToil
     {
         foreach (Lord l in map.lordManager.lords)
         {
-            if (l.LordJob is LordJob_SleepThenAssaultColony) continue;
+            // Sleeping complex threats (LordJob_SleepThenAssaultColony) wake by switching toils inside the
+            // same LordJob, so only the sleep toil itself means "still asleep".
+            if (l.CurLordToil is LordToil_Sleep) continue;
             foreach (Pawn p in l.ownedPawns)
             {
                 if (p.Spawned && !p.Dead &&

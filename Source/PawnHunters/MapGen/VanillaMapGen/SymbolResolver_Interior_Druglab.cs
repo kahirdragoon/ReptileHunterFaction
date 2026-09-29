@@ -69,20 +69,22 @@ public class SymbolResolver_Interior_Druglab : SymbolResolver
         }
         var ingredientDefs = new List<ThingDef>() {
             ThingDefOf.Luciferium,
-            PawnHuntersDefOf.PH_Plant_DrugMedicine,
+            PawnHuntersDefOf.PH_DrugMedicine,
             PawnHuntersDefOf.PH_BiologicalExtract,
             VanillaDefOf.Neutroamine
         };
         foreach (var ingredientDef in ingredientDefs)
         {
-            for (int i = 0; i > Rand.Range(1, 5); i++)
+            int stacks = Rand.Range(1, 5);
+            for (int i = 0; i < stacks; i++)
             {
-                var cellRect = CellRect.FromCell(rp.rect.Cells.Where(c => !usedCells.Contains(c)).RandomElement());
-                usedCells.Add(cellRect.Cells.First());
+                if (!rp.rect.Cells.Where(c => !usedCells.Contains(c)).TryRandomElement(out IntVec3 cell))
+                    return; // room is full
+                usedCells.Add(cell);
                 var rpIngredients = rp with
                 {
                     singleThingDef = ingredientDef,
-                    rect = cellRect,
+                    rect = CellRect.SingleCell(cell),
                     singleThingStackCount = Rand.Range(2, 8)
                 };
                 BaseGen.symbolStack.Push("thing", rpIngredients);

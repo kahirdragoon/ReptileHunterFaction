@@ -29,6 +29,12 @@ public class LordToil_PH_AssaultBig : LordToil
     private const float IndividualRetreatHpFraction  = 0.33f;
     private const int   TickInterval                = 60;
 
+    // Per-tick buffers, reused so the 60-tick scans don't allocate.
+    private readonly List<Pawn>   _targets   = [];
+    private readonly List<Pawn>   _prisoners = [];
+    private readonly List<Pawn>   _colonists = [];
+    private readonly List<Corpse> _corpses   = [];
+
     public override void UpdateAllDuties()
     {
         var lordJob = (LordJob_PH_KidnappingRaidBig)lord.LordJob;
@@ -50,10 +56,10 @@ public class LordToil_PH_AssaultBig : LordToil
 
         // 1. Initialise initial player pawn count on first eligible tick.
         if (lordJob.initialPlayerPawnCount == 0)
-            lordJob.initialPlayerPawnCount = CountPlayerCombatPawns(map);
+            lordJob.initialPlayerPawnCount = CountPlayerCombatPawns(map, healthyOnly: false);
 
         // 2. Validate existing assignments.
-        lordJob.ValidateKidnaps(inRetreat: false);
+        lordJob.ValidateKidnaps();
         lordJob.ValidateCorpseCarriers();
 
         // 3. Check mass-kidnap trigger.
@@ -88,9 +94,22 @@ public class LordToil_PH_AssaultBig : LordToil
 
     // ── Player pawn counting ─────────────────────────────────────────────────
 
-    private static int CountPlayerCombatPawns(Map map) =>
-        map.mapPawns.FreeColonistsSpawned.Count
-        + map.mapPawns.SlavesOfColonySpawned.Count(s => s.DevelopmentalStage.Adult());
+    /// <summary>
+    /// Free colonists plus adult slaves. FreeColonistsSpawned already includes slaves (a slave's HostFaction
+    /// is null), so child slaves are filtered out instead of adding the slave list again. The baseline and
+    /// the healthy count must use the same population, or the mass-kidnap fraction is skewed.
+    /// </summary>
+    private static int CountPlayerCombatPawns(Map map, bool healthyOnly)
+    {
+        int count = 0;
+        foreach (Pawn p in map.mapPawns.FreeColonistsSpawned)
+        {
+            if (p.IsSlave && !p.DevelopmentalStage.Adult()) continue;
+            if (healthyOnly && p.Downed) continue;
+            count++;
+        }
+        return count;
+    }
 
     // ── Mass-kidnap trigger ──────────────────────────────────────────────────
 
@@ -99,9 +118,8 @@ public class LordToil_PH_AssaultBig : LordToil
         if (lordJob.massKidnapMode) return;
         if (lordJob.initialPlayerPawnCount <= 0) return;
 
-        // Count currently healthy free colonists (not downed, not dead).
-        int currentlyHealthy = map.mapPawns.FreeColonistsSpawned
-            .Count(p => !p.Downed && !p.Dead);
+        // Count currently healthy player pawns (same population as the baseline; the dead are no longer spawned).
+        int currentlyHealthy = CountPlayerCombatPawns(map, healthyOnly: true);
 
         // Effective downed/dead = initial count minus those still healthy.
         // This accounts for colonists killed and despawned (no longer in AllPawnsSpawned).
@@ -126,44 +144,26 @@ public class LordToil_PH_AssaultBig : LordToil
     {
         // Build target list: prisoners first (priority), then free colonists/slaves
         // only when no qualifying prisoners exist at all.
-        var availableTargets = new List<Pawn>();
+        PHRaidTargetUtility.CollectDownedTargets(map, lordJob, _targets, playerPawns: false);
+        if (_targets.Count == 0)
+            PHRaidTargetUtility.CollectDownedTargets(map, lordJob, _targets, prisoners: false);
 
-        foreach (Pawn p in map.mapPawns.AllPawnsSpawned)
-        {
-            if (!p.Dead && p.Downed && p.RaceProps.Humanlike
-                && p.IsPrisonerOfColony && !lordJob.IsTargeted(p)
-                && PHPawnTargetingUtility.IsTargetPawn(p))
-                availableTargets.Add(p);
-        }
-
-        bool hasPrisoners = availableTargets.Count > 0;
-        if (!hasPrisoners)
-        {
-            foreach (Pawn p in map.mapPawns.AllPawnsSpawned)
-            {
-                if (!p.Dead && p.Downed && p.RaceProps.Humanlike
-                    && p.Faction == Faction.OfPlayer && !p.IsPrisonerOfColony
-                    && !lordJob.IsTargeted(p) && PHPawnTargetingUtility.IsTargetPawn(p))
-                    availableTargets.Add(p);
-            }
-        }
-
-        if (availableTargets.Count == 0) return;
+        if (_targets.Count == 0) return;
 
         foreach (Pawn raider in lord.ownedPawns)
         {
-            if (availableTargets.Count == 0) break;
+            if (_targets.Count == 0) break;
             if (raider.Dead || raider.Downed) continue;
             if (!raider.health.capacities.CapableOf(PawnCapacityDefOf.Moving)) continue;
             if (raider.mindState.duty?.def == DutyDefOf.ExitMapBest) continue;
             if (lordJob.IsKidnapper(raider)) continue;
 
             // (a) Immediate: downed pawn within 3 tiles.
-            Pawn? immediateTarget = ClosestWithinRange(raider, availableTargets, ImmediateKidnapRange);
+            Pawn? immediateTarget = PHRaidTargetUtility.Closest(raider.Position, _targets, ImmediateKidnapRange);
             if (immediateTarget != null)
             {
                 if (lordJob.TryAssignKidnapper(immediateTarget, raider))
-                    availableTargets.Remove(immediateTarget);
+                    _targets.Remove(immediateTarget);
                 continue;
             }
 
@@ -171,9 +171,9 @@ public class LordToil_PH_AssaultBig : LordToil
             bool isSafe = Find.TickManager.TicksGame - raider.mindState.lastHarmTick > SafeAfterHarmTicks;
             if (isSafe)
             {
-                Pawn? nearest = Nearest(raider, availableTargets);
+                Pawn? nearest = PHRaidTargetUtility.Closest(raider.Position, _targets);
                 if (nearest != null && lordJob.TryAssignKidnapper(nearest, raider))
-                    availableTargets.Remove(nearest);
+                    _targets.Remove(nearest);
             }
         }
     }
@@ -182,14 +182,9 @@ public class LordToil_PH_AssaultBig : LordToil
 
     private void TryPrioritizePrisonerAttacks(LordJob_PH_KidnappingRaidBig lordJob, Map map)
     {
-        var standingPrisoners = new List<Pawn>();
-        foreach (Pawn p in map.mapPawns.AllPawnsSpawned)
-        {
-            if (!p.Dead && !p.Downed && p.IsPrisonerOfColony
-                && p.RaceProps.Humanlike && PHPawnTargetingUtility.IsTargetPawn(p))
-                standingPrisoners.Add(p);
-        }
-        if (standingPrisoners.Count == 0) return;
+        PHRaidTargetUtility.CollectStandingPrisoners(map, _prisoners);
+        if (_prisoners.Count == 0) return;
+        PHRaidTargetUtility.CollectStandingColonists(map, _colonists);
 
         foreach (Pawn raider in lord.ownedPawns)
         {
@@ -198,20 +193,13 @@ public class LordToil_PH_AssaultBig : LordToil
             if (raider.mindState.duty?.def == DutyDefOf.ExitMapBest) continue;
             if (lordJob.IsKidnapper(raider) || lordJob.IsCorpseCarrier(raider)) continue;
 
-            Pawn? nearestPrisoner = Nearest(raider, standingPrisoners);
+            Pawn? nearestPrisoner = PHRaidTargetUtility.Closest(raider.Position, _prisoners);
             if (nearestPrisoner == null) continue;
 
-            float prisonerDist = nearestPrisoner.Position.DistanceTo(raider.Position);
-
-            float nearestColonistDist = float.MaxValue;
-            foreach (Pawn p in map.mapPawns.FreeColonistsSpawned)
-            {
-                if (p.Dead || p.Downed) continue;
-                float d = p.Position.DistanceTo(raider.Position);
-                if (d < nearestColonistDist) nearestColonistDist = d;
-            }
-
-            if (prisonerDist < nearestColonistDist)
+            Pawn? nearestColonist = PHRaidTargetUtility.Closest(raider.Position, _colonists);
+            if (nearestColonist == null
+                || nearestPrisoner.Position.DistanceToSquared(raider.Position)
+                   < nearestColonist.Position.DistanceToSquared(raider.Position))
                 raider.mindState.enemyTarget = nearestPrisoner;
         }
     }
@@ -221,26 +209,11 @@ public class LordToil_PH_AssaultBig : LordToil
     private void TryAssignMassKidnapping(LordJob_PH_KidnappingRaidBig lordJob, Map map)
     {
         // Downed qualifying player pawns (highest priority).
-        var downedPawns = new List<Pawn>();
-        foreach (Pawn p in map.mapPawns.AllPawnsSpawned)
-        {
-            if (!p.Dead && p.Downed && p.RaceProps.Humanlike
-                && (p.Faction == Faction.OfPlayer || p.IsPrisonerOfColony)
-                && !lordJob.IsTargeted(p) && PHPawnTargetingUtility.IsTargetPawn(p))
-                downedPawns.Add(p);
-        }
+        PHRaidTargetUtility.CollectDownedTargets(map, lordJob, _targets);
 
-        // Player pawn corpses (secondary).
-        var availableCorpses = new List<Corpse>();
-        foreach (Thing t in map.listerThings.ThingsInGroup(ThingRequestGroup.Corpse))
-        {
-            if (t is not Corpse corpse) continue;
-            if (corpse.InnerPawn?.Faction != Faction.OfPlayer) continue;
-            if (!corpse.InnerPawn.RaceProps.Humanlike) continue;
-            if (lordJob.IsCorpseTargeted(corpse)) continue;
-            if (!PHPawnTargetingUtility.IsTargetPawn(corpse.InnerPawn)) continue;
-            availableCorpses.Add(corpse);
-        }
+        // Player pawn corpses (secondary). Collected only once a raider is left over after the downed pawns,
+        // since the corpse group holds every corpse on the map (animals included).
+        bool corpsesCollected = false;
 
         foreach (Pawn raider in lord.ownedPawns)
         {
@@ -248,59 +221,24 @@ public class LordToil_PH_AssaultBig : LordToil
             if (!raider.health.capacities.CapableOf(PawnCapacityDefOf.Moving)) continue;
             if (lordJob.IsKidnapper(raider) || lordJob.IsCorpseCarrier(raider)) continue;
 
-            if (downedPawns.Count > 0)
+            if (_targets.Count > 0)
             {
-                Pawn? nearest = Nearest(raider, downedPawns);
+                Pawn? nearest = PHRaidTargetUtility.Closest(raider.Position, _targets);
                 if (nearest != null && lordJob.TryAssignKidnapper(nearest, raider))
-                    downedPawns.Remove(nearest);
+                    _targets.Remove(nearest);
+                continue;
             }
-            else if (availableCorpses.Count > 0)
+
+            if (!corpsesCollected)
             {
-                Corpse? nearest = NearestCorpse(raider, availableCorpses);
-                if (nearest != null && lordJob.TryAssignCorpseCarrier(nearest, raider))
-                    availableCorpses.Remove(nearest);
+                PHRaidTargetUtility.CollectCorpseTargets(map, lordJob, _corpses);
+                corpsesCollected = true;
             }
+            if (_corpses.Count == 0) break;
+
+            Corpse? nearestCorpse = PHRaidTargetUtility.Closest(raider.Position, _corpses);
+            if (nearestCorpse != null && lordJob.TryAssignCorpseCarrier(nearestCorpse, raider))
+                _corpses.Remove(nearestCorpse);
         }
-    }
-
-    // ── Geometry helpers ─────────────────────────────────────────────────────
-
-    private static Pawn? ClosestWithinRange(Pawn raider, List<Pawn> candidates, int range)
-    {
-        Pawn? best     = null;
-        float bestDist = float.MaxValue;
-
-        foreach (Pawn p in candidates)
-        {
-            float d = p.Position.DistanceTo(raider.Position);
-            if (d <= range && d < bestDist) { bestDist = d; best = p; }
-        }
-        return best;
-    }
-
-    private static Pawn? Nearest(Pawn raider, List<Pawn> candidates)
-    {
-        Pawn? best     = null;
-        float bestDist = float.MaxValue;
-
-        foreach (Pawn p in candidates)
-        {
-            float d = p.Position.DistanceTo(raider.Position);
-            if (d < bestDist) { bestDist = d; best = p; }
-        }
-        return best;
-    }
-
-    private static Corpse? NearestCorpse(Pawn raider, List<Corpse> candidates)
-    {
-        Corpse? best     = null;
-        float   bestDist = float.MaxValue;
-
-        foreach (Corpse c in candidates)
-        {
-            float d = c.Position.DistanceTo(raider.Position);
-            if (d < bestDist) { bestDist = d; best = c; }
-        }
-        return best;
     }
 }

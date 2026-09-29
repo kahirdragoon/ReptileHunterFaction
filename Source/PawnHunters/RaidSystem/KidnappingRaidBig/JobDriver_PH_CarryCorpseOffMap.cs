@@ -13,7 +13,7 @@ namespace PawnHunters;
 ///   1. Walk to the corpse.
 ///   2. Pick it up via Toils_Haul.StartCarryThing.
 ///   3. Path to the nearest map edge.
-///   4. Drop + DeSpawn the corpse (so ExitMap won't Destroy it), store it in WorldComp, then exit.
+///   4. Take the corpse out of the carry tracker (so ExitMap won't Destroy it), store it in WorldComp, then exit.
 /// </summary>
 public class JobDriver_PH_CarryCorpseOffMap : JobDriver
 {
@@ -54,12 +54,11 @@ public class JobDriver_PH_CarryCorpseOffMap : JobDriver
         Toil exitToil = ToilMaker.MakeToil();
         exitToil.initAction = () =>
         {
-            // Drop the corpse onto the ground, then despawn it so ExitMap won't destroy it.
-            // We can then store the live object in WorldComp rather than just the name.
+            // Take the corpse straight out of the carry container (as vanilla ExitMap does for carried pawns):
+            // ExitMap destroys any other carried thing. Dropping it first could fail and leave it carried.
             if (pawn.carryTracker.CarriedThing is Corpse carried)
             {
-                pawn.carryTracker.TryDropCarriedThing(pawn.Position, ThingPlaceMode.Direct, out _);
-                if (carried.Spawned) carried.DeSpawn();
+                pawn.carryTracker.innerContainer.Remove(carried);
                 WorldComp_SpoilsOfBattle.Get()?.AddCorpse(carried);
             }
 

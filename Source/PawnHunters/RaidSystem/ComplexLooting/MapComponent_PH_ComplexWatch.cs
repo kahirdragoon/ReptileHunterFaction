@@ -43,7 +43,7 @@ public class MapComponent_PH_ComplexWatch(Map map) : CustomMapComponent(map)
         if (map.Parent is not Site) return;
         if (!Rand.Chance(0.25f)) return;
 
-        Faction? faction = Find.FactionManager.FirstFactionOfDef(PawnHuntersDefOf.PH_PawnHunters);
+        Faction? faction = PHFactionUtility.RaidingFaction;
         if (faction == null) return;
 
         // Count player + prisoner pawns on map to determine raider count

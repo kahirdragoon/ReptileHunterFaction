@@ -124,10 +124,14 @@ public class JobDriver_PH_ExploreRoom : JobDriver
 
             crate.Open();
 
+            // Open() drops the contents onto the map. Despawn each item before adding it to the
+            // inventory, otherwise it would be on the map and in the inventory at the same time.
+            // Items that merged into an existing stack on the ground are no longer spawned; skip them.
             foreach (Thing item in lootItems)
             {
-                if (item.Spawned)
-                    pawn.inventory.TryAddItemNotForSale(item);
+                if (!item.Spawned) continue;
+                item.DeSpawn();
+                pawn.inventory.TryAddItemNotForSale(item);
             }
         };
         openAndLoot.defaultCompleteMode = ToilCompleteMode.Instant;

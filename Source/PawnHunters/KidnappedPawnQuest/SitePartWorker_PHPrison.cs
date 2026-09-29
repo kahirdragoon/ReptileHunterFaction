@@ -28,6 +28,10 @@ public class SitePartWorker_PHPrison : SitePartWorker
         if (kidnappedPawn != null)
         {
             // Persist the pawn on the site part so it is available at map generation time.
+            // part.things is deep-saved, so the pawn must leave WorldPawns first or it gets saved twice
+            // (duplicate load ID on load). If the site expires, SitePart.PostDestroy passes it back to the world.
+            if (Find.WorldPawns.Contains(kidnappedPawn))
+                Find.WorldPawns.RemovePawn(kidnappedPawn);
             part.things = new ThingOwner<Pawn>(part, oneStackOnly: true);
             part.things.TryAdd(kidnappedPawn);
 

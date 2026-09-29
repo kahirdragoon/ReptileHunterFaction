@@ -25,12 +25,20 @@ public class RaidStrategyWorker_PH_KidnappingRaid : RaidStrategyWorker
     public override List<Pawn> SpawnThreats(IncidentParms parms)
     {
         Map map = (Map)parms.target;
-        int discount = WorldComp_SpoilsOfBattle.Get()?.ConsumeRaidDiscount() ?? 0;
-        int count = IncidentWorker_PH_KidnappingRaid.CountAdultColonistsAndSlaves(map) / 2 - discount;
-        if (count <= 0) return null;
+        int raidSize = IncidentWorker_PH_KidnappingRaid.RaidSize(map);
+        // A fully paid-off raid was already handled in IncidentWorker_PH_KidnappingRaid.TryExecuteWorker, so spend at
+        // most raidSize - 1 raiders' worth: at least one raider comes and unused prisoners carry over.
+        // Never return null here: vanilla would then generate a full points-based raid instead.
+        int discount = WorldComp_SpoilsOfBattle.Get()?.ConsumeRaidDiscount(raidSize - 1) ?? 0;
+        int count = Math.Max(1, raidSize - discount);
 
+        // The last Combat group has no maxTotalPoints, so a bracket always exists for real point values.
         PawnGroupMaker? groupMaker = GetBracketGroupMaker(parms.faction.def, parms.points);
-        if (groupMaker == null) return null;
+        if (groupMaker == null)
+        {
+            Log.Error($"[PawnHunters] No Combat group maker for {parms.points} points on {parms.faction.def.defName}.");
+            return [];
+        }
 
         var pawns = new List<Pawn>(count);
         for (int i = 0; i < count; i++)
@@ -45,7 +53,13 @@ public class RaidStrategyWorker_PH_KidnappingRaid : RaidStrategyWorker
                 allowFood: def.pawnsCanBringFood)));
         }
 
-        if (pawns.Count == 0) return null;
+        // Only happens if the group maker has no option with a positive selectionWeight (a def error).
+        if (pawns.Count == 0)
+        {
+            Log.Error($"[PawnHunters] Combat group maker for {parms.points} points on {parms.faction.def.defName} has no pickable options.");
+            return [];
+        }
+
 
         parms.raidArrivalMode.Worker.Arrive(pawns, parms);
         return pawns;

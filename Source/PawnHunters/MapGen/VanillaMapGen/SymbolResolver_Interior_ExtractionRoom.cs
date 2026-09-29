@@ -69,13 +69,17 @@ public class SymbolResolver_Interior_ExtractionRoom : SymbolResolver
             BaseGen.symbolStack.Push("thing", rpThing);
         }
 
-        for(int i = 0; i > Rand.Range(0,3); i++)
+        int extractStacks = Rand.Range(0, 3);
+        for (int i = 0; i < extractStacks; i++)
         {
+            if (!rp.rect.Cells.Where(c => !usedCells.Contains(c)).TryRandomElement(out IntVec3 cell))
+                break; // room is full
+            usedCells.Add(cell);
             var rpExtract = rp with
             {
                 singleThingDef = PawnHuntersDefOf.PH_BiologicalExtract,
-                rect = CellRect.FromCell(rp.rect.Cells.Where(c => !usedCells.Contains(c)).RandomElement()),
-                singleThingStackCount = Rand.Range(0, 10)
+                rect = CellRect.SingleCell(cell),
+                singleThingStackCount = Rand.Range(1, 10)
             };
             BaseGen.symbolStack.Push("thing", rpExtract);
         }

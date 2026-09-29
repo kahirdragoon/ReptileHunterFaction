@@ -70,47 +70,38 @@ internal class GenStep_PHSettlement : GenStep_Settlement
         if (scannerDef == null)
             return;
 
-        // Search the settlement rect for a clear, unroofed 3×3 footprint.
-        // Shuffle candidate anchor positions so we don't always prefer the same corner.
-        List<IntVec3> candidates = [];
-        foreach (IntVec3 cell in settlementRect.Cells)
-        {
-            // Anchor so the 3×3 footprint stays inside the rect.
-            if (cell.x + 2 > settlementRect.maxX || cell.z + 2 > settlementRect.maxZ)
-                continue;
-            candidates.Add(cell);
-        }
+        // Search the settlement rect for a clear, unroofed footprint.
+        // Shuffle candidate positions so we don't always prefer the same corner.
+        List<IntVec3> candidates = [.. settlementRect.Cells];
         candidates.Shuffle();
 
-        foreach (IntVec3 anchor in candidates)
+        foreach (IntVec3 pos in candidates)
         {
-            if (!CanPlace3x3Unroofed(map, anchor))
+            // A building's position is the center of its footprint (GenAdj.OccupiedRect), not a corner.
+            CellRect footprint = GenAdj.OccupiedRect(pos, Rot4.South, scannerDef.size);
+            if (!footprint.FullyContainedWithin(settlementRect) || !CanPlaceUnroofed(map, footprint))
                 continue;
 
             Thing scanner = ThingMaker.MakeThing(scannerDef);
             if (scannerDef.CanHaveFaction)
                 scanner.SetFaction(faction);
-            GenSpawn.Spawn(scanner, anchor, map, Rot4.South);
+            GenSpawn.Spawn(scanner, pos, map, Rot4.South);
             return;
         }
     }
 
-    private static bool CanPlace3x3Unroofed(Map map, IntVec3 anchor)
+    private static bool CanPlaceUnroofed(Map map, CellRect footprint)
     {
-        for (int dx = 0; dx < 3; dx++)
+        foreach (IntVec3 cell in footprint)
         {
-            for (int dz = 0; dz < 3; dz++)
-            {
-                IntVec3 cell = new(anchor.x + dx, anchor.y, anchor.z + dz);
-                if (!cell.InBounds(map))
-                    return false;
-                if (cell.GetTerrain(map).passability == Traversability.Impassable)
-                    return false;
-                if (cell.GetEdifice(map) != null)
-                    return false;
-                if (cell.Roofed(map))
-                    return false;
-            }
+            if (!cell.InBounds(map))
+                return false;
+            if (cell.GetTerrain(map).passability == Traversability.Impassable)
+                return false;
+            if (cell.GetEdifice(map) != null)
+                return false;
+            if (cell.Roofed(map))
+                return false;
         }
         return true;
     }

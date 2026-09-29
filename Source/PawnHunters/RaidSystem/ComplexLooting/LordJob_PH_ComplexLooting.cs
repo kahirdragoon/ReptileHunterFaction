@@ -9,14 +9,20 @@ namespace PawnHunters;
 public class LordJob_PH_ComplexLooting : LordJob
 {
     // ── Room assignment ──────────────────────────────────────────────────────
-    // raider → room ID they are currently exploring (serialized)
+    // Rooms are keyed by their lowest cell index. Room.ID is a runtime counter and rooms are rebuilt on load,
+    // so saved IDs would point at nothing or at the wrong room; the cell key is stable while the walls are.
+
+    // raider → room key they are currently exploring (serialized)
     private Dictionary<Pawn, int> _roomAssignments    = [];
     private List<Pawn>            _assignKeysWorkList  = [];
     private List<int>             _assignValsWorkList  = [];
 
-    // room IDs that are fully explored (no crate / crate looted / threat-skipped)
-    private HashSet<int> _doneRoomIDs  = [];
+    // room keys that are fully explored (no crate / crate looted / threat-skipped)
+    private HashSet<int> _doneRoomKeys = [];
     private List<int>    _doneRoomList = [];
+
+    // Room.ID → room key. Not saved: a rebuilt room gets a new ID and its key is computed again.
+    private readonly Dictionary<int, int> _roomKeyCache = [];
 
     // ── LordJob overrides ────────────────────────────────────────────────────
 
@@ -42,12 +48,26 @@ public class LordJob_PH_ComplexLooting : LordJob
 
     // ── Room assignment helpers ──────────────────────────────────────────────
 
-    public bool TryAssignRoom(Pawn pawn, int roomID)
+    private int RoomKey(Room room)
     {
-        if (_roomAssignments.ContainsKey(pawn))      return false;
-        if (_roomAssignments.ContainsValue(roomID))  return false;
-        if (_doneRoomIDs.Contains(roomID))           return false;
-        _roomAssignments[pawn] = roomID;
+        if (!_roomKeyCache.TryGetValue(room.ID, out int key))
+        {
+            key = int.MaxValue;
+            CellIndices indices = room.Map.cellIndices;
+            foreach (IntVec3 cell in room.Cells)
+                key = Math.Min(key, indices.CellToIndex(cell));
+            _roomKeyCache[room.ID] = key;
+        }
+        return key;
+    }
+
+    public bool TryAssignRoom(Pawn pawn, Room room)
+    {
+        int key = RoomKey(room);
+        if (_roomAssignments.ContainsKey(pawn))   return false;
+        if (_roomAssignments.ContainsValue(key))  return false;
+        if (_doneRoomKeys.Contains(key))          return false;
+        _roomAssignments[pawn] = key;
         return true;
     }
 
@@ -57,14 +77,14 @@ public class LordJob_PH_ComplexLooting : LordJob
     /// <summary>Release the room AND mark it done — no raider will revisit.</summary>
     public void FinishRoom(Pawn pawn)
     {
-        if (_roomAssignments.TryGetValue(pawn, out int id))
-            _doneRoomIDs.Add(id);
+        if (_roomAssignments.TryGetValue(pawn, out int key))
+            _doneRoomKeys.Add(key);
         _roomAssignments.Remove(pawn);
     }
 
-    public bool HasRoomAssignment(Pawn pawn)  => _roomAssignments.ContainsKey(pawn);
-    public bool IsRoomAssigned(int roomID)    => _roomAssignments.ContainsValue(roomID);
-    public bool IsRoomDone(int roomID)        => _doneRoomIDs.Contains(roomID);
+    public bool HasRoomAssignment(Pawn pawn) => _roomAssignments.ContainsKey(pawn);
+    public bool IsRoomAssigned(Room room)    => _roomAssignments.ContainsValue(RoomKey(room));
+    public bool IsRoomDone(Room room)        => _doneRoomKeys.Contains(RoomKey(room));
 
     // ── Lord callbacks ───────────────────────────────────────────────────────
 
@@ -79,26 +99,28 @@ public class LordJob_PH_ComplexLooting : LordJob
     public override void ExposeData()
     {
         base.ExposeData();
+        // New labels on purpose: older saves stored runtime Room.IDs under "roomAssignments"/"doneRoomIDs",
+        // which are meaningless now and are dropped on load.
         Scribe_Collections.Look(
             ref _roomAssignments,
-            "roomAssignments",
+            "roomAssignmentKeys",
             LookMode.Reference,
             LookMode.Value,
             ref _assignKeysWorkList,
             ref _assignValsWorkList);
-        Scribe_Collections.Look(ref _doneRoomList, "doneRoomIDs", LookMode.Value);
+        Scribe_Collections.Look(ref _doneRoomList, "doneRoomKeys", LookMode.Value);
 
         if (Scribe.mode == LoadSaveMode.PostLoadInit)
         {
             _roomAssignments ??= [];
             _doneRoomList    ??= [];
-            _doneRoomIDs.Clear();
-            foreach (int id in _doneRoomList)
-                _doneRoomIDs.Add(id);
+            _doneRoomKeys.Clear();
+            foreach (int key in _doneRoomList)
+                _doneRoomKeys.Add(key);
         }
         else if (Scribe.mode == LoadSaveMode.Saving)
         {
-            _doneRoomList = [.._doneRoomIDs];
+            _doneRoomList = [.._doneRoomKeys];
         }
     }
 }

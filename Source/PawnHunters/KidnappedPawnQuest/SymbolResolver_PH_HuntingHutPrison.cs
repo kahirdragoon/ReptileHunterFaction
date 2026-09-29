@@ -4,6 +4,7 @@ using RimWorld.Planet;
 using System.Collections.Generic;
 using System.Linq;
 using Verse;
+using Verse.AI.Group;
 
 namespace PawnHunters;
 
@@ -30,7 +31,6 @@ public class SymbolResolver_PH_HuntingHutPrison : SymbolResolver
     public override void Resolve(ResolveParams rp)
     {
         Map map = BaseGen.globalSettings.map;
-        Log.Message($"Resolving {GetType().Name} for map {map?.Tile}");
         if (map == null) return;
 
         map.regionAndRoomUpdater.TryRebuildDirtyRegionsAndRooms();
@@ -106,12 +106,9 @@ public class SymbolResolver_PH_HuntingHutPrison : SymbolResolver
         PawnDiedOrDownedThoughtsUtility.RemoveLostThoughts(pawn);
         pawn.SetFaction(null);
 
-        // Crush legs — same as GenStep_PHPrison
-        foreach (BodyPartRecord part in pawn.health.hediffSet.GetNotMissingParts())
-        {
-            if (part.def.defName.Contains("Leg"))
-                pawn.TakeDamage(new DamageInfo(DamageDefOf.Crush, 70f, hitPart: part));
-        }
+        // Injure the legs until the pawn can't walk, without removing them (vanilla's downed-refugee site does the
+        // same). Blunt wounds only, so the prisoner doesn't bleed out before the rescue arrives.
+        HealthUtility.DamageLegsUntilIncapableOfMoving(pawn, allowBleedingWounds: false);
 
         ApplyBiteDamage(pawn);
 
@@ -161,7 +158,6 @@ public class SymbolResolver_PH_HuntingHutPrison : SymbolResolver
             int stacks = Rand.RangeInclusive(1, 2);
             for (int i = 0; i < stacks; i++)
             {
-                Log.Message($"Spawning meal on shelf at {cell}");
                 Thing meal = ThingMaker.MakeThing(ThingDefOf.MealSurvivalPack);
                 meal.TryGetComp<CompIngredients>()?.RegisterIngredient(ThingDefOf.Meat_Human);
                 GenSpawn.Spawn(meal, cell, map);
@@ -220,6 +216,7 @@ public class SymbolResolver_PH_HuntingHutPrison : SymbolResolver
 
         if (spawnCells.Count == 0) return;
 
+        List<Pawn> guards = [];
         for (int i = 0; i < count; i++)
         {
             if (spawnCells.Count == 0) break;
@@ -237,7 +234,13 @@ public class SymbolResolver_PH_HuntingHutPrison : SymbolResolver
                 tile: map.Tile));
 
             GenSpawn.Spawn(guard, pos, map);
+            guards.Add(guard);
         }
+
+        // Without a Lord the Humanlike think tree's final fallback (JobGiver_ExitMapBest) walks them off the map.
+        // Same lord job and delay vanilla uses for work-site camp pawns (GenStep_WorkSitePawns).
+        if (guards.Count > 0)
+            LordMaker.MakeNewLord(hunterFaction, new LordJob_DefendBase(hunterFaction, rect.CenterCell, 25000), map, guards);
     }
 
     // ── Mines ─────────────────────────────────────────────────────────────────
@@ -269,6 +272,10 @@ public class SymbolResolver_PH_HuntingHutPrison : SymbolResolver
                 continue;
 
             Thing mine = ThingMaker.MakeThing(mineDef, mineDef.MadeFromStuff ? GenStuff.DefaultStuffFor(mineDef) : null);
+            // Owned by the captors: an unowned trap counts as known to every pawn with a faction (Building_Trap.KnowsOfTrap),
+            // so it would never catch the player's pawns.
+            if (captorFaction != null && mineDef.CanHaveFaction)
+                mine.SetFaction(captorFaction);
             GenSpawn.Spawn(mine, cell, map);
             placed_cells.Add(cell);
             placed++;

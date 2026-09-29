@@ -16,14 +16,25 @@ internal class PawnHuntersMod : Mod
     private Vector2 _geneScroll;
     private string  _geneFilter = "";
 
+    // Sorted once (defs don't change after startup); the gene list is re-filtered only when the search text changes.
+    private List<XenotypeDef>? _sortedXenotypes;
+    private List<GeneDef>?     _sortedGenes;
+    private List<GeneDef>      _filteredGenes = [];
+    private string?            _filteredFor;
+
     public PawnHuntersMod(ModContentPack content) : base(content)
     {
         Settings = GetSettings<PHModSettings>();
         new Harmony("kahirdragoon.PawnHunters").PatchAll();
-        PHPawnTargetingUtility.RebuildCache();
     }
 
     public override string SettingsCategory() => "Pawn Hunters";
+
+    public override void WriteSettings()
+    {
+        base.WriteSettings();
+        PHPawnTargetingUtility.RebuildCache();
+    }
 
     public override void DoSettingsWindowContents(Rect inRect)
     {
@@ -78,13 +89,11 @@ internal class PawnHuntersMod : Mod
 
         DrawXenotypePanel(leftPanel, RowHeight);
         DrawGenePanel(rightPanel, RowHeight);
-
-        PHPawnTargetingUtility.RebuildCache();
     }
 
     private void DrawXenotypePanel(Rect rect, float rowH)
     {
-        var allXeno = DefDatabase<XenotypeDef>.AllDefsListForReading
+        var allXeno = _sortedXenotypes ??= DefDatabase<XenotypeDef>.AllDefsListForReading
             .OrderBy(x => x.label ?? x.defName)
             .ToList();
 
@@ -93,21 +102,29 @@ internal class PawnHuntersMod : Mod
         Rect viewRect   = new(0, 0, scrollRect.width - 16f, allXeno.Count * rowH);
 
         Widgets.BeginScrollView(scrollRect, ref _xenoScroll, viewRect);
-        float y = 0;
-        foreach (var xeno in allXeno)
+        GetVisibleRows(_xenoScroll, scrollRect.height, rowH, allXeno.Count, out int first, out int last);
+        for (int i = first; i <= last; i++)
         {
+            var  xeno     = allXeno[i];
             bool selected = Settings.targetXenotypes.Contains(xeno.defName);
             bool newVal   = selected;
-            Widgets.CheckboxLabeled(new Rect(0, y, viewRect.width, rowH),
+            Widgets.CheckboxLabeled(new Rect(0, i * rowH, viewRect.width, rowH),
                 xeno.label?.CapitalizeFirst() ?? xeno.defName, ref newVal);
             if (newVal != selected)
             {
                 if (newVal) Settings.targetXenotypes.Add(xeno.defName);
                 else        Settings.targetXenotypes.Remove(xeno.defName);
             }
-            y += rowH;
         }
         Widgets.EndScrollView();
+    }
+
+    /// <summary>Index range of the rows inside the visible part of a scroll view; only those are drawn.</summary>
+    private static void GetVisibleRows(Vector2 scroll, float visibleHeight, float rowH, int count,
+        out int first, out int last)
+    {
+        first = Mathf.Max(0, Mathf.FloorToInt(scroll.y / rowH));
+        last  = Mathf.Min(count - 1, Mathf.CeilToInt((scroll.y + visibleHeight) / rowH));
     }
 
     private void DrawGenePanel(Rect rect, float rowH)
@@ -120,29 +137,35 @@ internal class PawnHuntersMod : Mod
 
         Rect scrollRect = new Rect(rect.x, rect.y + 52f, rect.width, rect.height - 52f);
 
-        string filter = _geneFilter.ToLowerInvariant();
-        var allGenes = DefDatabase<GeneDef>.AllDefsListForReading
-            .Where(g => filter.NullOrEmpty()
-                        || (g.label ?? g.defName).ToLowerInvariant().Contains(filter))
+        _sortedGenes ??= DefDatabase<GeneDef>.AllDefsListForReading
             .OrderBy(g => g.label ?? g.defName)
             .ToList();
+        if (_filteredFor != _geneFilter)
+        {
+            _filteredFor = _geneFilter;
+            string filter = _geneFilter.ToLowerInvariant();
+            _filteredGenes = filter.NullOrEmpty()
+                ? _sortedGenes
+                : _sortedGenes.Where(g => (g.label ?? g.defName).ToLowerInvariant().Contains(filter)).ToList();
+        }
+        var allGenes = _filteredGenes;
 
         Rect viewRect = new Rect(0, 0, scrollRect.width - 16f, allGenes.Count * rowH);
 
         Widgets.BeginScrollView(scrollRect, ref _geneScroll, viewRect);
-        float y = 0;
-        foreach (var gene in allGenes)
+        GetVisibleRows(_geneScroll, scrollRect.height, rowH, allGenes.Count, out int first, out int last);
+        for (int i = first; i <= last; i++)
         {
+            var  gene     = allGenes[i];
             bool selected = Settings.targetGenes.Contains(gene.defName);
             bool newVal   = selected;
-            Widgets.CheckboxLabeled(new Rect(0, y, viewRect.width, rowH),
+            Widgets.CheckboxLabeled(new Rect(0, i * rowH, viewRect.width, rowH),
                 gene.label?.CapitalizeFirst() ?? gene.defName, ref newVal);
             if (newVal != selected)
             {
                 if (newVal) Settings.targetGenes.Add(gene.defName);
                 else        Settings.targetGenes.Remove(gene.defName);
             }
-            y += rowH;
         }
         Widgets.EndScrollView();
     }

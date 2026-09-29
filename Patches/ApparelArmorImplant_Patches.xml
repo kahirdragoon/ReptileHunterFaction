@@ -1,23 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
-    <Operation Class="PatchOperationConditional">
+    <!-- Give Spacer/Ultra apparel (except belts and utility items) an empty tags list if it has none,
+         so the next operation can add the tag. success=Always: nothing to do is not an error. -->
+    <Operation Class="PatchOperationAdd">
+        <success>Always</success>
         <xpath>Defs/ThingDef[apparel and (techLevel="Spacer" or techLevel="Ultra")]/apparel[not(layers/li[text()="Belt"] or layers/li[text()="Utility"]) and not(tags)]</xpath>
-        <nomatch Class="PatchOperationAdd">
-            <xpath>Defs/ThingDef[apparel and (techLevel="Spacer" or techLevel="Ultra")]/apparel[not(layers/li[text()="Belt"] or layers/li[text()="Utility"]) and not(tags)]</xpath>
-            <value>
-                <tags></tags>
-            </value>
-        </nomatch>
+        <value>
+            <tags></tags>
+        </value>
     </Operation>
 
-    <Operation Class="PatchOperationConditional">
-        <xpath>Defs/ThingDef[apparel and (techLevel="Spacer" or techLevel="Ultra")]/apparel[not(layers/li[text()="Belt"] or layers/li[text()="Utility"])]/tags/li[text()="SpacerOrUltraTechApparelOrArmor"]</xpath>
-        <nomatch Class="PatchOperationAdd">
-            <xpath>Defs/ThingDef[apparel and (techLevel="Spacer" or techLevel="Ultra")]/apparel[not(layers/li[text()="Belt"] or layers/li[text()="Utility"])]/tags</xpath>
-            <value>
-               <li>SpacerOrUltraTechApparelOrArmor</li>
-            </value>
-        </nomatch>
+    <!-- Add the tag to every such def that does not have it yet (checked per def, not globally) -->
+    <Operation Class="PatchOperationAdd">
+        <success>Always</success>
+        <xpath>Defs/ThingDef[apparel and (techLevel="Spacer" or techLevel="Ultra")]/apparel[not(layers/li[text()="Belt"] or layers/li[text()="Utility"])]/tags[not(li[text()="SpacerOrUltraTechApparelOrArmor"])]</xpath>
+        <value>
+            <li>SpacerOrUltraTechApparelOrArmor</li>
+        </value>
     </Operation>
-    
+
+    <!-- Same defs also get the tag as a trade tag (ThingDef.tradeTags), which the PH_MapGen_FactionSettlement
+         loot filter uses (tradeTagsToAllow). No vanilla trader stocks by this tag. -->
+    <Operation Class="PatchOperationAdd">
+        <success>Always</success>
+        <xpath>Defs/ThingDef[(techLevel="Spacer" or techLevel="Ultra") and apparel[not(layers/li[text()="Belt"] or layers/li[text()="Utility"])] and not(tradeTags)]</xpath>
+        <value>
+            <tradeTags></tradeTags>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <success>Always</success>
+        <xpath>Defs/ThingDef[(techLevel="Spacer" or techLevel="Ultra") and apparel[not(layers/li[text()="Belt"] or layers/li[text()="Utility"])]]/tradeTags[not(li[text()="SpacerOrUltraTechApparelOrArmor"])]</xpath>
+        <value>
+            <li>SpacerOrUltraTechApparelOrArmor</li>
+        </value>
+    </Operation>
+
 </Patch>

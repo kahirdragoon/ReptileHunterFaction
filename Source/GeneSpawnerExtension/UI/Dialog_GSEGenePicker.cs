@@ -18,6 +18,10 @@ public class Dialog_GSEGenePicker : Window
     private string _filter = "";
     private Vector2 _scroll;
 
+    // Sorted and filtered gene list, rebuilt only when the search text changes.
+    private List<GeneDef> _genes = [];
+    private string? _genesFilteredFor;
+
     private const float RowHeight = 24f;
     private const float SearchHeight = 28f;
     private const float Padding = 6f;
@@ -47,21 +51,30 @@ public class Dialog_GSEGenePicker : Window
 
         var scrollArea = new Rect(inRect.x, searchRect.yMax + Padding, inRect.width, inRect.height - searchRect.yMax - Padding - CloseButSize.y - Padding);
 
-        var filter = _filter.ToLowerInvariant();
-        var allGenes = DefDatabase<GeneDef>.AllDefsListForReading
-            .Where(g => (!_metOffsetOnly || g.biostatMet < 0)
-                        && (filter.NullOrEmpty()
-                            || (g.label ?? g.defName).ToLowerInvariant().Contains(filter)
-                            || g.defName.ToLowerInvariant().Contains(filter)))
-            .OrderBy(g => g.label ?? g.defName)
-            .ToList();
+        if (_genesFilteredFor != _filter)
+        {
+            _genesFilteredFor = _filter;
+            var filter = _filter.ToLowerInvariant();
+            _genes = DefDatabase<GeneDef>.AllDefsListForReading
+                .Where(g => (!_metOffsetOnly || g.biostatMet < 0)
+                            && (filter.NullOrEmpty()
+                                || (g.label ?? g.defName).ToLowerInvariant().Contains(filter)
+                                || g.defName.ToLowerInvariant().Contains(filter)))
+                .OrderBy(g => g.label ?? g.defName)
+                .ToList();
+        }
+        var allGenes = _genes;
 
         var viewRect = new Rect(0f, 0f, scrollArea.width - 16f, allGenes.Count * RowHeight);
         Widgets.BeginScrollView(scrollArea, ref _scroll, viewRect);
 
-        float y = 0f;
-        foreach (var gene in allGenes)
+        // Only the rows inside the visible part of the scroll view are drawn.
+        int first = Mathf.Max(0, Mathf.FloorToInt(_scroll.y / RowHeight));
+        int last  = Mathf.Min(allGenes.Count - 1, Mathf.CeilToInt((_scroll.y + scrollArea.height) / RowHeight));
+        for (int idx = first; idx <= last; idx++)
         {
+            var gene = allGenes[idx];
+            float y = idx * RowHeight;
             var existing = _target.FirstOrDefault(i => i.defName == gene.defName || i.geneDef == gene);
             bool selected = existing != null;
             bool newVal = selected;
@@ -76,8 +89,6 @@ public class Dialog_GSEGenePicker : Window
                 else if (existing != null)
                     _target.Remove(existing);
             }
-
-            y += RowHeight;
         }
 
         Widgets.EndScrollView();

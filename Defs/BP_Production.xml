@@ -85,6 +85,20 @@
         <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
     </ThingDef>
 
+    <!-- Carries a selected prisoner or downed pawn into the extractor (mirrors vanilla CarryToSubcoreScanner) -->
+    <WorkGiverDef>
+        <defName>PH_CarryToExtractor</defName>
+        <label>carry to bloodprime extractor</label>
+        <giverClass>PawnHunters.WorkGiver_CarryToExtractor</giverClass>
+        <workType>Hauling</workType>
+        <verb>carry</verb>
+        <gerund>carrying</gerund>
+        <priorityInType>90</priorityInType>
+        <requiredCapacities>
+            <li>Manipulation</li>
+        </requiredCapacities>
+    </WorkGiverDef>
+
     <ThingDef ParentName="ResourceBase">
         <defName>PH_BiologicalExtract</defName>
         <label>biological extract</label>

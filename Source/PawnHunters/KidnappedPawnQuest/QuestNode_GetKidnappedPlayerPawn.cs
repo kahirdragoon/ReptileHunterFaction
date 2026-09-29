@@ -36,8 +36,10 @@ public class QuestNode_GetKidnappedPlayerPawn : QuestNode
         if (kidnappingFaction?.kidnapped?.KidnappedPawnsListForReading == null)
             return false;
 
+        // holdingOwner != null means the pawn is already stored on another prison site part.
         var validKidnappedPawns = kidnappingFaction.kidnapped.KidnappedPawnsListForReading
-            .Where(p => p != null && !p.DestroyedOrNull() && p.RaceProps.Humanlike && p.Faction == Faction.OfPlayer)
+            .Where(p => p != null && !p.DestroyedOrNull() && p.RaceProps.Humanlike && p.Faction == Faction.OfPlayer
+                        && !p.Spawned && p.holdingOwner == null)
             .ToList();
 
         return validKidnappedPawns.TryRandomElement(out pawn);

@@ -20,6 +20,11 @@ public class GeneSpawnerExtensionMod : Mod
     private Vector2 _groupListScroll;
     private Vector2 _metOffsetScroll;
 
+    // Sorted and filtered def list, rebuilt only when the tab or the search text changes.
+    private readonly List<(string defName, string label)> _filteredDefs = [];
+    private string? _filteredFor;
+    private bool _filteredForFactions;
+
     private const float Pad = 6f;
     private const float RowH = 24f;
     private const float TabH = 30f;
@@ -80,11 +85,15 @@ public class GeneSpawnerExtensionMod : Mod
         var viewRect = new Rect(0f, 0f, scrollArea.width - 16f, items.Count * RowH);
 
         Widgets.BeginScrollView(scrollArea, ref _defListScroll, viewRect);
-        float y = 0f;
         var configs = _showFactions ? Settings.factionConfigs : Settings.pawnKindConfigs;
 
-        foreach (var (defName, label) in items)
+        // Only the rows inside the visible part of the scroll view are drawn.
+        int first = Mathf.Max(0, Mathf.FloorToInt(_defListScroll.y / RowH));
+        int last  = Mathf.Min(items.Count - 1, Mathf.CeilToInt((_defListScroll.y + scrollArea.height) / RowH));
+        for (int i = first; i <= last; i++)
         {
+            var (defName, label) = items[i];
+            float y = i * RowH;
             bool hasConfig = configs.Any(c => c.defName == defName);
             bool selected  = _selectedDefName == defName;
 
@@ -118,8 +127,6 @@ public class GeneSpawnerExtensionMod : Mod
                     _selectedDefName = defName;
                 }
             }
-
-            y += RowH;
         }
 
         Widgets.EndScrollView();
@@ -127,28 +134,33 @@ public class GeneSpawnerExtensionMod : Mod
 
     private List<(string defName, string label)> GetFilteredDefs()
     {
+        if (_filteredFor == _defFilter && _filteredForFactions == _showFactions)
+            return _filteredDefs;
+        _filteredFor = _defFilter;
+        _filteredForFactions = _showFactions;
+
         var filter = _defFilter.ToLowerInvariant();
+        _filteredDefs.Clear();
 
         if (_showFactions)
         {
-            return DefDatabase<FactionDef>.AllDefsListForReading
+            _filteredDefs.AddRange(DefDatabase<FactionDef>.AllDefsListForReading
                 .Where(d => filter.NullOrEmpty()
                             || (d.label ?? d.defName).ToLowerInvariant().Contains(filter)
                             || d.defName.ToLowerInvariant().Contains(filter))
                 .OrderBy(d => d.label ?? d.defName)
-                .Select(d => (d.defName, d.label?.CapitalizeFirst() ?? d.defName))
-                .ToList();
+                .Select(d => (d.defName, d.label?.CapitalizeFirst() ?? d.defName)));
         }
         else
         {
-            return DefDatabase<PawnKindDef>.AllDefsListForReading
+            _filteredDefs.AddRange(DefDatabase<PawnKindDef>.AllDefsListForReading
                 .Where(d => filter.NullOrEmpty()
                             || (d.label ?? d.defName).ToLowerInvariant().Contains(filter)
                             || d.defName.ToLowerInvariant().Contains(filter))
                 .OrderBy(d => d.label ?? d.defName)
-                .Select(d => (d.defName, d.label?.CapitalizeFirst() ?? d.defName))
-                .ToList();
+                .Select(d => (d.defName, d.label?.CapitalizeFirst() ?? d.defName)));
         }
+        return _filteredDefs;
     }
 
     private void AddConfig(string defName)

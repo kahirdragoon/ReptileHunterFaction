@@ -15,6 +15,8 @@
     <PH_GiftPayment_LetterLabel>PH payment received</PH_GiftPayment_LetterLabel>
     <PH_GiftPayment_LetterText_WithQualifying>The Pawn Hunters have accepted your delivery of {TOTAL} prisoner(s). {QUALIFYING} met their specimen criteria — their interest has been noted, and the next raid against you will be smaller. A payment of {TOTAL} dose(s) of drug medicine has arrived by drop pod.</PH_GiftPayment_LetterText_WithQualifying>
     <PH_GiftPayment_LetterText_NoQualifying>The Pawn Hunters have accepted your delivery of {TOTAL} prisoner(s). None met their specimen criteria. A payment of {TOTAL} dose(s) of drug medicine has arrived by drop pod.</PH_GiftPayment_LetterText_NoQualifying>
+    <!-- Shown when gifted prisoners cover the whole kidnapping raid -->
+    <PH_KidnappingRaidPaidOff>The Pawn Hunters were satisfied with the prisoners you sent them and called off a kidnapping raid.</PH_KidnappingRaidPaidOff>
 
     <!-- ── Ancient complex scanner ── -->
     <PH_AncientComplexFound_Label>Ancient complex located</PH_AncientComplexFound_Label>
@@ -23,6 +25,10 @@
     <PH_ScannerBurnedOut>Scanner burned out</PH_ScannerBurnedOut>
     <PH_ScannerBurnedOutMsg>{0} has burned out after too many scans. The overloaded glittertech components are beyond repair.</PH_ScannerBurnedOutMsg>
     <PH_ScansRemaining>Scans remaining: {0}</PH_ScansRemaining>
+
+    <!-- ── Map generation ── -->
+    <!-- Custom xenotype name of settlement prisoners and genelab xenogerms built from the configured target genes -->
+    <PH_SelectedGenes>specimen</PH_SelectedGenes>
 
     <!-- ── Mod settings window ── -->
     <PH_Settings_MinQualifyingPawns>Min. qualifying pawns</PH_Settings_MinQualifyingPawns>

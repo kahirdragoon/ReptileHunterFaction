@@ -14,8 +14,6 @@ namespace PawnHunters;
 /// </summary>
 public class RaidStrategyWorker_PH_KidnappingRaidBoss : RaidStrategyWorker
 {
-    private const float PointsPerRaider = 250f;
-
     public override bool CanUseWith(IncidentParms parms, PawnGroupKindDef groupKind) =>
         parms.faction?.def == PawnHuntersDefOf.PH_PawnHunters;
 
@@ -28,9 +26,7 @@ public class RaidStrategyWorker_PH_KidnappingRaidBoss : RaidStrategyWorker
     public override List<Pawn> SpawnThreats(IncidentParms parms)
     {
         // Apply prisoner-gift discount.
-        int discount = WorldComp_SpoilsOfBattle.Get()?.ConsumeRaidDiscount() ?? 0;
-        if (discount > 0)
-            parms.points = Math.Max(def.minPawns * PointsPerRaider, parms.points - discount * PointsPerRaider);
+        RaidStrategyWorker_PH_KidnappingRaidBig.ApplyGiftDiscount(parms, def);
 
         // Generate the regular point-based raiders.
         PawnGroupMakerParms groupParms = IncidentParmsUtility.GetDefaultPawnGroupMakerParms(

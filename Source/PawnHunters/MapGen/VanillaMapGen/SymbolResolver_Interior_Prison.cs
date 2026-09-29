@@ -23,7 +23,6 @@ public class SymbolResolver_Interior_Prison : SymbolResolver
                 singleThingDef = Rand.Chance(0.5f) ? ThingDefOf.Meat_Human : VanillaDefOf.Meat_Megaspider,
                 singleThingStackCount = Rand.Range(3, 10)
             };
-            Log.Message("Category of thing: " + rpFood.singleThingDef.category);
             BaseGen.symbolStack.Push("thing", rpFood);
         }
         InteriorSymbolResolverUtility.PushBedroomHeatersCoolersAndLightSourcesSymbols(rp, false);

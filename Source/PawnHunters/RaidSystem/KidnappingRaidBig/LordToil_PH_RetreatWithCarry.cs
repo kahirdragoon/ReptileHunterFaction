@@ -19,12 +19,7 @@ public class LordToil_PH_RetreatWithCarry : LordToil
     private const int OpportunisticGrabRange = 2;
     private const int TickInterval           = 60;
 
-    public override void Init()
-    {
-        base.Init();
-        UpdateAllDuties();
-    }
-
+    // Lord.GotoToil calls UpdateAllDuties right after Init, so no Init override is needed.
     public override void UpdateAllDuties()
     {
         var lordJob = (LordJob_PH_KidnappingRaidBig)lord.LordJob;
@@ -39,8 +34,9 @@ public class LordToil_PH_RetreatWithCarry : LordToil
             {
                 p.mindState.duty = new PawnDuty(PawnHuntersDefOf.PH_CarryCorpseDuty);
             }
-            else
+            else if (p.mindState.duty?.def != DutyDefOf.ExitMapBestAndDefendSelf)
             {
+                // Interrupt only on the switch to retreating, not every time duties are refreshed.
                 p.mindState.duty = new PawnDuty(DutyDefOf.ExitMapBestAndDefendSelf);
                 p.jobs.EndCurrentJob(JobCondition.InterruptForced);
             }
@@ -54,79 +50,59 @@ public class LordToil_PH_RetreatWithCarry : LordToil
         var lordJob = (LordJob_PH_KidnappingRaidBig)lord.LordJob;
         Map map = lord.Map;
 
-        lordJob.ValidateKidnaps(inRetreat: true);
+        lordJob.ValidateKidnaps();
         lordJob.ValidateCorpseCarriers();
 
         TryOpportunisticGrab(lordJob, map);
     }
 
+    // TryAssignKidnapper / TryAssignCorpseCarrier already set the grabbing raider's duty and restart its job;
+    // the other retreating raiders are left alone.
     private void TryOpportunisticGrab(LordJob_PH_KidnappingRaidBig lordJob, Map map)
     {
-        bool dutiesChanged = false;
-
         foreach (Pawn raider in lord.ownedPawns)
         {
-            if (raider.Dead || raider.Downed) continue;
+            if (raider.Dead || raider.Downed || !raider.Spawned) continue;
             if (!raider.health.capacities.CapableOf(PawnCapacityDefOf.Moving)) continue;
             if (lordJob.IsKidnapper(raider) || lordJob.IsCorpseCarrier(raider)) continue;
 
-            // Priority 1: downed player pawn within 2 tiles
-            Pawn? nearbyDowned = ClosestDownedPlayerPawnWithinRange(
-                raider, map, OpportunisticGrabRange, lordJob);
-            if (nearbyDowned != null)
+            switch (FindGrabTarget(raider, map, lordJob))
             {
-                if (lordJob.TryAssignKidnapper(nearbyDowned, raider))
-                    dutiesChanged = true;
-                continue;
+                case Pawn downed:   lordJob.TryAssignKidnapper(downed, raider);    break;
+                case Corpse corpse: lordJob.TryAssignCorpseCarrier(corpse, raider); break;
             }
-
-            // Priority 2: player corpse within 2 tiles
-            Corpse? nearbyCorpse = ClosestPlayerCorpseWithinRange(
-                raider, map, OpportunisticGrabRange, lordJob);
-            if (nearbyCorpse != null && lordJob.TryAssignCorpseCarrier(nearbyCorpse, raider))
-                dutiesChanged = true;
         }
-
-        if (dutiesChanged)
-            UpdateAllDuties();
     }
 
-    private static Pawn? ClosestDownedPlayerPawnWithinRange(
-        Pawn raider, Map map, int range, LordJob_PH_KidnappingRaidBig lordJob)
+    /// <summary>
+    /// The closest downed target within OpportunisticGrabRange (priority 1), else the closest player corpse
+    /// (priority 2). Only the cells around the raider are checked: the radial pattern is sorted by distance,
+    /// so the first match is the closest, and the cost doesn't grow with the colony or its corpse stockpile.
+    /// </summary>
+    private static Thing? FindGrabTarget(Pawn raider, Map map, LordJob_PH_KidnappingRaidBig lordJob)
     {
-        Pawn? best     = null;
-        float bestDist = float.MaxValue;
+        Corpse? closestCorpse = null;
+        int     numCells      = GenRadial.NumCellsInRadius(OpportunisticGrabRange);
 
-        foreach (Pawn p in map.mapPawns.AllPawnsSpawned)
+        for (int i = 0; i < numCells; i++)
         {
-            if (p.Dead || !p.Downed || !p.RaceProps.Humanlike) continue;
-            if (p.Faction != Faction.OfPlayer && !p.IsPrisonerOfColony) continue;
-            if (lordJob.IsTargeted(p)) continue;
-            if (!PHPawnTargetingUtility.IsTargetPawn(p)) continue;
+            IntVec3 cell = raider.Position + GenRadial.RadialPattern[i];
+            if (!cell.InBounds(map)) continue;
 
-            float d = p.Position.DistanceTo(raider.Position);
-            if (d <= range && d < bestDist) { bestDist = d; best = p; }
+            List<Thing> things = cell.GetThingList(map);
+            for (int j = 0; j < things.Count; j++)
+            {
+                if (things[j] is Pawn p)
+                {
+                    if (PHRaidTargetUtility.IsDownedTarget(p, lordJob)) return p;
+                }
+                else if (closestCorpse == null && things[j] is Corpse corpse
+                         && PHRaidTargetUtility.IsCorpseTarget(corpse, lordJob))
+                {
+                    closestCorpse = corpse;
+                }
+            }
         }
-        return best;
-    }
-
-    private static Corpse? ClosestPlayerCorpseWithinRange(
-        Pawn raider, Map map, int range, LordJob_PH_KidnappingRaidBig lordJob)
-    {
-        Corpse? best     = null;
-        float   bestDist = float.MaxValue;
-
-        foreach (Thing t in map.listerThings.ThingsInGroup(ThingRequestGroup.Corpse))
-        {
-            if (t is not Corpse corpse) continue;
-            if (corpse.InnerPawn?.Faction != Faction.OfPlayer) continue;
-            if (!corpse.InnerPawn.RaceProps.Humanlike) continue;
-            if (lordJob.IsCorpseTargeted(corpse)) continue;
-            if (!PHPawnTargetingUtility.IsTargetPawn(corpse.InnerPawn)) continue;
-
-            float d = corpse.Position.DistanceTo(raider.Position);
-            if (d <= range && d < bestDist) { bestDist = d; best = corpse; }
-        }
-        return best;
+        return closestCorpse;
     }
 }
