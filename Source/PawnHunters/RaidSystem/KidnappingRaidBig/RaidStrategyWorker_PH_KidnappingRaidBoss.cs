@@ -17,7 +17,7 @@ public class RaidStrategyWorker_PH_KidnappingRaidBoss : RaidStrategyWorker
     public override bool CanUseWith(IncidentParms parms, PawnGroupKindDef groupKind) =>
         parms.faction?.def == PawnHuntersDefOf.PH_PawnHunters;
 
-    public override LordJob MakeLordJob(
+    protected override LordJob MakeLordJob(
         IncidentParms parms, Map map, List<Pawn> pawns, int raidSeed)
     {
         return new LordJob_PH_KidnappingRaidBig();

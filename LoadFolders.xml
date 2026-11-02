@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <loadFolders>
-  <v1.6>
+  <v1.7>
     <li>/</li>
-    <li>1.6</li>
+    <li>1.7</li>
     <li IfModActive="ludeon.rimworld.ideology">Mods/Ideology</li>
     <li IfModActive="ludeon.rimworld.anomaly">Mods/Anomaly</li>
     <li IfModActive="ludeon.rimworld.odyssey">Mods/Odyssey</li>
@@ -10,5 +10,5 @@
     <li IfModActive="sarg.alphagenes">Mods/AlphaGenes</li>
     <li IfModActive="oskarpotocki.vanillafactionsexpanded.core">Mods/VanillaExpandedFramework</li>
     <li IfModActive="vanillaexpanded.vfesecurity">Mods/VFE_Security</li>
-  </v1.6>
+  </v1.7>
 </loadFolders>

@@ -17,9 +17,9 @@ public class QuestNode_GetKidnappedPlayerPawn : QuestNode
     [NoTranslate]
     public SlateRef<Faction> factionRef = new("siteFaction");
 
-    public override bool TestRunInt(Slate slate) => true;
+    protected override bool TestRunInt(Slate slate) => true;
 
-    public override void RunInt()
+    protected override void RunInt()
     {
         var faction = factionRef.GetValue(QuestGen.slate);
         // If a kidnapped pawn exists, store it in the slate so downstream nodes can use it.

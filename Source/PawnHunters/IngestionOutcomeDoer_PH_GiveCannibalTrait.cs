@@ -10,7 +10,7 @@ namespace PawnHunters
     /// </summary>
     public class IngestionOutcomeDoer_PH_GiveCannibalTrait : IngestionOutcomeDoer
     {
-        public override void DoIngestionOutcomeSpecial(Pawn pawn, Thing ingested, int ingestedCount)
+        protected override void DoIngestionOutcomeSpecial(Pawn pawn, Thing ingested, int ingestedCount)
         {
             GeneDef cannibalGene = DefDatabase<GeneDef>.GetNamedSilentFail("Cannibal");
             if (cannibalGene != null && pawn.genes != null)

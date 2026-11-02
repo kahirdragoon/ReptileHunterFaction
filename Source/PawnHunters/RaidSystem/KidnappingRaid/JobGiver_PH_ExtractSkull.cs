@@ -14,7 +14,7 @@ namespace PawnHunters;
 /// </summary>
 public class JobGiver_PH_ExtractSkull : ThinkNode_JobGiver
 {
-    public override Job? TryGiveJob(Pawn pawn)
+    protected override Job? TryGiveJob(Pawn pawn)
     {
         if (pawn.GetLord()?.LordJob is not LordJob_PH_KidnappingRaid lordJob) return null;
 

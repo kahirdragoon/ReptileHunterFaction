@@ -11,11 +11,17 @@ namespace PawnHunters;
 /// </summary>
 public class JobGiver_PH_KidnapDowned : ThinkNode_JobGiver
 {
-    public override Job? TryGiveJob(Pawn pawn)
+    protected override Job? TryGiveJob(Pawn pawn)
     {
         if (pawn.GetLord()?.LordJob is not LordJob_PH_KidnappingRaid lordJob) return null;
 
         Pawn? target = lordJob.GetTargetFor(pawn);
+
+        // Already carrying the victim, which despawns it: keep the running kidnap job. The think tree also runs
+        // mid-job (CheckForJobOverride), and resetting the duty here would end the job and drop the victim.
+        if (target != null && pawn.carryTracker.CarriedThing == target && pawn.CurJobDef == PawnHuntersDefOf.PH_KidnapAndFlee)
+            return pawn.CurJob;
+
         if (target != null && !target.Dead && target.Downed && target.Spawned)
         {
             Job job = JobMaker.MakeJob(PawnHuntersDefOf.PH_KidnapAndFlee, target);

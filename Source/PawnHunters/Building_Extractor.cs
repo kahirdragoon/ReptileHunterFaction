@@ -319,7 +319,7 @@ internal class Building_Extractor : Building_Enterable, IThingHolderWithDrawnPaw
         Occupant?.Drawer.renderer.DynamicDrawPhaseAt(phase, drawLoc, neverAimWeapon: true);
     }
 
-    public override void Tick()
+    protected override void Tick()
     {
         base.Tick();
         if (State == ExtractorState.Occupied)

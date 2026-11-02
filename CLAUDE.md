@@ -6,7 +6,7 @@ DO NOT GUESS, ASK IF UNSURE
 
 ## Project Overview
 
-**Pawn Hunters** is a RimWorld 1.6 mod by kahirdragoon that adds a hostile alien faction (Pawn Hunters) who raid colonies to kidnap pawns and extract biological material to produce "Bloodprime" (BP). The mod is a mix of XML definitions, Harmony patches, and custom C# game logic compiled into `Assemblies/PawnHunters.dll`.
+**Pawn Hunters** is a RimWorld 1.7 mod by kahirdragoon that adds a hostile alien faction (Pawn Hunters) who raid colonies to kidnap pawns and extract biological material to produce "Bloodprime" (BP). The mod is a mix of XML definitions, Harmony patches, and custom C# game logic compiled into `Assemblies/PawnHunters.dll`.
 
 The original already decompiled Rimworld Source can be found under D:\Rimworld Modding\Rimworld Source
 
@@ -14,7 +14,7 @@ The original already decompiled Rimworld Source can be found under D:\Rimworld M
 
 **Solution**: `PawnHunters.sln` (Visual Studio)
 
-To build: open the solution in Visual Studio, or run `dotnet build` from `Source/PawnHunters/`. The compiled DLL lands in `1.6/Assemblies/PawnHunters.dll`. RimWorld must be installed at its default Steam path for the project references to resolve.
+To build: open the solution in Visual Studio, or run `dotnet build` from `Source/PawnHunters/`. The compiled DLL lands in `1.7/Assemblies/PawnHunters.dll`. RimWorld must be installed at its default Steam path for the project references to resolve.
 
 BUILD the dll at the end of every task to verify if there are any errors.
 
@@ -51,7 +51,7 @@ The mod uses three distinct raid types with parallel but separate class hierarch
 
 All three share `IKidnappingLordJob.cs` interface and the pawn-targeting logic in `PHPawnTargetingUtility.cs`. The lord toils' 60-tick candidate scans (downed targets, standing prisoners/colonists, player corpses, closest candidate) live in `PHRaidTargetUtility` and fill toil-owned buffers. They read `SpawnedPawnsInFaction(Faction.OfPlayer)` and `PrisonersOfColonySpawned` (maintained lists) instead of `AllPawnsSpawned`; `FreeColonistsSpawned` is rebuilt on every call, so read it once per tick, never per raider. All three `RaidStrategyWorker_PH_*` classes override `CanUseWith` so only the `PH_PawnHunters` faction can use them. PH raids and complex looters get the faction from `PHFactionUtility.RaidingFaction`, which is null once the faction is defeated or deactivated, so they stop then.
 
-The special raid duties (kidnapper, corpse carrier, skull extractor) have a single job giver. When its assignment is over it must call `PHRaidDutyUtility.ResetDutyAndThink` (resets to the toil's free duty via `IKidnappingLordJob.ResetToFreeDuty`) instead of returning null: a duty that yields no job falls through the Humanlike think tree to its final `JobGiver_ExitMapBest`, and the raider walks off the map.
+The special raid duties (kidnapper, corpse carrier, skull extractor) have a single job giver. When its assignment is over it must call `PHRaidDutyUtility.ResetDutyAndThink` (resets to the toil's free duty via `IKidnappingLordJob.ResetToFreeDuty`) instead of returning null: a duty that yields no job falls through the Humanlike think tree to its final `JobGiver_ExitMapBest`, and the raider walks off the map. These job givers also run mid-job (vanilla `CheckForJobOverride`, e.g. on damage or a nearby explosive), and a carried target is despawned: while the pawn carries its target in the duty's job they return `pawn.CurJob`, otherwise the reset drops it. The carry JobDefs set `checkOverrideOnDamage` `Never` like vanilla `Kidnap`.
 
 ### Pawn Targeting & Mod Settings
 
@@ -138,4 +138,4 @@ All mod-specific defs use the `PH_` prefix (e.g., `PH_PawnHunters`, `PH_Kidnappi
 
 ## C# Conventions
 - Use C# 14 features (`LangVersion>latest` is set)
-- Target framework is `net481` (Mono/.NET Framework 4.8.1) — C# 14 syntax compiles fine, but .NET 5+ runtime APIs do not exist; rely only on APIs available in .NET Framework 4.8
+- Target framework is `net10.0`: RimWorld 1.7 runs on .NET 10, not Mono. Mono-only behaviour such as `Thread.Abort` is gone (it throws `PlatformNotSupportedException`)

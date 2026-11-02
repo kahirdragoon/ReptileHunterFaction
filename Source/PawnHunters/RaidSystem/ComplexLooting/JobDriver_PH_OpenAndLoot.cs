@@ -27,7 +27,7 @@ public class JobDriver_PH_ExploreRoom : JobDriver
 
     public override bool TryMakePreToilReservations(bool errorOnFailed) => true;
 
-    public override IEnumerable<Toil> MakeNewToils()
+    protected override IEnumerable<Toil> MakeNewToils()
     {
         this.AddFinishAction(condition =>
         {

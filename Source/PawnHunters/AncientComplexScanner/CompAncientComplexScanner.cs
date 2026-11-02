@@ -39,7 +39,7 @@ namespace PawnHunters
                 maxScans = Rand.RangeInclusive(Props.minScansBeforeBreakdown, Props.maxScansBeforeBreakdown);
         }
 
-        public override void DoFind(Pawn worker)
+        protected override void DoFind(Pawn worker)
         {
             QuestScriptDef questScript = DefDatabase<QuestScriptDef>.GetNamedSilentFail("PH_AncientComplexScan");
 

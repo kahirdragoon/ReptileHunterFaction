@@ -21,7 +21,7 @@ public class IncidentWorker_PH_KidnappingRaid : IncidentWorker_RaidEnemy
     /// <summary>Raider count before the gifted-prisoner discount: floor((adult colonists + adult slaves) / 2).</summary>
     public static int RaidSize(Map map) => CountAdultColonistsAndSlaves(map) / 2;
 
-    public override bool CanFireNowSub(IncidentParms parms)
+    protected override bool CanFireNowSub(IncidentParms parms)
     {
         if (!base.CanFireNowSub(parms)) return false;
         if (parms.target is not Map map) return false;
@@ -41,7 +41,7 @@ public class IncidentWorker_PH_KidnappingRaid : IncidentWorker_RaidEnemy
     /// spends only the prisoners that cover this raid (the rest carry over) and sends nobody.
     /// Otherwise the normal raid runs and SpawnThreats spends the discount.
     /// </summary>
-    public override bool TryExecuteWorker(IncidentParms parms)
+    protected override bool TryExecuteWorker(IncidentParms parms)
     {
         WorldComp_SpoilsOfBattle? spoils = WorldComp_SpoilsOfBattle.Get();
         if (parms.target is Map map && spoils != null && spoils.PeekRaidDiscount() >= RaidSize(map))
@@ -53,7 +53,7 @@ public class IncidentWorker_PH_KidnappingRaid : IncidentWorker_RaidEnemy
         return base.TryExecuteWorker(parms);
     }
 
-    public override bool TryResolveRaidFaction(IncidentParms parms)
+    protected override bool TryResolveRaidFaction(IncidentParms parms)
     {
         parms.faction = PHFactionUtility.RaidingFaction;
         return parms.faction != null;

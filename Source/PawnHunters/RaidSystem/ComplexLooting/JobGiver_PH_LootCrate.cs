@@ -14,7 +14,7 @@ namespace PawnHunters;
 /// </summary>
 public class JobGiver_PH_ExploreRoom : ThinkNode_JobGiver
 {
-    public override Job? TryGiveJob(Pawn pawn)
+    protected override Job? TryGiveJob(Pawn pawn)
     {
         var lordJob = pawn.GetLord()?.LordJob as LordJob_PH_ComplexLooting;
         if (lordJob == null) return null;

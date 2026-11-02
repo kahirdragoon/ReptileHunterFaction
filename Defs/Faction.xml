@@ -3,7 +3,7 @@
     <FactionDef ParentName="FactionBase">
         <defName>PH_PawnHunters</defName>
         <label>Pawn Hunters</label>
-        <description>Ruthless carnivorious pirates who raid to kidnap and feed using stolen glittertech technology. Loosely unified by a strong leader and their common sbd addiction. Their minds have long been influenced by the drug.</description>
+        <description>Ruthless carnivorous pirates who raid to kidnap and feed using stolen glittertech technology. Loosely unified by a strong leader and their common bloodprime addiction. Their minds have long been influenced by the drug.</description>
         <pawnSingular>hunter</pawnSingular>
         <pawnsPlural>hunters</pawnsPlural>
         <hidden>false</hidden>

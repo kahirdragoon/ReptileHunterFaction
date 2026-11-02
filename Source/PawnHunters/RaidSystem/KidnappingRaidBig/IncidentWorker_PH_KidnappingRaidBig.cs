@@ -14,7 +14,7 @@ namespace PawnHunters;
 /// </summary>
 public class IncidentWorker_PH_KidnappingRaidBig : IncidentWorker_RaidEnemy
 {
-    public override bool CanFireNowSub(IncidentParms parms)
+    protected override bool CanFireNowSub(IncidentParms parms)
     {
         if (!base.CanFireNowSub(parms)) return false;
         if (parms.target is not Map map) return false;
@@ -30,7 +30,7 @@ public class IncidentWorker_PH_KidnappingRaidBig : IncidentWorker_RaidEnemy
         return hasQualifyingColonist || hasQualifyingPrisoner;
     }
 
-    public override bool TryResolveRaidFaction(IncidentParms parms)
+    protected override bool TryResolveRaidFaction(IncidentParms parms)
     {
         parms.faction = PHFactionUtility.RaidingFaction;
         return parms.faction != null;

@@ -9,6 +9,9 @@
         <reportString>kidnapping TargetA and escaping.</reportString>
         <allowOpportunisticPrefix>false</allowOpportunisticPrefix>
         <collideWithPawns>true</collideWithPawns>
+        <!-- Like vanilla Kidnap: getting hit must not re-think the job, or the kidnapper drops the victim. -->
+        <casualInterruptible>false</casualInterruptible>
+        <checkOverrideOnDamage>Never</checkOverrideOnDamage>
     </JobDef>
 
     <!-- ===== Duty for the designated kidnapper ===== -->

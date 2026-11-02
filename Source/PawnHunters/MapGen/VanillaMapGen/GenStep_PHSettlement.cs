@@ -15,7 +15,7 @@ internal class GenStep_PHSettlement : GenStep_Settlement
 
     public override int SeedPart => 0904742260;
 
-    public override void ScatterAt(IntVec3 c, Map map, GenStepParams parms, int stackCount = 1)
+    protected override void ScatterAt(IntVec3 c, Map map, GenStepParams parms, int stackCount = 1)
     {
         int randomInRange1 = SettlementSizeRange.RandomInRange;
         int randomInRange2 = SettlementSizeRange.RandomInRange;

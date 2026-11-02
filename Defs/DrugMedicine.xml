@@ -3,7 +3,7 @@
     <ThingDef ParentName="DrugPillBase">
         <defName>PH_DrugMedicine</defName>
         <label>drug medicine</label>
-        <description>A pack of herbal concoctions extracted from the drug plant. Boosts the pawn healing capabilities but can cause pain, vomitting, makes sleepy and mentally unstable. Can be taken multiple times to increase its effectivnes. /n/nThis no effect on Pawns who are already addichted to the super bud drug.</description>
+        <description>A pack of herbal concoctions extracted from the drug plant. Boosts the pawn's healing capabilities but can cause pain and vomiting, and makes the pawn sleepy and mentally unstable. Can be taken multiple times to increase its effectiveness.\n\nThis has no effect on pawns who are already addicted to bloodprime.</description>
         <descriptionHyperlinks>
             <HediffDef>PH_DrugMedicineHediff</HediffDef>
         </descriptionHyperlinks>
@@ -92,7 +92,7 @@
     <ThingDef ParentName="PlantBase">
         <defName>PH_Plant_DrugMedicine</defName>
         <label>drug plant</label>
-        <description>Produces a very strong healing herb. Also addictive. Hard to grow</description>
+        <description>Produces a very strong healing herb. Also addictive. Hard to grow.</description>
         <statBases>
             <MaxHitPoints>85</MaxHitPoints>
             <Nutrition>0.2</Nutrition>
@@ -135,7 +135,7 @@
     <ResearchProjectDef>
         <defName>PH_DrugMedicinePlantSowing</defName>
         <label>Drug medicine</label>
-        <description>The knowledge how to cultivate the drug medicine plant.</description>
+        <description>The knowledge of how to cultivate the drug medicine plant.</description>
         <baseCost>1000</baseCost>
         <researchViewX>1.00</researchViewX>
         <researchViewY>5.60</researchViewY>
@@ -152,7 +152,7 @@
         <defName>PH_DrugMedicineHediff</defName>
         <hediffClass>Hediff_High</hediffClass>
         <label>drug medicine</label>
-        <description>Drug medicine. Strong regenerative properties but can makes the pawn mentally unstable.</description>
+        <description>Drug medicine. Strong regenerative properties but can make the pawn mentally unstable.</description>
         <defaultLabelColor>(0.5,1,0.5)</defaultLabelColor>
         <scenarioCanAdd>true</scenarioCanAdd>
         <maxSeverity>1.0</maxSeverity>
@@ -241,7 +241,7 @@
         <defName>PH_Chemical_DrugMedicine</defName>
         <needClass>Need_Chemical</needClass>
         <label>drug medicine</label>
-        <description>This person is addited to the drug medicine. The addiction is painfull but not deadly.</description>
+        <description>This person is addicted to the drug medicine. The addiction is painful but not deadly.</description>
         <listPriority>45</listPriority>
         <fallPerDay>0.05</fallPerDay>
         <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
@@ -250,7 +250,7 @@
     <HediffDef ParentName="AddictionBase">
         <defName>PH_DrugMedicineAddiction</defName>
         <label>drug medicine need</label>
-        <description>Healing but painfull addiction.</description>
+        <description>Healing but painful addiction.</description>
         <hediffClass>Hediff_Addiction</hediffClass>
         <chemicalNeed>PH_Chemical_DrugMedicine</chemicalNeed>
         <everCurableByItem>true</everCurableByItem>

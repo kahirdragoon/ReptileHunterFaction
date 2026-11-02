@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net481</TargetFramework>
+		<TargetFramework>net10.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
@@ -12,17 +12,19 @@
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 		<AppendConfigurationToOutputPath>false</AppendConfigurationToOutputPath>
 		<DebugType>none</DebugType>
+		<GenerateDependencyFile>false</GenerateDependencyFile>
 		<EnableNETAnalyzers>False</EnableNETAnalyzers>
 		<NoWarn>CS8603,CS0649,CS8618</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<OutputPath>..\..\1.6\Assemblies\</OutputPath>
+		<OutputPath>..\..\1.7\Assemblies\</OutputPath>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4633" />
-		<PackageReference Include="Lib.Harmony" Version="2.4.2">
+		<!-- Must match the game build in RimWorld/Version.txt; bump after game updates. -->
+		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.7.4995-unstable" />
+		<PackageReference Include="Lib.Harmony" Version="3.0.0-rc.3">
 			<PrivateAssets>all</PrivateAssets>
 			<ExcludeAssets>runtime</ExcludeAssets>
 		</PackageReference>

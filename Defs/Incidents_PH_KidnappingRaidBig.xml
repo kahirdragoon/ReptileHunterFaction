@@ -10,6 +10,8 @@
         <allowOpportunisticPrefix>false</allowOpportunisticPrefix>
         <collideWithPawns>true</collideWithPawns>
         <casualInterruptible>false</casualInterruptible>
+        <!-- Like vanilla Kidnap: getting hit must not re-think the job, or the carrier drops the corpse. -->
+        <checkOverrideOnDamage>Never</checkOverrideOnDamage>
     </JobDef>
 
     <!-- ===== Duty: designated kidnapper (big raid) ===== -->

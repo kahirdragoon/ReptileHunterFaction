@@ -24,7 +24,7 @@ public class JobDriver_PH_KidnapAndFlee : JobDriver
         return pawn.Reserve(Victim, job, 1, -1, null, errorOnFailed);
     }
 
-    public override IEnumerable<Toil> MakeNewToils()
+    protected override IEnumerable<Toil> MakeNewToils()
     {
         this.FailOn(() => Victim == null || Victim.Dead);
 

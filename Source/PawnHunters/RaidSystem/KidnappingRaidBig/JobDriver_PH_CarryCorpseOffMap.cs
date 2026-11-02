@@ -22,7 +22,7 @@ public class JobDriver_PH_CarryCorpseOffMap : JobDriver
     public override bool TryMakePreToilReservations(bool errorOnFailed)
         => pawn.Reserve(Corpse, job, 1, -1, null, errorOnFailed);
 
-    public override IEnumerable<Toil> MakeNewToils()
+    protected override IEnumerable<Toil> MakeNewToils()
     {
         this.AddFinishAction(_ =>
         {
